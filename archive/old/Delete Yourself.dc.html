@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em;">
+
+  <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0;">
+
+    <aside style="position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box;">
+      <a href="Homepage.dc.html" style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px; display: block; color: #1b1b1b;">p4a</a>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">ON THIS PAGE</div>
+      <nav style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <a href="#finding" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Finding Your Data</a>
+        <a href="#brokers" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Data Broker Opt-Out</a>
+        <a href="#services" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Specific Services</a>
+        <a href="#resources" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Resources</a>
+      </nav>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">RELATED</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px;">
+        <a href="Privacy Checklist.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Privacy Checklist</a>
+        <a href="Password Check.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Password Check</a>
+      </div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GOOD TO KNOW</div>
+      <p style="font-size: 11px; line-height: 1.6; color: #555; margin: 0;">Data brokers re-scrape and relist information over time &mdash; treat opt-outs as an ongoing habit, not a one-time task.</p>
+    </aside>
+
+    <div style="min-width: 0; position: relative;">
+
+      <div style="position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none;"></div>
+
+      <header style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <div style="width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box;">
+          <nav style="display: flex; width: 100%; box-sizing: border-box; border: 1px solid rgba(0,0,0,0.06); border-radius: 0;">
+            <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." style="flex: 1; height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none;" style-focus="background: rgba(255,255,255,0.7);"><select value="{{ category }}" onChange="{{ onCategoryChange }}" style="height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none;">
+                <option value="All">All</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select><button type="button" onClick="{{ handleSearchSubmit }}" style="height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0;">Go</button>
+          </nav>
+        </div>
+        <div style="max-width: 1160px; margin: 0 auto; padding: 20px 40px 24px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;"><a href="Homepage.dc.html" style="color: #888;">Home</a> / <span style="color: #1b1b1b;">Delete Yourself</span></div>
+          <nav style="display: flex; flex-wrap: wrap; gap: 16px 20px;">
+            <a href="Homepage.dc.html#projects" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">PROJECTS</a>
+            <a href="Resources.dc.html" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">RESOURCES</a>
+            <a href="Homepage.dc.html#contact" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <div style="background: rgba(255,255,255,0.55); backdrop-filter: blur(16px) saturate(160%) contrast(1.05); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.35); margin: 0 32px; border-radius: 6px;">
+      <main style="max-width: 1160px; margin: 0 auto; padding: 48px 40px 96px;">
+
+        <!-- MASTHEAD -->
+        <section style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; border-bottom: 2px solid #1b1b1b; padding-bottom: 18px; margin-bottom: 40px;">
+          <div>
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">QUICK CHECK</div>
+            <h1 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 56px; letter-spacing: 0.1em; margin: 0; line-height: 0.95;">Delete Yourself</h1>
+          </div>
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: right; line-height: 1.7;">
+            FILE&nbsp;NO.&nbsp;022<br>REV.&nbsp;2026&ndash;08
+          </div>
+        </section>
+
+        <!-- FINDING YOUR DATA -->
+        <section id="finding" style="margin-bottom: 56px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 8px;">FINDING YOUR DATA</h2>
+          <p style="font-size: 12.5px; letter-spacing: 0.08em; color: #555; line-height: 1.7; margin: 0 0 22px; max-width: 720px;">Before you can remove your data, you need to know what's out there.</p>
+
+          <div style="background: #faf6ea; padding: 32px 36px; display: flex; flex-direction: column; gap: 24px;">
+            <div>
+              <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 18px; color: #1b1b1b; margin: 0 0 8px;">Step 1: Google Yourself</h3>
+              <p style="font-size: 12.5px; letter-spacing: normal; color: #555; line-height: 1.6; margin: 0 0 10px;">Search for your name, email addresses, and phone numbers:</p>
+              <ul style="margin: 0; padding-left: 20px; font-size: 12.5px; letter-spacing: normal; line-height: 1.8; color: #333;">
+                <li>"First Last" (in quotes)</li>
+                <li>"First Last" "City" (with location)</li>
+                <li>"First Last" phone number</li>
+                <li>email@domain.com</li>
+              </ul>
+              <p style="font-size: 12px; letter-spacing: normal; color: #888; line-height: 1.6; margin: 10px 0 0;">Take screenshots of what you find &mdash; these are your removal targets.</p>
+            </div>
+            <div>
+              <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 18px; color: #1b1b1b; margin: 0 0 8px;">Step 2: Use People Search Tools</h3>
+              <p style="font-size: 12.5px; letter-spacing: normal; color: #555; line-height: 1.6; margin: 0 0 10px;">These sites specialize in aggregating your information &mdash; check each for a listing:</p>
+              <ul style="margin: 0; padding-left: 20px; font-size: 12.5px; letter-spacing: normal; line-height: 1.8; color: #333;">
+                <li><a href="https://www.whitepages.com/" target="_blank" rel="noopener">Whitepages.com</a></li>
+                <li><a href="https://www.spokeo.com/" target="_blank" rel="noopener">Spokeo.com</a></li>
+                <li><a href="https://www.beenverified.com/" target="_blank" rel="noopener">BeenVerified.com</a></li>
+                <li><a href="https://www.peoplefinder.com/" target="_blank" rel="noopener">PeopleFinder.com</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- BROKERS -->
+        <section id="brokers" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 8px;">DATA BROKER OPT-OUT</h2>
+          <p style="font-size: 12.5px; letter-spacing: 0.08em; color: #555; line-height: 1.7; margin: 0 0 22px; max-width: 760px;">Data brokers buy, aggregate, and resell your personal information. You can remove yourself manually for free, or pay a service to automate the process.</p>
+
+          <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 12px;">Data Removal Services</div>
+          <div style="overflow-x: auto; margin-bottom: 28px;">
+            <div style="display: grid; grid-template-columns: 1fr 1.6fr 1fr; min-width: 560px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">SERVICE</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">WHAT IT DOES</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">COST</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.06em; border-bottom: 1px solid rgba(0,0,0,0.08);"><a href="https://joindeleteme.com/" target="_blank" rel="noopener">DeleteMe</a></div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.06em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Fully managed removal across a large list of broker sites, with periodic re-checks</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.06em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Paid subscription</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.06em; border-bottom: 1px solid rgba(0,0,0,0.08);"><a href="https://easyoptouts.com/" target="_blank" rel="noopener">EasyOptOuts</a></div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.06em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">One-time or subscription broker removal, smaller footprint than DeleteMe</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.06em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Paid, one-time option available</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.06em;"><a href="https://www.optery.com/" target="_blank" rel="noopener">Optery</a></div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.06em; color: #555;">Free tier shows where you're listed; paid tiers handle the actual removals</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.06em; color: #555;">Free scan, paid removal</div>
+            </div>
+          </div>
+
+          <div style="background: #faf6ea; padding: 24px 28px; margin-bottom: 20px;">
+            <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 18px; color: #1b1b1b; margin: 0 0 10px;">The BADBOOL List</h3>
+            <p style="font-size: 12.5px; letter-spacing: normal; color: #333; line-height: 1.7; margin: 0;">The Big Ass Data Broker Opt-Out List (BADBOOL) is a large, free, community-maintained list of data brokers with direct opt-out links. Doing it yourself takes longer than a paid service, but costs nothing. Start with its highest-priority tier of roughly 14 sites, then work down the list over time.</p>
+          </div>
+
+          <div style="border: 1px dashed rgba(0,0,0,0.25); padding: 16px 20px;">
+            <div style="font-size: 10px; letter-spacing: 0.15em; color: #888; margin-bottom: 6px;">GOOGLE'S "RESULTS ABOUT YOU" TOOL</div>
+            <p style="font-size: 12px; letter-spacing: 0.06em; color: #444; line-height: 1.6; margin: 0;">Google lets you request removal of search results that show your personal contact info (like a phone number or home address) directly from Search &mdash; even if the underlying page stays up. Search "results about you" in Google, or visit your Google Account's "Results about you" page to submit removal requests.</p>
+          </div>
+        </section>
+
+        <!-- SPECIFIC SERVICES -->
+        <section id="services" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">REMOVE FROM SPECIFIC SERVICES</h2>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+              <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 8px;">AI Services</div>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0;">Most major AI providers (OpenAI, etc.) let you request deletion of your account data and chat history from account privacy settings. Be aware that opting out of a company's model-training program is often a separate toggle from account deletion &mdash; check both.</p>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+              <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 8px;">Social Media Accounts</div>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0;"><a href="https://justdeleteme.xyz/" target="_blank" rel="noopener">justdelete.me</a> is a directory of direct account-deletion links and difficulty ratings for hundreds of social platforms and web services.</p>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+              <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 8px;">Old Accounts</div>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0;">Check your password manager or old email inbox for "welcome" emails to find accounts you forgot you had, then delete or deactivate the ones you no longer use &mdash; a dormant account is still a data source.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- RESOURCES -->
+        <section id="resources" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 18px;">RESOURCES</h2>
+          <ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 12.5px; letter-spacing: 0.06em; line-height: 1.6; color: #333;">
+            <li><a href="https://github.com/xLegoMan/BADBOOL" target="_blank" rel="noopener"><b>BADBOOL list</b></a> &mdash; free, community-maintained data broker opt-out directory.</li>
+            <li><a href="https://justdeleteme.xyz/" target="_blank" rel="noopener"><b>justdelete.me</b></a> &mdash; direct account-deletion links by service.</li>
+            <li><a href="https://haveibeenpwned.com/" target="_blank" rel="noopener"><b>Have I Been Pwned</b></a> &mdash; check if your email appears in a known breach.</li>
+            <li><a href="https://www.privacyguides.org/" target="_blank" rel="noopener"><b>Privacy Guides</b></a> &mdash; broader, community-maintained privacy recommendations.</li>
+          </ul>
+        </section>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.12); font-size: 12px; letter-spacing: 0.1em;">
+          <a href="Homepage.dc.html">Back to Home</a>
+        </div>
+
+      </main>
+
+      <footer style="border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666;">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { query: '', category: 'All' };
+
+  handleSearchSubmit = () => { window.location.href = 'Homepage.dc.html'; };
+
+  renderVals() {
+    return {
+      query: this.state.query,
+      category: this.state.category,
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onCategoryChange: (e) => this.setState({ category: e.target.value }),
+      onKeyDown: (e) => { if (e.key === 'Enter') this.handleSearchSubmit(); },
+      handleSearchSubmit: this.handleSearchSubmit,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

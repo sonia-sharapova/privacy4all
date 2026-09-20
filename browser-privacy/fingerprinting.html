@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced Configurations — Browser Fingerprinting — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">TABLE OF CONTENTS</div>
+      <nav class="p4a-5">
+        <a href="index.html" class="p4a-6">Guide Overview</a>
+        <a href="browsers.html" class="p4a-6">1. Choose Your Browser</a>
+        <a href="extensions.html" class="p4a-6">2. Set Up Your Browser</a>
+        <a href="fingerprinting.html" class="p4a-6">3. Advanced Configurations</a>
+        <a href="verify.html" class="p4a-6">4. Test &amp; Verify</a>
+      </nav>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#overview" class="p4a-6">What Fingerprinting Is</a>
+        <a href="#protection" class="p4a-6">Per-Browser Protection</a>
+        <a href="#check" class="p4a-6">Check Your Fingerprint</a>
+        <a href="#companion-tools" class="p4a-6">Essential Companion Tools</a>
+      </nav>
+
+      <div class="p4a-4">RESOURCES</div>
+      <div class="p4a-7">
+        <a href="troubleshooting.html" class="p4a-8">Troubleshooting Guide</a>
+        <a href="verify.html" class="p4a-8">Test &amp; Verify</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../index.html" style="color:inherit;">Home</a> / <a href="index.html" style="color:inherit;">Browser Privacy Guide</a> / Advanced Configurations</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section id="overview" class="p4a-1v" style="margin-bottom: 8px;">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="../index.html">&larr; back home</a></div>
+            <h1 class="p4a-1x" style="font-size: 64px;">Advanced Configurations</h1>
+          </div>
+          <div class="p4a-1y">
+            FILE&nbsp;NO.&nbsp;016<br>REV.&nbsp;2026&ndash;08<br>READ&nbsp;TIME&nbsp;4&nbsp;MIN
+          </div>
+        </section>
+
+        <!-- WHAT FINGERPRINTING IS -->
+        <section class="p4a-32">
+          <div>
+            <div class="p4a-33">WHAT FINGERPRINTING ACTUALLY IS</div>
+            <p class="p4a-34"><b>Fingerprinting</b> is a tracking method that doesn't rely on cookies at all. Instead, a website quietly collects dozens of small details about your device &mdash; operating system, timezone, language, screen size, installed fonts, RAM, browser version, and more &mdash; and combines them into a profile that can identify you almost as reliably as a cookie can, even if you clear cookies or use private browsing.</p>
+          </div>
+          <div>
+            <p class="p4a-35">"<span class="p4a-35-cap">P</span>rivate browsing mode, VPNs, and Tor by themselves do not stop fingerprinting. You need a browser or setting specifically designed to resist it."</p>
+          </div>
+        </section>
+
+        <p class="p4a-21">Beyond fingerprinting, a few companion tools close most of the gaps a browser alone can't: a password manager, DNS-level filtering, and container tabs. Covered at the end of this page.</p>
+
+        <!-- PER-BROWSER PROTECTION -->
+        <section id="protection" class="p4a-1z" style="border-top: none; padding-top: 0;">
+          <h2 class="p4a-20">PER-BROWSER PROTECTION STEPS</h2>
+
+          <div class="p4a-36">
+            <div>
+              <h3>Firefox or LibreWolf</h3>
+              <p>These apply to both Firefox and LibreWolf, since LibreWolf is built on Firefox's codebase.</p>
+              <ol>
+                <li>Open <em>about:preferences#privacy</em> in the address bar.</li>
+                <li>Under "Enhanced Tracking Protection," select Strict (instead of Standard or Custom). This also enables fingerprinting protection.</li>
+                <li>LibreWolf ships with these settings hardened by default, so steps above are usually already set for you.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3>Brave</h3>
+              <ol>
+                <li>No action needed by default &mdash; Brave randomizes a set of fingerprinting-relevant values for each site and session automatically.</li>
+                <li>Confirm it's active: go to <em>brave://settings/shields</em> and check that fingerprinting blocking is set to "Standard" or "Strict."</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3>Mullvad Browser</h3>
+              <ol>
+                <li>No action needed. It's built specifically to give every user the same fingerprint, so no one stands out from the crowd.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3>Safari <span style="color:#888; font-weight:400; font-size:14px;">(iOS 26 / macOS Tahoe or later)</span></h3>
+              <ol>
+                <li>Fingerprinting protection is on by default under "All Browsing" mode in Safari's privacy settings.</li>
+                <li>Check Settings &rarr; Safari &rarr; Privacy &amp; Security to confirm it's enabled.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3>Tor Browser</h3>
+              <ol>
+                <li>Use it when you need the strongest available anti-fingerprinting protection, since it's purpose-built for this.</li>
+                <li>Available on Windows, macOS, Linux, and Android.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3>Optional</h3>
+              <ol>
+                <li>Use more than one browser for different activities (see <a href="browsers.html">Browsers</a>).</li>
+                <li>Since each browser and its extensions have a different fingerprint, spreading your activity across a couple of browsers makes it harder to tie everything back to one profile.</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHECK YOUR FINGERPRINT -->
+        <section id="check" class="p4a-1z">
+          <h2 class="p4a-20">HOW TO CHECK YOUR OWN FINGERPRINT</h2>
+          <div class="p4a-22-3">
+            <div class="p4a-23">
+              <div class="p4a-26">01</div>
+              <div class="p4a-24"><a href="https://coveryourtracks.eff.org/" target="_blank" rel="noopener">coveryourtracks.eff.org</a></div>
+              <p class="p4a-25">Click the test button. It will tell you whether your browser's fingerprint is unique among the browsers it has seen, and whether your protections are working.</p>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-26">02</div>
+              <div class="p4a-24"><a href="https://amiunique.org/" target="_blank" rel="noopener">amiunique.org</a></div>
+              <p class="p4a-25">Get a second opinion; as of its last public count, it had recorded over 1.7 million fingerprints for comparison.</p>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-26">03</div>
+              <div class="p4a-24"><a href="https://deviceinfo.me/" target="_blank" rel="noopener">deviceinfo.me</a></div>
+              <p class="p4a-25">See, in plain terms, exactly which data points about your device are visible to any website you visit.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ESSENTIAL COMPANION TOOLS -->
+        <section id="companion-tools" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">ESSENTIAL COMPANION TOOLS</h2>
+          <p class="p4a-21">A hardened browser handles tracking and fingerprinting. These three tools cover what it can't.</p>
+
+          <div style="display:flex; flex-direction:column; gap:24px;">
+
+            <div class="p4a-37">
+              <div class="p4a-37-title">Password Managers</div>
+              <div class="p4a-37-tag critical">CRITICAL FOR PRIVACY</div>
+              <div class="p4a-29" style="margin-bottom:14px;">
+                <a href="https://bitwarden.com/" target="_blank" rel="noopener" class="p4a-glass-btn p4a-btn-redirect p4a-2a"><img src="../assets/bitwarden.jpg" alt="" class="p4a-2a-icon">Bitwarden</a>
+                <a href="https://keepassxc.org/" target="_blank" rel="noopener" class="p4a-glass-btn p4a-btn-redirect p4a-2a"><img src="../assets/keepassxc.svg" alt="" class="p4a-2a-icon">KeePassXC</a>
+                <a href="https://proton.me/pass" target="_blank" rel="noopener" class="p4a-glass-btn p4a-btn-redirect p4a-2a"><img src="../assets/proton-pass.webp" alt="" class="p4a-2a-icon">Proton Pass</a>
+                <a href="https://1password.com/" target="_blank" rel="noopener" class="p4a-glass-btn p4a-btn-redirect p4a-2a"><img src="../assets/1password.png" alt="" class="p4a-2a-icon">1Password</a>
+              </div>
+              <p><b>Why:</b> without a password manager, you'll reuse passwords or use "Login with Google/Facebook" &mdash; both are privacy disasters.</p>
+              <p style="margin-bottom:0;"><b>Setup:</b> install the extension, disable your browser's built-in password manager, then start generating unique passwords per site.</p>
+            </div>
+
+            <div class="p4a-37">
+              <div class="p4a-37-title">DNS-Level Filtering</div>
+              <div class="p4a-37-tag advanced">ADVANCED</div>
+              <div class="p4a-29" style="margin-bottom:14px;">
+                <a href="https://nextdns.io/" target="_blank" rel="noopener" class="p4a-glass-btn p4a-btn-redirect p4a-2a">NextDNS</a>
+                <a href="https://controld.com/" target="_blank" rel="noopener" class="p4a-glass-btn p4a-btn-redirect p4a-2a">ControlD</a>
+                <a href="https://adguard-dns.io/" target="_blank" rel="noopener" class="p4a-glass-btn p4a-btn-redirect p4a-2a">AdGuard DNS</a>
+              </div>
+              <p><b>Why:</b> blocks trackers and malware at the network level, before they even reach your browser &mdash; covers every app on the device, not just one browser.</p>
+              <p class="p4a-37-warn">Advanced: may require router-level configuration to apply to every device on your network.</p>
+            </div>
+
+            <div class="p4a-37">
+              <div class="p4a-37-title">Container Tabs <span style="color:#888; font-weight:400; font-size:12px;">(Firefox / LibreWolf only)</span></div>
+              <div style="height:14px;"></div>
+              <div class="p4a-29" style="margin-bottom:14px;">
+                <a href="https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/" target="_blank" rel="noopener" class="p4a-glass-btn p4a-btn-redirect p4a-2a">Multi-Account Containers</a>
+              </div>
+              <p style="margin-bottom:0;"><b>Why:</b> isolate banking, work, and personal browsing into separate containers &mdash; cookies don't cross between them, so sites in one container can't see what you're doing in another.</p>
+            </div>
+
+          </div>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav" style="justify-content: space-between; margin-top: 56px;">
+          <a href="extensions.html" class="p4a-glass-btn p4a-btn-home">&larr; Set Up Your Browser</a>
+          <a href="verify.html" class="p4a-glass-btn p4a-btn-nav">Next: Test &amp; Verify &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

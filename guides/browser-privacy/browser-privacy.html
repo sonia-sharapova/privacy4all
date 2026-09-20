@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser Privacy — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anaheim:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style/sidebar.css">
+<link rel="stylesheet" href="../../style/main.css">
+<link rel="stylesheet" href="../../style/article.css">
+</head>
+<body>
+
+<div class="page-shell">
+  <nav id="file-sidebar" class="file-sidebar" aria-label="Site file tree"></nav>
+
+  <div class="page-main">
+
+    <header class="site-header">
+      <div class="wrap">
+        <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle file tree">&#9881;</button>
+        <a class="logo" href="../../index.html">privacy<span>4</span>all</a>
+        <ul class="nav-links">
+          <li><a href="../../index.html#quick-links">About</a></li>
+          <li><a href="../../index.html#guides">Overview</a></li>
+          <li><a href="../../index.html#resources">Resources</a></li>
+          <li><a href="../../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="article">
+      <p class="article-eyebrow"><a href="../../index.html">privacy4all</a> / Browser Privacy</p>
+      <h1>Browser Privacy</h1>
+
+      <div class="article-body">
+
+        <h2 style="margin-top:0">General Privacy Habits (Browser)</h2>
+        <ol>
+          <li>Never use &ldquo;Log in with Google&rdquo; or &ldquo;Log in with Facebook&rdquo; on other websites. It links your activity on that site back to your Google or Facebook account. Create a separate account (with a password manager to keep track of it) for each site instead.</li>
+          <li>When a website asks for permission to send notifications, decline by default. Scam and malware campaigns frequently abuse browser notifications, and most legitimate sites don&rsquo;t need this permission.</li>
+          <li>Periodically clear cookies and site data: in Chrome or Brave, go to <code>chrome://settings/siteData</code> and click <strong>Remove All</strong>; in Firefox or LibreWolf, go to <code>about:preferences#privacy</code> and click <strong>Clear Data</strong>. Firefox and LibreWolf can also be set to do this automatically on every shutdown from the same settings panel.</li>
+          <li>Remember that private/incognito windows only hide your history from other people using your device. They do not hide your activity from your internet provider, the websites you visit, or (in Google&rsquo;s case) from Google itself.</li>
+        </ol>
+
+        <nav class="article-toc" aria-label="Lesson sections">
+          <h2>This Lesson Covers:</h2>
+          <ol>
+            <li><a href="#part-1">1: Choosing the Right Browser(s)</a></li>
+            <li><a href="#part-2">2: Choosing a Private Search Engine</a></li>
+            <li><a href="#part-3">3: Minimal Privacy Extensions</a></li>
+            <li><a href="#part-4">4: Reducing Browser Fingerprinting</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="part-1"><span class="part-label">Part 1</span>Choose the Right Browser(s)</h2>
+        <p>Ideally, you should not rely on a single browser. Instead, install two or three and use each for a different purpose:</p>
+        <ul>
+          <li>one for everyday browsing with strong protections</li>
+          <li>one as a &ldquo;throwaway&rdquo; for risky extensions or low-value logins</li>
+          <li>(optionally) one kept completely clean so you always have a working browser to fall back on if a website breaks</li>
+        </ul>
+
+        <p>Judging criteria:</p>
+        <ul>
+          <li>usability</li>
+          <li>privacy</li>
+          <li>customizability</li>
+          <li>philosophy</li>
+          <li>respect for the user</li>
+          <li>looks</li>
+          <li>resource usage</li>
+        </ul>
+
+        <h3>Recommended privacy browsers</h3>
+        <ul class="article-card-grid">
+          <li class="article-card">
+            <div class="article-card-head"><h4>Brave</h4></div>
+            <p class="article-card-platforms">desktop, Android, iOS</p>
+            <p>Blocks ads, trackers, and fingerprinting by default and supports Global Privacy Control out of the box. Chrome-based, so it supports Chrome extensions.</p>
+          </li>
+          <li class="article-card">
+            <div class="article-card-head"><h4>DuckDuckGo</h4></div>
+            <p class="article-card-platforms">desktop, Android, iOS</p>
+            <p>There is hesitance among users about AI features, but allegedly they can be turned off. No extensions on desktop is a bit of a dealbreaker for most people, but the search engine can run on Firefox.</p>
+          </li>
+          <li class="article-card">
+            <div class="article-card-head"><h4>Mullvad Browser</h4></div>
+            <p class="article-card-platforms">desktop</p>
+            <p>Blocks ads, trackers, and fingerprinting by default and supports Global Privacy Control out of the box. Chrome-based, so it supports Chrome extensions.</p>
+            <a href="#">Download browser and/or VPN from here</a>
+          </li>
+          <li class="article-card">
+            <div class="article-card-head"><h4>Safari</h4></div>
+            <p class="article-card-platforms">iOS</p>
+            <p>Recommended for iOS by Privacy Guides, and now supports uBlock Origin as of August 2025.</p>
+            <a href="#">Read more here</a>
+          </li>
+          <li class="article-card">
+            <div class="article-card-head"><h4>Firefox</h4></div>
+            <p class="article-card-platforms">desktop</p>
+            <p>Questionable telemetry (snooping), especially with AI features, but a solid option if manual configurations applied.</p>
+            <a href="#">Download instructions here</a>
+          </li>
+          <li class="article-card">
+            <div class="article-card-head"><h4>LibreWolf</h4></div>
+            <p class="article-card-platforms">desktop</p>
+            <p>A privacy-hardened version of Firefox with Mozilla&rsquo;s telemetry stripped out and uBlock Origin included by default.</p>
+            <a href="#">Download from here</a>
+          </li>
+        </ul>
+
+        <h3>Secure your browser:</h3>
+        <ul class="article-card-grid">
+          <li class="article-card">
+            <div class="article-card-head"><h4>Brave Hardening</h4></div>
+            <p>Secure your Brave browser</p>
+            <a href="#">HERE</a>
+          </li>
+          <li class="article-card">
+            <div class="article-card-head"><h4>PrivacyTests.org</h4></div>
+            <p>Compare your browser against others</p>
+            <a href="#">HERE</a>
+          </li>
+          <li class="article-card">
+            <div class="article-card-head"><h4>Chromium</h4></div>
+            <p>Secure your Brave browser</p>
+            <a href="#">HERE</a>
+          </li>
+        </ul>
+
+        <h2 id="part-2"><span class="part-label">Part 2</span>Choose a Private Search Engine</h2>
+        <p>Search engines see every question you type, often before you even visit a website, so this pairs directly with your browser choice.</p>
+
+        <h3>Privacy search engines</h3>
+        <ol>
+          <li><strong>Brave Search</strong>: a US-based, privacy-focused search engine launched in June 2021. If you use Brave browser, it&rsquo;s already available as a default option in Settings &rarr; Search Engine.</li>
+          <li><strong>Mojeek</strong>: a European search engine that operates under European privacy law. Add it in your browser&rsquo;s search engine settings by searching for &ldquo;Mojeek&rdquo; in the list, or manually add <a href="#">mojeek.com</a> as a custom search engine.</li>
+          <li><strong>SearXNG</strong>: an open-source search tool that pulls results from multiple search engines without tracking you; since it&rsquo;s self-hostable, you can also use one of the public instances listed at searx.space if you don&rsquo;t want to run your own.</li>
+        </ol>
+        <p>To set any of these as your default: in Firefox/LibreWolf go to <code>about:preferences#search</code>; in Brave or Chrome go to Settings &rarr; Search Engine; select the engine you&rsquo;ve added from the dropdown.</p>
+
+        <h2 id="part-3"><span class="part-label">Part 3</span>Install a Minimal Set of Privacy Extensions</h2>
+        <p><strong>Important Note:</strong> install as few extensions as possible, because every extension is a piece of code with broad access to what you see and type. Where a setting can do the job instead of an extension, prefer the setting. The list below is deliberately short.</p>
+
+        <h3>uBlock Origin (top pick across every source consulted)</h3>
+        <p>Blocks ads and trackers, and is widely regarded as the most effective and best-maintained blocker available.</p>
+        <ol type="a">
+          <li>Go to the extension store for your browser (Firefox Add-ons, Chrome Web Store, or Brave/Edge&rsquo;s respective stores).</li>
+          <li>Search for &ldquo;uBlock Origin&rdquo; and confirm the developer listed is Raymond Hill, also known as gorhill. Do not install look-alikes such as &ldquo;uBlock&rdquo; (no &ldquo;Origin&rdquo;) or &ldquo;uBlock Pro,&rdquo; and note that it has no connection to the website &ldquo;ublock.org.&rdquo;</li>
+          <li>Click Install/Add to Browser.</li>
+          <li>If you&rsquo;re on Chrome specifically: Google disabled the original uBlock Origin due to the Manifest V3 changes. Install uBlock Origin Lite instead (also by the same developer). Firefox and Firefox-based browsers like LibreWolf still support the full version.</li>
+        </ol>
+
+        <h2 id="part-4"><span class="part-label">Part 4</span>Reducing Browser Fingerprinting</h2>
+        <div class="article-stub">
+          <p>This section is being finalized. Check back shortly for the full content.</p>
+        </div>
+
+        <h2>Further Reading</h2>
+        <p>For deeper, continually updated configuration guidance beyond this snapshot:</p>
+        <ol>
+          <li><a href="#">Privacy Guides</a> for up-to-date desktop and mobile browser recommendations.</li>
+          <li><a href="#">AvoidTheHack.com</a> for platform-specific privacy browser configuration walkthroughs.</li>
+          <li>The ran-sama Firefox user.js project on GitHub, which packages roughly 300 individual Firefox privacy tweaks into one file for advanced users.</li>
+        </ol>
+        <p>A note on this guide: some of the claims above (release dates, version-specific behavior, pricing) reflect what these source pages stated at the time they were retrieved. Settings menus and extension availability change over time, so if a step doesn&rsquo;t match what you see in your browser, check the browser&rsquo;s own current documentation for the exact menu path.</p>
+
+        <h2>Browser Extensions</h2>
+        <ul>
+          <li><strong>Decentraleyes</strong> Protects against tracking with a local CDN (Content Delivery Network) emulation.</li>
+          <li><strong>Privacy Badger</strong> Privacy Badger blocks spying ads and invisible trackers.</li>
+          <li><strong>HTTPS Everywhere</strong> HTTPS Everywhere is a Firefox, Chrome, and Opera extension that encrypts your communications with many major websites, making your browsing more secure.</li>
+          <li><strong>uBlock Origin</strong> An efficient blocker for Chromium and Firefox. Fast and lean.</li>
+          <li><strong>TamperMonkey</strong> The world&rsquo;s most popular userscript manager.</li>
+          <li><strong>WebRTC Network Limiter</strong> Configures how WebRTC&rsquo;s network traffic is routed by changing Chrome&rsquo;s privacy settings.</li>
+          <li><strong>ScriptSafe</strong> A browser extension that gives users control of the web and more secure browsing while emphasizing simplicity and intuitiveness.</li>
+          <li><strong>NoScript</strong> Allow active content to run only from sites you trust, and protect yourself against XSS and clickjacking attacks. Firefox only.</li>
+          <li><strong>Bureaucracy</strong> Read the news without subscribing, bypass the paywall.</li>
+          <li><strong>Universal Bypass</strong> Universal Bypass automatically skips annoying link shorteners.</li>
+          <li><strong>Violentmonkey</strong> An open-source userscript manager.</li>
+          <li><strong>Anti-Paywall</strong> A browser extension that maximizes the chances of bypassing paywalls.</li>
+          <li><strong>Google Unlocked</strong> Uncensor google search results.</li>
+        </ul>
+
+        <h2>Sources Used</h2>
+        <ul>
+          <li><a href="#">Defensive Computing Checklist: Web Browsers</a></li>
+          <li><a href="#">Defensive Computing Checklist: Web Browser Extensions</a></li>
+          <li><a href="#">Defensive Computing Checklist: Browser Fingerprinting</a></li>
+          <li><a href="#">Awesome Piracy: Browser Extensions</a></li>
+          <li><a href="#">PrivacyTools.io</a></li>
+          <li><a href="#">digdeeper.neocities.org/articles/browsers.xhtml</a></li>
+        </ul>
+
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<script src="../../js/sidebar.js"></script>
+</body>
+</html>

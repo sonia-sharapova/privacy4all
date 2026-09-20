@@ -1,0 +1,220 @@
+/* Wired background treatment (Figma "/page" reference) */
+
+.home-page-wired {
+  background-image: url("../images/bg/home_bg_wires.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-attachment: fixed;
+}
+
+.home-page-wired .site-header,
+.home-page-wired .hero,
+.home-page-wired .section,
+.home-page-wired .site-footer {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(2px);
+}
+
+.home-page-wired .card {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.home-page-wired .section#resources .card {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Filter bar */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 20px 0;
+  margin: 0 96px;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-search {
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+
+.filter-search input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.filter-search input:focus {
+  outline: none;
+  border-color: var(--text);
+}
+
+.filter-group {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.filter-group-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.filter-help-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--text-muted);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.filter-help-btn:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.filter-help-tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 30;
+  width: 300px;
+  margin-top: 6px;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text);
+}
+
+.filter-help-tooltip.visible {
+  display: block;
+}
+
+.filter-help-tooltip p {
+  margin: 0 0 10px;
+}
+
+.filter-help-tooltip p:last-child {
+  margin-bottom: 0;
+}
+
+.filter-help-intro {
+  color: var(--text-muted);
+}
+
+.filter-help-example {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 320px;
+}
+
+.filter-pill {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.filter-pill:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.filter-pill.active {
+  background: var(--text);
+  border-color: var(--text);
+  color: #ffffff;
+}
+
+@media (max-width: 1100px) {
+  .filter-bar {
+    margin: 0 32px;
+  }
+}
+
+@media (max-width: 700px) {
+  .filter-bar {
+    margin: 0 16px;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* Tag badges on cards */
+
+.tag-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.tag-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.tag-badge-type {
+  border-color: #333333;
+  color: #333333;
+}
+
+.tag-badge-difficulty.tag-badge-beginner,
+.tag-badge-difficulty.tag-badge-easy {
+  border-color: #3a8f4f;
+  color: #3a8f4f;
+}
+
+.tag-badge-difficulty.tag-badge-medium {
+  border-color: #b8860b;
+  color: #b8860b;
+}
+
+.tag-badge-difficulty.tag-badge-hard {
+  border-color: #b3402f;
+  color: #b3402f;
+}

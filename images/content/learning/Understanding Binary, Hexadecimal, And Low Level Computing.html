@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<!-- saved from url=(0116)https://mohitmishra786.github.io/chessman/2024/10/30/Understanding-Binary,-Hexadecimal,-and-Low-Level-Computing.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Understanding Binary, Hexadecimal, And Low Level Computing">
+<meta name="author" content="Mohit Mishra">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Introduction">
+<meta property="og:description" content="Introduction">
+<link rel="canonical" href="https://mohitmishra786.github.io/chessman/2024/10/30/Understanding-Binary,-Hexadecimal,-and-Low-Level-Computing.html">
+<meta property="og:url" content="https://mohitmishra786.github.io/chessman/2024/10/30/Understanding-Binary,-Hexadecimal,-and-Low-Level-Computing.html">
+<meta property="og:site_name" content="Mohit Mishra">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-10-30T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Understanding Binary, Hexadecimal, And Low Level Computing">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mohit Mishra"},"dateModified":"2024-10-30T00:00:00+00:00","datePublished":"2024-10-30T00:00:00+00:00","description":"Introduction","headline":"Understanding Binary, Hexadecimal, And Low Level Computing","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohitmishra786.github.io/chessman/2024/10/30/Understanding-Binary,-Hexadecimal,-and-Low-Level-Computing.html"},"url":"https://mohitmishra786.github.io/chessman/2024/10/30/Understanding-Binary,-Hexadecimal,-and-Low-Level-Computing.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./Understanding Binary, Hexadecimal, And Low Level Computing_files/main.css"> <!-- -- Corrected ---->
+    <link rel="shortcut icon" type="image/x-icon" href="https://mohitmishra786.github.io/chessman/favicon.ico"> <!-- -- Corrected assuming it's in the root ---->
+    <link rel="stylesheet" href="./Understanding Binary, Hexadecimal, And Low Level Computing_files/agate.css"> <!-- -- Corrected ---->
+    <script src="./Understanding Binary, Hexadecimal, And Low Level Computing_files/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><link type="application/atom+xml" rel="alternate" href="https://mohitmishra786.github.io/chessman/feed.xml" title="Mohit Mishra"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="post h-entry" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+        <script type="text/javascript" async="" src="./Understanding Binary, Hexadecimal, And Low Level Computing_files/MathJax.js"></script>
+        <script src="./Understanding Binary, Hexadecimal, And Low Level Computing_files/d3.min.js"></script>
+        <script src="./Understanding Binary, Hexadecimal, And Low Level Computing_files/index.min.js"></script>
+        <script src="./Understanding Binary, Hexadecimal, And Low Level Computing_files/d3-graphviz.min.js"></script>
+        <title>Understanding Binary, Hexadecimal, And Low Level Computing</title>
+    
+    <header class="post-header">
+        <div class="post-back">
+            <a class="black-link" href="https://mohitmishra786.github.io/chessman/">
+                ← Home
+            </a>
+        </div>
+        <h1 class="post-title p-name" itemprop="name headline">
+            Understanding Binary, Hexadecimal, And Low Level Computing
+        </h1>
+        <p class="post-meta">
+            <time class="dt-published" datetime="2024-10-30T00:00:00+00:00" itemprop="datePublished">Oct 30, 2024
+            </time></p>
+    </header>
+    <div class="post-content e-content" itemprop="articleBody">
+        <h2 id="introduction">Introduction</h2>
+
+<p>In the realm of computing, understanding number systems and their representations is fundamental to mastering low-level programming and system architecture. This comprehensive guide explores the intricacies of binary and hexadecimal number systems, their practical applications, and their significance in modern computing. We’ll understand implementation details, provide practical code examples, and examine the underlying assembly code where relevant.</p>
+
+<h2 id="number-systems-in-computing">Number Systems in Computing</h2>
+<p>Diagram showing the relationship between different number systems and memory representation:</p>
+<pre><code class="language-mermaid">graph TD
+    A[Physical Circuit] --&gt;|Voltage Levels| B[Binary Representation]
+    B --&gt;|4 bits| C[Nibble]
+    B --&gt;|8 bits| D[Byte]
+    C --&gt;|Conversion| E[Hexadecimal Digit]
+    D --&gt;|2 Digits| F[Hexadecimal Byte]
+    D --&gt;|Interpretation| G[ASCII Character]
+    D --&gt;|Sign Bit| H[Signed Integer]
+    D --&gt;|No Sign| I[Unsigned Integer]
+    J[Memory Address] --&gt;|Hex Representation| F
+    K[Architecture] --&gt;|Word Size| L[32/64 bits]
+    L --&gt;|Multiple Bytes| M[Memory Layout]
+    M --&gt;|Byte Order| N[Endianness]
+</code></pre>
+
+<h3 id="the-foundation-binary">The Foundation: Binary</h3>
+
+<p>At its core, modern computing is built on binary - a base-2 number system using only 0s and 1s. This isn’t an arbitrary choice; it reflects the fundamental nature of electronic circuits where voltage levels represent two distinct states. Let’s explore why this matters:</p>
+
+<ol>
+  <li><strong>Physical Implementation</strong>
+    <ul>
+      <li>Transistors function as switches (ON/OFF states)</li>
+      <li>Voltage thresholds determine binary states</li>
+      <li>Noise immunity is enhanced by having only two states</li>
+    </ul>
+  </li>
+  <li><strong>Basic Units</strong>
+    <ul>
+      <li>Bit: Single binary digit (0 or 1)</li>
+      <li>Nibble: 4 bits</li>
+      <li>Byte: 8 bits (modern standard)</li>
+      <li>Word: Architecture-dependent (32 or 64 bits)</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Let’s implement a program that demonstrates binary operations:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdint.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">print_binary</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">uint8_t</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">byte</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">7</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"%d"</span></span><span class="p">,</span> <span class="p">(</span><span class="n">byte</span> <span class="o">&gt;&gt;</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi"><span class="hljs-number">4</span></span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">" "</span></span><span class="p">);</span> <span class="c1"><span class="hljs-comment">// Space between nibbles</span></span>
+    <span class="p">}</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">uint8_t</span></span> <span class="n">value</span> <span class="o">=</span> <span class="mh"><span class="hljs-number">0xA5</span></span><span class="p">;</span> <span class="c1"><span class="hljs-comment">// 10100101 in binary</span></span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Value in different representations:</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Decimal: %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Hexadecimal: 0x%02X</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Binary: "</span></span><span class="p">);</span>
+    <span class="n">print_binary</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// Demonstrate bit operations</span></span>
+    <span class="kt"><span class="hljs-keyword">uint8_t</span></span> <span class="n">left_nibble</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">&gt;&gt;</span> <span class="mi"><span class="hljs-number">4</span></span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh"><span class="hljs-number">0x0F</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint8_t</span></span> <span class="n">right_nibble</span> <span class="o">=</span> <span class="n">value</span> <span class="o">&amp;</span> <span class="mh"><span class="hljs-number">0x0F</span></span><span class="p">;</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">Left nibble: "</span></span><span class="p">);</span>
+    <span class="n">print_binary</span><span class="p">(</span><span class="n">left_nibble</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Right nibble: "</span></span><span class="p">);</span>
+    <span class="n">print_binary</span><span class="p">(</span><span class="n">right_nibble</span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run this code:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs nginx"><span class="hljs-attribute">gcc</span> <span class="nt">-o</span> binary_demo binary_demo.c
+./binary_demo
+</code></pre></div></div>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs bash">Value <span class="hljs-keyword">in</span> different representations:
+Decimal: 165
+Hexadecimal: 0xA5
+Binary: 1010 0101
+
+Left nibble: 0000 1010
+Right nibble: 0000 0101
+</code></pre></div></div>
+
+<p>Let’s examine the key assembly instructions generated (x86-64):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs css"><span class="hljs-selector-tag">gcc</span> <span class="nt"><span class="hljs-selector-tag">-S</span></span> <span class="hljs-selector-tag">binary_demo</span><span class="hljs-selector-class">.c</span>
+</code></pre></div></div>
+
+<p>Key assembly sections:</p>
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs perl"><span class="err"><span class="hljs-comment">#</span></span><span class="hljs-comment"> </span><span class="nf"><span class="hljs-comment">Bit</span></span><span class="hljs-comment"> </span><span class="nv"><span class="hljs-comment">shift</span></span><span class="hljs-comment"> </span><span class="nv"><span class="hljs-comment">operation</span></span><span class="hljs-comment"> </span><span class="p"><span class="hljs-comment">(</span></span><span class="nv"><span class="hljs-comment">value</span></span><span class="hljs-comment"> </span><span class="o"><span class="hljs-comment">&gt;&gt;</span></span><span class="hljs-comment"> </span><span class="mi"><span class="hljs-comment">4</span></span><span class="p"><span class="hljs-comment">)</span></span>
+<span class="nf">shrb</span>    <span class="kc">$</span><span class="mi">4</span><span class="p">,</span> <span class="o">%</span><span class="nb">al</span>    <span class="err"><span class="hljs-comment">#</span></span><span class="hljs-comment"> </span><span class="nv"><span class="hljs-comment">Shift</span></span><span class="hljs-comment"> </span><span class="nv"><span class="hljs-comment">right</span></span><span class="hljs-comment"> </span><span class="nv"><span class="hljs-comment">by</span></span><span class="hljs-comment"> </span><span class="mi"><span class="hljs-comment">4</span></span><span class="hljs-comment"> </span><span class="nv"><span class="hljs-comment">bits</span></span>
+<span class="nf">andb</span>    <span class="kc">$</span><span class="mi">15</span><span class="p">,</span> <span class="o">%</span><span class="nb">al</span>   <span class="err"><span class="hljs-comment">#</span></span><span class="hljs-comment"> </span><span class="nv"><span class="hljs-comment">Mask</span></span><span class="hljs-comment"> </span><span class="nv"><span class="hljs-comment">with</span></span><span class="hljs-comment"> </span><span class="mh"><span class="hljs-comment">0x0F</span></span>
+
+<span class="err"><span class="hljs-comment">#</span></span><span class="hljs-comment"> </span><span class="nf"><span class="hljs-comment">AND</span></span><span class="hljs-comment"> </span><span class="nv"><span class="hljs-comment">operation</span></span><span class="hljs-comment"> </span><span class="p"><span class="hljs-comment">(</span></span><span class="nv"><span class="hljs-comment">value</span></span><span class="hljs-comment"> </span><span class="o"><span class="hljs-comment">&amp;</span></span><span class="hljs-comment"> </span><span class="mh"><span class="hljs-comment">0x0F</span></span><span class="p"><span class="hljs-comment">)</span></span>
+<span class="nf">movzbl</span>  <span class="o">-</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">(</span><span class="o">%</span><span class="nb">rbp</span><span class="p">),</span> <span class="o">%</span><span class="nb">eax</span>
+<span class="nf">andb</span>    <span class="kc">$</span><span class="mi">15</span><span class="p">,</span> <span class="o">%</span><span class="nb">al</span>
+</code></pre></div></div>
+
+<h3 id="the-bridge-hexadecimal">The Bridge: Hexadecimal</h3>
+
+<p>Hexadecimal (base-16) serves as an human-readable bridge between binary and decimal systems. Here’s why it’s particularly useful:</p>
+
+<ol>
+  <li><strong>Perfect Binary Alignment</strong>
+    <ul>
+      <li>Each hex digit represents exactly 4 bits (one nibble)</li>
+      <li>Two hex digits represent one byte</li>
+      <li>Easy visual mapping to binary values</li>
+    </ul>
+  </li>
+  <li><strong>Common Applications</strong>
+    <ul>
+      <li>Memory addresses</li>
+      <li>Color codes</li>
+      <li>Binary file representations</li>
+      <li>Network addresses</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Let’s implement a hex-binary converter with additional features:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdint.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="c1"><span class="hljs-comment">// Conversion tables</span></span>
+<span class="k"><span class="hljs-keyword">const</span></span> <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">hex_chars</span><span class="p">[]</span> <span class="o">=</span> <span class="s"><span class="hljs-string">"0123456789ABCDEF"</span></span><span class="p">;</span>
+<span class="k"><span class="hljs-keyword">const</span></span> <span class="kt"><span class="hljs-keyword">uint8_t</span></span> <span class="n">hex_values</span><span class="p">[</span><span class="mi"><span class="hljs-number">256</span></span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">[</span><span class="sc"><span class="hljs-string">'0'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">,</span>  <span class="p">[</span><span class="sc"><span class="hljs-string">'1'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">,</span>  <span class="p">[</span><span class="sc"><span class="hljs-string">'2'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">2</span></span><span class="p">,</span>  <span class="p">[</span><span class="sc"><span class="hljs-string">'3'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">3</span></span><span class="p">,</span>
+    <span class="p">[</span><span class="sc"><span class="hljs-string">'4'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">4</span></span><span class="p">,</span>  <span class="p">[</span><span class="sc"><span class="hljs-string">'5'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">5</span></span><span class="p">,</span>  <span class="p">[</span><span class="sc"><span class="hljs-string">'6'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">6</span></span><span class="p">,</span>  <span class="p">[</span><span class="sc"><span class="hljs-string">'7'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">7</span></span><span class="p">,</span>
+    <span class="p">[</span><span class="sc"><span class="hljs-string">'8'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">8</span></span><span class="p">,</span>  <span class="p">[</span><span class="sc"><span class="hljs-string">'9'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">9</span></span><span class="p">,</span>  <span class="p">[</span><span class="sc"><span class="hljs-string">'A'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">10</span></span><span class="p">,</span> <span class="p">[</span><span class="sc"><span class="hljs-string">'B'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">11</span></span><span class="p">,</span>
+    <span class="p">[</span><span class="sc"><span class="hljs-string">'C'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">12</span></span><span class="p">,</span> <span class="p">[</span><span class="sc"><span class="hljs-string">'D'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">13</span></span><span class="p">,</span> <span class="p">[</span><span class="sc"><span class="hljs-string">'E'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">14</span></span><span class="p">,</span> <span class="p">[</span><span class="sc"><span class="hljs-string">'F'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">15</span></span><span class="p">,</span>
+    <span class="p">[</span><span class="sc"><span class="hljs-string">'a'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">10</span></span><span class="p">,</span> <span class="p">[</span><span class="sc"><span class="hljs-string">'b'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">11</span></span><span class="p">,</span> <span class="p">[</span><span class="sc"><span class="hljs-string">'c'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">12</span></span><span class="p">,</span> <span class="p">[</span><span class="sc"><span class="hljs-string">'d'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">13</span></span><span class="p">,</span>
+    <span class="p">[</span><span class="sc"><span class="hljs-string">'e'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">14</span></span><span class="p">,</span> <span class="p">[</span><span class="sc"><span class="hljs-string">'f'</span></span><span class="p">]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">15</span></span>
+<span class="p">};</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">hex_to_binary</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">const</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">char</span></span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">hex_str</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">size_t</span></span> <span class="n">len</span> <span class="o">=</span> <span class="n"><span class="hljs-built_in">strlen</span></span><span class="p">(</span><span class="n">hex_str</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Hex: %s</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">hex_str</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Binary: "</span></span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">size_t</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt"><span class="hljs-keyword">uint8_t</span></span> <span class="n">val</span> <span class="o">=</span> <span class="n">hex_values</span><span class="p">[(</span><span class="kt"><span class="hljs-keyword">unsigned</span></span> <span class="kt"><span class="hljs-keyword">char</span></span><span class="p">)</span><span class="n">hex_str</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+        <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">j</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">3</span></span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"%d"</span></span><span class="p">,</span> <span class="p">(</span><span class="n">val</span> <span class="o">&gt;&gt;</span> <span class="n">j</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">" "</span></span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">binary_to_hex</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">const</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">char</span></span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">bin_str</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">size_t</span></span> <span class="n">len</span> <span class="o">=</span> <span class="n"><span class="hljs-built_in">strlen</span></span><span class="p">(</span><span class="n">bin_str</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Binary: %s</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">bin_str</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Hex: "</span></span><span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// Process 4 bits at a time</span></span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">size_t</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi"><span class="hljs-number">4</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt"><span class="hljs-keyword">uint8_t</span></span> <span class="n">val</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+        <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">j</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi"><span class="hljs-number">4</span></span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">bin_str</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="sc"><span class="hljs-string">'1'</span></span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">val</span> <span class="o">|=</span> <span class="mi"><span class="hljs-number">1</span></span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi"><span class="hljs-number">3</span></span> <span class="o">-</span> <span class="n">j</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"%c"</span></span><span class="p">,</span> <span class="n">hex_chars</span><span class="p">[</span><span class="n">val</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="c1"><span class="hljs-comment">// Test conversions</span></span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Converting hex to binary:</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="n">hex_to_binary</span><span class="p">(</span><span class="s"><span class="hljs-string">"A5"</span></span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">Converting binary to hex:</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="n">binary_to_hex</span><span class="p">(</span><span class="s"><span class="hljs-string">"10100101"</span></span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs nginx"><span class="hljs-attribute">gcc</span> <span class="nt">-o</span> hex_converter hex_converter.c
+./hex_converter
+</code></pre></div></div>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs perl">Converting <span class="hljs-keyword">hex</span> to binary:
+Hex: A5
+Binary: <span class="hljs-number">1010</span> <span class="hljs-number">0101</span>
+
+Converting binary to <span class="hljs-keyword">hex</span>:
+Binary: <span class="hljs-number">10100101</span>
+Hex: A5
+</code></pre></div></div>
+
+<h2 id="advanced-topics">Advanced Topics</h2>
+
+<h3 id="signed-numbers-and-twos-complement">Signed Numbers and Two’s Complement</h3>
+
+<p>The representation of negative numbers in binary uses two’s complement, a clever system that simplifies arithmetic operations. Here’s an implementation demonstrating two’s complement:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdint.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">print_bits</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int8_t</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">value</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">7</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"%d"</span></span><span class="p">,</span> <span class="p">(</span><span class="n">value</span> <span class="o">&gt;&gt;</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi"><span class="hljs-number">4</span></span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">" "</span></span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int8_t</span></span> <span class="n">positive</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">5</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int8_t</span></span> <span class="n">negative</span> <span class="o">=</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">5</span></span><span class="p">;</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Positive 5:</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="n">print_bits</span><span class="p">(</span><span class="n">positive</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Negative 5 (two's complement):</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="n">print_bits</span><span class="p">(</span><span class="n">negative</span><span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// Demonstrate two's complement calculation</span></span>
+    <span class="kt"><span class="hljs-keyword">int8_t</span></span> <span class="n">manual_negative</span> <span class="o">=</span> <span class="o">~</span><span class="n">positive</span> <span class="o">+</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Manually calculated -5:</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="n">print_bits</span><span class="p">(</span><span class="n">manual_negative</span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="endianness-in-memory">Endianness in Memory</h3>
+
+<p>Endianness refers to the order in which bytes are stored in memory. Let’s demonstrate this concept:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdint.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">print_bytes</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">void</span></span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">ptr</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">size_t</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">size</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">unsigned</span></span> <span class="kt"><span class="hljs-keyword">char</span></span><span class="o">*</span> <span class="n">bytes</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">unsigned</span></span> <span class="kt"><span class="hljs-keyword">char</span></span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">size_t</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"%02X "</span></span><span class="p">,</span> <span class="n">bytes</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">uint32_t</span></span> <span class="n">value</span> <span class="o">=</span> <span class="mh"><span class="hljs-number">0x12345678</span></span><span class="p">;</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"32-bit value: 0x%08X</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Byte representation in memory: "</span></span><span class="p">);</span>
+    <span class="n">print_bytes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="system-architecture-considerations">System Architecture Considerations</h2>
+
+<h3 id="memory-alignment">Memory Alignment</h3>
+
+<p>Memory alignment is crucial for performance and correct operation. Here’s a demonstration:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdint.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> pack(1)</span>
+</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">Unaligned</span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">a</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int32_t</span></span> <span class="n">b</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> pack()</span>
+</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">Aligned</span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">a</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int32_t</span></span> <span class="n">b</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Unaligned struct size: %zu</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">Unaligned</span><span class="p">));</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Aligned struct size: %zu</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">Aligned</span><span class="p">));</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="further-reading">Further Reading</h2>
+<p>For deeper understanding, consider exploring:</p>
+
+<ul>
+  <li>Computer Architecture: A Quantitative Approach (Hennessy &amp; Patterson)</li>
+  <li>The Art of Computer Programming, Volume 2 (Knuth)</li>
+  <li>IEEE 754 Standard for Floating-Point Arithmetic</li>
+  <li>x86 and x86-64 Instruction Set Architecture documentation</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Understanding number systems and their representations is fundamental to low-level programming and system architecture. The concepts covered here form the foundation for more advanced topics in computer science and engineering. By mastering these basics, you’ll be better equipped to tackle complex problems in systems programming, embedded systems, and hardware interfaces.
+Remember that while hexadecimal and binary representations might seem cumbersome at first, they become second nature with practice and provide invaluable insights into how computers actually process and store information.</p>
+
+        <script>
+            function d3ize(elem) {
+                var par = elem.parentElement;
+                d3.select(par).append("div").graphviz().renderDot(elem.innerText);
+                d3.select(elem).style("display", "none");
+            }
+            var dotelems = document.getElementsByClassName("language-dot");
+            for (let elem of dotelems) {
+                d3ize(elem);
+            }
+        </script>
+    </div>
+    <a class="u-url" href="https://mohitmishra786.github.io/chessman/2024/10/30/Understanding-Binary,-Hexadecimal,-and-Low-Level-Computing.html" hidden=""></a>
+</article>
+
+        </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/chessman/"></data>
+
+  <div class="wrapper"><p>© 2025 Mohit Mishra</p><p><a class="black-link" href="mailto:immadmohit@gmail.com">immadmohit@gmail.com</a></p>
+
+      <p class="text">Learning to Learn.
+</p>
+
+      <nav>
+<!--           <a href="/chessman/">Home</a> -->
+          <a href="https://mohitmishra786.github.io/chessman/about.html">About</a>
+      </nav>
+
+  </div>
+</footer>
+
+
+</body></html>

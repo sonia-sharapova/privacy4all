@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<!-- saved from url=(0125)https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Understanding File System Management In Unix Like Operating Systems">
+<meta name="author" content="Mohit Mishra">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Table of Contents Introduction The File Descriptor Table The Open File Table The V-node Table File Operations and System Calls Opening a File Reading from a File File Descriptor Duplication Pipes and Inter-Process Communication Putting It All Together: Implementing a Simple Shell Conclusion Flow Diagram">
+<meta property="og:description" content="Table of Contents Introduction The File Descriptor Table The Open File Table The V-node Table File Operations and System Calls Opening a File Reading from a File File Descriptor Duplication Pipes and Inter-Process Communication Putting It All Together: Implementing a Simple Shell Conclusion Flow Diagram">
+<link rel="canonical" href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html">
+<meta property="og:url" content="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html">
+<meta property="og:site_name" content="Mohit Mishra">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-09-25T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Understanding File System Management In Unix Like Operating Systems">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mohit Mishra"},"dateModified":"2024-09-25T00:00:00+00:00","datePublished":"2024-09-25T00:00:00+00:00","description":"Table of Contents Introduction The File Descriptor Table The Open File Table The V-node Table File Operations and System Calls Opening a File Reading from a File File Descriptor Duplication Pipes and Inter-Process Communication Putting It All Together: Implementing a Simple Shell Conclusion Flow Diagram","headline":"Understanding File System Management In Unix Like Operating Systems","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html"},"url":"https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./Understanding File System Management In Unix Like Operating Systems_files/main.css"> <!-- -- Corrected ---->
+    <link rel="shortcut icon" type="image/x-icon" href="https://mohitmishra786.github.io/chessman/favicon.ico"> <!-- -- Corrected assuming it's in the root ---->
+    <link rel="stylesheet" href="./Understanding File System Management In Unix Like Operating Systems_files/agate.css"> <!-- -- Corrected ---->
+    <script src="./Understanding File System Management In Unix Like Operating Systems_files/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><link type="application/atom+xml" rel="alternate" href="https://mohitmishra786.github.io/chessman/feed.xml" title="Mohit Mishra"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="post h-entry" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+        <script type="text/javascript" async="" src="./Understanding File System Management In Unix Like Operating Systems_files/MathJax.js"></script>
+        <script src="./Understanding File System Management In Unix Like Operating Systems_files/d3.min.js"></script>
+        <script src="./Understanding File System Management In Unix Like Operating Systems_files/index.min.js"></script>
+        <script src="./Understanding File System Management In Unix Like Operating Systems_files/d3-graphviz.min.js"></script>
+        <title>Understanding File System Management In Unix Like Operating Systems</title>
+    
+    <header class="post-header">
+        <div class="post-back">
+            <a class="black-link" href="https://mohitmishra786.github.io/chessman/">
+                ← Home
+            </a>
+        </div>
+        <h1 class="post-title p-name" itemprop="name headline">
+            Understanding File System Management In Unix Like Operating Systems
+        </h1>
+        <p class="post-meta">
+            <time class="dt-published" datetime="2024-09-25T00:00:00+00:00" itemprop="datePublished">Sep 25, 2024
+            </time></p>
+    </header>
+    <div class="post-content e-content" itemprop="articleBody">
+        <h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#introduction">Introduction</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#the-file-descriptor-table">The File Descriptor Table</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#the-open-file-table">The Open File Table</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#the-v-node-table">The V-node Table</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#file-operations-and-system-calls">File Operations and System Calls</a>
+    <ul>
+      <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#opening-a-file">Opening a File</a></li>
+      <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#reading-from-a-file">Reading from a File</a></li>
+      <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#file-descriptor-duplication">File Descriptor Duplication</a></li>
+    </ul>
+  </li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#pipes-and-inter-process-communication">Pipes and Inter-Process Communication</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#putting-it-all-together-implementing-a-simple-shell">Putting It All Together: Implementing a Simple Shell</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#conclusion">Conclusion</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html#flow-diagram">Flow Diagram</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+<p>In the world of operating systems, particularly Unix-like systems such as Linux, file management is a crucial aspect that underlies much of the functionality we take for granted. This blog post delves into the intricacies of how these systems keep track of files, manage file descriptors, and implement features like pipes for inter-process communication. We’ll explore the underlying data structures, system calls, and provide C code examples to illustrate these concepts.</p>
+
+<h2 id="the-file-descriptor-table">The File Descriptor Table</h2>
+
+<p>At the heart of file management in Unix-like systems is the file descriptor table. This is a per-process data structure that serves as the user-facing interface for file operations. Each open file is represented by an integer, known as a file descriptor, which acts as an index into this table.</p>
+
+<p>Let’s consider a simple C program that opens a file:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;fcntl.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s"><span class="hljs-string">"example.txt"</span></span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">fd</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"Error opening file"</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"File descriptor: %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">fd</span><span class="p">);</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, the <code class="language-plaintext highlighter-rouge">open</code> system call returns a file descriptor, which is typically 3 (as 0, 1, and 2 are reserved for standard input, output, and error respectively). This integer is used in subsequent operations like <code class="language-plaintext highlighter-rouge">read</code>, <code class="language-plaintext highlighter-rouge">write</code>, or <code class="language-plaintext highlighter-rouge">close</code>.</p>
+
+<p>The file descriptor table has a maximum size, which can be queried using the <code class="language-plaintext highlighter-rouge">ulimit -n</code> command in most Unix-like systems. On many systems, this limit is set to 1024 by default, but it can be much higher on modern systems.</p>
+
+<h2 id="the-open-file-table">The Open File Table</h2>
+
+<p>While the file descriptor table is per-process, the open file table is a system-wide data structure. Each entry in this table represents an open instance of a file and contains information such as:</p>
+
+<ul>
+  <li>The current file offset (position)</li>
+  <li>The access mode (read, write, etc.)</li>
+  <li>A reference count</li>
+</ul>
+
+<p>The reference count is particularly interesting as it allows multiple file descriptors to point to the same open file table entry. This becomes important in scenarios involving process forking or duplicating file descriptors.</p>
+
+<p>Here’s a simplified representation of how these structures might be implemented:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">file_descriptor</span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">flags</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">file</span> <span class="o">*</span><span class="n">file_ptr</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">file</span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">off_t</span></span> <span class="n">f_pos</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">unsigned</span></span> <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">f_mode</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">f_count</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">inode</span> <span class="o">*</span><span class="n">f_inode</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_OPEN_FILES 1024</span>
+</span>
+<span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">file_descriptor</span> <span class="n">fd_table</span><span class="p">[</span><span class="n">MAX_OPEN_FILES</span><span class="p">];</span>
+<span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">file</span> <span class="n">open_file_table</span><span class="p">[</span><span class="n">MAX_OPEN_FILES</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="the-v-node-table">The V-node Table</h2>
+
+<p>The v-node (virtual node) table is another system-wide structure that represents the actual files on the disk. Each v-node contains information about:</p>
+
+<ul>
+  <li>File type (regular file, directory, device, etc.)</li>
+  <li>File size</li>
+  <li>File permissions</li>
+  <li>Physical location on disk</li>
+</ul>
+
+<p>The v-node abstraction allows the operating system to support different file systems and even network file systems transparently.</p>
+
+<h2 id="file-operations-and-system-calls">File Operations and System Calls</h2>
+
+<p>Let’s explore some common file operations and how they interact with these data structures:</p>
+
+<h3 id="opening-a-file">Opening a File</h3>
+
+<p>When you call <code class="language-plaintext highlighter-rouge">open</code>, the following steps occur:</p>
+
+<ol>
+  <li>The system locates the file on disk and creates a v-node if one doesn’t exist.</li>
+  <li>An entry is created in the open file table.</li>
+  <li>An entry is created in the process’s file descriptor table, pointing to the open file table entry.</li>
+</ol>
+
+<h3 id="reading-from-a-file">Reading from a File</h3>
+
+<p>When you call <code class="language-plaintext highlighter-rouge">read</code>, the system:</p>
+
+<ol>
+  <li>Looks up the file descriptor in the process’s file descriptor table.</li>
+  <li>Finds the corresponding open file table entry.</li>
+  <li>Uses the current file offset to determine where to read from.</li>
+  <li>Updates the file offset after reading.</li>
+</ol>
+
+<p>Here’s an example of reading from a file:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;fcntl.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BUFFER_SIZE 1024</span>
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s"><span class="hljs-string">"example.txt"</span></span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">fd</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"Error opening file"</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">buffer</span><span class="p">[</span><span class="n">BUFFER_SIZE</span><span class="p">];</span>
+    <span class="kt"><span class="hljs-keyword">ssize_t</span></span> <span class="n">bytes_read</span><span class="p">;</span>
+
+    <span class="k"><span class="hljs-keyword">while</span></span> <span class="p">((</span><span class="n">bytes_read</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">BUFFER_SIZE</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">STDOUT_FILENO</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">bytes_read</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">bytes_read</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"Error reading file"</span></span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="file-descriptor-duplication">File Descriptor Duplication</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">dup2</code> system call is used to duplicate file descriptors. This is crucial for implementing I/O redirection and pipes. Here’s how it works:</p>
+
+<ol>
+  <li>It takes two file descriptors as arguments: the source and the target.</li>
+  <li>If the target file descriptor is already open, it is closed first.</li>
+  <li>The target file descriptor is made to point to the same open file table entry as the source.</li>
+</ol>
+
+<p>Here’s an example of using <code class="language-plaintext highlighter-rouge">dup2</code> to redirect standard output to a file:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;fcntl.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">fd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s"><span class="hljs-string">"output.txt"</span></span><span class="p">,</span> <span class="n">O_WRONLY</span> <span class="o">|</span> <span class="n">O_CREAT</span> <span class="o">|</span> <span class="n">O_TRUNC</span><span class="p">,</span> <span class="mo"><span class="hljs-number">0644</span></span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">fd</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"Error opening file"</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">dup2</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">STDOUT_FILENO</span><span class="p">)</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"Error redirecting stdout"</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"This will be written to output.txt</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+
+    <span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="pipes-and-inter-process-communication">Pipes and Inter-Process Communication</h2>
+
+<p>Pipes are a powerful feature of Unix-like systems that allow for inter-process communication. They are implemented using the file abstraction, which means they can be manipulated using the same system calls as regular files.</p>
+
+<p>When you create a pipe using the <code class="language-plaintext highlighter-rouge">pipe</code> system call, the system:</p>
+
+<ol>
+  <li>Creates two file descriptors: one for reading and one for writing.</li>
+  <li>Sets up a kernel buffer to hold the data being passed through the pipe.</li>
+</ol>
+
+<p>Here’s an example of creating and using a pipe:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BUFFER_SIZE 1024</span>
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">pipefd</span><span class="p">[</span><span class="mi"><span class="hljs-number">2</span></span><span class="p">];</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">buffer</span><span class="p">[</span><span class="n">BUFFER_SIZE</span><span class="p">];</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pipe</span><span class="p">(</span><span class="n">pipefd</span><span class="p">)</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"Error creating pipe"</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n"><span class="hljs-keyword">pid_t</span></span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"Error forking process"</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>  <span class="c1"><span class="hljs-comment">// Child process</span></span>
+        <span class="n">close</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">]);</span>  <span class="c1"><span class="hljs-comment">// Close unused write end</span></span>
+
+        <span class="kt"><span class="hljs-keyword">ssize_t</span></span> <span class="n">bytes_read</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">],</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">BUFFER_SIZE</span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">bytes_read</span> <span class="o">&gt;</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Child received: %s"</span></span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">close</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="p">{</span>  <span class="c1"><span class="hljs-comment">// Parent process</span></span>
+        <span class="n">close</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">]);</span>  <span class="c1"><span class="hljs-comment">// Close unused read end</span></span>
+
+        <span class="k"><span class="hljs-keyword">const</span></span> <span class="kt"><span class="hljs-keyword">char</span></span> <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="s"><span class="hljs-string">"Hello from parent!</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">;</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">],</span> <span class="n">message</span><span class="p">,</span> <span class="n"><span class="hljs-built_in">strlen</span></span><span class="p">(</span><span class="n">message</span><span class="p">));</span>
+
+        <span class="n">close</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This example demonstrates how a pipe can be used to send data from a parent process to a child process. The <code class="language-plaintext highlighter-rouge">fork</code> system call creates a new process, and both processes inherit the file descriptors for the pipe. The parent process writes to the pipe, and the child process reads from it.</p>
+
+<h2 id="putting-it-all-together-implementing-a-simple-shell">Putting It All Together: Implementing a Simple Shell</h2>
+
+<p>Now that we understand the underlying mechanisms, let’s implement a simple shell that can execute commands and support basic piping. This example will tie together many of the concepts we’ve discussed:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;sys/wait.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;fcntl.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;errno.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;pwd.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_CMD_LENGTH 1024</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_ARGS 64</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_PATH 1024</span>
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">print_prompt</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">hostname</span><span class="p">[</span><span class="mi"><span class="hljs-number">1024</span></span><span class="p">];</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">cwd</span><span class="p">[</span><span class="n">MAX_PATH</span><span class="p">];</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">passwd</span> <span class="o">*</span><span class="n">pw</span> <span class="o">=</span> <span class="n">getpwuid</span><span class="p">(</span><span class="n">getuid</span><span class="p">());</span>
+
+    <span class="n">gethostname</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">hostname</span><span class="p">));</span>
+    <span class="n">getcwd</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">cwd</span><span class="p">));</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;32m%s@%s</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m:</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;34m%s</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m$ "</span></span><span class="p">,</span> <span class="n">pw</span><span class="o">-&gt;</span><span class="n">pw_name</span><span class="p">,</span> <span class="n">hostname</span><span class="p">,</span> <span class="n">cwd</span><span class="p">);</span>
+    <span class="n">fflush</span><span class="p">(</span><span class="n"><span class="hljs-built_in">stdout</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">execute_command</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">char</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">args</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">[],</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">input_fd</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">output_fd</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-keyword">pid_t</span></span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;31mError forking process</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m"</span></span><span class="p">);</span>
+        <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+    <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">input_fd</span> <span class="o">!=</span> <span class="n">STDIN_FILENO</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dup2</span><span class="p">(</span><span class="n">input_fd</span><span class="p">,</span> <span class="n">STDIN_FILENO</span><span class="p">);</span>
+            <span class="n">close</span><span class="p">(</span><span class="n">input_fd</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">output_fd</span> <span class="o">!=</span> <span class="n">STDOUT_FILENO</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">dup2</span><span class="p">(</span><span class="n">output_fd</span><span class="p">,</span> <span class="n">STDOUT_FILENO</span><span class="p">);</span>
+            <span class="n">close</span><span class="p">(</span><span class="n">output_fd</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;33mExecuting command: %s</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">]);</span>
+        <span class="n">execvp</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">],</span> <span class="n">args</span><span class="p">);</span>
+        <span class="n"><span class="hljs-built_in">fprintf</span></span><span class="p">(</span><span class="n"><span class="hljs-built_in">stderr</span></span><span class="p">,</span> <span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;31mError executing command '%s': %s</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">],</span> <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+        <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">input</span><span class="p">[</span><span class="n">MAX_CMD_LENGTH</span><span class="p">];</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="o">*</span><span class="n">commands</span><span class="p">[</span><span class="n">MAX_ARGS</span><span class="p">];</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">num_commands</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;36mWelcome to MyShell!</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Type 'exit' to quit the shell.</span></span><span class="se"><span class="hljs-string">\n\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">while</span></span> <span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">print_prompt</span><span class="p">();</span>
+
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">input</span><span class="p">),</span> <span class="n"><span class="hljs-built_in">stdin</span></span><span class="p">)</span> <span class="o">==</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+            <span class="k"><span class="hljs-keyword">break</span></span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">input</span><span class="p">[</span><span class="n"><span class="hljs-built_in">strcspn</span></span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">)]</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n"><span class="hljs-built_in">strcmp</span></span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="s"><span class="hljs-string">"exit"</span></span><span class="p">)</span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;36mGoodbye!</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+            <span class="k"><span class="hljs-keyword">break</span></span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">num_commands</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+        <span class="n">commands</span><span class="p">[</span><span class="n">num_commands</span><span class="p">]</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="s"><span class="hljs-string">"|"</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">while</span></span> <span class="p">(</span><span class="n">commands</span><span class="p">[</span><span class="n">num_commands</span><span class="p">]</span> <span class="o">!=</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">num_commands</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">commands</span><span class="p">[</span><span class="n">num_commands</span><span class="p">]</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">,</span> <span class="s"><span class="hljs-string">"|"</span></span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">pipes</span><span class="p">[</span><span class="mi"><span class="hljs-number">2</span></span><span class="p">];</span>
+        <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">input_fd</span> <span class="o">=</span> <span class="n">STDIN_FILENO</span><span class="p">;</span>
+
+        <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_commands</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt"><span class="hljs-keyword">char</span></span> <span class="o">*</span><span class="n">args</span><span class="p">[</span><span class="n">MAX_ARGS</span><span class="p">];</span>
+            <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">arg_count</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+            <span class="kt"><span class="hljs-keyword">char</span></span> <span class="o">*</span><span class="n">token</span><span class="p">;</span>
+
+            <span class="c1"><span class="hljs-comment">// Split command into arguments</span></span>
+            <span class="n">token</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="n">commands</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s"><span class="hljs-string">" "</span></span><span class="p">);</span>
+            <span class="k"><span class="hljs-keyword">while</span></span> <span class="p">(</span><span class="n">token</span> <span class="o">!=</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">args</span><span class="p">[</span><span class="n">arg_count</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">token</span><span class="p">;</span>
+                <span class="n">token</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">,</span> <span class="s"><span class="hljs-string">" "</span></span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">args</span><span class="p">[</span><span class="n">arg_count</span><span class="p">]</span> <span class="o">=</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">;</span>
+
+            <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_commands</span> <span class="o">-</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+                <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pipe</span><span class="p">(</span><span class="n">pipes</span><span class="p">)</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;31mError creating pipe</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m"</span></span><span class="p">);</span>
+                    <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">output_fd</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">num_commands</span> <span class="o">-</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="o">?</span> <span class="n">STDOUT_FILENO</span> <span class="o">:</span> <span class="n">pipes</span><span class="p">[</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">];</span>
+
+            <span class="n">execute_command</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">input_fd</span><span class="p">,</span> <span class="n">output_fd</span><span class="p">);</span>
+
+            <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">input_fd</span> <span class="o">!=</span> <span class="n">STDIN_FILENO</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">close</span><span class="p">(</span><span class="n">input_fd</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">output_fd</span> <span class="o">!=</span> <span class="n">STDOUT_FILENO</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">close</span><span class="p">(</span><span class="n">output_fd</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">input_fd</span> <span class="o">=</span> <span class="n">pipes</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">status</span><span class="p">;</span>
+        <span class="k"><span class="hljs-keyword">while</span></span> <span class="p">(</span><span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">status</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">WIFEXITED</span><span class="p">(</span><span class="n">status</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;32mChild process exited with status %d</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span>
+            <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">WIFSIGNALED</span><span class="p">(</span><span class="n">status</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[1;31mChild process terminated by signal %d</span></span><span class="se"><span class="hljs-string">\033</span></span><span class="s"><span class="hljs-string">[0m</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">WTERMSIG</span><span class="p">(</span><span class="n">status</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This simple shell implementation demonstrates:</p>
+
+<ol>
+  <li>Reading user input and parsing it into commands and arguments.</li>
+  <li>Creating pipes for inter-process communication when multiple commands are piped together.</li>
+  <li>Using <code class="language-plaintext highlighter-rouge">fork</code> and <code class="language-plaintext highlighter-rouge">execvp</code> to execute each command in a separate process.</li>
+  <li>Using <code class="language-plaintext highlighter-rouge">dup2</code> to redirect standard input and output as needed for piping.</li>
+  <li>Proper management of file descriptors, including closing unused ends of pipes.</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Understanding how Unix-like operating systems manage files and implement features like pipes is crucial for developing robust and efficient software. The abstraction of files as streams of bytes, coupled with the powerful file descriptor mechanism, provides a flexible foundation for a wide range of system operations.</p>
+
+<p>By diving into the low-level details of file descriptor tables, open file tables, and v-nodes, we gain insight into how the operating system efficiently manages resources and provides isolation between processes. This knowledge is invaluable when debugging complex systems or optimizing performance-critical applications.</p>
+
+<p>The implementation of pipes as a special type of file further demonstrates the elegance and power of the Unix file abstraction. This unified interface allows for seamless integration of various I/O operations, from reading and writing regular files to inter-process communication.</p>
+
+<p>As we’ve seen in our simple shell implementation, these concepts come together to enable the creation of complex systems built on top of relatively simple primitives. This layered approach, where complex behavior emerges from the composition of simpler components, is a hallmark of Unix philosophy and continues to influence modern system design.</p>
+
+<h2 id="flow-diagram">Flow Diagram</h2>
+
+<p>To understand the relationship between file descriptors, the open file table, and v-nodes, here’s a diagram:</p>
+<div class="language-dot highlighter-rouge" style="display: none;"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="k">digraph</span> <span class="nv">file_system_management</span> <span class="p">{</span>
+    <span class="n">rankdir</span><span class="p">=</span><span class="nv">LR</span><span class="p">;</span> <span class="c1"><span class="hljs-comment">// Set direction from left to right</span></span>
+    <span class="k">node</span> <span class="o">[</span><span class="n">shape</span><span class="p">=</span><span class="nv">box</span><span class="o">]</span><span class="p">;</span>
+    <span class="k">edge</span> <span class="o">[</span><span class="n">arrowhead</span><span class="p">=</span><span class="nv">normal</span><span class="o">]</span><span class="p">;</span>
+
+    <span class="c1"><span class="hljs-comment">// Nodes</span></span>
+    <span class="nv">A</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"Process"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">B</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"File Descriptor Table"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">C</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"Open File Table Entry\nFD 0"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">D</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"Open File Table Entry\nFD 1"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">E</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"Open File Table Entry\nFD 2"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">F</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"Open File Table Entry\nFD 3"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">G</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"V-node"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">H</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"V-node"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">I</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"File on Disk"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">J</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"File on Disk"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">K</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"Another Process"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">L</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"File Descriptor Table"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">M</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"Open File Table Entry\nFD 3"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">N</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"V-node"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">O</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"File on Disk"</span></span><span class="o">]</span><span class="p">;</span>
+
+    <span class="c1"><span class="hljs-comment">// Edges</span></span>
+    <span class="nv">A</span> <span class="o">-&gt;</span> <span class="nv">B</span><span class="p">;</span>
+    <span class="nv">B</span> <span class="o">-&gt;</span> <span class="nv">C</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"FD 0"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">B</span> <span class="o">-&gt;</span> <span class="nv">D</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"FD 1"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">B</span> <span class="o">-&gt;</span> <span class="nv">E</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"FD 2"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">B</span> <span class="o">-&gt;</span> <span class="nv">F</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"FD 3"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">C</span> <span class="o">-&gt;</span> <span class="nv">G</span><span class="p">;</span>
+    <span class="nv">D</span> <span class="o">-&gt;</span> <span class="nv">G</span><span class="p">;</span>
+    <span class="nv">E</span> <span class="o">-&gt;</span> <span class="nv">G</span><span class="p">;</span>
+    <span class="nv">F</span> <span class="o">-&gt;</span> <span class="nv">H</span><span class="p">;</span>
+    <span class="nv">G</span> <span class="o">-&gt;</span> <span class="nv">I</span><span class="p">;</span>
+    <span class="nv">H</span> <span class="o">-&gt;</span> <span class="nv">J</span><span class="p">;</span>
+    <span class="nv">K</span> <span class="o">-&gt;</span> <span class="nv">L</span><span class="p">;</span>
+    <span class="nv">L</span> <span class="o">-&gt;</span> <span class="nv">C</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"FD 0"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">L</span> <span class="o">-&gt;</span> <span class="nv">D</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"FD 1"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">L</span> <span class="o">-&gt;</span> <span class="nv">E</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"FD 2"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">L</span> <span class="o">-&gt;</span> <span class="nv">M</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="s2"><span class="hljs-string">"FD 3"</span></span><span class="o">]</span><span class="p">;</span>
+    <span class="nv">M</span> <span class="o">-&gt;</span> <span class="nv">N</span><span class="p">;</span>
+    <span class="nv">N</span> <span class="o">-&gt;</span> <span class="nv">O</span><span class="p">;</span>
+
+    <span class="c1"><span class="hljs-comment">// Force nodes to be in the same rank (horizontal line)</span></span>
+    <span class="p">{</span><span class="n">rank</span><span class="p">=</span><span class="nv">same</span><span class="p">;</span> <span class="nv">A</span><span class="p">;</span> <span class="nv">K</span><span class="p">;}</span>
+    <span class="p">{</span><span class="n">rank</span><span class="p">=</span><span class="nv">same</span><span class="p">;</span> <span class="nv">B</span><span class="p">;</span> <span class="nv">L</span><span class="p">;}</span>
+    <span class="p">{</span><span class="n">rank</span><span class="p">=</span><span class="nv">same</span><span class="p">;</span> <span class="nv">C</span><span class="p">;</span> <span class="nv">D</span><span class="p">;</span> <span class="nv">E</span><span class="p">;</span> <span class="nv">F</span><span class="p">;</span> <span class="nv">M</span><span class="p">;}</span>
+    <span class="p">{</span><span class="n">rank</span><span class="p">=</span><span class="nv">same</span><span class="p">;</span> <span class="nv">G</span><span class="p">;</span> <span class="nv">H</span><span class="p">;</span> <span class="nv">N</span><span class="p">;}</span>
+    <span class="p">{</span><span class="n">rank</span><span class="p">=</span><span class="nv">same</span><span class="p">;</span> <span class="nv">I</span><span class="p">;</span> <span class="nv">J</span><span class="p">;</span> <span class="nv">O</span><span class="p">;}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+        <script>
+            function d3ize(elem) {
+                var par = elem.parentElement;
+                d3.select(par).append("div").graphviz().renderDot(elem.innerText);
+                d3.select(elem).style("display", "none");
+            }
+            var dotelems = document.getElementsByClassName("language-dot");
+            for (let elem of dotelems) {
+                d3ize(elem);
+            }
+        </script><div></div>
+    </div>
+    <a class="u-url" href="https://mohitmishra786.github.io/chessman/2024/09/25/Understanding-File-System-Management-In-Unix-Like-Operating-Systems.html" hidden=""></a>
+</article>
+
+        </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/chessman/"></data>
+
+  <div class="wrapper"><p>© 2025 Mohit Mishra</p><p><a class="black-link" href="mailto:immadmohit@gmail.com">immadmohit@gmail.com</a></p>
+
+      <p class="text">Learning to Learn.
+</p>
+
+      <nav>
+<!--           <a href="/chessman/">Home</a> -->
+          <a href="https://mohitmishra786.github.io/chessman/about.html">About</a>
+      </nav>
+
+  </div>
+</footer>
+
+
+</body></html>

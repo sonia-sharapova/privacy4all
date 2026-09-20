@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Practical Guide to VPNs &amp; VPS — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">TABLE OF CONTENTS</div>
+      <nav class="p4a-5">
+        <a href="#guide-map" class="p4a-6">Guide Map</a>
+        <a href="#who-watches" class="p4a-6">Who's Watching You</a>
+        <a href="#why" class="p4a-6">Why This Matters</a>
+        <a href="vpn-fundamentals.html" class="p4a-6">1. VPN Fundamentals</a>
+        <a href="providers.html" class="p4a-6">2. VPN &amp; VPS Providers</a>
+        <a href="vpn-configuration.html" class="p4a-6">3. Configure &amp; Lock Down</a>
+        <a href="vps-setup.html" class="p4a-6">4. VPS &amp; Self-Hosting</a>
+        <a href="resources.html" class="p4a-6">5. Test, Glossary &amp; Resources</a>
+      </nav>
+
+      <div class="p4a-4">MORE</div>
+      <div class="p4a-7">
+        <a href="resources.html#faq" class="p4a-8">FAQ</a>
+        <a href="resources.html#glossary" class="p4a-8">Glossary</a>
+        <a href="resources.html#further-reading" class="p4a-8">Further Reading</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../../index.html" style="color:inherit;">Home</a> / <a href="../../index.html#topic-vpns" style="color:inherit;">Privacy &amp; Security</a> / VPNs &amp; VPS Guide</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- HERO -->
+        <section class="bph-hero">
+          <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="../../index.html">&larr; back home</a></div>
+          <h1 class="p4a-1x" style="font-size:56px; letter-spacing:0.06em; line-height:1.05;">A Practical Guide to VPNs &amp; VPS</h1>
+          <p class="p4a-21" style="font-size:15px; letter-spacing:0.03em; max-width:600px;">Who's actually watching your traffic, how a VPN protects you (and where it can't), how to pick a provider you can trust, and how to run your own VPN or website on a rented server.</p>
+        </section>
+
+        <!-- GUIDE MAP -->
+        <section id="guide-map" class="p4a-1z">
+          <h2 class="p4a-20">GUIDE MAP</h2>
+          <div class="p4a-guide-map">
+            <a href="vpn-fundamentals.html" class="p4a-guide-map-tile">
+              <div class="p4a-26" style="margin:0 0 8px;">PART 1</div>
+              <div class="p4a-w" style="margin-bottom:6px;">VPN Fundamentals</div>
+              <div class="p4a-25">What a VPN does (and doesn't do), and where a VPN's protection stops.</div>
+            </a>
+            <a href="providers.html" class="p4a-guide-map-tile">
+              <div class="p4a-26" style="margin:0 0 8px;">PART 2</div>
+              <div class="p4a-w" style="margin-bottom:6px;">VPN &amp; VPS Providers</div>
+              <div class="p4a-25">Choose a VPN provider you can trust, and a VPS provider for self-hosting.</div>
+            </a>
+            <a href="vpn-configuration.html" class="p4a-guide-map-tile">
+              <div class="p4a-26" style="margin:0 0 8px;">PART 3</div>
+              <div class="p4a-w" style="margin-bottom:6px;">Configure &amp; Lock Down</div>
+              <div class="p4a-25">Manually configure OpenVPN on Linux and firewall-lock it so nothing leaks.</div>
+            </a>
+            <a href="vps-setup.html" class="p4a-guide-map-tile">
+              <div class="p4a-26" style="margin:0 0 8px;">PART 4</div>
+              <div class="p4a-w" style="margin-bottom:6px;">VPS &amp; Self-Hosting</div>
+              <div class="p4a-25">Rent a VPS, point a domain at it, and self-host a website with HTTPS.</div>
+            </a>
+            <a href="resources.html" class="p4a-guide-map-tile">
+              <div class="p4a-26" style="margin:0 0 8px;">PART 5</div>
+              <div class="p4a-w" style="margin-bottom:6px;">Test, Glossary &amp; Resources</div>
+              <div class="p4a-25">Confirm your setup isn't leaking, plus FAQ, glossary, and further reading.</div>
+            </a>
+          </div>
+        </section>
+
+        <!-- WHO'S WATCHING -->
+        <section id="who-watches" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">WHO'S WATCHING YOU ONLINE?</h2>
+          <p class="p4a-21">Every time you get on the internet, you are not alone. Before you protect yourself, it helps to know who is actually watching:</p>
+          <div class="p4a-1g" style="grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 28px;">
+            <div>
+              <div class="p4a-24">Wi-Fi Operator</div>
+              <p class="p4a-25">Whoever runs the network you're connected to &mdash; a coffee shop, an office, a landlord.</p>
+            </div>
+            <div>
+              <div class="p4a-24">Your ISP</div>
+              <p class="p4a-25">Your Internet Service Provider (Optimum, Verizon, and the like) sees every unencrypted request you make.</p>
+            </div>
+            <div>
+              <div class="p4a-24">Lawful Interception</div>
+              <p class="p4a-25">Government or law enforcement requests, made through legal channels.</p>
+            </div>
+            <div>
+              <div class="p4a-24">Unlawful Interception</div>
+              <p class="p4a-25">Hackers and other bad actors who want your data for their own purposes.</p>
+            </div>
+          </div>
+          <p class="p4a-21" style="margin-top:22px; margin-bottom:0;">The uncomfortable truth: you are always being watched. An unencrypted connection can leak your IP address, and your IP address can reveal your physical location &mdash; so network privacy is about physical safety too, not just data. A quick tell: look at the start of a web address. HTTP versus HTTPS, where the S stands for secure. You want the S.</p>
+        </section>
+
+        <!-- WHY THIS MATTERS -->
+        <section id="why" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 class="p4a-20">WHY THIS MATTERS</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr 1fr; gap: 48px; padding: 32px;">
+            <p class="p4a-1c" style="font-size:14px; letter-spacing:0.05em; line-height:1.9; color:#333;">A VPN connects you to another computer somewhere else in the world through an encrypted tunnel, and you borrow that computer's IP address instead of the one your ISP handed you. It doesn't make your activity disappear &mdash; it makes it much harder to link back to you. Does privacy even matter anymore? Yes, and the earlier you start, the better: on the internet, companies and corporations are waiting to consume you.</p>
+            <div class="bph-flow">
+              <div>You → Website (normally) &rarr;</div>
+              <div style="padding-left: 16px;">Website sees your real IP address &rarr;</div>
+              <div style="padding-left: 32px;">You → VPN Server → Website (with a VPN) &rarr;</div>
+              <div style="padding-left: 48px; color: #2f6fed; font-weight: 600;">Website sees the VPN's IP, not yours.</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav">
+          <a href="vpn-fundamentals.html" class="p4a-glass-btn p4a-btn-nav">Start with Part 1: VPN Fundamentals &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy &amp; Self-Hosting Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E7ECF1;
+    --surface:#EEF2F6;
+    --grid:#D5DCE4;
+    --ink:#121A24;
+    --slate:#54636F;
+    --line:#C4CDD6;
+    --signal:#B47F1E;
+    --signal-deep:#8C6212;
+    --display:"Space Grotesk", "IBM Plex Sans", system-ui, sans-serif;
+    --body:"IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    font-family:var(--body);
+    color:var(--ink);
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:30px 30px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:clamp(28px,6vw,72px) clamp(20px,5vw,40px) 64px;
+  }
+
+  /* ---------- header ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--signal-deep);
+    margin:0 0 22px;
+  }
+  .eyebrow::before{ content:"// "; color:var(--line); }
+
+  h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(38px,8vw,66px);
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    margin:0 0 20px;
+  }
+  h1 .em{ color:var(--signal); }
+
+  .deck{
+    font-size:clamp(16px,2.4vw,18px);
+    color:var(--slate);
+    max-width:52ch;
+    margin:0;
+  }
+
+  .rule{
+    height:1px;
+    background:var(--line);
+    border:0;
+    margin:clamp(34px,6vw,52px) 0 clamp(20px,3vw,26px);
+  }
+
+  .section-label{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin:0 0 6px;
+  }
+  .section-note{
+    font-size:14px;
+    color:var(--slate);
+    margin:0 0 22px;
+  }
+
+  /* ---------- the track ---------- */
+  .track{
+    list-style:none;
+    margin:0;
+    padding:0;
+    position:relative;
+  }
+  .track::before{
+    content:"";
+    position:absolute;
+    left:24px;
+    top:34px;
+    bottom:34px;
+    width:2px;
+    background:var(--signal);
+    transform-origin:top;
+    transform:scaleY(0);
+    animation:draw .8s cubic-bezier(.2,.7,.3,1) forwards .15s;
+  }
+
+  .stop{ opacity:0; animation:rise .55s ease forwards; }
+  .stop:nth-child(1){ animation-delay:.20s; }
+  .stop:nth-child(2){ animation-delay:.32s; }
+  .stop:nth-child(3){ animation-delay:.44s; }
+  .stop:nth-child(4){ animation-delay:.56s; }
+
+  .stop-link{
+    display:grid;
+    grid-template-columns:50px 1fr;
+    gap:20px;
+    align-items:start;
+    text-decoration:none;
+    color:inherit;
+    padding:16px 14px 16px 0;
+    border-radius:10px;
+    transition:background .18s ease, transform .18s ease;
+  }
+  .stop-link:hover{ background:var(--surface); transform:translateX(3px); }
+  .stop-link:focus-visible{ outline:2px solid var(--signal); outline-offset:3px; }
+
+  .hop{
+    position:relative;
+    z-index:1;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--signal);
+    color:var(--signal-deep);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--mono);
+    font-size:15px;
+    font-weight:500;
+    transition:background .18s ease, color .18s ease;
+  }
+  .stop-link:hover .hop{ background:var(--signal); color:var(--paper); }
+
+  .stop-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:6px 12px;
+    margin-bottom:6px;
+  }
+  .stop-title{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:22px;
+    letter-spacing:-0.01em;
+  }
+  .file{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--slate);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:1px 7px;
+  }
+  .stop-desc{
+    color:var(--slate);
+    font-size:15px;
+    max-width:56ch;
+    margin:0;
+  }
+
+  /* ---------- reference ---------- */
+  .ref-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+  }
+  .ref-card{
+    text-decoration:none;
+    color:inherit;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px;
+    background:transparent;
+    transition:border-color .18s ease, background .18s ease, transform .18s ease;
+  }
+  .ref-card:hover{ border-color:var(--signal); background:var(--surface); transform:translateY(-2px); }
+  .ref-card:focus-visible{ outline:2px solid var(--signal); outline-offset:3px; }
+  .ref-tag{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--signal-deep);
+    display:block;
+    margin-bottom:10px;
+  }
+  .ref-title{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:19px;
+    display:block;
+    margin-bottom:6px;
+  }
+  .ref-desc{
+    color:var(--slate);
+    font-size:14px;
+    margin:0;
+  }
+
+  /* ---------- footer ---------- */
+  .foot{
+    margin-top:clamp(40px,7vw,64px);
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--slate);
+    letter-spacing:.04em;
+  }
+  .foot span{ color:var(--line); }
+
+  @keyframes draw{ to{ transform:scaleY(1); } }
+  @keyframes rise{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+
+  @media (max-width:560px){
+    .ref-grid{ grid-template-columns:1fr; }
+    .stop-link{ grid-template-columns:44px 1fr; gap:16px; }
+    .hop{ width:44px; height:44px; }
+    .track::before{ left:21px; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .track::before{ animation:none; transform:none; }
+    .stop{ animation:none; opacity:1; }
+    .stop-link, .ref-card, .hop{ transition:none; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow">Privacy &amp; self-hosting field guide</p>
+    <h1>Run your own<br><span class="em">privacy.</span></h1>
+    <p class="deck">Six pages, start to finish: what a VPN and a VPS actually do, how to configure and lock them down, and every term along the way. Pick a starting point.</p>
+
+    <hr class="rule">
+
+    <p class="section-label">The track</p>
+    <p class="section-note">A path from idea to a working setup. Read in order, or jump to what you need.</p>
+
+    <ol class="track">
+      <li class="stop">
+        <a class="stop-link" href="vpn.html">
+          <span class="hop">01</span>
+          <span class="stop-body">
+            <span class="stop-head">
+              <span class="stop-title">VPN</span>
+              <span class="file">vpn.html</span>
+            </span>
+            <p class="stop-desc">Who's watching you, what a VPN does and does not do, and how to choose a provider you can actually trust.</p>
+          </span>
+        </a>
+      </li>
+      <li class="stop">
+        <a class="stop-link" href="vpn-configuration.html">
+          <span class="hop">02</span>
+          <span class="stop-body">
+            <span class="stop-head">
+              <span class="stop-title">VPN configuration</span>
+              <span class="file">vpn-configuration.html</span>
+            </span>
+            <p class="stop-desc">Set up OpenVPN on Linux, lock the firewall so nothing leaks, and verify the tunnel actually holds.</p>
+          </span>
+        </a>
+      </li>
+      <li class="stop">
+        <a class="stop-link" href="vps.html">
+          <span class="hop">03</span>
+          <span class="stop-body">
+            <span class="stop-head">
+              <span class="stop-title">VPS</span>
+              <span class="file">vps.html</span>
+            </span>
+            <p class="stop-desc">What a virtual private server is, why the provider matters for privacy, and how to pick a private one.</p>
+          </span>
+        </a>
+      </li>
+      <li class="stop">
+        <a class="stop-link" href="setting-up-vps.html">
+          <span class="hop">04</span>
+          <span class="stop-body">
+            <span class="stop-head">
+              <span class="stop-title">Setting up a VPS</span>
+              <span class="file">setting-up-vps.html</span>
+            </span>
+            <p class="stop-desc">Rent a server, point your domain at it, and get a live website running over HTTPS.</p>
+          </span>
+        </a>
+      </li>
+    </ol>
+
+    <hr class="rule">
+
+    <p class="section-label">Reference</p>
+    <p class="section-note">Not part of the path. Dip in whenever you need them.</p>
+
+    <div class="ref-grid">
+      <a class="ref-card" href="resources.html">
+        <span class="ref-tag">Additional resources</span>
+        <span class="ref-title">Links &amp; tools</span>
+        <p class="ref-desc">Every source, tool, and further-reading link from the guide, gathered in one place.</p>
+      </a>
+      <a class="ref-card" href="glossary.html">
+        <span class="ref-tag">Glossary</span>
+        <span class="ref-title">Terms, defined</span>
+        <p class="ref-desc">Plain-English definitions for every term the guide uses, from DNS to kill switch.</p>
+      </a>
+    </div>
+
+    <p class="foot">Start anywhere <span>·</span> Built to be self-hosted</p>
+  </main>
+</body>
+</html>

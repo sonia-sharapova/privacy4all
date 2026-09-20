@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<!-- saved from url=(0092)https://mohitmishra786.github.io/chessman/2024/10/07/Mastering-All-Design-Patterns-in-C.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Mastering All Design Patterns In C">
+<meta name="author" content="Mohit Mishra">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Design patterns are essential tools in a programmer’s toolkit, offering tried-and-true solutions to common software design problems. In this blog post, we’ll explore several key design patterns, their applications, and provide concrete implementations in C. We’ll also delve into the assembly-level implications of these patterns, offering a holistic view from high-level design to low-level execution.">
+<meta property="og:description" content="Design patterns are essential tools in a programmer’s toolkit, offering tried-and-true solutions to common software design problems. In this blog post, we’ll explore several key design patterns, their applications, and provide concrete implementations in C. We’ll also delve into the assembly-level implications of these patterns, offering a holistic view from high-level design to low-level execution.">
+<link rel="canonical" href="https://mohitmishra786.github.io/chessman/2024/10/07/Mastering-All-Design-Patterns-in-C.html">
+<meta property="og:url" content="https://mohitmishra786.github.io/chessman/2024/10/07/Mastering-All-Design-Patterns-in-C.html">
+<meta property="og:site_name" content="Mohit Mishra">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-10-07T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Mastering All Design Patterns In C">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mohit Mishra"},"dateModified":"2024-10-07T00:00:00+00:00","datePublished":"2024-10-07T00:00:00+00:00","description":"Design patterns are essential tools in a programmer’s toolkit, offering tried-and-true solutions to common software design problems. In this blog post, we’ll explore several key design patterns, their applications, and provide concrete implementations in C. We’ll also delve into the assembly-level implications of these patterns, offering a holistic view from high-level design to low-level execution.","headline":"Mastering All Design Patterns In C","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohitmishra786.github.io/chessman/2024/10/07/Mastering-All-Design-Patterns-in-C.html"},"url":"https://mohitmishra786.github.io/chessman/2024/10/07/Mastering-All-Design-Patterns-in-C.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./Mastering All Design Patterns In C_files/main.css"> <!-- -- Corrected ---->
+    <link rel="shortcut icon" type="image/x-icon" href="https://mohitmishra786.github.io/chessman/favicon.ico"> <!-- -- Corrected assuming it's in the root ---->
+    <link rel="stylesheet" href="./Mastering All Design Patterns In C_files/agate.css"> <!-- -- Corrected ---->
+    <script src="./Mastering All Design Patterns In C_files/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><link type="application/atom+xml" rel="alternate" href="https://mohitmishra786.github.io/chessman/feed.xml" title="Mohit Mishra"><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="post h-entry" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+        <script type="text/javascript" async="" src="./Mastering All Design Patterns In C_files/MathJax.js"></script>
+        <script src="./Mastering All Design Patterns In C_files/d3.min.js"></script>
+        <script src="./Mastering All Design Patterns In C_files/index.min.js"></script>
+        <script src="./Mastering All Design Patterns In C_files/d3-graphviz.min.js"></script>
+        <title>Mastering All Design Patterns In C</title>
+    
+    <header class="post-header">
+        <div class="post-back">
+            <a class="black-link" href="https://mohitmishra786.github.io/chessman/">
+                ← Home
+            </a>
+        </div>
+        <h1 class="post-title p-name" itemprop="name headline">
+            Mastering All Design Patterns In C
+        </h1>
+        <p class="post-meta">
+            <time class="dt-published" datetime="2024-10-07T00:00:00+00:00" itemprop="datePublished">Oct 7, 2024
+            </time></p>
+    </header>
+    <div class="post-content e-content" itemprop="articleBody">
+        <p>Design patterns are essential tools in a programmer’s toolkit, offering tried-and-true solutions to common software design problems. In this blog post, we’ll explore several key design patterns, their applications, and provide concrete implementations in C. We’ll also delve into the assembly-level implications of these patterns, offering a holistic view from high-level design to low-level execution.</p>
+
+<h3 id="1-the-factory-pattern-creating-objects-with-flexibility">1. The Factory Pattern: Creating Objects with Flexibility</h3>
+
+<p>The Factory pattern is a creational design pattern that provides an interface for creating objects in a superclass, allowing subclasses to alter the type of objects that will be created. This pattern is particularly useful when dealing with complex object creation processes or when you need to create objects without specifying their exact classes.</p>
+
+<p>Let’s implement a simple Factory pattern in C:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="c1"><span class="hljs-comment">// Product interface</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">operation</span><span class="p">)(</span><span class="kt"><span class="hljs-keyword">void</span></span><span class="p">);</span>
+<span class="p">}</span> <span class="n">Product</span><span class="p">;</span>
+
+<span class="c1"><span class="hljs-comment">// Concrete products</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="n">Product</span> <span class="n">base</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">ConcreteProductA</span><span class="p">;</span>
+
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="n">Product</span> <span class="n">base</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">ConcreteProductB</span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">operationA</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">void</span></span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"ConcreteProductA operation</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">operationB</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">void</span></span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"ConcreteProductB operation</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1"><span class="hljs-comment">// Factory function</span></span>
+<span class="n"><span class="hljs-function">Product</span></span><span class="o"><span class="hljs-function">*</span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">createProduct</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">const</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">char</span></span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">type</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n"><span class="hljs-built_in">strcmp</span></span><span class="p">(</span><span class="n">type</span><span class="p">,</span> <span class="s"><span class="hljs-string">"A"</span></span><span class="p">)</span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ConcreteProductA</span><span class="o">*</span> <span class="n">product</span> <span class="o">=</span> <span class="n"><span class="hljs-built_in">malloc</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">ConcreteProductA</span><span class="p">));</span>
+        <span class="n">product</span><span class="o">-&gt;</span><span class="n">base</span><span class="p">.</span><span class="n">operation</span> <span class="o">=</span> <span class="n">operationA</span><span class="p">;</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="p">(</span><span class="n">Product</span><span class="o">*</span><span class="p">)</span><span class="n">product</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n"><span class="hljs-built_in">strcmp</span></span><span class="p">(</span><span class="n">type</span><span class="p">,</span> <span class="s"><span class="hljs-string">"B"</span></span><span class="p">)</span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ConcreteProductB</span><span class="o">*</span> <span class="n">product</span> <span class="o">=</span> <span class="n"><span class="hljs-built_in">malloc</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">ConcreteProductB</span><span class="p">));</span>
+        <span class="n">product</span><span class="o">-&gt;</span><span class="n">base</span><span class="p">.</span><span class="n">operation</span> <span class="o">=</span> <span class="n">operationB</span><span class="p">;</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="p">(</span><span class="n">Product</span><span class="o">*</span><span class="p">)</span><span class="n">product</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">Product</span><span class="o">*</span> <span class="n">productA</span> <span class="o">=</span> <span class="n">createProduct</span><span class="p">(</span><span class="s"><span class="hljs-string">"A"</span></span><span class="p">);</span>
+    <span class="n">Product</span><span class="o">*</span> <span class="n">productB</span> <span class="o">=</span> <span class="n">createProduct</span><span class="p">(</span><span class="s"><span class="hljs-string">"B"</span></span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">productA</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">productA</span><span class="o">-&gt;</span><span class="n">operation</span><span class="p">();</span>
+        <span class="n"><span class="hljs-built_in">free</span></span><span class="p">(</span><span class="n">productA</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">productB</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">productB</span><span class="o">-&gt;</span><span class="n">operation</span><span class="p">();</span>
+        <span class="n"><span class="hljs-built_in">free</span></span><span class="p">(</span><span class="n">productB</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run this code:</p>
+
+<ol>
+  <li>Save it to a file, e.g., <code class="language-plaintext highlighter-rouge">factory_pattern.c</code></li>
+  <li>Compile it using: <code class="language-plaintext highlighter-rouge">gcc -o factory_pattern factory_pattern.c</code></li>
+  <li>Run the executable: <code class="language-plaintext highlighter-rouge">./factory_pattern</code></li>
+</ol>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs nginx"><span class="hljs-attribute">ConcreteProductA</span> operation
+ConcreteProductB operation
+</code></pre></div></div>
+
+<p>This implementation demonstrates the Factory pattern by providing a <code class="language-plaintext highlighter-rouge">createProduct</code> function that returns different product types based on the input. The <code class="language-plaintext highlighter-rouge">main</code> function showcases how to use this factory to create and use products.</p>
+
+<p>To view the assembly code generated from this C code:</p>
+
+<ol>
+  <li>Use the command: <code class="language-plaintext highlighter-rouge">gcc -S factory_pattern.c</code></li>
+  <li>This will generate a file named <code class="language-plaintext highlighter-rouge">factory_pattern.s</code> containing the assembly code.</li>
+</ol>
+
+<p>Key assembly instructions to note:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">call</code> instruction for invoking the <code class="language-plaintext highlighter-rouge">createProduct</code> function</li>
+  <li>The <code class="language-plaintext highlighter-rouge">cmp</code> and <code class="language-plaintext highlighter-rouge">je</code> instructions in the <code class="language-plaintext highlighter-rouge">createProduct</code> function, which correspond to the if-else logic for product creation</li>
+  <li>The <code class="language-plaintext highlighter-rouge">mov</code> instructions for setting up function pointers (e.g., <code class="language-plaintext highlighter-rouge">product-&gt;base.operation = operationA;</code>)</li>
+</ul>
+
+<p><strong>Factory Pattern Flow</strong> 
+<img src="./Mastering All Design Patterns In C_files/f320af22-cf9b-471c-95d0-f8497970dfbd" alt="image"></p>
+
+<h3 id="2-the-builder-pattern-constructing-complex-objects-step-by-step">2. The Builder Pattern: Constructing Complex Objects Step by Step</h3>
+
+<p>The Builder pattern is another creational pattern that lets you construct complex objects step by step. It’s particularly useful when an object needs to be created with numerous possible configurations.</p>
+
+<p>Here’s a C implementation of the Builder pattern:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;string.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_LENGTH 50</span>
+</span>
+<span class="c1"><span class="hljs-comment">// Product</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">type</span><span class="p">[</span><span class="n">MAX_LENGTH</span><span class="p">];</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">size</span><span class="p">[</span><span class="n">MAX_LENGTH</span><span class="p">];</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="n">topping</span><span class="p">[</span><span class="n">MAX_LENGTH</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">Pizza</span><span class="p">;</span>
+
+<span class="c1"><span class="hljs-comment">// Builder</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">PizzaBuilder</span> <span class="p">{</span>
+    <span class="n">Pizza</span> <span class="n">pizza</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">setType</span><span class="p">)(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">PizzaBuilder</span><span class="o">*</span><span class="p">,</span> <span class="k"><span class="hljs-keyword">const</span></span> <span class="kt"><span class="hljs-keyword">char</span></span><span class="o">*</span><span class="p">);</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">setSize</span><span class="p">)(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">PizzaBuilder</span><span class="o">*</span><span class="p">,</span> <span class="k"><span class="hljs-keyword">const</span></span> <span class="kt"><span class="hljs-keyword">char</span></span><span class="o">*</span><span class="p">);</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">addTopping</span><span class="p">)(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">PizzaBuilder</span><span class="o">*</span><span class="p">,</span> <span class="k"><span class="hljs-keyword">const</span></span> <span class="kt"><span class="hljs-keyword">char</span></span><span class="o">*</span><span class="p">);</span>
+    <span class="n">Pizza</span><span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">build</span><span class="p">)(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">PizzaBuilder</span><span class="o">*</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">PizzaBuilder</span><span class="p">;</span>
+
+<span class="c1"><span class="hljs-comment">// Builder methods</span></span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">setType</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">PizzaBuilder</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">builder</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">const</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">char</span></span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">type</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">strncpy</span></span><span class="p">(</span><span class="n">builder</span><span class="o">-&gt;</span><span class="n">pizza</span><span class="p">.</span><span class="n">type</span><span class="p">,</span> <span class="n">type</span><span class="p">,</span> <span class="n">MAX_LENGTH</span> <span class="o">-</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">setSize</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">PizzaBuilder</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">builder</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">const</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">char</span></span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">size</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">strncpy</span></span><span class="p">(</span><span class="n">builder</span><span class="o">-&gt;</span><span class="n">pizza</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">MAX_LENGTH</span> <span class="o">-</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">addTopping</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">PizzaBuilder</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">builder</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">const</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">char</span></span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">topping</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">strncpy</span></span><span class="p">(</span><span class="n">builder</span><span class="o">-&gt;</span><span class="n">pizza</span><span class="p">.</span><span class="n">topping</span><span class="p">,</span> <span class="n">topping</span><span class="p">,</span> <span class="n">MAX_LENGTH</span> <span class="o">-</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n"><span class="hljs-function">Pizza</span></span><span class="o"><span class="hljs-function">*</span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">build</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">PizzaBuilder</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">builder</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">Pizza</span><span class="o">*</span> <span class="n">pizza</span> <span class="o">=</span> <span class="n"><span class="hljs-built_in">malloc</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">Pizza</span><span class="p">));</span>
+    <span class="o">*</span><span class="n">pizza</span> <span class="o">=</span> <span class="n">builder</span><span class="o">-&gt;</span><span class="n">pizza</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">pizza</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"><span class="hljs-comment">// Initialize a new builder</span></span>
+<span class="n"><span class="hljs-function">PizzaBuilder</span></span><span class="o"><span class="hljs-function">*</span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">newPizzaBuilder</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">PizzaBuilder</span><span class="o">*</span> <span class="n">builder</span> <span class="o">=</span> <span class="n"><span class="hljs-built_in">malloc</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">PizzaBuilder</span><span class="p">));</span>
+    <span class="n">builder</span><span class="o">-&gt;</span><span class="n">setType</span> <span class="o">=</span> <span class="n">setType</span><span class="p">;</span>
+    <span class="n">builder</span><span class="o">-&gt;</span><span class="n">setSize</span> <span class="o">=</span> <span class="n">setSize</span><span class="p">;</span>
+    <span class="n">builder</span><span class="o">-&gt;</span><span class="n">addTopping</span> <span class="o">=</span> <span class="n">addTopping</span><span class="p">;</span>
+    <span class="n">builder</span><span class="o">-&gt;</span><span class="n">build</span> <span class="o">=</span> <span class="n">build</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">builder</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">PizzaBuilder</span><span class="o">*</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">newPizzaBuilder</span><span class="p">();</span>
+    
+    <span class="n">builder</span><span class="o">-&gt;</span><span class="n">setType</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="s"><span class="hljs-string">"Margherita"</span></span><span class="p">);</span>
+    <span class="n">builder</span><span class="o">-&gt;</span><span class="n">setSize</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="s"><span class="hljs-string">"Large"</span></span><span class="p">);</span>
+    <span class="n">builder</span><span class="o">-&gt;</span><span class="n">addTopping</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="s"><span class="hljs-string">"Extra cheese"</span></span><span class="p">);</span>
+
+    <span class="n">Pizza</span><span class="o">*</span> <span class="n">pizza</span> <span class="o">=</span> <span class="n">builder</span><span class="o">-&gt;</span><span class="n">build</span><span class="p">(</span><span class="n">builder</span><span class="p">);</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Pizza order: %s, %s, with %s</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">pizza</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">,</span> <span class="n">pizza</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="n">pizza</span><span class="o">-&gt;</span><span class="n">topping</span><span class="p">);</span>
+
+    <span class="n"><span class="hljs-built_in">free</span></span><span class="p">(</span><span class="n">pizza</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">free</span></span><span class="p">(</span><span class="n">builder</span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run this code:</p>
+
+<ol>
+  <li>Save it to a file, e.g., <code class="language-plaintext highlighter-rouge">builder_pattern.c</code></li>
+  <li>Compile it using: <code class="language-plaintext highlighter-rouge">gcc -o builder_pattern builder_pattern.c</code></li>
+  <li>Run the executable: <code class="language-plaintext highlighter-rouge">./builder_pattern</code></li>
+</ol>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs javascript">Pizza order: Margherita, Large, <span class="hljs-keyword">with</span> Extra cheese
+</code></pre></div></div>
+
+<p>This implementation showcases the Builder pattern by providing a <code class="language-plaintext highlighter-rouge">PizzaBuilder</code> that allows step-by-step construction of a <code class="language-plaintext highlighter-rouge">Pizza</code> object. The <code class="language-plaintext highlighter-rouge">main</code> function demonstrates how to use the builder to create a customized pizza.</p>
+
+<p>To view the assembly code:</p>
+
+<ol>
+  <li>Use the command: <code class="language-plaintext highlighter-rouge">gcc -S builder_pattern.c</code></li>
+  <li>This will generate a file named <code class="language-plaintext highlighter-rouge">builder_pattern.s</code> containing the assembly code.</li>
+</ol>
+
+<p>Key assembly instructions to note:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">call</code> instructions for invoking builder methods (<code class="language-plaintext highlighter-rouge">setType</code>, <code class="language-plaintext highlighter-rouge">setSize</code>, <code class="language-plaintext highlighter-rouge">addTopping</code>, <code class="language-plaintext highlighter-rouge">build</code>)</li>
+  <li>The <code class="language-plaintext highlighter-rouge">mov</code> instructions for setting up function pointers in the <code class="language-plaintext highlighter-rouge">newPizzaBuilder</code> function</li>
+  <li>The <code class="language-plaintext highlighter-rouge">lea</code> (Load Effective Address) instructions used in string operations</li>
+</ul>
+
+<p><strong>Builder Pattern Flow</strong>
+<img src="./Mastering All Design Patterns In C_files/f9ae16f8-182d-4537-b8c4-137a90a5c916" alt="image"></p>
+
+<h3 id="3-the-singleton-pattern-ensuring-a-single-instance">3. The Singleton Pattern: Ensuring a Single Instance</h3>
+
+<p>The Singleton pattern is a creational pattern that ensures a class has only one instance and provides a global point of access to it. While it’s often criticized for introducing global state, it can be useful in certain scenarios like managing a shared resource.</p>
+
+<p>Here’s a C implementation of the Singleton pattern:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;pthread.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">value</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Singleton</span><span class="p">;</span>
+
+<span class="k"><span class="hljs-keyword">static</span></span> <span class="n">Singleton</span><span class="o">*</span> <span class="n">instance</span> <span class="o">=</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">;</span>
+<span class="k"><span class="hljs-keyword">static</span></span> <span class="n"><span class="hljs-keyword">pthread_mutex_t</span></span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
+
+<span class="n"><span class="hljs-function">Singleton</span></span><span class="o"><span class="hljs-function">*</span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">getInstance</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">instance</span> <span class="o">==</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">instance</span> <span class="o">==</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">instance</span> <span class="o">=</span> <span class="p">(</span><span class="n">Singleton</span><span class="o">*</span><span class="p">)</span><span class="n"><span class="hljs-built_in">malloc</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">Singleton</span><span class="p">));</span>
+            <span class="n">instance</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">instance</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">incrementValue</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">Singleton</span><span class="o">*</span> <span class="n">s</span> <span class="o">=</span> <span class="n">getInstance</span><span class="p">();</span>
+    <span class="n">s</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">getValue</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">Singleton</span><span class="o">*</span> <span class="n">s</span> <span class="o">=</span> <span class="n">getInstance</span><span class="p">();</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">s</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">cleanupSingleton</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">instance</span> <span class="o">!=</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">free</span></span><span class="p">(</span><span class="n">instance</span><span class="p">);</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">incrementValue</span><span class="p">();</span>
+    <span class="n">incrementValue</span><span class="p">();</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Singleton value: %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">getValue</span><span class="p">());</span>
+
+    <span class="n">cleanupSingleton</span><span class="p">();</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run this code:</p>
+
+<ol>
+  <li>Save it to a file, e.g., <code class="language-plaintext highlighter-rouge">singleton_pattern.c</code></li>
+  <li>Compile it using: <code class="language-plaintext highlighter-rouge">gcc -o singleton_pattern singleton_pattern.c -lpthread</code></li>
+  <li>Run the executable: <code class="language-plaintext highlighter-rouge">./singleton_pattern</code></li>
+</ol>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cs">Singleton <span class="hljs-keyword">value</span>: <span class="hljs-number">2</span>
+</code></pre></div></div>
+
+<p>This implementation demonstrates the Singleton pattern with thread-safety using a mutex. The <code class="language-plaintext highlighter-rouge">getInstance</code> function ensures that only one instance of the <code class="language-plaintext highlighter-rouge">Singleton</code> is created, and subsequent calls return the same instance.</p>
+
+<p>To view the assembly code:</p>
+
+<ol>
+  <li>Use the command: <code class="language-plaintext highlighter-rouge">gcc -S singleton_pattern.c</code></li>
+  <li>This will generate a file named <code class="language-plaintext highlighter-rouge">singleton_pattern.s</code> containing the assembly code.</li>
+</ol>
+
+<p>Key assembly instructions to note:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">cmp</code> and <code class="language-plaintext highlighter-rouge">je</code> instructions in the <code class="language-plaintext highlighter-rouge">getInstance</code> function, corresponding to the null checks</li>
+  <li>The <code class="language-plaintext highlighter-rouge">call</code> instructions for <code class="language-plaintext highlighter-rouge">pthread_mutex_lock</code> and <code class="language-plaintext highlighter-rouge">pthread_mutex_unlock</code></li>
+  <li>The <code class="language-plaintext highlighter-rouge">mov</code> instructions for accessing and modifying the singleton’s value</li>
+</ul>
+
+<p><strong>Singleton Pattern Flow</strong>
+<img src="./Mastering All Design Patterns In C_files/d4078b94-0b31-424f-801b-1d46152cca09" alt="image"></p>
+
+<h3 id="4-the-observer-pattern-implementing-event-handling">4. The Observer Pattern: Implementing Event Handling</h3>
+
+<p>The Observer pattern is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing. It’s widely used for implementing distributed event handling systems.</p>
+
+<p>Here’s a C implementation of the Observer pattern:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_OBSERVERS 10</span>
+</span>
+<span class="c1"><span class="hljs-comment">// Observer interface</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">Observer</span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">update</span><span class="p">)(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">Observer</span><span class="o">*</span><span class="p">,</span> <span class="kt"><span class="hljs-keyword">int</span></span><span class="p">);</span>
+<span class="p">}</span> <span class="n">Observer</span><span class="p">;</span>
+
+<span class="c1"><span class="hljs-comment">// Concrete Observer</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">ConcreteObserver</span> <span class="p">{</span>
+    <span class="n">Observer</span> <span class="n">base</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">id</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">ConcreteObserver</span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">concreteUpdate</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Observer</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">self</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">value</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">ConcreteObserver</span><span class="o">*</span> <span class="n">concrete</span> <span class="o">=</span> <span class="p">(</span><span class="n">ConcreteObserver</span><span class="o">*</span><span class="p">)</span><span class="n">self</span><span class="p">;</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Observer %d: Received update with value %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">concrete</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1"><span class="hljs-comment">// Subject</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="n">Observer</span><span class="o">*</span> <span class="n">observers</span><span class="p">[</span><span class="n">MAX_OBSERVERS</span><span class="p">];</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">observerCount</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">state</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Subject</span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">initSubject</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Subject</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">subject</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">subject</span><span class="o">-&gt;</span><span class="n">observerCount</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+    <span class="n">subject</span><span class="o">-&gt;</span><span class="n">state</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">attachObserver</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Subject</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">subject</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Observer</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">observer</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">subject</span><span class="o">-&gt;</span><span class="n">observerCount</span> <span class="o">&lt;</span> <span class="n">MAX_OBSERVERS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">subject</span><span class="o">-&gt;</span><span class="n">observers</span><span class="p">[</span><span class="n">subject</span><span class="o">-&gt;</span><span class="n">observerCount</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">observer</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">setState</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Subject</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">subject</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">state</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">subject</span><span class="o">-&gt;</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">subject</span><span class="o">-&gt;</span><span class="n">observerCount</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">subject</span><span class="o">-&gt;</span><span class="n">observers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">(</span><span class="n">subject</span><span class="o">-&gt;</span><span class="n">observers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">state</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run this code:</p>
+
+<ol>
+  <li>Save it to a file, e.g., <code class="language-plaintext highlighter-rouge">observer_pattern.c</code></li>
+  <li>Compile it using: <code class="language-plaintext highlighter-rouge">gcc -o observer_pattern observer_pattern.c</code></li>
+  <li>Run the executable: <code class="language-plaintext highlighter-rouge">./observer_pattern</code></li>
+</ol>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs sql">Observer 1: Received <span class="hljs-keyword">update</span> <span class="hljs-keyword">with</span> <span class="hljs-keyword">value</span> <span class="hljs-number">5</span>
+Observer <span class="hljs-number">2</span>: Received <span class="hljs-keyword">update</span> <span class="hljs-keyword">with</span> <span class="hljs-keyword">value</span> <span class="hljs-number">5</span>
+Observer <span class="hljs-number">1</span>: Received <span class="hljs-keyword">update</span> <span class="hljs-keyword">with</span> <span class="hljs-keyword">value</span> <span class="hljs-number">10</span>
+Observer <span class="hljs-number">2</span>: Received <span class="hljs-keyword">update</span> <span class="hljs-keyword">with</span> <span class="hljs-keyword">value</span> <span class="hljs-number">10</span>
+</code></pre></div></div>
+
+<p>This implementation demonstrates the Observer pattern by defining a <code class="language-plaintext highlighter-rouge">Subject</code> that maintains a list of observers and notifies them when its state changes. The <code class="language-plaintext highlighter-rouge">ConcreteObserver</code> implements the <code class="language-plaintext highlighter-rouge">Observer</code> interface and receives updates from the subject.</p>
+
+<p>To view the assembly code:</p>
+
+<ol>
+  <li>Use the command: <code class="language-plaintext highlighter-rouge">gcc -S observer_pattern.c</code></li>
+  <li>This will generate a file named <code class="language-plaintext highlighter-rouge">observer_pattern.s</code> containing the assembly code.</li>
+</ol>
+
+<p>Key assembly instructions to note:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">call</code> instructions for invoking the <code class="language-plaintext highlighter-rouge">update</code> function on each observer</li>
+  <li>The <code class="language-plaintext highlighter-rouge">mov</code> instructions for setting up function pointers (e.g., <code class="language-plaintext highlighter-rouge">concreteUpdate</code>)</li>
+  <li>The loop structure in the <code class="language-plaintext highlighter-rouge">setState</code> function, which iterates through the observers</li>
+</ul>
+
+<p><strong>Observer Pattern Flow</strong>
+<img src="./Mastering All Design Patterns In C_files/6486cda5-2de8-4c49-87b0-9d0656c35fcc" alt="image"></p>
+
+<h3 id="5-the-strategy-pattern-encapsulating-algorithms">5. The Strategy Pattern: Encapsulating Algorithms</h3>
+
+<p>The Strategy pattern is a behavioral design pattern that lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable. This pattern is particularly useful when you have multiple algorithms for a specific task and want to be able to switch between them dynamically.</p>
+
+<p>Here’s a C implementation of the Strategy pattern:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="c1"><span class="hljs-comment">// Strategy interface</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="p">(</span><span class="o">*</span><span class="n">execute</span><span class="p">)(</span><span class="kt"><span class="hljs-keyword">int</span></span><span class="p">,</span> <span class="kt"><span class="hljs-keyword">int</span></span><span class="p">);</span>
+<span class="p">}</span> <span class="n">Strategy</span><span class="p">;</span>
+
+<span class="c1"><span class="hljs-comment">// Concrete strategies</span></span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">add</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">a</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">b</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">subtract</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">a</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">b</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">multiply</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">a</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">b</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"><span class="hljs-comment">// Context</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="n">Strategy</span><span class="o">*</span> <span class="n">strategy</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Context</span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">setStrategy</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Context</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">context</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Strategy</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">strategy</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">context</span><span class="o">-&gt;</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">strategy</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">executeStrategy</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Context</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">context</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">a</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">b</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">context</span><span class="o">-&gt;</span><span class="n">strategy</span><span class="o">-&gt;</span><span class="n">execute</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">Context</span> <span class="n">context</span><span class="p">;</span>
+    <span class="n">Strategy</span> <span class="n">addStrategy</span> <span class="o">=</span> <span class="p">{</span> <span class="n">add</span> <span class="p">};</span>
+    <span class="n">Strategy</span> <span class="n">subtractStrategy</span> <span class="o">=</span> <span class="p">{</span> <span class="n">subtract</span> <span class="p">};</span>
+    <span class="n">Strategy</span> <span class="n">multiplyStrategy</span> <span class="o">=</span> <span class="p">{</span> <span class="n">multiply</span> <span class="p">};</span>
+
+    <span class="n">setStrategy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">addStrategy</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"10 + 5 = %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">executeStrategy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">,</span> <span class="mi"><span class="hljs-number">10</span></span><span class="p">,</span> <span class="mi"><span class="hljs-number">5</span></span><span class="p">));</span>
+
+    <span class="n">setStrategy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">subtractStrategy</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"10 - 5 = %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">executeStrategy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">,</span> <span class="mi"><span class="hljs-number">10</span></span><span class="p">,</span> <span class="mi"><span class="hljs-number">5</span></span><span class="p">));</span>
+
+    <span class="n">setStrategy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">multiplyStrategy</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"10 * 5 = %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">executeStrategy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">context</span><span class="p">,</span> <span class="mi"><span class="hljs-number">10</span></span><span class="p">,</span> <span class="mi"><span class="hljs-number">5</span></span><span class="p">));</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run this code:</p>
+
+<ol>
+  <li>Save it to a file, e.g., <code class="language-plaintext highlighter-rouge">strategy_pattern.c</code></li>
+  <li>Compile it using: <code class="language-plaintext highlighter-rouge">gcc -o strategy_pattern strategy_pattern.c</code></li>
+  <li>Run the executable: <code class="language-plaintext highlighter-rouge">./strategy_pattern</code></li>
+</ol>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs">10 + 5 = 15
+10 - 5 = 5
+10 * 5 = 50
+</code></pre></div></div>
+
+<p>This implementation showcases the Strategy pattern by defining different algorithms (<code class="language-plaintext highlighter-rouge">add</code>, <code class="language-plaintext highlighter-rouge">subtract</code>, <code class="language-plaintext highlighter-rouge">multiply</code>) as interchangeable strategies. The <code class="language-plaintext highlighter-rouge">Context</code> holds a reference to the current strategy and can switch between them dynamically.</p>
+
+<p>To view the assembly code:</p>
+
+<ol>
+  <li>Use the command: <code class="language-plaintext highlighter-rouge">gcc -S strategy_pattern.c</code></li>
+  <li>This will generate a file named <code class="language-plaintext highlighter-rouge">strategy_pattern.s</code> containing the assembly code.</li>
+</ol>
+
+<p>Key assembly instructions to note:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">call</code> instructions for invoking the strategy’s <code class="language-plaintext highlighter-rouge">execute</code> function</li>
+  <li>The <code class="language-plaintext highlighter-rouge">mov</code> instructions for setting up function pointers in the strategy structures</li>
+  <li>The indirect function calls through the strategy pointer in the <code class="language-plaintext highlighter-rouge">executeStrategy</code> function</li>
+</ul>
+
+<p><strong>Strategy Pattern Flow</strong>
+<img src="./Mastering All Design Patterns In C_files/0147965c-a855-414e-bbae-f5b4f3f769c6" alt="image"></p>
+
+<h3 id="6-the-adapter-pattern-bridging-incompatible-interfaces">6. The Adapter Pattern: Bridging Incompatible Interfaces</h3>
+
+<p>The Adapter pattern is a structural design pattern that allows objects with incompatible interfaces to collaborate. It’s particularly useful when you want to use an existing class, but its interface isn’t compatible with the rest of your code.</p>
+
+<p>Here’s a C implementation of the Adapter pattern:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="c1"><span class="hljs-comment">// Target interface</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">request</span><span class="p">)(</span><span class="kt"><span class="hljs-keyword">void</span></span><span class="o">*</span><span class="p">);</span> 
+<span class="p">}</span> <span class="n">Target</span><span class="p">;</span>
+
+<span class="c1"><span class="hljs-comment">// Adaptee (the class that needs adapting)</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">specificRequest</span><span class="p">)(</span><span class="kt"><span class="hljs-keyword">void</span></span><span class="p">);</span>
+<span class="p">}</span> <span class="n">Adaptee</span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">specificRequest</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Adaptee's specific request</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1"><span class="hljs-comment">// Adapter</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="n">Target</span> <span class="n">base</span><span class="p">;</span>
+    <span class="n">Adaptee</span><span class="o">*</span> <span class="n">adaptee</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Adapter</span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">adapterRequest</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">void</span></span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">context</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">Adapter</span><span class="o">*</span> <span class="n">self</span> <span class="o">=</span> <span class="p">(</span><span class="n">Adapter</span><span class="o">*</span><span class="p">)</span><span class="n">context</span><span class="p">;</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Adapter: Translating the request</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="n">self</span><span class="o">-&gt;</span><span class="n">adaptee</span><span class="o">-&gt;</span><span class="n">specificRequest</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n"><span class="hljs-function">Adapter</span></span><span class="o"><span class="hljs-function">*</span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">createAdapter</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Adaptee</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">adaptee</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">Adapter</span><span class="o">*</span> <span class="n">adapter</span> <span class="o">=</span> <span class="p">(</span><span class="n">Adapter</span><span class="o">*</span><span class="p">)</span><span class="n"><span class="hljs-built_in">malloc</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">Adapter</span><span class="p">));</span>
+    <span class="n">adapter</span><span class="o">-&gt;</span><span class="n">base</span><span class="p">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">adapterRequest</span><span class="p">;</span>
+    <span class="n">adapter</span><span class="o">-&gt;</span><span class="n">adaptee</span> <span class="o">=</span> <span class="n">adaptee</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">adapter</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">Adaptee</span> <span class="n">adaptee</span> <span class="o">=</span> <span class="p">{</span> <span class="n">specificRequest</span> <span class="p">};</span>
+    <span class="n">Adapter</span><span class="o">*</span> <span class="n">adapter</span> <span class="o">=</span> <span class="n">createAdapter</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adaptee</span><span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// Client code</span></span>
+    <span class="n">Target</span><span class="o">*</span> <span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="n">Target</span><span class="o">*</span><span class="p">)</span><span class="n">adapter</span><span class="p">;</span>
+    <span class="n">target</span><span class="o">-&gt;</span><span class="n">request</span><span class="p">(</span><span class="n">adapter</span><span class="p">);</span>
+
+    <span class="n"><span class="hljs-built_in">free</span></span><span class="p">(</span><span class="n">adapter</span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run this code:</p>
+
+<ol>
+  <li>Save it to a file, e.g., <code class="language-plaintext highlighter-rouge">adapter_pattern.c</code></li>
+  <li>Compile it using: <code class="language-plaintext highlighter-rouge">gcc -o adapter_pattern adapter_pattern.c</code></li>
+  <li>Run the executable: <code class="language-plaintext highlighter-rouge">./adapter_pattern</code></li>
+</ol>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs">Adapter: Translating the request
+Adaptee's specific request
+</code></pre></div></div>
+
+<p>This implementation demonstrates the Adapter pattern by creating an <code class="language-plaintext highlighter-rouge">Adapter</code> that wraps an <code class="language-plaintext highlighter-rouge">Adaptee</code> and presents a <code class="language-plaintext highlighter-rouge">Target</code> interface to the client. The <code class="language-plaintext highlighter-rouge">Adapter</code> translates the <code class="language-plaintext highlighter-rouge">request</code> call into a <code class="language-plaintext highlighter-rouge">specificRequest</code> call on the <code class="language-plaintext highlighter-rouge">Adaptee</code>.</p>
+
+<p>To view the assembly code:</p>
+
+<ol>
+  <li>Use the command: <code class="language-plaintext highlighter-rouge">gcc -S adapter_pattern.c</code></li>
+  <li>This will generate a file named <code class="language-plaintext highlighter-rouge">adapter_pattern.s</code> containing the assembly code.</li>
+</ol>
+
+<p>Key assembly instructions to note:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">call</code> instructions for invoking the adapter’s <code class="language-plaintext highlighter-rouge">request</code> function and the adaptee’s <code class="language-plaintext highlighter-rouge">specificRequest</code> function</li>
+  <li>The <code class="language-plaintext highlighter-rouge">mov</code> instructions for setting up function pointers in the adapter structure</li>
+  <li>The <code class="language-plaintext highlighter-rouge">malloc</code> call in the <code class="language-plaintext highlighter-rouge">createAdapter</code> function for dynamic memory allocation</li>
+</ul>
+
+<p><strong>Adapter Pattern Flow</strong>
+<img src="./Mastering All Design Patterns In C_files/42221530-ca1d-4cca-bc7f-225463c5f78d" alt="image"></p>
+
+<h3 id="7-the-facade-pattern-simplifying-complex-systems">7. The Facade Pattern: Simplifying Complex Systems</h3>
+
+<p>The Facade pattern is a structural design pattern that provides a simplified interface to a complex subsystem. It’s useful when you want to provide a simple interface to a complex set of classes, hiding their complexities from the client.</p>
+
+<p>Here’s a C implementation of the Facade pattern:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="c1"><span class="hljs-comment">// Subsystem components</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">operation1</span><span class="p">)(</span><span class="kt"><span class="hljs-keyword">void</span></span><span class="p">);</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">operation2</span><span class="p">)(</span><span class="kt"><span class="hljs-keyword">void</span></span><span class="p">);</span>
+<span class="p">}</span> <span class="n">Subsystem1</span><span class="p">;</span>
+
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">operation1</span><span class="p">)(</span><span class="kt"><span class="hljs-keyword">void</span></span><span class="p">);</span>
+    <span class="kt"><span class="hljs-keyword">void</span></span> <span class="p">(</span><span class="o">*</span><span class="n">operation2</span><span class="p">)(</span><span class="kt"><span class="hljs-keyword">void</span></span><span class="p">);</span>
+<span class="p">}</span> <span class="n">Subsystem2</span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">subsystem1Operation1</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Subsystem1: Operation1</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">subsystem1Operation2</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Subsystem1: Operation2</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">subsystem2Operation1</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Subsystem2: Operation1</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">subsystem2Operation2</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Subsystem2: Operation2</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1"><span class="hljs-comment">// Facade</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="n">Subsystem1</span> <span class="n">subsystem1</span><span class="p">;</span>
+    <span class="n">Subsystem2</span> <span class="n">subsystem2</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Facade</span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">initializeFacade</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Facade</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">facade</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">facade</span><span class="o">-&gt;</span><span class="n">subsystem1</span><span class="p">.</span><span class="n">operation1</span> <span class="o">=</span> <span class="n">subsystem1Operation1</span><span class="p">;</span>
+    <span class="n">facade</span><span class="o">-&gt;</span><span class="n">subsystem1</span><span class="p">.</span><span class="n">operation2</span> <span class="o">=</span> <span class="n">subsystem1Operation2</span><span class="p">;</span>
+    <span class="n">facade</span><span class="o">-&gt;</span><span class="n">subsystem2</span><span class="p">.</span><span class="n">operation1</span> <span class="o">=</span> <span class="n">subsystem2Operation1</span><span class="p">;</span>
+    <span class="n">facade</span><span class="o">-&gt;</span><span class="n">subsystem2</span><span class="p">.</span><span class="n">operation2</span> <span class="o">=</span> <span class="n">subsystem2Operation2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">facadeOperation</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Facade</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">facade</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Facade: Performing complex operation</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="n">facade</span><span class="o">-&gt;</span><span class="n">subsystem1</span><span class="p">.</span><span class="n">operation1</span><span class="p">();</span>
+    <span class="n">facade</span><span class="o">-&gt;</span><span class="n">subsystem1</span><span class="p">.</span><span class="n">operation2</span><span class="p">();</span>
+    <span class="n">facade</span><span class="o">-&gt;</span><span class="n">subsystem2</span><span class="p">.</span><span class="n">operation1</span><span class="p">();</span>
+    <span class="n">facade</span><span class="o">-&gt;</span><span class="n">subsystem2</span><span class="p">.</span><span class="n">operation2</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">Facade</span> <span class="n">facade</span><span class="p">;</span>
+    <span class="n">initializeFacade</span><span class="p">(</span><span class="o">&amp;</span><span class="n">facade</span><span class="p">);</span>
+
+    <span class="n">facadeOperation</span><span class="p">(</span><span class="o">&amp;</span><span class="n">facade</span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run this code:</p>
+
+<ol>
+  <li>Save it to a file, e.g., <code class="language-plaintext highlighter-rouge">facade_pattern.c</code></li>
+  <li>Compile it using: <code class="language-plaintext highlighter-rouge">gcc -o facade_pattern facade_pattern.c</code></li>
+  <li>Run the executable: <code class="language-plaintext highlighter-rouge">./facade_pattern</code></li>
+</ol>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs http"><span class="hljs-attribute">Facade</span>: Performing complex operation
+<span class="hljs-attribute">Subsystem1</span>: Operation1
+<span class="hljs-attribute">Subsystem1</span>: Operation2
+<span class="hljs-attribute">Subsystem2</span>: Operation1
+<span class="hljs-attribute">Subsystem2</span>: Operation2
+</code></pre></div></div>
+
+<p>This implementation demonstrates the Facade pattern by creating a <code class="language-plaintext highlighter-rouge">Facade</code> that wraps two subsystems (<code class="language-plaintext highlighter-rouge">Subsystem1</code> and <code class="language-plaintext highlighter-rouge">Subsystem2</code>). The <code class="language-plaintext highlighter-rouge">facadeOperation</code> function provides a simplified interface to perform a complex operation involving both subsystems.</p>
+
+<p>To view the assembly code:</p>
+
+<ol>
+  <li>Use the command: <code class="language-plaintext highlighter-rouge">gcc -S facade_pattern.c</code></li>
+  <li>This will generate a file named <code class="language-plaintext highlighter-rouge">facade_pattern.s</code> containing the assembly code.</li>
+</ol>
+
+<p>Key assembly instructions to note:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">call</code> instructions for invoking the subsystem operations</li>
+  <li>The <code class="language-plaintext highlighter-rouge">mov</code> instructions for setting up function pointers in the <code class="language-plaintext highlighter-rouge">initializeFacade</code> function</li>
+  <li>The sequence of function calls in the <code class="language-plaintext highlighter-rouge">facadeOperation</code> function</li>
+</ul>
+
+<p><strong>Facade Pattern Flow</strong>
+<img src="./Mastering All Design Patterns In C_files/33b0d4a3-3d24-4a55-a414-efe5b5f47423" alt="image"></p>
+
+<h3 id="8-the-iterator-pattern-traversing-collections">8. The Iterator Pattern: Traversing Collections</h3>
+
+<p>The Iterator pattern is a behavioral design pattern that lets you traverse elements of a collection without exposing its underlying representation (list, stack, tree, etc.). It’s particularly useful when you want to provide a standard way to iterate over different types of collections.</p>
+
+<p>Here’s a C implementation of the Iterator pattern:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdbool.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="c1"><span class="hljs-comment">// Iterator interface</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">Iterator</span> <span class="p">{</span>
+    <span class="n"><span class="hljs-keyword">bool</span></span> <span class="p">(</span><span class="o">*</span><span class="n">hasNext</span><span class="p">)(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">Iterator</span><span class="o">*</span><span class="p">);</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="p">(</span><span class="o">*</span><span class="n">next</span><span class="p">)(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">Iterator</span><span class="o">*</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">Iterator</span><span class="p">;</span>
+
+<span class="c1"><span class="hljs-comment">// Concrete Iterator</span></span>
+<span class="k"><span class="hljs-keyword">typedef</span></span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="p">{</span>
+    <span class="n">Iterator</span> <span class="n">base</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span><span class="o">*</span> <span class="n">collection</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">size</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">position</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">ArrayIterator</span><span class="p">;</span>
+
+<span class="n"><span class="hljs-function"><span class="hljs-keyword">bool</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">arrayIteratorHasNext</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Iterator</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">iterator</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">ArrayIterator</span><span class="o">*</span> <span class="n">arrayIterator</span> <span class="o">=</span> <span class="p">(</span><span class="n">ArrayIterator</span><span class="o">*</span><span class="p">)</span><span class="n">iterator</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">arrayIterator</span><span class="o">-&gt;</span><span class="n">position</span> <span class="o">&lt;</span> <span class="n">arrayIterator</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">arrayIteratorNext</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">Iterator</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">iterator</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">ArrayIterator</span><span class="o">*</span> <span class="n">arrayIterator</span> <span class="o">=</span> <span class="p">(</span><span class="n">ArrayIterator</span><span class="o">*</span><span class="p">)</span><span class="n">iterator</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">arrayIteratorHasNext</span><span class="p">(</span><span class="n">iterator</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">arrayIterator</span><span class="o">-&gt;</span><span class="n">collection</span><span class="p">[</span><span class="n">arrayIterator</span><span class="o">-&gt;</span><span class="n">position</span><span class="o">++</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span> <span class="c1"><span class="hljs-comment">// Or some error value</span></span>
+<span class="p">}</span>
+
+<span class="n"><span class="hljs-function">ArrayIterator</span></span><span class="o"><span class="hljs-function">*</span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">createArrayIterator</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">collection</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">size</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n">ArrayIterator</span><span class="o">*</span> <span class="n">iterator</span> <span class="o">=</span> <span class="p">(</span><span class="n">ArrayIterator</span><span class="o">*</span><span class="p">)</span><span class="n"><span class="hljs-built_in">malloc</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">ArrayIterator</span><span class="p">));</span>
+    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">base</span><span class="p">.</span><span class="n">hasNext</span> <span class="o">=</span> <span class="n">arrayIteratorHasNext</span><span class="p">;</span>
+    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">base</span><span class="p">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">arrayIteratorNext</span><span class="p">;</span>
+    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">collection</span> <span class="o">=</span> <span class="n">collection</span><span class="p">;</span>
+    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+    <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">position</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">iterator</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">collection</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">,</span> <span class="mi"><span class="hljs-number">2</span></span><span class="p">,</span> <span class="mi"><span class="hljs-number">3</span></span><span class="p">,</span> <span class="mi"><span class="hljs-number">4</span></span><span class="p">,</span> <span class="mi"><span class="hljs-number">5</span></span><span class="p">};</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">size</span> <span class="o">=</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">collection</span><span class="p">)</span> <span class="o">/</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="n">collection</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">]);</span>
+
+    <span class="n">ArrayIterator</span><span class="o">*</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">createArrayIterator</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">while</span></span> <span class="p">(</span><span class="n">iterator</span><span class="o">-&gt;</span><span class="n">base</span><span class="p">.</span><span class="n">hasNext</span><span class="p">((</span><span class="n">Iterator</span><span class="o">*</span><span class="p">)</span><span class="n">iterator</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"%d "</span></span><span class="p">,</span> <span class="n">iterator</span><span class="o">-&gt;</span><span class="n">base</span><span class="p">.</span><span class="n">next</span><span class="p">((</span><span class="n">Iterator</span><span class="o">*</span><span class="p">)</span><span class="n">iterator</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+
+    <span class="n"><span class="hljs-built_in">free</span></span><span class="p">(</span><span class="n">iterator</span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To compile and run this code:</p>
+
+<ol>
+  <li>Save it to a file, e.g., <code class="language-plaintext highlighter-rouge">iterator_pattern.c</code></li>
+  <li>Compile it using: <code class="language-plaintext highlighter-rouge">gcc -o iterator_pattern iterator_pattern.c</code></li>
+  <li>Run the executable: <code class="language-plaintext highlighter-rouge">./iterator_pattern</code></li>
+</ol>
+
+<p>Expected output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs">1 2 3 4 5 
+</code></pre></div></div>
+
+<p>This implementation demonstrates the Iterator pattern by creating an <code class="language-plaintext highlighter-rouge">ArrayIterator</code> that provides a way to iterate over an array. The iterator encapsulates the logic for traversing the collection, allowing the client code to iterate without knowing the underlying structure.</p>
+
+<p>To view the assembly code:</p>
+
+<ol>
+  <li>Use the command: <code class="language-plaintext highlighter-rouge">gcc -S iterator_pattern.c</code></li>
+  <li>This will generate a file named <code class="language-plaintext highlighter-rouge">iterator_pattern.s</code> containing the assembly code.</li>
+</ol>
+
+<p>Key assembly instructions to note:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">call</code> instructions for invoking the iterator’s <code class="language-plaintext highlighter-rouge">hasNext</code> and <code class="language-plaintext highlighter-rouge">next</code> functions</li>
+  <li>The <code class="language-plaintext highlighter-rouge">mov</code> instructions for setting up function pointers in the <code class="language-plaintext highlighter-rouge">createArrayIterator</code> function</li>
+  <li>The <code class="language-plaintext highlighter-rouge">cmp</code> and <code class="language-plaintext highlighter-rouge">jl</code> instructions in the <code class="language-plaintext highlighter-rouge">arrayIteratorHasNext</code> function for boundary checking</li>
+</ul>
+
+<p><strong>Iterator Pattern Flow</strong>
+<img src="./Mastering All Design Patterns In C_files/2bf88835-60a7-4519-afec-40d45407f0d8" alt="image"></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Design patterns are powerful tools in a programmer’s arsenal, providing tested solutions to common software design problems. By understanding and implementing these patterns, developers can create more flexible, maintainable, and scalable code.</p>
+
+<p>In this blog post, we’ve explored eight fundamental design patterns:</p>
+
+<ul>
+  <li>Factory Pattern</li>
+  <li>Builder Pattern</li>
+  <li>Singleton Pattern</li>
+  <li>Observer Pattern</li>
+  <li>Strategy Pattern</li>
+  <li>Adapter Pattern</li>
+  <li>Facade Pattern</li>
+  <li>Iterator Pattern</li>
+</ul>
+
+<p>Each pattern addresses specific design challenges:</p>
+
+<ul>
+  <li><strong>Creational patterns</strong> like Factory, Builder, and Singleton deal with object creation mechanisms.</li>
+  <li><strong>Structural patterns</strong> like Adapter and Facade help in composing objects and classes into larger structures.</li>
+  <li><strong>Behavioral patterns</strong> like Observer, Strategy, and Iterator define how objects interact and distribute responsibilities.</li>
+</ul>
+
+<p>Remember, while design patterns are valuable tools, they should be applied judiciously. Over-engineering or forcing patterns where they’re not needed can lead to unnecessary complexity. Always consider the specific needs of your project and use patterns where they provide clear benefits in terms of flexibility, maintainability, or scalability.</p>
+
+<p>As you continue your journey in software development, practice implementing these patterns in your projects. Experiment with different scenarios and see how they can improve your code’s structure and readability. With time and experience, you’ll develop an intuition for when and how to apply these patterns effectively.</p>
+
+        <script>
+            function d3ize(elem) {
+                var par = elem.parentElement;
+                d3.select(par).append("div").graphviz().renderDot(elem.innerText);
+                d3.select(elem).style("display", "none");
+            }
+            var dotelems = document.getElementsByClassName("language-dot");
+            for (let elem of dotelems) {
+                d3ize(elem);
+            }
+        </script>
+    </div>
+    <a class="u-url" href="https://mohitmishra786.github.io/chessman/2024/10/07/Mastering-All-Design-Patterns-in-C.html" hidden=""></a>
+</article>
+
+        </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/chessman/"></data>
+
+  <div class="wrapper"><p>© 2025 Mohit Mishra</p><p><a class="black-link" href="mailto:immadmohit@gmail.com">immadmohit@gmail.com</a></p>
+
+      <p class="text">Learning to Learn.
+</p>
+
+      <nav>
+<!--           <a href="/chessman/">Home</a> -->
+          <a href="https://mohitmishra786.github.io/chessman/about.html">About</a>
+      </nav>
+
+  </div>
+</footer>
+
+
+</body></html>

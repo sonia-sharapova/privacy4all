@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em;">
+
+  <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0;">
+
+    <aside style="position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box;">
+      <div style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px;">p4a</div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">ON THIS PAGE</div>
+      <nav style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <a href="#quick-check" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Quick Check</a>
+        <a href="#privacy-security" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Privacy &amp; Security</a>
+        <a href="#projects" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Projects</a>
+        <a href="#additional-resources" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Additional Resources</a>
+      </nav>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">TOPICS</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px;">
+        <a href="#topic-browsers" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Browsers</a>
+        <a href="#topic-data" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Data</a>
+        <a href="#topic-cloud" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Cloud</a>
+        <a href="#topic-ai" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">AI</a>
+        <a href="#topic-mobile" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Mobile &amp; Device</a>
+        <a href="#topic-networks" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Networks</a>
+        <a href="#topic-os" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">OS</a>
+        <a href="#topic-auth" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Auth / 2FA</a>
+        <a href="#topic-vpns" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">VPNs &amp; VSPs</a>
+        <a href="#topic-comm" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Communication</a>
+        <a href="#topic-storage" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Storage</a>
+        <a href="#topic-surveillance" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Surveillance</a>
+      </div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GOOD TO KNOW</div>
+      <p style="font-size: 11px; line-height: 1.6; color: #555; margin: 0;">New guides are added regularly. Start with the Privacy &amp; Security overview if you're not sure where to begin.</p>
+    </aside>
+
+    <div style="min-width: 0; position: relative;">
+
+      <div style="position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none;"></div>
+
+      <header style="margin-bottom: 0;">
+        <div style="width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box;">
+          <nav style="display: flex; width: 100%; box-sizing: border-box; border-radius: 0;">
+            <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." style="flex: 1; height: 30px; border: none; background: #fff; padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none;" style-focus="background: #f4f4f4;"><select value="{{ category }}" onChange="{{ onCategoryChange }}" style="height: 30px; border: none; background: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none;">
+                <option value="All">All</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select><button type="button" onClick="{{ handleSearchSubmit }}" style="height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0;">Go</button>
+          </nav>
+        </div>
+        <div style="position: relative; background-image: url('assets/wires.png'); background-size: cover; background-position: top; padding: 40px 40px 44px;">
+          <div style="max-width: 1160px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+            <div>
+              <div style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 52px; line-height: 1;">privacy4all</div>
+              <p style="font-size: 15px; margin: 24px 0 0; max-width: 380px; line-height: 1.5;">All things <u>security</u>, <u>privacy</u>,<br>and <u>protection</u></p>
+              <sc-if value="{{ message }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 11px; color: #444; margin: 8px 0 0;">{{ message }}</p>
+              </sc-if>
+            </div>
+            <nav style="display: flex; flex-direction: column; gap: 16px; padding-top: 10px; align-items: flex-end;">
+              <a href="#projects" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">PROJECTS</a>
+              <a href="#additional-resources" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">RESOURCES</a>
+              <a href="#contact" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">CONTACT</a>
+              <a href="#about" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <div style="background: rgba(255,255,255,0.32); backdrop-filter: blur(9px) saturate(145%) contrast(1.02); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.25);">
+      <main style="max-width: 1160px; margin: 0 auto; padding: 24px 40px 96px;">
+
+        <section id="quick-check" style="padding: 20px 0 0;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">QUICK CHECK</h2>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+
+            <a href="Privacy Checklist.dc.html" style="background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; color: #1b1b1b; transition: transform 0.15s ease, box-shadow 0.15s ease;" style-hover="transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.12); text-decoration: underline; letter-spacing: 0.14em;">
+              <img src="assets/watch.jpg" alt="" style="width: 44px; height: 44px; object-fit: cover; flex-shrink: 0;">
+              <div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; line-height: 1.3; margin-bottom: 4px;">Privacy Checklist</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.4;">Improve your security with some small tasks.</div>
+              </div>
+            </a>
+
+            <a href="Password Check.dc.html" style="background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; color: #1b1b1b; transition: transform 0.15s ease, box-shadow 0.15s ease;" style-hover="transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.12); text-decoration: underline; letter-spacing: 0.14em;">
+              <img src="assets/lock.png" alt="" style="width: 44px; height: 44px; object-fit: contain; flex-shrink: 0;">
+              <div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; line-height: 1.3; margin-bottom: 4px;">Password Check</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.4;">How strong is your password?</div>
+              </div>
+            </a>
+
+            <a href="Delete Yourself.dc.html" style="background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; color: #1b1b1b; transition: transform 0.15s ease, box-shadow 0.15s ease;" style-hover="transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.12); text-decoration: underline; letter-spacing: 0.14em;">
+              <img src="assets/qc-delete.png" alt="" style="width: 44px; height: 44px; object-fit: contain; flex-shrink: 0;">
+              <div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; line-height: 1.3; margin-bottom: 4px;">Delete Yourself</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.4;">Scrub your personal information from the web.</div>
+              </div>
+            </a>
+
+          </div>
+        </section>
+
+        <section id="privacy-security" style="padding: 64px 0 0;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">PRIVACY &amp; SECURITY</h2>
+          <div style="background: rgba(255,255,255,0.5); backdrop-filter: blur(22px) saturate(160%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-radius: 6px; padding: 40px; display: grid; grid-template-columns: 1.1fr 0.7fr; gap: 56px; align-items: center;">
+            <div style="display: grid; grid-template-columns: repeat(4, 130px); gap: 34px 24px;">
+
+              <a href="Browser Privacy Guide.dc.html" id="topic-browsers" style="display: block; color: inherit; text-decoration: none;"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/www.jpg" alt="Browsers" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">BROWSERS</div></a>
+              <div id="topic-data"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/notif.jpg" alt="Data" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">DATA</div></div>
+              <div id="topic-cloud"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/cloud.jpg" alt="Cloud" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">CLOUD</div></div>
+              <div id="topic-ai"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/ai.jpg" alt="AI" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">AI</div></div>
+
+              <div id="topic-mobile"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/sec.jpg" alt="Mobile &amp; Device" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">MOBILE &amp; DEVICE</div></div>
+              <div id="topic-networks"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/networks.jpg" alt="Networks" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">NETWORKS</div></div>
+              <div id="topic-os"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/os.jpeg" alt="OS" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">OS</div></div>
+              <div id="topic-auth"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/robot.jpg" alt="Auth / 2FA" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">AUTH / 2FA</div></div>
+
+              <a href="VPNs.dc.html" id="topic-vpns" style="display: block; color: inherit; text-decoration: none;"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/vpn.jpg" alt="VPNs &amp; VSPs" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">VPNS &amp; VSPS</div></a>
+              <div id="topic-comm"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/commu.jpg" alt="Communication" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">COMMUNICATION</div></div>
+              <div id="topic-storage"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden; background: #fff; display: flex; flex-direction: column;">
+                <div style="background: #4b3f9e; color: #fff; font-size: 7px; font-weight: 600; padding: 2px 5px; line-height: 1.2; flex-shrink: 0;">Trusted Devices</div>
+                <div style="flex: 1; min-height: 0; display: flex; align-items: center; gap: 6px; padding: 4px 6px;">
+                  <span style="width: 8px; height: 8px; background: #d9b64a; border-radius: 50%; flex-shrink: 0;"></span>
+                  <span style="font-size: 9px; color: #333;">T68i</span>
+                </div>
+              </div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">STORAGE</div></div>
+              <div id="topic-surveillance"><div style="width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden;"><img src="assets/surveillance.jpg" alt="Surveillance" style="width: 100%; height: 100%; object-fit: cover;"></div><div style="font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444;">SURVEILANCE</div></div>
+
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 26px; font-size: 12.5px; line-height: 1.9; letter-spacing: 0.25em; text-align: right; color: #1b1b1b;">
+              <p style="margin: 0;">The choice to live a private and safe life should be <b>available</b> and <b>accessible</b> to everyone.</p>
+              <p style="margin: 0; text-align: left;">There are plenty of steps you can take to better understand your options, and start cutting down the amount of data that may be available about you without your knowledge.</p>
+              <div style="display: flex; align-items: flex-start; justify-content: flex-end; gap: 12px;">
+                <span style="font-size: 16px; margin-top: -2px;">←</span>
+                <p style="margin: 0;">The manuals here are digestible for any experience level.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" style="padding: 64px 0 0;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">PROJECTS</h2>
+          <div style="background: rgba(255,255,255,0.5); backdrop-filter: blur(22px) saturate(160%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-radius: 6px; padding: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;">
+
+            <div style="display: flex; flex-direction: column; gap: 28px; font-size: 12.5px; line-height: 1.9; letter-spacing: 0.25em;">
+              <p style="margin: 0; text-align: left;">Hands-on experience is the best way to learn and interact with new systems.</p>
+              <p style="margin: 0; text-align: right; margin-left: auto; max-width: 340px;">Look through this catalogue of projects to follow along to, or give inspiration for your next endeavor.</p>
+              <p style="margin: 0; text-align: left;">The manuals here are digestible for any experience level.</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.6); padding: 6px 20px;">
+
+              <a href="Browser Privacy Guide.dc.html" style="display: block; padding: 14px 0; border-bottom: 1px solid #ececec; text-align: right; color: inherit; text-decoration: none;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em;">Browser Privacy Guide</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #888; margin-top: 2px;">Quick start guide to a private browser</div>
+              </a>
+
+              <div style="padding: 14px 0; border-bottom: 1px solid #ececec; text-align: right;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em;">Operating Systems</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #888; margin-top: 2px;">Choose the right OS for your needs</div>
+              </div>
+
+              <div style="padding: 14px 0; border-bottom: 1px solid #ececec; text-align: right;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em;">Backups &amp; Data Management</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #888; margin-top: 2px;">Learn how to keep a backup of your data</div>
+              </div>
+
+              <div style="padding: 14px 0; border-bottom: 1px solid #ececec; text-align: right;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em;">Streaming</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #888; margin-top: 2px;">See your streaming options</div>
+              </div>
+
+              <div style="padding: 14px 0; border-bottom: 1px solid #ececec; text-align: right;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em;">VPNs and VSPs</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #888; margin-top: 2px;">Projects to protect your internet traffic</div>
+              </div>
+
+              <div style="padding: 14px 0; border-bottom: 1px solid #ececec; text-align: right;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em;">Raspberry Pi Projects</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #888; margin-top: 2px;">Build your own computer</div>
+              </div>
+
+              <div style="padding: 14px 0; text-align: right;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em;">Dark Web</div>
+                <div style="font-size: 11.5px; letter-spacing: 0.1em; color: #888; margin-top: 2px;">shhhh</div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section id="additional-resources" style="padding: 64px 0 0;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">ADDITIONAL RESOURCES</h2>
+          <ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 12.5px; letter-spacing: 0.1em; line-height: 1.6; color: #333;">
+            <li><a href="https://github.com/Igglybuff/awesome-piracy/blob/master/readme.md"><b>Awesome Piracy</b></a> &mdash; A curated list of arrrrrrrrr!</li>
+            <li><a href="https://defensivecomputingchecklist.com/"><b>Defensive Computing Checklist</b></a> &mdash; Internet-related security steps.</li>
+            <li><a href="https://digdeeper.neocities.org/index.xhtml"><b>Dig Deeper</b></a> &mdash; Everything on cybersecurity, hacking, and privacy.</li>
+            <li><a href="https://www.root-me.org/?lang=en"><b>Hack Skills</b></a> &mdash; Develop your hacking skills.</li>
+            <li><a href="https://mango.pdf.zone/hacking-your-neighbours-wifi/"><b>Hacking Your Neighbours WiFi</b></a> &mdash; How-to on hacking WiFi.</li>
+            <li><a href="https://haveibeenpwned.com/"><b>Have I Been PWNED</b></a> &mdash; Check if your email is in a data breach.</li>
+            <li><a href="https://www.security.org/how-secure-is-my-password/"><b>How Secure Is My Password?</b></a> &mdash; Check password security.</li>
+            <li><a href="https://www.hyphanet.org/index.html"><b>Hyphanet</b></a> &mdash; FreeNet.</li>
+            <li><a href="https://github.com/fonic/ipfilter"><b>IP Filter</b></a> &mdash; ipfilter updater &amp; generator.</li>
+            <li><a href="https://geti2p.net/en/"><b>I2P</b></a> &mdash; Invisible Internet Project.</li>
+            <li><a href="https://backgroundchecks.org/justdeleteme/"><b>JustDeleteMe</b></a> &mdash; Direct links to delete your account from web services.</li>
+            <li><a href="https://secure.logmein.com/products/hamachi/"><b>LogMeIn Hamachi</b></a> &mdash; VPN software.</li>
+            <li><a href="https://embeddedsw.net/OpenPuff_Steganography_Home.html"><b>OpenPuff</b></a> &mdash; Stenography tool.</li>
+            <li><a href="https://prism-break.org/en/"><b>PRISM Break</b></a> &mdash; Opt out of global data surveillance programs.</li>
+            <li><a href="https://www.privacytools.io/"><b>PrivacyTools.io</b></a> &mdash; Privacy tools guide for encrypted software.</li>
+            <li><a href="https://overthewire.org/wargames/"><b>Security practice games</b></a> &mdash; Games to develop security practices.</li>
+            <li><a href="http://www.brightfort.com/spywareblaster.html"><b>SpywareBlaster</b></a> &mdash; Pre-emptive blocking protection.</li>
+            <li><a href="https://spyware.neocities.org/"><b>SpywareWatchdog</b></a> &mdash; Tool for spyware awareness.</li>
+            <li><a href="https://torproject.org/"><b>Tor</b></a> &mdash; Free anonymizing proxy with SOCKS interface.</li>
+            <li><a href="https://zeronet.io/"><b>ZeroNet</b></a> &mdash; Open, free and uncensorable websites.</li>
+          </ul>
+        </section>
+
+      </main>
+
+      <footer id="contact" style="border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666;">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { query: '', category: 'All', message: '' };
+
+  topics = [
+    { label: 'browsers', id: 'topic-browsers' }, { label: 'data', id: 'topic-data' },
+    { label: 'cloud', id: 'topic-cloud' }, { label: 'ai', id: 'topic-ai' },
+    { label: 'mobile', id: 'topic-mobile' }, { label: 'device', id: 'topic-mobile' },
+    { label: 'network', id: 'topic-networks' }, { label: 'os', id: 'topic-os' },
+    { label: 'auth', id: 'topic-auth' }, { label: '2fa', id: 'topic-auth' },
+    { label: 'vpn', id: 'topic-vpns' }, { label: 'communication', id: 'topic-comm' },
+    { label: 'storage', id: 'topic-storage' }, { label: 'surveil', id: 'topic-surveillance' },
+  ];
+
+  categorySections = { All: 'privacy-security', Guides: 'privacy-security', Projects: 'projects' };
+
+  scrollToId(id) {
+    const el = document.getElementById(id);
+    if (!el) return false;
+    const top = el.getBoundingClientRect().top + window.scrollY - 90;
+    window.scrollTo({ top, behavior: 'smooth' });
+    return true;
+  }
+
+  handleSearchSubmit = (e) => {
+    e.preventDefault();
+    const q = this.state.query.trim().toLowerCase();
+    if (q) {
+      const match = this.topics.find(t => t.label.includes(q) || q.includes(t.label));
+      if (match) {
+        this.scrollToId(match.id);
+        this.setState({ message: 'Showing results for "' + this.state.query + '"' });
+        return;
+      }
+      this.setState({ message: 'No matches for "' + this.state.query + '"' });
+      return;
+    }
+    const sectionId = this.categorySections[this.state.category] || 'privacy-security';
+    this.scrollToId(sectionId);
+    this.setState({ message: 'Showing ' + this.state.category });
+  };
+
+  renderVals() {
+    return {
+      query: this.state.query,
+      category: this.state.category,
+      message: this.state.message,
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onCategoryChange: (e) => this.setState({ category: e.target.value }),
+      handleSearchSubmit: this.handleSearchSubmit,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Lora:wght@600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #f2f3f4; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="font-family: 'IBM Plex Mono', monospace; color: #1b1b1b; background: #f2f3f4; padding: 56px 48px 96px;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+
+    <h1 style="font-family: 'Lora', serif; font-weight: 700; font-size: 34px; margin: 0 0 6px;">privacy4all &mdash; Style Guide</h1>
+    <p style="font-size: 13px; color: #666; margin: 0 0 56px;">Visual language derived from the Figma homepage redesign.</p>
+
+    <section style="margin-bottom: 56px;">
+      <h2 style="font-size: 13px; letter-spacing: 0.14em; font-weight: 600; margin: 0 0 18px;">LOGOTYPE</h2>
+      <div style="background: #fff; border: 1px solid #dcdee0; padding: 36px;">
+        <div style="font-family: 'Lora', serif; font-weight: 700; font-size: 46px; display: flex;">
+          <span style="transform: translateY(0px) rotate(-2deg); display: inline-block;">p</span><span style="transform: translateY(-3px) rotate(1deg); display: inline-block;">r</span><span style="transform: translateY(2px) rotate(-1deg); display: inline-block;">i</span><span style="transform: translateY(-2px) rotate(2deg); display: inline-block;">v</span><span style="transform: translateY(1px) rotate(-2deg); display: inline-block;">a</span><span style="transform: translateY(-2px) rotate(1deg); display: inline-block;">c</span><span style="transform: translateY(2px) rotate(-1deg); display: inline-block;">y</span><span style="transform: translateY(-1px) rotate(1deg); display: inline-block;">4</span><span style="transform: translateY(1px) rotate(-1deg); display: inline-block;">a</span><span style="transform: translateY(-2px) rotate(1deg); display: inline-block;">l</span><span style="transform: translateY(1px) rotate(-1deg); display: inline-block;">l</span>
+        </div>
+        <p style="font-size: 12.5px; color: #666; margin: 16px 0 0;">Lora Bold, 46px, each glyph nudged with a small rotate/translateY for the hand-set wobble seen in the Figma mark.</p>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 56px;">
+      <h2 style="font-size: 13px; letter-spacing: 0.14em; font-weight: 600; margin: 0 0 18px;">COLOR</h2>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+        <div><div style="height: 72px; background: #f2f3f4; border: 1px solid #dcdee0;"></div><div style="font-size: 11px; margin-top: 6px;">Background<br>#f2f3f4</div></div>
+        <div><div style="height: 72px; background: #ffffff; border: 1px solid #dcdee0;"></div><div style="font-size: 11px; margin-top: 6px;">Surface<br>#ffffff</div></div>
+        <div><div style="height: 72px; background: #1b1b1b;"></div><div style="font-size: 11px; margin-top: 6px; color: #fff; background:#1b1b1b; display:inline-block; padding: 0 2px;">&nbsp;</div><div style="font-size: 11px; margin-top: 6px;">Text<br>#1b1b1b</div></div>
+        <div><div style="height: 72px; background: #888888;"></div><div style="font-size: 11px; margin-top: 6px;">Muted text<br>#888888</div></div>
+        <div><div style="height: 72px; background: #2f6fed;"></div><div style="font-size: 11px; margin-top: 6px;">Accent (links/active)<br>#2f6fed</div></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 16px;">
+        <div><div style="height: 72px; background: #dcdee0;"></div><div style="font-size: 11px; margin-top: 6px;">Border<br>#dcdee0</div></div>
+        <div><div style="height: 72px; background: rgba(255,255,255,0.55); border: 1px solid #dcdee0; backdrop-filter: blur(10px);"></div><div style="font-size: 11px; margin-top: 6px;">Frosted panel<br>white / 55% + blur</div></div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 56px;">
+      <h2 style="font-size: 13px; letter-spacing: 0.14em; font-weight: 600; margin: 0 0 18px;">TYPOGRAPHY</h2>
+      <div style="background: #fff; border: 1px solid #dcdee0; padding: 36px; display: flex; flex-direction: column; gap: 22px;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.14em; font-weight: 600;">SECTION LABEL</div>
+          <div style="font-size: 11px; color: #888; margin-top: 4px;">IBM Plex Mono SemiBold 13px, letter-spacing 0.14em, uppercase</div>
+        </div>
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px;">Body copy in the monospace voice, used for hero taglines and long-form panel text.</div>
+          <div style="font-size: 11px; color: #888; margin-top: 4px;">IBM Plex Mono Regular 12&ndash;15px</div>
+        </div>
+        <div>
+          <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 16px;">Card &amp; button title</div>
+          <div style="font-size: 11px; color: #888; margin-top: 4px;">Poppins Bold 15&ndash;16px &mdash; used wherever the mono voice would feel too technical (cards, buttons, list titles)</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 56px;">
+      <h2 style="font-size: 13px; letter-spacing: 0.14em; font-weight: 600; margin: 0 0 18px;">NAVIGATION</h2>
+      <div style="background: #fff; border: 1px solid #dcdee0; padding: 28px 36px; display: flex; gap: 30px;">
+        <a href="#" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.12em; font-weight: 600;">RESOURCES</a>
+        <a href="#" style="color: #2f6fed; font-size: 12px; letter-spacing: 0.12em; font-weight: 600;">TUTORIALS</a>
+        <a href="#" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.12em; font-weight: 600;">CONTACT</a>
+        <a href="#" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.12em; font-weight: 600;">ABOUT</a>
+      </div>
+      <p style="font-size: 11px; color: #888; margin: 10px 0 0;">Active item takes the accent blue; inactive items stay ink black.</p>
+    </section>
+
+    <section style="margin-bottom: 56px;">
+      <h2 style="font-size: 13px; letter-spacing: 0.14em; font-weight: 600; margin: 0 0 18px;">CARD</h2>
+      <div style="display: grid; grid-template-columns: 280px 1fr; gap: 32px; align-items: start;">
+        <div style="background: #fff; border: 1px solid #dcdee0;">
+          <div style="height: 130px; background: repeating-linear-gradient(45deg, #e4e6e8, #e4e6e8 8px, #eceeef 8px, #eceeef 16px); border-bottom: 1px solid #dcdee0; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #999;">image</div>
+          <div style="padding: 20px;">
+            <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 6px;">Card title</div>
+            <div style="font-size: 13px; color: #666; margin-bottom: 14px;">Supporting one-line description.</div>
+            <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500;">Call to action &#8594;</div>
+          </div>
+        </div>
+        <div style="font-size: 12.5px; color: #555; line-height: 1.8; max-width: 460px;">White surface, 1px #dcdee0 border, no radius. 16:10 image on top, 20&ndash;22px padding body. Bold Poppins title, muted mono/description text, and a text-only &ldquo;Call to action &rarr;&rdquo; link &mdash; no filled buttons.</div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 56px;">
+      <h2 style="font-size: 13px; letter-spacing: 0.14em; font-weight: 600; margin: 0 0 18px;">FROSTED PANEL</h2>
+      <div style="position: relative; background: repeating-linear-gradient(45deg, #dfe3e6, #dfe3e6 10px, #eef0f2 10px, #eef0f2 20px); padding: 40px;">
+        <div style="background: rgba(255,255,255,0.55); backdrop-filter: blur(14px); border: 1px solid rgba(0,0,0,0.08); border-radius: 4px; padding: 24px; font-size: 12.5px; color: #333;">
+          Frosted glass panel: white at 55% opacity + 14px blur, hairline border at 8% black. Used to host content blocks that sit directly on the wire-photo background.
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 0;">
+      <h2 style="font-size: 13px; letter-spacing: 0.14em; font-weight: 600; margin: 0 0 18px;">BUTTON / TUTORIAL TILE</h2>
+      <div style="display: flex; gap: 16px;">
+        <div style="background: #fff; border: 1px solid #dcdee0; border-radius: 6px; padding: 26px 40px; text-align: center; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px;">Label</div>
+      </div>
+      <p style="font-size: 11px; color: #888; margin: 10px 0 0;">White fill, 1px #dcdee0 border, 6px radius, Poppins Bold 15px centered.</p>
+    </section>
+
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em;">
+
+  <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0;">
+
+    <aside style="position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box;">
+      <a href="Homepage.dc.html" style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px; display: block; color: #1b1b1b;">p4a</a>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">ON THIS PAGE</div>
+      <nav style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <a href="#overview" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Test Suite</a>
+        <a href="#expected" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Expected Results</a>
+      </nav>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">RELATED TOPICS</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px;">
+        <a href="Troubleshooting.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Troubleshooting Guide</a>
+        <a href="Browsers.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Browsers</a>
+        <a href="Browser Extensions.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Browser Extensions</a>
+        <a href="Browser Fingerprinting.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Fingerprinting</a>
+      </div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GOOD TO KNOW</div>
+      <p style="font-size: 11px; line-height: 1.6; color: #555; margin: 0;">A protection you can't verify isn't a protection you can rely on. Run the full suite after any setup change.</p>
+    </aside>
+
+    <div style="min-width: 0; position: relative;">
+
+      <div style="position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none;"></div>
+
+      <header style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <div style="width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box;">
+          <nav style="display: flex; width: 100%; box-sizing: border-box; border: 1px solid rgba(0,0,0,0.06); border-radius: 0;">
+            <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." style="flex: 1; height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none;" style-focus="background: rgba(255,255,255,0.7);"><select value="{{ category }}" onChange="{{ onCategoryChange }}" style="height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none;">
+                <option value="All">All</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select><button type="button" onClick="{{ handleSearchSubmit }}" style="height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0;">Go</button>
+          </nav>
+        </div>
+        <div style="max-width: 1160px; margin: 0 auto; padding: 20px 40px 24px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;"><a href="Homepage.dc.html" style="color: #888;">Home</a> / <a href="Browser Privacy Guide.dc.html" style="color: #888;">Browser Privacy Guide</a> / <span style="color: #1b1b1b;">Test &amp; Verify</span></div>
+          <nav style="display: flex; flex-wrap: wrap; gap: 16px 20px;">
+            <a href="Homepage.dc.html#projects" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">PROJECTS</a>
+            <a href="Homepage.dc.html#additional-resources" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">RESOURCES</a>
+            <a href="Homepage.dc.html#contact" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <div style="background: rgba(255,255,255,0.55); backdrop-filter: blur(16px) saturate(160%) contrast(1.05); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.35); margin: 0 32px; border-radius: 6px;">
+      <main style="max-width: 1160px; margin: 0 auto; padding: 48px 40px 96px;">
+
+        <!-- MASTHEAD -->
+        <section id="overview" style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; border-bottom: 2px solid #1b1b1b; padding-bottom: 18px; margin-bottom: 8px;">
+          <div>
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">TOPIC 04 / MOBILE &amp; DEVICE</div>
+            <h1 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 64px; letter-spacing: 0.1em; margin: 0; line-height: 0.95;">Verify Everything Works</h1>
+          </div>
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: right; line-height: 1.7;">
+            FILE&nbsp;NO.&nbsp;017<br>REV.&nbsp;2026&ndash;08<br>READ&nbsp;TIME&nbsp;5&nbsp;MIN
+          </div>
+        </section>
+
+        <section style="display: grid; grid-template-columns: 0.55fr 1fr; gap: 0; margin-bottom: 56px;">
+          <div style="padding: 26px 24px 26px 0; border-right: 1px solid rgba(0,0,0,0.12);">
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;">WHY IT MATTERS</div>
+            <p style="font-size: 12.5px; letter-spacing: 0.1em; line-height: 1.8; margin: 0;">A protection you can't verify isn't a protection you can rely on. After setting up your browser, extensions, and fingerprint defenses, run the full test suite below to confirm each layer is actually doing its job.</p>
+          </div>
+          <div style="padding: 26px 24px;">
+            <p style="font-size: 20px; letter-spacing: 0.06em; line-height: 1.55; margin: 0; font-style: italic;">"<span style="font-family: 'Averia Libre', serif; font-size: 40px; line-height: 0; vertical-align: -12px; font-style: normal;">T</span>rust, but verify. Five minutes of testing catches misconfigurations that would otherwise sit unnoticed for months."</p>
+          </div>
+        </section>
+
+        <!-- TEST SUITE TABLE -->
+        <section id="test-suite" style="margin-bottom: 56px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">COMPLETE TEST SUITE</h2>
+          <div style="overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: 1fr 1.2fr 1.6fr; min-width: 720px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">TEST</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">TOOL / URL</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">WHAT TO EXPECT</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Tracker &amp; ad blocking</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);"><a href="https://coveryourtracks.eff.org/" target="_blank" rel="noopener">coveryourtracks.eff.org</a></div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">"Your browser has strong protection against Web tracking"</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Fingerprint uniqueness</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);"><a href="https://amiunique.org/" target="_blank" rel="noopener">amiunique.org</a></div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">A fingerprint shared with a large percentage of other visitors, not a "1 in a million" result</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Global Privacy Control</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);"><a href="https://globalprivacycontrol.org/" target="_blank" rel="noopener">globalprivacycontrol.org</a></div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">"GPC signal detected"</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">DNS leak</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);"><a href="https://dnsleaktest.com/" target="_blank" rel="noopener">dnsleaktest.com</a></div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Only your VPN or private DNS provider listed, not your ISP</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">WebRTC leak</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);"><a href="https://browserleaks.com/webrtc" target="_blank" rel="noopener">browserleaks.com/webrtc</a></div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">No local or public IP address revealed beyond what your VPN shows</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em;">Ad-blocker effectiveness</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;"><a href="https://canyoublockit.com/" target="_blank" rel="noopener">canyoublockit.com</a></div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">All test ad slots reported as blocked</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPECTED RESULTS -->
+        <section id="expected" style="margin-bottom: 56px;">
+          <button type="button" onClick="{{ toggleExpected }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit; margin-bottom: 12px;">
+            <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0;">EXPECTED RESULTS BY BROWSER</h2>
+            <span style="font-size: 22px; line-height: 1; flex-shrink: 0; width: 34px; height: 34px; border: 1px solid rgba(0,0,0,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">{{ expectedChevron }}</span>
+          </button>
+          <sc-if value="{{ expectedOpen }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+              <span style="font-size: 11px; letter-spacing: 0.1em; color: #888;">FILTER:</span>
+              <select value="{{ browserFilter }}" onChange="{{ onBrowserFilterChange }}" style="height: 30px; border: 1px solid rgba(0,0,0,0.15); border-radius: 3px; background: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px;">
+                <option value="All">All Browsers</option>
+                <option value="Brave">Brave</option>
+                <option value="LibreWolf">LibreWolf</option>
+                <option value="Mullvad Browser">Mullvad Browser</option>
+                <option value="Firefox (hardened)">Firefox (hardened)</option>
+                <option value="Safari">Safari</option>
+                <option value="Tor Browser">Tor Browser</option>
+              </select>
+            </div>
+          <div style="overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr; min-width: 640px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">BROWSER</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">TRACKING</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">FINGERPRINT</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">GPC</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">DNS/WEBRTC</div>
+
+              <sc-if value="{{ showBrave }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Brave</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Strong</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Randomized</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Detected</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Clean</div>
+              </sc-if>
+
+              <sc-if value="{{ showLibreWolf }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">LibreWolf</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Strong</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Reduced</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Detected</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Clean</div>
+              </sc-if>
+
+              <sc-if value="{{ showMullvad }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Mullvad Browser</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Strong</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Shared/uniform</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Detected</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Clean</div>
+              </sc-if>
+
+              <sc-if value="{{ showFirefox }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Firefox (hardened)</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Strong</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Reduced</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Manual enable</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Clean</div>
+              </sc-if>
+
+              <sc-if value="{{ showSafari }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Safari</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Moderate</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Reduced</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Not detected</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Clean</div>
+              </sc-if>
+
+              <sc-if value="{{ showTor }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em;">Tor Browser</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center;">Strongest</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center;">Shared/uniform</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center;">Not detected</div>
+              <div style="padding: 10px 0; font-size: 11.5px; text-align: center;">Clean</div>
+              </sc-if>
+            </div>
+          </div>
+          </div>
+          </sc-if>
+        </section>
+
+        <!-- TROUBLESHOOTING POINTER -->
+        <section style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px; margin-bottom: 0;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 12px;">SOMETHING NOT WORKING?</h2>
+          <p style="font-size: 12.5px; letter-spacing: 0.1em; color: #555; line-height: 1.7; margin: 0;">If a site breaks after any of these tests, the full site-wide <a href="Troubleshooting.dc.html">Troubleshooting Guide</a> covers common issues, a quick flowchart, and how to whitelist a site &mdash; indexed by which part of the guide sent you there.</p>
+        </section>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.12); font-size: 12px; letter-spacing: 0.1em;">
+          <a href="Browser Fingerprinting.dc.html">&larr; Advanced Configurations</a>
+          <a href="Browser Privacy Guide.dc.html">Back to Guide Overview</a>
+        </div>
+
+      </main>
+
+      <footer id="contact" style="border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666;">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { query: '', category: 'All', expectedOpen: true, browserFilter: 'All' };
+
+  handleSearchSubmit = () => {
+    window.location.href = 'Homepage.dc.html';
+  };
+
+  renderVals() {
+    const f = this.state.browserFilter;
+    return {
+      query: this.state.query,
+      category: this.state.category,
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onCategoryChange: (e) => this.setState({ category: e.target.value }),
+      onKeyDown: (e) => { if (e.key === 'Enter') this.handleSearchSubmit(); },
+      handleSearchSubmit: this.handleSearchSubmit,
+
+      expectedOpen: this.state.expectedOpen,
+      toggleExpected: () => this.setState(s => ({ expectedOpen: !s.expectedOpen })),
+      expectedChevron: this.state.expectedOpen ? '\u2212' : '+',
+
+      browserFilter: f,
+      onBrowserFilterChange: (e) => this.setState({ browserFilter: e.target.value }),
+      showBrave: f === 'All' || f === 'Brave',
+      showLibreWolf: f === 'All' || f === 'LibreWolf',
+      showMullvad: f === 'All' || f === 'Mullvad Browser',
+      showFirefox: f === 'All' || f === 'Firefox (hardened)',
+      showSafari: f === 'All' || f === 'Safari',
+      showTor: f === 'All' || f === 'Tor Browser',
+    };
+  }
+}
+
+</script>
+</body>
+</html>

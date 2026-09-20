@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <div class="p4a-3">p4a</div>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#quick-check" class="p4a-6">Quick Check</a>
+        <a href="#privacy-security" class="p4a-6">Privacy &amp; Security</a>
+        <a href="#projects" class="p4a-6">Projects</a>
+        <a href="#additional-resources" class="p4a-6">Additional Resources</a>
+      </nav>
+
+      <div class="p4a-4">TOPICS</div>
+      <div class="p4a-7">
+        <a href="#topic-browsers" class="p4a-8">Browsers</a>
+        <a href="#topic-data" class="p4a-8">Data</a>
+        <a href="#topic-cloud" class="p4a-8">Cloud</a>
+        <a href="#topic-ai" class="p4a-8">AI</a>
+        <a href="#topic-mobile" class="p4a-8">Mobile &amp; Device</a>
+        <a href="#topic-networks" class="p4a-8">Networks</a>
+        <a href="#topic-os" class="p4a-8">OS</a>
+        <a href="#topic-auth" class="p4a-8">Auth / 2FA</a>
+        <a href="#topic-vpns" class="p4a-8">VPNs &amp; VSPs</a>
+        <a href="#topic-comm" class="p4a-8">Communication</a>
+        <a href="#topic-storage" class="p4a-8">Storage</a>
+        <a href="#topic-surveillance" class="p4a-8">Surveillance</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" value="" id="search-input" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" onClick="{{ handleSearchSubmit }}" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <div class="p4a-k">privacy4all</div>
+              <p class="p4a-l">All things <u>security</u>, <u>privacy</u>,<br>and <u>protection</u></p>
+              <p id="search-message" class="p4a-m"></p>
+            </div>
+            <nav class="p4a-n">
+              <a href="#projects" class="p4a-o">PROJECTS</a>
+              <a href="#additional-resources" class="p4a-o">RESOURCES</a>
+              <a href="#contact" class="p4a-o">CONTACT</a>
+              <a href="#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <section id="quick-check" class="p4a-r">
+          <h2 class="p4a-s">QUICK CHECK</h2>
+          <div class="p4a-t">
+
+            <a href="quick-action/privacy-checklist.html" class="p4a-u">
+              <img src="assets/watch.jpg" alt="" class="p4a-v">
+              <div>
+                <div class="p4a-w">Privacy Checklist</div>
+                <div class="p4a-x">Small tasks, plus protest &amp; border privacy.</div>
+              </div>
+            </a>
+
+            <a href="quick-action/password-check.html" class="p4a-u">
+              <img src="assets/lock.png" alt="" class="p4a-y">
+              <div>
+                <div class="p4a-w">Password Check</div>
+                <div class="p4a-x">How strong is your password?</div>
+              </div>
+            </a>
+
+            <a href="quick-action/delete-yourself.html" class="p4a-u">
+              <img src="assets/qc-delete.png" alt="" class="p4a-y">
+              <div>
+                <div class="p4a-w">Delete Yourself</div>
+                <div class="p4a-x">Scrub your personal information from the web.</div>
+              </div>
+            </a>
+
+            <a href="quick-action/takedown-templates.html" class="p4a-u">
+              <img src="assets/notif.jpg" alt="" class="p4a-v">
+              <div>
+                <div class="p4a-w">Takedown Templates</div>
+                <div class="p4a-x">Ready-to-send data removal request templates.</div>
+              </div>
+            </a>
+
+          </div>
+        </section>
+
+        <section id="privacy-security" class="p4a-z">
+          <h2 class="p4a-s">PRIVACY &amp; SECURITY</h2>
+          <div class="p4a-10">
+            <div class="p4a-11">
+
+              <a href="browser-privacy/index.html" id="topic-browsers" class="p4a-12"><div class="p4a-13"><img src="assets/www.jpg" alt="Browsers" class="p4a-14"></div><div class="p4a-15">BROWSERS</div></a>
+              <a href="guides/personal-data-tracking/overview.html" id="topic-data" class="p4a-12"><div class="p4a-13"><img src="assets/notif.jpg" alt="Data" class="p4a-14"></div><div class="p4a-15">DATA</div></a>
+              <a href="advanced/cloud-storage-files/overview.html" id="topic-cloud" class="p4a-12"><div class="p4a-13"><img src="assets/cloud.jpg" alt="Cloud" class="p4a-14"></div><div class="p4a-15">CLOUD</div></a>
+              <a href="guides/ai-security/ai-security.html" id="topic-ai" class="p4a-12"><div class="p4a-13"><img src="assets/ai.jpg" alt="AI" class="p4a-14"></div><div class="p4a-15">AI</div></a>
+
+              <a href="guides/mobile-device-privacy/overview.html" id="topic-mobile" class="p4a-12"><div class="p4a-13"><img src="assets/sec.jpg" alt="Mobile &amp; Device" class="p4a-14"></div><div class="p4a-15">MOBILE &amp; DEVICE</div></a>
+              <a href="guides/network-privacy/network-privacy.html" id="topic-networks" class="p4a-12"><div class="p4a-13"><img src="assets/networks.jpg" alt="Networks" class="p4a-14"></div><div class="p4a-15">NETWORKS</div></a>
+              <a href="guides/secure-os-systems/secure-os-systems.html" id="topic-os" class="p4a-12"><div class="p4a-13"><img src="assets/os.jpeg" alt="OS" class="p4a-14"></div><div class="p4a-15">OS</div></a>
+              <a href="guides/accounts-authentication/accounts-and-authentication.html" id="topic-auth" class="p4a-12"><div class="p4a-13"><img src="assets/robot.jpg" alt="Auth / 2FA" class="p4a-14"></div><div class="p4a-15">AUTH / 2FA</div></a>
+
+              <a href="advanced/vpn-vps/index.html" id="topic-vpns" class="p4a-12"><div class="p4a-13"><img src="assets/vpn.jpg" alt="VPNs &amp; VSPs" class="p4a-14"></div><div class="p4a-15">VPNS &amp; VSPS</div></a>
+              <a href="guides/communication-privacy/overview.html" id="topic-comm" class="p4a-12"><div class="p4a-13"><img src="assets/commu.jpg" alt="Communication" class="p4a-14"></div><div class="p4a-15">COMMUNICATION</div></a>
+              <div id="topic-storage"><div class="p4a-16">
+                <div class="p4a-17">Trusted Devices</div>
+                <div class="p4a-18">
+                  <span class="p4a-19"></span>
+                  <span class="p4a-1a">T68i</span>
+                </div>
+              </div><div class="p4a-15">STORAGE</div></div>
+              <a href="guides/surveillance/surveillance.html" id="topic-surveillance" class="p4a-12"><div class="p4a-13"><img src="assets/surveillance.jpg" alt="Surveillance" class="p4a-14"></div><div class="p4a-15">SURVEILANCE</div></a>
+
+            </div>
+
+            <div class="p4a-1b">
+              <p class="p4a-1c">The choice to live a private and safe life should be <b>available</b> and <b>accessible</b> to everyone.</p>
+              <p class="p4a-1d">There are plenty of steps you can take to better understand your options, and start cutting down the amount of data that may be available about you without your knowledge.</p>
+              <div class="p4a-1e">
+                <span class="p4a-1f">←</span>
+                <p class="p4a-1c">The manuals here are digestible for any experience level.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="p4a-z">
+          <h2 class="p4a-s">PROJECTS</h2>
+          <div class="p4a-1g">
+
+            <div class="p4a-1h">
+              <p class="p4a-1c">Hands-on experience is the best way to learn and interact with new systems.</p>
+              <p class="p4a-1i">Look through this catalogue of projects to follow along to, or give inspiration for your next endeavor.</p>
+              <p class="p4a-1c">The manuals here are digestible for any experience level.</p>
+            </div>
+
+            <div class="p4a-1j">
+
+              <a href="browser-privacy/index.html" class="p4a-1k">
+                <div class="p4a-1l">Browser Privacy Guide</div>
+                <div class="p4a-1m">Quick start guide to a private browser</div>
+              </a>
+
+              <a href="guides/secure-os-systems/secure-os-systems.html" class="p4a-1k">
+                <div class="p4a-1l">Operating Systems</div>
+                <div class="p4a-1m">Choose the right OS for your needs</div>
+              </a>
+
+              <a href="advanced/cloud-storage-files/local-backup-and-encryption-basics.html" class="p4a-1k">
+                <div class="p4a-1l">Backups &amp; Data Management</div>
+                <div class="p4a-1m">Learn how to keep a backup of your data</div>
+              </a>
+
+              <div class="p4a-1n">
+                <div class="p4a-1l">Streaming</div>
+                <div class="p4a-1m">See your streaming options</div>
+              </div>
+
+              <a href="advanced/vpn-vps/index.html" class="p4a-1k">
+                <div class="p4a-1l">VPNs and VSPs</div>
+                <div class="p4a-1m">Projects to protect your internet traffic</div>
+              </a>
+
+              <div class="p4a-1n">
+                <div class="p4a-1l">Raspberry Pi Projects</div>
+                <div class="p4a-1m">Build your own computer</div>
+              </div>
+
+              <div class="p4a-1o">
+                <div class="p4a-1l">Dark Web</div>
+                <div class="p4a-1m">shhhh</div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section id="additional-resources" class="p4a-z">
+          <h2 class="p4a-s">ADDITIONAL RESOURCES</h2>
+          <ul class="p4a-1p">
+            <li><a href="https://github.com/Igglybuff/awesome-piracy/blob/master/readme.md"><b>Awesome Piracy</b></a> &mdash; A curated list of arrrrrrrrr!</li>
+            <li><a href="https://defensivecomputingchecklist.com/"><b>Defensive Computing Checklist</b></a> &mdash; Internet-related security steps.</li>
+            <li><a href="https://digdeeper.neocities.org/index.xhtml"><b>Dig Deeper</b></a> &mdash; Everything on cybersecurity, hacking, and privacy.</li>
+            <li><a href="https://www.root-me.org/?lang=en"><b>Hack Skills</b></a> &mdash; Develop your hacking skills.</li>
+            <li><a href="https://mango.pdf.zone/hacking-your-neighbours-wifi/"><b>Hacking Your Neighbours WiFi</b></a> &mdash; How-to on hacking WiFi.</li>
+            <li><a href="https://haveibeenpwned.com/"><b>Have I Been PWNED</b></a> &mdash; Check if your email is in a data breach.</li>
+            <li><a href="https://www.security.org/how-secure-is-my-password/"><b>How Secure Is My Password?</b></a> &mdash; Check password security.</li>
+            <li><a href="https://www.hyphanet.org/index.html"><b>Hyphanet</b></a> &mdash; FreeNet.</li>
+            <li><a href="https://github.com/fonic/ipfilter"><b>IP Filter</b></a> &mdash; ipfilter updater &amp; generator.</li>
+            <li><a href="https://geti2p.net/en/"><b>I2P</b></a> &mdash; Invisible Internet Project.</li>
+            <li><a href="https://backgroundchecks.org/justdeleteme/"><b>JustDeleteMe</b></a> &mdash; Direct links to delete your account from web services.</li>
+            <li><a href="https://secure.logmein.com/products/hamachi/"><b>LogMeIn Hamachi</b></a> &mdash; VPN software.</li>
+            <li><a href="https://embeddedsw.net/OpenPuff_Steganography_Home.html"><b>OpenPuff</b></a> &mdash; Stenography tool.</li>
+            <li><a href="https://prism-break.org/en/"><b>PRISM Break</b></a> &mdash; Opt out of global data surveillance programs.</li>
+            <li><a href="https://www.privacytools.io/"><b>PrivacyTools.io</b></a> &mdash; Privacy tools guide for encrypted software.</li>
+            <li><a href="https://overthewire.org/wargames/"><b>Security practice games</b></a> &mdash; Games to develop security practices.</li>
+            <li><a href="http://www.brightfort.com/spywareblaster.html"><b>SpywareBlaster</b></a> &mdash; Pre-emptive blocking protection.</li>
+            <li><a href="https://spyware.neocities.org/"><b>SpywareWatchdog</b></a> &mdash; Tool for spyware awareness.</li>
+            <li><a href="https://torproject.org/"><b>Tor</b></a> &mdash; Free anonymizing proxy with SOCKS interface.</li>
+            <li><a href="https://zeronet.io/"><b>ZeroNet</b></a> &mdash; Open, free and uncensorable websites.</li>
+          </ul>
+        </section>
+
+      </main>
+
+      <footer id="contact" class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+function handleSearchSubmit(e) {
+  e.preventDefault();
+  var q = document.getElementById('search-input').value.trim().toLowerCase();
+  var category = document.getElementById('search-category').value;
+  var topics = [
+    { label: 'browsers', id: 'topic-browsers' }, { label: 'data', id: 'topic-data' },
+    { label: 'cloud', id: 'topic-cloud' }, { label: 'ai', id: 'topic-ai' },
+    { label: 'mobile', id: 'topic-mobile' }, { label: 'device', id: 'topic-mobile' },
+    { label: 'network', id: 'topic-networks' }, { label: 'os', id: 'topic-os' },
+    { label: 'auth', id: 'topic-auth' }, { label: '2fa', id: 'topic-auth' },
+    { label: 'vpn', id: 'topic-vpns' }, { label: 'communication', id: 'topic-comm' },
+    { label: 'storage', id: 'topic-storage' }, { label: 'surveil', id: 'topic-surveillance' },
+  ];
+  var categorySections = { All: 'privacy-security', Guides: 'privacy-security', Projects: 'projects' };
+  var msg = document.getElementById('search-message');
+  function scrollToId(id) {
+    var el = document.getElementById(id);
+    if (!el) return false;
+    var top = el.getBoundingClientRect().top + window.scrollY - 90;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+    return true;
+  }
+  if (q) {
+    var match = topics.find(function(t){ return t.label.indexOf(q) !== -1 || q.indexOf(t.label) !== -1; });
+    if (match) {
+      scrollToId(match.id);
+      msg.textContent = 'Showing results for "' + q + '"';
+    } else {
+      msg.textContent = 'No matches for "' + q + '"';
+    }
+  } else {
+    var sectionId = categorySections[category] || 'privacy-security';
+    scrollToId(sectionId);
+    msg.textContent = 'Showing ' + category;
+  }
+  msg.style.display = 'block';
+  return false;
+}
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

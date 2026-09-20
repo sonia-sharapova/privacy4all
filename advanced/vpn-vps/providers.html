@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VPN &amp; VPS Providers — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#choosing" class="p4a-6">Choosing a VPN Provider</a>
+        <a href="#recommended" class="p4a-6">VPN Provider Comparison</a>
+        <a href="#vps-providers" class="p4a-6">VPS Providers</a>
+      </nav>
+
+      <div class="p4a-4">GUIDE</div>
+      <div class="p4a-7">
+        <a href="index.html" class="p4a-8">&larr; Guide Overview</a>
+        <a href="vpn-fundamentals.html" class="p4a-8">VPN Fundamentals</a>
+        <a href="vpn-configuration.html" class="p4a-8">Configure &amp; Lock Down</a>
+        <a href="vps-setup.html" class="p4a-8">VPS &amp; Self-Hosting</a>
+        <a href="resources.html" class="p4a-8">Test, Glossary &amp; Resources</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../../index.html" style="color:inherit;">Home</a> / <a href="index.html" style="color:inherit;">VPNs &amp; VPS Guide</a> / Providers</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section class="p4a-1v">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="index.html">&larr; guide overview</a></div>
+            <h1 class="p4a-1x">VPN &amp; VPS Providers</h1>
+          </div>
+          <div class="p4a-1y">
+            READ&nbsp;TIME&nbsp;6&nbsp;MIN
+          </div>
+        </section>
+
+        <p class="p4a-21">Who to actually trust with your traffic, and who to rent a server from. See <a href="vpn-fundamentals.html">Part 1: VPN Fundamentals</a> for what a VPN does and doesn't protect before picking one.</p>
+
+        <!-- CHOOSING A VPN PROVIDER -->
+        <section id="choosing" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">CHOOSING A TRUSTWORTHY VPN PROVIDER</h2>
+          <p class="p4a-21">Not all VPNs are equal, and a lot of VPN marketing is misleading. Before you trust one, ask three simple questions: Is it reliably accessible? Does it log what you do? And is it self-hosted or run by a trustworthy non-profit? If a VPN logs everything, there is no real difference between it and your ISP.</p>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; gap: 20px;">
+            <p style="font-size:14px; letter-spacing:0.1em; margin:0;">Checklist of good signs:</p>
+            <ul style="margin:0; padding-left:20px; font-size:14px; line-height:1.9; color:#333;">
+              <li>The provider has survived a real police raid or legal seizure of its servers, and no usable logs were recovered (cited examples: Mullvad, ExpressVPN).</li>
+              <li>It accepts cash-equivalent or cryptocurrency payment and does not require personal information to create an account.</li>
+              <li>It supports open, auditable protocols &mdash; specifically OpenVPN and/or WireGuard &mdash; rather than forcing you into a closed, proprietary app.</li>
+              <li>It publishes transparency reports and clear, specific answers about server locations, rather than inflated "virtual server" counts.</li>
+              <li>It offers a genuine, well-documented kill switch that blocks all traffic if the VPN connection drops.</li>
+              <li>It owns or directly controls its server hardware (bare metal, sometimes running entirely in RAM) rather than only renting virtual servers from third parties.</li>
+            </ul>
+          </div>
+
+          <div class="p4a-27" style="margin-top:24px;">
+            <p><b>A note on no-log VPNs:</b> a "no-log" (non-logging) VPN promises not to record your activity. The catch is that anyone can claim it, so look for proof &mdash; independent audits, and ideally a real police raid that came up empty. Mullvad is the standout, with more than ten independent audits and a Swedish police raid that seized nothing because there was nothing to seize. Treat other no-log claims with more caution; a no-log claim is only worth as much as the audit behind it.</p>
+          </div>
+        </section>
+
+        <!-- VPN PROVIDER COMPARISON -->
+        <section id="recommended" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">PROVIDERS WITH GOOD REVIEWS</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="p4a-22-4">
+            <div class="p4a-23">
+              <div class="p4a-24">Mullvad</div>
+              <p class="p4a-25" style="margin-bottom:8px;">No personal information needed, random account numbers, accepts Amazon scratch cards, open-source client, "Local Network Sharing" feature, moved from OpenVPN to WireGuard.</p>
+              <a href="https://mullvad.net/en" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">mullvad.net &rarr;</a>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-24">IVPN</div>
+              <p class="p4a-25" style="margin-bottom:8px;">No personal information required, custom DNS support, multi-hop capability, open-source software, published server status, documented kill switch.</p>
+              <a href="https://www.ivpn.net/en/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">ivpn.net &rarr;</a>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-24">ProtonVPN</div>
+              <p class="p4a-25" style="margin-bottom:8px;">Employee-owned, offers multi-hop "Secure Core" servers and a Tor-over-VPN option, uses diskless servers &mdash; though it scored poorly on one location-honesty test cited in the source.</p>
+              <a href="https://protonvpn.com/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">protonvpn.com &rarr;</a>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-24">Windscribe</div>
+              <p class="p4a-25" style="margin-bottom:8px;">Honest marketing, a DNS-based ad/tracker blocking feature called R.O.B.E.R.T, and a responsive security team.</p>
+              <a href="https://windscribe.com/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">windscribe.com &rarr;</a>
+            </div>
+          </div>
+
+          <p class="p4a-2b" style="margin-top:14px;">One <a href="https://www.reddit.com/r/vpnreviews/comments/1hurluo/mullvad_vpn_is_overrated/" target="_blank" rel="noopener">Reddit thread</a> argues Mullvad is overrated &mdash; worth reading both sides.</p>
+          </div>
+
+          <h2 class="p4a-20 p4a-20-tight" style="margin-top:32px;">PROVIDERS AND PATTERNS FLAGGED AS RISKY</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="p4a-2d">
+            <table>
+              <thead>
+                <tr><th>PROVIDER / PATTERN</th><th>WHY IT'S FLAGGED</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NordVPN</td>
+                  <td>Has routed traffic through residential IPs from questionable sources and lacks transparency reporting.</td>
+                </tr>
+                <tr>
+                  <td>ExpressVPN &amp; CyberGhost</td>
+                  <td>Both owned by Kape Technologies, a company with a past tied to malware distribution.</td>
+                </tr>
+                <tr>
+                  <td>Google's built-in VPN</td>
+                  <td>Permanently changes Windows DNS settings.</td>
+                </tr>
+                <tr>
+                  <td>Free VPNs in general</td>
+                  <td>Exceptions: the limited free tiers from ProtonVPN, TunnelBear, and Windscribe. RiseUp is a fully free VPN with positive reviews.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </section>
+
+        <!-- VPS PROVIDERS -->
+        <section id="vps-providers" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 class="p4a-20">VPS PROVIDERS</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <p class="p4a-21">Unlike VPNs, a VPS is less about trust and more about price, reliability, and how much of the setup is spelled out for you. The <a href="vps-setup.html">VPS &amp; Self-Hosting</a> walkthrough uses <b>Vultr</b> as its example.</p>
+
+          <div class="p4a-23">
+            <div class="p4a-24">Vultr</div>
+            <p class="p4a-25" style="margin-bottom:8px;">Cloud Compute (shared) plans starting around $5/month for 1GB RAM, with data centers in many regions and new accounts often getting promotional credit. The cheapest ($2.50/month) tier is IPv6-only and limited to a few locations &mdash; skip it for a normal website. See <a href="vps-setup.html#rent-server">Rent &amp; Set Up the Server</a> for the full walkthrough.</p>
+            <a href="https://my.vultr.com/deploy-beta/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">my.vultr.com &rarr;</a>
+          </div>
+
+          <div class="p4a-27" style="margin-top:24px;">
+            <p>The same ideas apply to other VPS providers and registrars, with minor differences in the menus &mdash; the setup steps in <a href="vps-setup.html">Part 4</a> aren't Vultr-specific.</p>
+          </div>
+          </div>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav" style="justify-content: space-between;">
+          <a href="vpn-fundamentals.html" class="p4a-glass-btn p4a-btn-home">&larr; VPN Fundamentals</a>
+          <a href="vpn-configuration.html" class="p4a-glass-btn p4a-btn-nav">Next: Configure &amp; Lock Down &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Checklist — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .pcl-download { position: relative; }
+  .pcl-download-trigger { padding: 10px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; }
+  .pcl-download-menu {
+    position: absolute; top: calc(100% + 8px); right: 0; z-index: 20; min-width: 200px;
+    display: none; flex-direction: column; padding: 8px;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.7); border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.16);
+  }
+  .pcl-download.open .pcl-download-menu { display: flex; }
+  .pcl-download-item {
+    display: block; width: 100%; box-sizing: border-box; text-align: left; padding: 10px 14px;
+    border: none; background: transparent; border-radius: 8px; cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #1b1b1b;
+  }
+  .pcl-download-item:hover { background: rgba(0,0,0,0.06); }
+  html[data-night="on"] .pcl-download-menu { background: rgba(30,32,38,0.92); border-color: rgba(255,255,255,0.14); }
+  html[data-night="on"] .pcl-download-item { color: #e7e7ea; }
+  html[data-night="on"] .pcl-download-item:hover { background: rgba(255,255,255,0.08); }
+
+  @media print {
+    .p4a-2, .p4a-c, .pcl-download, .p4a-2c, .p4a-1q { display: none !important; }
+    .p4a-1 { display: block !important; }
+    .p4a-a { margin: 0 !important; }
+    .p4a-p { background: none !important; }
+    .p4a-q { max-width: 100% !important; padding: 0 !important; }
+    .p4a-b { display: none !important; }
+    .p4a-1g, .p4a-u, .p4a-1z { box-shadow: none !important; backdrop-filter: none !important; background: none !important; }
+    .p4a-2h { border-top-color: #ccc !important; }
+    .p4a-2i { border-color: #000 !important; }
+    .p4a-2i.checked { background: #fff !important; color: #000 !important; }
+    .p4a-2j.checked { color: #000 !important; text-decoration: line-through; }
+    a[href]:after { content: ""; }
+  }
+</style>
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#tier-1" class="p4a-6">Low-Energy Fixes</a>
+        <a href="#tier-2" class="p4a-6">A Little More Work</a>
+        <a href="#tier-3" class="p4a-6">More Complex</a>
+        <a href="#tier-4" class="p4a-6">Ongoing Habits</a>
+        <a href="#protest" class="p4a-6">Protest Privacy</a>
+        <a href="#border" class="p4a-6">Border Privacy</a>
+      </nav>
+
+      <div class="p4a-4">GO DEEPER</div>
+      <div class="p4a-7">
+        <a href="../browser-privacy/index.html" class="p4a-8">Browser Privacy</a>
+        <a href="password-check.html" class="p4a-8">Accounts &amp; Authentication</a>
+        <a href="delete-yourself.html" class="p4a-8">Personal Data &amp; Tracking</a>
+        <a href="../advanced/vpn-vps/vpn-fundamentals.html" class="p4a-8">Networks &amp; VPNs</a>
+        <a href="takedown-templates.html" class="p4a-8">Takedown Templates</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../index.html" style="color:inherit;">Home</a> / Privacy Checklist</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section class="p4a-1v" style="margin-bottom: 12px;">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="../index.html">&larr; back home</a></div>
+            <h1 class="p4a-1x">Privacy Checklist</h1>
+          </div>
+          <div class="pcl-download" id="pcl-download">
+            <button type="button" class="p4a-glass-btn p4a-btn-action pcl-download-trigger" id="pcl-download-trigger">&#8595; Download &#9662;</button>
+            <div class="pcl-download-menu">
+              <button type="button" class="pcl-download-item" id="pcl-print">Print / Save as PDF</button>
+              <button type="button" class="pcl-download-item" id="pcl-download-txt">Download .txt</button>
+              <button type="button" class="pcl-download-item" id="pcl-download-doc">Download .doc</button>
+            </div>
+          </div>
+        </section>
+
+        <p class="p4a-21">A simple, checkable list to get you meaningfully more secure and private, starting today. Work through the general tiers in order &mdash; each builds on the last, and none requires technical skill &mdash; then jump to the situational categories below if they apply to you. Check items off as you go; for the reasoning behind any item, the full guides (linked in the sidebar) go deeper.</p>
+
+        <!-- TABLE OF CONTENTS -->
+        <section class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight" style="font-size: 15px;">JUMP TO A CATEGORY</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 28px;">
+            <nav class="tdt-toc">
+              <a href="#tier-1">
+                <span class="tdt-toc-label">Low-Energy Fixes</span>
+              </a>
+              <a href="#tier-2">
+                <span class="tdt-toc-label">A Little More Work</span>
+              </a>
+              <a href="#tier-3">
+                <span class="tdt-toc-label">More Complex</span>
+              </a>
+              <a href="#tier-4">
+                <span class="tdt-toc-label">Ongoing Habits</span>
+              </a>
+              <a href="#protest">
+                <span class="tdt-toc-label">Protest Privacy</span>
+              </a>
+              <a href="#border">
+                <span class="tdt-toc-label">Border Privacy</span>
+              </a>
+            </nav>
+          </div>
+        </section>
+
+        <div id="checklist-tiers"></div>
+
+        <div class="p4a-2c p4a-2c-nav p4a-2c-left">
+          <a href="../index.html" class="p4a-glass-btn p4a-btn-home">&larr; Back to Home</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../index.html';
+});
+
+(function () {
+  var tiers = [
+    { id: 'tier-1', label: 'LOW-ENERGY FIXES', items: [
+      'Install uBlock Origin in your main browser. Confirm the developer is Raymond Hill ("gorhill") before installing.',
+      'Set your default search engine to Mojeek or DuckDuckGo instead of Google or Bing.',
+      'Sign up for a password manager (Bitwarden is a solid free starting point).',
+      'Change your email and banking passwords to unique, manager-generated ones first, since those accounts matter most.',
+      'Turn on two-factor authentication with an authenticator app (not SMS) on your email account.',
+      'Turn off your phone’s advertising ID. Android: Settings, search "advertising ID," delete it. iOS: Settings, Privacy & Security, Tracking, turn off "Allow Apps to Request to Track."',
+      'Check your email address at haveibeenpwned.com to see if it’s already been exposed in a breach.',
+      'Stop using "Log in with Google/Facebook" on other websites going forward; use your password manager instead.'
+    ]},
+    { id: 'tier-2', label: 'A LITTLE MORE WORK, BUT STILL EASY', items: [
+      'Turn on 2FA with an authenticator app on your password manager, bank, and any other account you’d consider catastrophic to lose.',
+      'Install Signal and move at least one sensitive conversation to it.',
+      'Set up email aliasing (Firefox Relay or DuckDuckGo Email Protection) and use a new alias the next time a site asks for your email.',
+      'Opt out of the highest-priority data brokers using the Big Ass Data Broker Opt-Out List (BADBOOL); start with its top tier of roughly 14 sites.',
+      'Freeze your credit for free with Experian, Equifax, TransUnion, Innovis, and ChexSystems.',
+      'Turn off Google Location History, or set it to auto-delete every few months, at myaccount.google.com/activitycontrols/location.',
+      'Review your phone’s app permissions for location, camera, microphone, and contacts, and turn off anything you don’t actively need.',
+      'Set Firefox or LibreWolf’s Enhanced Tracking Protection to Strict (or confirm Brave’s Shields are on, which they are by default).',
+      'Turn on DNS over HTTPS in your browser’s network settings.',
+      'Decline notification permission requests from websites by default.'
+    ]},
+    { id: 'tier-3', label: 'MORE COMPLEX, MIGHT NOT BE NEEDED FOR EVERYONE', items: [
+      'Get a hardware security key (like a YubiKey) for your email and password manager if you’re ready for the strongest available 2FA tier.',
+      'Scrub metadata from photos before sharing anything sensitive (use your phone’s built-in "remove location" share option, or a tool like ExifCleaner).',
+      'Sign up for an encrypted cloud storage provider (Proton Drive, Sync.com) or wrap your existing cloud storage with Cryptomator.',
+      'Set up a real local backup (external drive or NAS), and actually test restoring a file from it once.',
+      'Get a secondary phone number (TextNow, Hushed, or MySudo) for lower-stakes sign-ups, so your real number isn’t everywhere.',
+      'Check your mobile carrier’s privacy dashboard and opt out of ad targeting and data sharing.',
+      'Run coveryourtracks.eff.org and globalprivacycontrol.org to confirm your browser protections are actually working.',
+      'Set up your IRS Identity Protection PIN at irs.gov and check your Social Security account at ssa.gov.',
+      'Consider a VPN from a provider with a verified no-logs track record (Mullvad or IVPN, for example) if hiding your activity from your ISP matters to you.'
+    ]},
+    { id: 'tier-4', label: 'ONGOING HABITS AND PRACTICES', items: [
+      'Re-run coveryourtracks.eff.org and globalprivacycontrol.org after any browser or OS update.',
+      'Check haveibeenpwned.com every few months for new breach exposures.',
+      'Revisit your BADBOOL opt-outs yearly — data brokers tend to repopulate listings over time.',
+      'Review app and browser extension permissions quarterly, and remove anything you no longer use.',
+      'Rotate the password for any account involved in a new breach immediately.',
+      'Keep your password manager, OS, and browser updated to the latest version.'
+    ]},
+    { id: 'protest', label: 'PROTEST PRIVACY', items: [
+      'Clean your phone of sensitive content.',
+      'Remove social media apps you don’t need.',
+      'Delete messages related to the protest.',
+      'Remove contact names for fellow protesters (use nicknames).',
+      'Use a long passcode (6+ characters with letters and numbers).',
+      'Turn OFF Face ID (iPhone) / fingerprint unlock (Android).',
+      'Turn off location services.',
+      'Turn off Bluetooth.',
+      'Turn off WiFi when not needed.',
+      'Consider a secondary "sanitized" phone.',
+      'Wear a mask (health + facial recognition evasion).',
+      'Don’t drive your own car (license plate scanners).',
+      'Don’t go alone — go with a group.',
+      'If using a burner/secondary phone, use a separate phone number (eSIM works).',
+      'Don’t connect the burner phone to WiFi at home, and never power it on at home.',
+      'Never have both phones powered on at the same location.',
+      'Don’t save WiFi networks on the burner phone; use a long passcode with no biometrics.',
+      'At the event, keep your phone in airplane mode if possible.',
+      'Use encrypted messaging (Signal, not SMS).',
+      'Don’t post real-time location updates.',
+      'Be aware of surveillance cameras.',
+      'Recognize flock cameras (license plate readers).'
+    ]},
+    { id: 'border', label: 'BORDER PRIVACY', items: [
+      'Know your rights (you can refuse to unlock your phone).',
+      'Travel with a "sanitized" phone for your trip.',
+      'Use separate communication accounts on your travel phone.',
+      'Consider wiping the phone before travel and restoring after.'
+    ]}
+  ];
+
+  var done = {};
+
+  var container = document.getElementById('checklist-tiers');
+
+  tiers.forEach(function (tier) {
+    var section = document.createElement('section');
+    section.className = 'p4a-1z';
+    section.id = tier.id;
+
+    var card = document.createElement('div');
+    card.className = 'p4a-1g';
+    card.style.gridTemplateColumns = '1fr';
+    card.style.padding = '28px';
+    section.appendChild(card);
+
+    var head = document.createElement('div');
+    head.className = 'p4a-2e';
+
+    var h2 = document.createElement('h2');
+    h2.className = 'p4a-20';
+    h2.style.margin = '0';
+    h2.textContent = tier.label;
+    head.appendChild(h2);
+
+    var progressEl = document.createElement('span');
+    progressEl.className = 'p4a-2f';
+    head.appendChild(progressEl);
+
+    card.appendChild(head);
+
+    var list = document.createElement('div');
+    list.className = 'p4a-2g';
+
+    function updateProgress() {
+      var count = tier.items.filter(function (_, i) { return !!done[tier.id + '-' + i]; }).length;
+      progressEl.textContent = count + ' / ' + tier.items.length + ' done';
+    }
+
+    tier.items.forEach(function (text, i) {
+      var key = tier.id + '-' + i;
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'p4a-2h';
+
+      var box = document.createElement('span');
+      box.className = 'p4a-2i' + (done[key] ? ' checked' : '');
+      box.textContent = done[key] ? '✓' : '';
+
+      var span = document.createElement('span');
+      span.className = 'p4a-2j' + (done[key] ? ' checked' : '');
+      span.textContent = text;
+
+      btn.addEventListener('click', function () {
+        done[key] = !done[key];
+        box.classList.toggle('checked', done[key]);
+        box.textContent = done[key] ? '✓' : '';
+        span.classList.toggle('checked', done[key]);
+        updateProgress();
+      });
+
+      btn.appendChild(box);
+      btn.appendChild(span);
+      list.appendChild(btn);
+    });
+
+    card.appendChild(list);
+    container.appendChild(section);
+    updateProgress();
+  });
+
+  function tierLabel(tier) {
+    return tier.label.charAt(0) + tier.label.slice(1).toLowerCase();
+  }
+
+  function buildPlainText() {
+    var lines = ['PRIVACY CHECKLIST', 'privacy4all — because accessible privacy shouldn\'t come at a cost.', ''];
+    tiers.forEach(function (tier) {
+      lines.push(tierLabel(tier).toUpperCase());
+      lines.push('-'.repeat(tierLabel(tier).length));
+      tier.items.forEach(function (text) {
+        lines.push('[ ] ' + text);
+      });
+      lines.push('');
+    });
+    return lines.join('\n');
+  }
+
+  function buildDocHtml() {
+    var body = '<h1 style="font-family:Georgia,serif;">Privacy Checklist</h1>' +
+      '<p style="font-family:Arial,sans-serif;font-size:11pt;color:#555;">privacy4all &mdash; because accessible privacy shouldn\'t come at a cost.</p>';
+    tiers.forEach(function (tier) {
+      body += '<h2 style="font-family:Georgia,serif;font-size:14pt;margin-top:24pt;">' + tierLabel(tier) + '</h2>';
+      body += '<ul style="font-family:Arial,sans-serif;font-size:11pt;line-height:1.6;">';
+      tier.items.forEach(function (text) {
+        body += '<li>&#9633; ' + text + '</li>';
+      });
+      body += '</ul>';
+    });
+    return '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">' +
+      '<head><meta charset="utf-8"><title>Privacy Checklist</title></head><body>' + body + '</body></html>';
+  }
+
+  function download(filename, content, mime) {
+    var blob = new Blob([content], { type: mime });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  var downloadMenu = document.getElementById('pcl-download');
+  var downloadTrigger = document.getElementById('pcl-download-trigger');
+  downloadTrigger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    downloadMenu.classList.toggle('open');
+  });
+  document.addEventListener('click', function (e) {
+    if (!downloadMenu.contains(e.target)) downloadMenu.classList.remove('open');
+  });
+
+  document.getElementById('pcl-print').addEventListener('click', function () {
+    downloadMenu.classList.remove('open');
+    window.print();
+  });
+  document.getElementById('pcl-download-txt').addEventListener('click', function () {
+    downloadMenu.classList.remove('open');
+    download('privacy-checklist.txt', buildPlainText(), 'text/plain;charset=utf-8');
+  });
+  document.getElementById('pcl-download-doc').addEventListener('click', function () {
+    downloadMenu.classList.remove('open');
+    download('privacy-checklist.doc', buildDocHtml(), 'application/msword;charset=utf-8');
+  });
+})();
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

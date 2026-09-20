@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test, Glossary &amp; Resources — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#testing" class="p4a-6">Testing Checklist</a>
+        <a href="#wireshark" class="p4a-6">Analyze with Wireshark</a>
+        <a href="#faq" class="p4a-6">FAQ</a>
+        <a href="#glossary" class="p4a-6">Glossary</a>
+        <a href="#further-reading" class="p4a-6">Further Reading</a>
+      </nav>
+
+      <div class="p4a-4">GUIDE</div>
+      <div class="p4a-7">
+        <a href="index.html" class="p4a-8">&larr; Guide Overview</a>
+        <a href="vpn-fundamentals.html" class="p4a-8">VPN Fundamentals</a>
+        <a href="providers.html" class="p4a-8">VPN &amp; VPS Providers</a>
+        <a href="vpn-configuration.html" class="p4a-8">Configure &amp; Lock Down</a>
+        <a href="vps-setup.html" class="p4a-8">VPS &amp; Self-Hosting</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../../index.html" style="color:inherit;">Home</a> / <a href="index.html" style="color:inherit;">VPNs &amp; VPS Guide</a> / Test, Glossary &amp; Resources</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section class="p4a-1v">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="index.html">&larr; guide overview</a></div>
+            <h1 class="p4a-1x">Test, Glossary &amp; Resources</h1>
+          </div>
+        </section>
+
+        <!-- TESTING CHECKLIST -->
+        <section id="testing" class="p4a-1z" style="border-top: none; padding-top: 0;">
+          <h2 class="p4a-20 p4a-20-tight">TESTING CHECKLIST</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <p class="p4a-21">Once your VPN is configured, confirm it's actually doing what you think it's doing.</p>
+          <ul style="margin:0; padding-left:20px; font-size:14px; line-height:1.9; color:#333;">
+            <li><b>Close or disable other connections.</b> Before connecting, close all browsers and applications, and disable any network interface (Wi-Fi, cellular) you aren't actively using, to reduce the chance of traffic slipping outside the tunnel.</li>
+            <li><b>Check for leaks.</b> Visit <a href="https://ipleak.net/" target="_blank" rel="noopener">ipleak.net</a> after connecting to check for IP, DNS, and WebRTC leaks in one place.</li>
+            <li><b>Check your public IP address.</b> You can check it at <a href="https://ipchicken.com/" target="_blank" rel="noopener">ipchicken.com</a>, or your VPN provider's own IP-checking page.</li>
+            <li><b>Check DNS.</b> Run <code>nslookup</code> commands to confirm DNS queries are going through the VPN's DNS servers, not your ISP's.</li>
+            <li><b>Check the kill switch.</b> Confirm it works by manually disconnecting the VPN process and checking whether your internet access stops immediately.</li>
+            <li><b>Check isolation.</b> If available, use a network-scanning app like Fing to confirm your device is properly isolated from other devices on the local network while the VPN is active.</li>
+          </ul>
+          </div>
+        </section>
+
+        <!-- WIRESHARK -->
+        <section id="wireshark" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">ANALYZE YOUR OWN TRAFFIC WITH WIRESHARK</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <p class="p4a-21" style="margin-bottom:0;">Wireshark is a free, open-source tool that lets you watch your own traffic in real time. It captures each packet's origin, destination, and protocol, and you can sort by bytes to see what's eating up the most time and data. It's a good way to confirm with your own eyes that your traffic is going where you think it is.</p>
+
+          <div class="p4a-27" style="margin-top:24px;">
+            <p><b>Protect your privates, and keep your information safe from net perverts and lurkers.</b></p>
+          </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="p4a-1z">
+          <h2 class="p4a-20">FAQ</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div>
+            <details class="p4a-details" open>
+              <summary>Is a VPN enough on its own?</summary>
+              <p>No. A VPN hides your IP address and encrypts traffic from your ISP, but it does nothing about cookies, browser fingerprinting, or the tracking scripts a site loads once your traffic arrives. Pair it with the <a href="../../browser-privacy/index.html">Browser Privacy Guide</a> for the other half of the picture.</p>
+            </details>
+            <details class="p4a-details">
+              <summary>Should I trust a "no-log" claim?</summary>
+              <p>Only as far as the audit behind it. Anyone can claim "no logs" &mdash; look for independent audits and, ideally, a real police raid that came up empty. See <a href="vpn-fundamentals.html#choosing">Choosing a Provider</a>.</p>
+            </details>
+            <details class="p4a-details">
+              <summary>Is a self-hosted VPN more private than a commercial one?</summary>
+              <p>Not necessarily. A self-hosted VPN on your own VPS gives you a single IP used only by you, which is actually more traceable &mdash; commercial VPNs mix many users' traffic on shared IPs, giving you crowd anonymity. Self-hosting buys you control, not anonymity. See <a href="vpn-fundamentals.html#self-hosted">Self-Hosted VPNs</a>.</p>
+            </details>
+            <details class="p4a-details">
+              <summary>Do I need to test my VPN after setting it up?</summary>
+              <p>Yes, always. A misconfigured VPN can leak your real IP, DNS queries, or WebRTC data with no visible sign anything is wrong. Run through the <a href="#testing">Testing Checklist</a> above every time you change your setup.</p>
+            </details>
+            <details class="p4a-details">
+              <summary>Why does my VPN provider matter if the connection is encrypted?</summary>
+              <p>Encryption protects your traffic from your ISP and anyone snooping on the network in between &mdash; it does not protect you from the VPN provider itself, since your traffic is decrypted at their server before going to its destination. You're shifting who can see your activity, not eliminating visibility altogether.</p>
+            </details>
+          </div>
+          </div>
+        </section>
+
+        <!-- GLOSSARY -->
+        <section id="glossary" class="p4a-1z">
+          <h2 class="p4a-20">GLOSSARY</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="p4a-22">
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">VPN (Virtual Private Network)</div>
+              <p class="p4a-25">A service that encrypts your device's traffic and routes it through a provider's server, so websites and your ISP see the provider's server instead of you directly.</p>
+            </div>
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">VPS (Virtual Private Server)</div>
+              <p class="p4a-25">A virtualized slice of a physical server, giving you your own dedicated operating system and resources with full control, at a lower cost than a full dedicated server.</p>
+            </div>
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">OpenVPN / WireGuard</div>
+              <p class="p4a-25">Two open, independently auditable VPN protocols, contrasted with closed, proprietary VPN apps.</p>
+            </div>
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">DNS Leak</div>
+              <p class="p4a-25">When your device's domain-lookup requests bypass the VPN tunnel and go to your normal ISP's DNS servers instead of the VPN's, potentially revealing your activity even while otherwise connected.</p>
+            </div>
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">WebRTC Leak</div>
+              <p class="p4a-25">A browser technology that can reveal your real IP address even while a VPN is active, unless specifically disabled or blocked.</p>
+            </div>
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">Kill Switch</div>
+              <p class="p4a-25">A VPN feature (or a manually configured firewall default, as in <a href="vpn-configuration.html">Configure &amp; Lock Down</a>) that blocks all internet traffic if the VPN connection drops, preventing accidental exposure.</p>
+            </div>
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">Split Tunneling</div>
+              <p class="p4a-25">A VPN configuration that lets specific sites or apps bypass the VPN tunnel intentionally, useful for sites that block VPN traffic outright.</p>
+            </div>
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">Multi-Hop / Double VPN</div>
+              <p class="p4a-25">Routing traffic through two VPN servers in different locations for additional protection against timing-based tracking.</p>
+            </div>
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">Five Eyes</div>
+              <p class="p4a-25">An intelligence-sharing alliance among the US, UK, Canada, Australia, and New Zealand &mdash; a reason some privacy-focused users prefer VPN providers based outside those countries.</p>
+            </div>
+            <div class="p4a-3c">
+              <div class="p4a-3c-title">Monero</div>
+              <p class="p4a-25">A cryptocurrency designed for stronger transaction privacy than Bitcoin, treated as a stronger payment-privacy signal for both VPN and VPS providers.</p>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <!-- FURTHER READING -->
+        <section id="further-reading" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 28px;">
+          <h2 class="p4a-20">FURTHER READING</h2>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 12px;">CORE SOURCES</div>
+          <ul style="margin:0 0 28px; padding-left:18px; display:flex; flex-direction:column; gap:8px; font-size:14px; letter-spacing:0.05em; line-height:1.6; color:#555;">
+            <li><a href="https://digdeeper.neocities.org/articles/vpn.xhtml" target="_blank" rel="noopener"><b>VPN Basics</b></a> &mdash; digdeeper.neocities.org</li>
+            <li><a href="https://defensivecomputingchecklist.com/vpn.php" target="_blank" rel="noopener"><b>Defensive Computing Checklist</b></a> &mdash; VPN section</li>
+            <li><a href="https://ipleak.net/" target="_blank" rel="noopener"><b>ipleak.net</b></a> &mdash; combined IP, DNS, and WebRTC leak test</li>
+            <li><a href="https://digdeeper.neocities.org/articles/vps.xhtml" target="_blank" rel="noopener"><b>VPS Reviews and Recommendations</b></a> &mdash; digdeeper.neocities.org</li>
+          </ul>
+
+          <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 12px;">VPN GUIDES &amp; TUTORIALS</div>
+          <ul style="margin:0 0 28px; padding-left:18px; display:flex; flex-direction:column; gap:8px; font-size:14px; letter-spacing:0.05em; line-height:1.6; color:#555;">
+            <li><a href="https://thatoneprivacysite.net/vpn-section/" target="_blank" rel="noopener"><b>That One Privacy Site</b></a> &mdash; VPN comparisons</li>
+            <li><a href="https://www.reddit.com/r/VPN/comments/4iho8e/that_one_privacy_guys_guide_to_choosing_the_best/" target="_blank" rel="noopener"><b>That One Privacy Guy's Guide to Choosing the Best VPN</b></a></li>
+            <li><a href="https://www.reddit.com/r/VPN/wiki/index" target="_blank" rel="noopener"><b>/r/VPN Wiki</b></a> &mdash; FAQ-type resource</li>
+            <li><a href="https://ssd.eff.org/en/module/choosing-vpn-thats-right-you" target="_blank" rel="noopener"><b>EFF: Choosing the VPN That's Right for You</b></a></li>
+            <li><a href="https://torrentfreak.com/vpn-services-keep-anonymous-2018/" target="_blank" rel="noopener"><b>TorrentFreak: Which VPN Services Keep You Anonymous</b></a></li>
+            <li><a href="https://www.privacytools.io/" target="_blank" rel="noopener"><b>privacytools.io</b></a></li>
+            <li><a href="https://wiki.archlinux.org/index.php/VPN_over_SSH" target="_blank" rel="noopener"><b>VPN Over SSH</b></a> &mdash; ArchWiki "poor man's VPN"</li>
+            <li><a href="https://www.reddit.com/r/VPNTorrents" target="_blank" rel="noopener"><b>/r/VPNTorrents</b></a></li>
+          </ul>
+
+          <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 12px;">VPN SUBSCRIPTION SERVICES</div>
+          <ul style="margin:0 0 28px; padding-left:18px; display:flex; flex-direction:column; gap:8px; font-size:14px; letter-spacing:0.05em; line-height:1.6; color:#555;">
+            <li><a href="https://www.privateinternetaccess.com/" target="_blank" rel="noopener"><b>Private Internet Access</b></a></li>
+            <li><a href="https://mullvad.net/en/" target="_blank" rel="noopener"><b>Mullvad</b></a></li>
+            <li><a href="https://protonvpn.com/" target="_blank" rel="noopener"><b>ProtonVPN</b></a></li>
+            <li><a href="https://nordvpn.com/" target="_blank" rel="noopener"><b>NordVPN</b></a></li>
+            <li><a href="https://windscribe.com/" target="_blank" rel="noopener"><b>Windscribe</b></a></li>
+            <li><a href="https://www.expressvpn.com/" target="_blank" rel="noopener"><b>ExpressVPN</b></a></li>
+          </ul>
+
+          <div style="font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 12px;">SELF-HOSTED VPN SOFTWARE</div>
+          <ul style="margin:0; padding-left:18px; display:flex; flex-direction:column; gap:8px; font-size:14px; letter-spacing:0.05em; line-height:1.6; color:#555;">
+            <li><a href="https://github.com/ntop/n2n" target="_blank" rel="noopener"><b>n2n</b></a> &mdash; peer-to-peer VPN</li>
+            <li><a href="https://peervpn.net/" target="_blank" rel="noopener"><b>PeerVPN</b></a></li>
+            <li><a href="https://openvpn.net/" target="_blank" rel="noopener"><b>OpenVPN</b></a></li>
+            <li><a href="https://github.com/slackhq/nebula" target="_blank" rel="noopener"><b>Nebula</b></a></li>
+            <li><a href="https://pritunl.com/" target="_blank" rel="noopener"><b>Pritunl</b></a></li>
+            <li><a href="https://www.wireguard.com/" target="_blank" rel="noopener"><b>WireGuard</b></a></li>
+            <li><a href="https://github.com/sshuttle/sshuttle" target="_blank" rel="noopener"><b>sshuttle</b></a> &mdash; poor man's VPN</li>
+            <li><a href="https://www.zerotier.com/" target="_blank" rel="noopener"><b>ZeroTier</b></a></li>
+            <li><a href="https://www.getoutline.org/" target="_blank" rel="noopener"><b>Outline</b></a> by Alphabet</li>
+            <li><a href="https://mysterium.network/" target="_blank" rel="noopener"><b>Mysterium Network</b></a></li>
+            <li><a href="https://tinc-vpn.org/" target="_blank" rel="noopener"><b>tinc</b></a> &mdash; mesh routing</li>
+            <li><a href="https://www.infradead.org/openconnect/" target="_blank" rel="noopener"><b>OpenConnect</b></a></li>
+            <li><a href="https://shadowsocks.org/" target="_blank" rel="noopener"><b>Shadowsocks</b></a></li>
+          </ul>
+          </div>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav" style="justify-content: space-between;">
+          <a href="vps-setup.html" class="p4a-glass-btn p4a-btn-home">&larr; VPS &amp; Self-Hosting</a>
+          <a href="index.html" class="p4a-glass-btn p4a-btn-nav">Back to Guide Overview &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

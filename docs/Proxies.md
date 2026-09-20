@@ -1,0 +1,6 @@
+Proxies, and how they differ
+A proxy is another machine that we give permission to access the internet on our behalf. It fetches things for you, so the destination sees the proxy instead of you. A VPN is like a proxy with armor: it wraps the whole connection in an encrypted tunnel, not just a single request.
+Fun fact: Facebook started out unencrypted. It now uses HTTPS. So while Facebook the company can still see everything you say and do on it, your Wi-Fi operator and your ISP cannot. That information stays between you, the person you are talking to, and Facebook.
+DNS, the internet's phonebook
+DNS (Domain Name System) is like a phonebook for the internet. It matches human-friendly names like google.com to the numeric IP addresses that computers actually use, and it keeps track of those addresses as they change.
+That phonebook is also a weak point. In a "side channel attack," a snoop does not break your proxy or VPN directly. Instead they watch your DNS lookups to work out where you are going. This is why one layer is never enough. You have to stack several lines of defense so that you and your information stay safe, especially if you are doing anything the least bit sensitive, whether as a proxy user or a proxy operator.

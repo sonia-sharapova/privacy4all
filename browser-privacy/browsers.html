@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browsers — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">TABLE OF CONTENTS</div>
+      <nav class="p4a-5">
+        <a href="index.html" class="p4a-6">Guide Overview</a>
+        <a href="browsers.html" class="p4a-6">1. Choose Your Browser</a>
+        <a href="extensions.html" class="p4a-6">2. Set Up Your Browser</a>
+        <a href="fingerprinting.html" class="p4a-6">3. Advanced Configurations</a>
+        <a href="verify.html" class="p4a-6">4. Test &amp; Verify</a>
+      </nav>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#overview" class="p4a-6">Overview</a>
+        <a href="#recommended" class="p4a-6">Recommended Browsers</a>
+        <a href="#browser-lineup" class="p4a-6">Browser Lineup</a>
+        <a href="#comparison" class="p4a-6">Comparison</a>
+        <a href="#further-reading" class="p4a-6">Further Reading</a>
+      </nav>
+
+      <div class="p4a-4">RESOURCES</div>
+      <div class="p4a-7">
+        <a href="troubleshooting.html" class="p4a-8">Troubleshooting Guide</a>
+        <a href="extensions.html" class="p4a-8">Set Up Your Browser</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../index.html" style="color:inherit;">Home</a> / <a href="index.html" style="color:inherit;">Browser Privacy Guide</a> / Choose Your Browser</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section id="overview" class="p4a-1v">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="../index.html">&larr; back home</a></div>
+            <h1 class="p4a-1x">Browsers</h1>
+          </div>
+          <div class="p4a-1y">
+            FILE&nbsp;NO.&nbsp;014<br>REV.&nbsp;2026&ndash;08<br>READ&nbsp;TIME&nbsp;5&nbsp;MIN
+          </div>
+        </section>
+
+        <!-- INTRO -->
+        <section class="p4a-1z">
+          <div class="p4a-1g" style="grid-template-columns: 0.55fr 1fr 0.75fr; padding: 32px;">
+            <div style="padding: 0 24px 0 0; border-right: 1px solid rgba(0,0,0,0.12);">
+              <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;">WHY IT MATTERS</div>
+              <p style="font-size: 14px; letter-spacing: 0.06em; line-height: 1.8; margin: 0;">Every request you make, every cookie you accept, and every extension you install passes through your browser first. It is the widest attack surface most people carry every day.</p>
+            </div>
+            <div style="padding: 0 24px; border-right: 1px solid rgba(0,0,0,0.12);">
+              <p style="font-size: 20px; letter-spacing: 0.06em; line-height: 1.55; margin: 0; font-style: italic;">"<span style="font-family: 'Averia Libre', serif; font-size: 40px; line-height: 0; vertical-align: -12px; font-style: normal;">T</span>he browser you choose says more about your privacy posture than any single setting you toggle inside it."</p>
+            </div>
+            <div style="padding: 0 0 0 24px;">
+              <img src="../assets/www.jpg" alt="Browsers" style="width: 100%; height: 140px; object-fit: cover; box-shadow: 0 6px 16px rgba(0,0,0,0.18); display: block;">
+              <div style="font-size: 9px; letter-spacing: 0.1em; color: #888; margin-top: 8px;">FIG.&nbsp;1 &mdash; ENCRYPTED TRAFFIC, VISUALIZED</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RECOMMENDED -->
+        <section id="recommended" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">RECOMMENDED BROWSERS</h2>
+          <p class="p4a-21">Judged on usability, privacy, customizability, philosophy, respect for the user, looks, and resource usage.</p>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="p4a-22-3">
+            <div class="p4a-23">
+              <img src="../assets/icon-brave.jpg" alt="Brave" class="p4a-26-icon">
+              <div class="p4a-24">Brave</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop, Android, iOS</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Blocks ads, trackers, and fingerprinting by default and supports Global Privacy Control out of the box. Chrome-based, so it supports Chrome extensions.</p>
+              <a href="https://brave.com/download/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download browser &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-duckduckgo.png" alt="DuckDuckGo" class="p4a-26-icon">
+              <div class="p4a-24">DuckDuckGo</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop, Android, iOS</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">There is hesitance among users about AI features, but allegedly they can be turned off. No extensions on desktop, but the search engine can run on Firefox.</p>
+              <a href="https://duckduckgo.com/app" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download search engine &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-mullvad.png" alt="Mullvad Browser" class="p4a-26-icon">
+              <div class="p4a-24">Mullvad Browser</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Blocks ads, trackers, and fingerprinting by default and supports Global Privacy Control out of the box. Firefox-based.</p>
+              <a href="https://mullvad.net/browser" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download browser and/or VPN &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-safari.jpeg" alt="Safari" class="p4a-26-icon">
+              <div class="p4a-24">Safari</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">iOS, macOS</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Recommended for iOS by Privacy Guides, and now supports uBlock Origin as of August 2025.</p>
+              <a href="https://support.apple.com/safari" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Read more &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-firefox.webp" alt="Firefox" class="p4a-26-icon">
+              <div class="p4a-24">Firefox</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Questionable telemetry (snooping), especially with AI features, but a solid option if manual configurations are applied.</p>
+              <a href="fingerprinting.html#protection" style="font-size: 10.5px; letter-spacing: 0.1em;">Hardening instructions &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-librewolf.svg" alt="LibreWolf" class="p4a-26-icon">
+              <div class="p4a-24">LibreWolf</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">A privacy-hardened version of Firefox with Mozilla's telemetry stripped out and uBlock Origin included by default.</p>
+              <a href="https://librewolf.net/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/tor.svg" alt="Tor Browser" class="p4a-26-icon">
+              <div class="p4a-24">Tor Browser</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop, Android</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Maximum anonymity by routing traffic through volunteer relays, at a real speed cost. Best for the moments that call for it.</p>
+              <a href="https://www.torproject.org/download/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <!-- BROWSER LINEUP -->
+        <section id="browser-lineup" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">CHOOSE YOUR BROWSER LINEUP</h2>
+          <p class="p4a-21">Ideally, you shouldn't rely on a single browser. Instead, install two or three and use each for a different purpose &mdash; one for everyday browsing with strong protections, one as a "throwaway" for risky extensions or low-value logins, and optionally one kept completely clean as a fallback.</p>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="p4a-t" style="margin-bottom: 28px;">
+            <div class="p4a-u" style="flex-direction: column; align-items: flex-start;">
+              <div style="font-size: 10.5px; letter-spacing: 0.15em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">MAIN BROWSER</div>
+              <ul style="margin: 0 0 14px; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #444;">
+                <li>Daily browsing</li><li>Banking</li><li>Email</li><li>Social media</li><li>Work</li>
+              </ul>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888;">RECOMMENDATION</div>
+              <div style="font-size: 12px; letter-spacing: 0.1em; font-weight: 600;">LibreWolf or Brave</div>
+            </div>
+            <div class="p4a-u" style="flex-direction: column; align-items: flex-start;">
+              <div style="font-size: 10.5px; letter-spacing: 0.15em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">THROWAWAY BROWSER</div>
+              <ul style="margin: 0 0 14px; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #444;">
+                <li>Shopping</li><li>Coupon sites</li><li>One-off logins</li><li>Risky links</li><li>Sketchy sites</li>
+              </ul>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888;">RECOMMENDATION</div>
+              <div style="font-size: 12px; letter-spacing: 0.1em; font-weight: 600;">Brave (with extensions you don't trust)</div>
+            </div>
+            <div class="p4a-u" style="flex-direction: column; align-items: flex-start;">
+              <div style="font-size: 10.5px; letter-spacing: 0.15em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">BACKUP</div>
+              <ul style="margin: 0 0 14px; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #444;">
+                <li>Clean, no add-ons</li><li>For broken sites</li>
+              </ul>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888;">RECOMMENDATION</div>
+              <div style="font-size: 12px; letter-spacing: 0.1em; font-weight: 600;">Safari or Edge</div>
+            </div>
+          </div>
+
+          <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 12px;">Step-by-Step Setup</div>
+          <div class="p4a-22-3">
+            <div class="p4a-23">
+              <div class="p4a-26">STEP 1</div>
+              <div style="font-size: 12.5px; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Install your main browser</div>
+              <ul style="margin: 0; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #555;">
+                <li>Download from the official website, not a third-party download site</li>
+                <li>Set it as your default browser in your OS settings</li>
+              </ul>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-26">STEP 2</div>
+              <div style="font-size: 12.5px; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Install your throwaway browser</div>
+              <ul style="margin: 0; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #555;">
+                <li>Use it for anything you don't want in your main browser profile</li>
+                <li>Install extensions that might be risky, like coupon finders</li>
+                <li>Never log in to your main accounts here</li>
+              </ul>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-26">STEP 3 &mdash; OPTIONAL</div>
+              <div style="font-size: 12.5px; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Keep a clean backup</div>
+              <ul style="margin: 0; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #555;">
+                <li>Leave this browser completely unmodified</li>
+                <li>Try it when a site breaks in your main browser</li>
+                <li>This is your "canary" for whether a site is broken or over-blocked</li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <!-- COMPARISON -->
+        <section id="comparison" class="p4a-1z">
+          <h2 class="p4a-20">COMPARISON</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="p4a-2d p4a-2d-lg">
+            <table>
+              <thead>
+                <tr><th>BROWSER</th><th style="text-align:center">AD&nbsp;BLOCK</th><th style="text-align:center">FINGERPRINT</th><th style="text-align:center">GPC</th><th style="text-align:center">EASE&nbsp;OF&nbsp;USE</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="p4a-2d-browser"><img src="../assets/icon-brave.jpg" alt="">Brave</span></td>
+                  <td style="text-align:center">Excellent</td>
+                  <td style="text-align:center">Automatic</td>
+                  <td style="text-align:center">Yes</td>
+                  <td style="text-align:center">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
+                </tr>
+                <tr>
+                  <td><span class="p4a-2d-browser"><img src="../assets/icon-mullvad.png" alt="">Mullvad Browser</span></td>
+                  <td style="text-align:center">Excellent</td>
+                  <td style="text-align:center">Automatic</td>
+                  <td style="text-align:center">Yes</td>
+                  <td style="text-align:center">&#9733;&#9733;&#9733;&#9734;&#9734;</td>
+                </tr>
+                <tr>
+                  <td><span class="p4a-2d-browser"><img src="../assets/icon-librewolf.svg" alt="">LibreWolf</span></td>
+                  <td style="text-align:center">Excellent</td>
+                  <td style="text-align:center">Automatic</td>
+                  <td style="text-align:center">Yes</td>
+                  <td style="text-align:center">&#9733;&#9733;&#9733;&#9733;&#9734;</td>
+                </tr>
+                <tr>
+                  <td><span class="p4a-2d-browser"><img src="../assets/icon-firefox.webp" alt="">Firefox</span></td>
+                  <td style="text-align:center">Manual</td>
+                  <td style="text-align:center">Manual</td>
+                  <td style="text-align:center">Manual</td>
+                  <td style="text-align:center">&#9733;&#9733;&#9733;&#9733;&#9734;</td>
+                </tr>
+                <tr>
+                  <td><span class="p4a-2d-browser"><img src="../assets/icon-safari.jpeg" alt="">Safari</span></td>
+                  <td style="text-align:center">Limited</td>
+                  <td style="text-align:center">iOS only</td>
+                  <td style="text-align:center">No</td>
+                  <td style="text-align:center">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
+                </tr>
+                <tr>
+                  <td><span class="p4a-2d-browser"><img src="../assets/tor.svg" alt="">Tor Browser</span></td>
+                  <td style="text-align:center">N/A</td>
+                  <td style="text-align:center">Minimal</td>
+                  <td style="text-align:center">No</td>
+                  <td style="text-align:center">&#9733;&#9733;&#9733;&#9734;&#9734;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </section>
+
+        <!-- FURTHER READING -->
+        <section id="further-reading" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 28px;">
+          <h2 class="p4a-20">FURTHER READING</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 28px;">
+          <div class="p4a-22-3" style="font-size: 14px; letter-spacing: 0.05em; line-height: 1.7; color: #555;">
+            <p style="margin: 0;">[1] <a href="https://www.privacytools.io/" target="_blank" rel="noopener">PrivacyTools.io</a> &mdash; browser hardening guide.</p>
+            <p style="margin: 0;">[2] <a href="https://prism-break.org/en/" target="_blank" rel="noopener">PRISM Break</a> &mdash; browser alternatives by platform.</p>
+            <p style="margin: 0;">[3] <a href="https://digdeeper.neocities.org/index.xhtml" target="_blank" rel="noopener">Dig Deeper</a> &mdash; fingerprinting deep dive.</p>
+          </div>
+          </div>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav" style="justify-content: space-between;">
+          <a href="index.html" class="p4a-glass-btn p4a-btn-home">&larr; Guide Overview</a>
+          <a href="extensions.html" class="p4a-glass-btn p4a-btn-nav">Next: Set Up Your Browser &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

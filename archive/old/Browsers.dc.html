@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em;">
+
+  <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0;">
+
+    <aside style="position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box;">
+      <a href="Homepage.dc.html" style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px; display: block; color: #1b1b1b;">p4a</a>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">ON THIS PAGE</div>
+      <nav style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <a href="#overview" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Overview</a>
+        <a href="#recommended" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Recommended Browsers</a>
+        <a href="#browser-lineup" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Browser Lineup</a>
+        <a href="#comparison" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Comparison</a>
+        <a href="#further-reading" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Further Reading</a>
+      </nav>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GUIDE</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px;">
+        <a href="Browser Privacy Guide.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">&larr; Guide Overview</a>
+        <a href="Troubleshooting.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Troubleshooting Guide</a>
+        <a href="Browser Extensions.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Set Up Your Browser</a>
+        <a href="Browser Fingerprinting.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Advanced Tools</a>
+        <a href="Verify Everything Works.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Test &amp; Verify</a>
+      </div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GOOD TO KNOW</div>
+      <p style="font-size: 11px; line-height: 1.6; color: #555; margin: 0;">Your browser is the single most-used piece of software on your device — it's the first place to harden.</p>
+    </aside>
+
+    <div style="min-width: 0; position: relative;">
+
+      <div style="position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none;"></div>
+
+      <header style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <div style="width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box;">
+          <nav style="display: flex; width: 100%; box-sizing: border-box; border: 1px solid rgba(0,0,0,0.06); border-radius: 0;">
+            <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." style="flex: 1; height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none;" style-focus="background: rgba(255,255,255,0.7);"><select value="{{ category }}" onChange="{{ onCategoryChange }}" style="height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none;">
+                <option value="All">All</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select><button type="button" onClick="{{ handleSearchSubmit }}" style="height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0;">Go</button>
+          </nav>
+        </div>
+        <div style="max-width: 1160px; margin: 0 auto; padding: 20px 40px 24px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;"><a href="Homepage.dc.html" style="color: #888;">Home</a> / <a href="Browser Privacy Guide.dc.html" style="color: #888;">Browser Privacy Guide</a> / <span style="color: #1b1b1b;">Choose Your Browser</span></div>
+          <nav style="display: flex; flex-wrap: wrap; gap: 16px 20px;">
+            <a href="Homepage.dc.html#projects" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">PROJECTS</a>
+            <a href="Homepage.dc.html#additional-resources" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">RESOURCES</a>
+            <a href="Homepage.dc.html#contact" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <div style="background: rgba(255,255,255,0.55); backdrop-filter: blur(16px) saturate(160%) contrast(1.05); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.35); margin: 0 32px; border-radius: 6px;">
+      <main style="max-width: 1160px; margin: 0 auto; padding: 48px 40px 96px;">
+
+        <!-- MASTHEAD -->
+        <section id="overview" style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; border-bottom: 2px solid #1b1b1b; padding-bottom: 18px; margin-bottom: 8px;">
+          <div>
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">PART 1 OF THE GUIDE &mdash; CHOOSE YOUR BROWSER(S)</div>
+            <h1 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 64px; letter-spacing: 0.1em; margin: 0; line-height: 0.95;">Browsers</h1>
+          </div>
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: right; line-height: 1.7;">
+            FILE&nbsp;NO.&nbsp;014<br>REV.&nbsp;2026&ndash;08<br>READ&nbsp;TIME&nbsp;5&nbsp;MIN
+          </div>
+        </section>
+
+        <!-- ROW: intro columns -->
+        <section style="display: grid; grid-template-columns: 0.55fr 1fr 0.75fr; gap: 0; margin-bottom: 56px;">
+          <div style="padding: 26px 24px 26px 0; border-right: 1px solid rgba(0,0,0,0.12);">
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;">WHY IT MATTERS</div>
+            <p style="font-size: 12.5px; letter-spacing: 0.1em; line-height: 1.8; margin: 0;">Every request you make, every cookie you accept, and every extension you install passes through your browser first. It is the widest attack surface most people carry every day.</p>
+          </div>
+          <div style="padding: 26px 24px; border-right: 1px solid rgba(0,0,0,0.12);">
+            <p style="font-size: 20px; letter-spacing: 0.06em; line-height: 1.55; margin: 0; font-style: italic;">"<span style="font-family: 'Averia Libre', serif; font-size: 40px; line-height: 0; vertical-align: -12px; font-style: normal;">T</span>he browser you choose says more about your privacy posture than any single setting you toggle inside it."</p>
+          </div>
+          <div style="padding: 26px 0 26px 24px;">
+            <img src="assets/www.jpg" alt="Browsers" style="width: 100%; height: 140px; object-fit: cover; box-shadow: 0 6px 16px rgba(0,0,0,0.18); display: block;">
+            <div style="font-size: 9px; letter-spacing: 0.1em; color: #888; margin-top: 8px;">FIG.&nbsp;1 &mdash; ENCRYPTED TRAFFIC, VISUALIZED</div>
+          </div>
+        </section>
+
+        <!-- RECOMMENDED -->
+        <section id="recommended" style="margin-bottom: 56px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 8px;">RECOMMENDED BROWSERS</h2>
+          <p style="font-size: 12.5px; letter-spacing: 0.1em; color: #555; line-height: 1.7; margin: 0 0 22px; max-width: 720px;">Judged on usability, privacy, customizability, philosophy, respect for the user, looks, and resource usage.</p>
+          <div style="display: grid; grid-template-columns: 40px 1fr; gap: 0 24px;">
+            <div style="writing-mode: vertical-rl; font-size: 10px; letter-spacing: 0.2em; color: #888; text-align: center; border-right: 1px solid rgba(0,0,0,0.12);">PICKS &mdash; 2026</div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px 28px;">
+
+              <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+                <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">01</div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 2px;">Brave</div>
+                <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop, Android, iOS</div>
+                <p style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.6; margin: 0 0 8px;">Blocks ads, trackers, and fingerprinting by default and supports Global Privacy Control out of the box. Chrome-based, so it supports Chrome extensions.</p>
+                <a href="https://brave.com/download/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download browser &rarr;</a>
+              </div>
+
+              <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+                <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">02</div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 2px;">DuckDuckGo</div>
+                <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop, Android, iOS</div>
+                <p style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.6; margin: 0 0 8px;">There is hesitance among users about AI features, but allegedly they can be turned off. No extensions on desktop, but the search engine can run on Firefox.</p>
+                <a href="https://duckduckgo.com/app" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download search engine &rarr;</a>
+              </div>
+
+              <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+                <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">03</div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 2px;">Mullvad Browser</div>
+                <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop</div>
+                <p style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.6; margin: 0 0 8px;">Blocks ads, trackers, and fingerprinting by default and supports Global Privacy Control out of the box. Firefox-based.</p>
+                <a href="https://mullvad.net/browser" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download browser and/or VPN &rarr;</a>
+              </div>
+
+              <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+                <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">04</div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 2px;">Safari</div>
+                <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">iOS, macOS</div>
+                <p style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.6; margin: 0 0 8px;">Recommended for iOS by Privacy Guides, and now supports uBlock Origin as of August 2025.</p>
+                <a href="https://support.apple.com/safari" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Read more &rarr;</a>
+              </div>
+
+              <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+                <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">05</div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 2px;">Firefox</div>
+                <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop</div>
+                <p style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.6; margin: 0 0 8px;">Questionable telemetry (snooping), especially with AI features, but a solid option if manual configurations are applied.</p>
+                <a href="Browser Fingerprinting.dc.html#protection" style="font-size: 10.5px; letter-spacing: 0.1em;">Hardening instructions &rarr;</a>
+              </div>
+
+              <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+                <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">06</div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 2px;">LibreWolf</div>
+                <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop</div>
+                <p style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.6; margin: 0 0 8px;">A privacy-hardened version of Firefox with Mozilla's telemetry stripped out and uBlock Origin included by default.</p>
+                <a href="https://librewolf.net/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a>
+              </div>
+
+              <div style="border-top: 1px solid #1b1b1b; padding-top: 14px;">
+                <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">07</div>
+                <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 2px;">Tor Browser</div>
+                <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop, Android</div>
+                <p style="font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.6; margin: 0 0 8px;">Maximum anonymity by routing traffic through volunteer relays, at a real speed cost. Best for the moments that call for it.</p>
+                <a href="https://www.torproject.org/download/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- BROWSER LINEUP -->
+        <section id="browser-lineup" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 8px;">CHOOSE YOUR BROWSER LINEUP</h2>
+          <p style="font-size: 12.5px; letter-spacing: 0.1em; color: #555; line-height: 1.7; margin: 0 0 24px; max-width: 720px;">Ideally, you shouldn't rely on a single browser. Instead, install two or three and use each for a different purpose &mdash; one for everyday browsing with strong protections, one as a "throwaway" for risky extensions or low-value logins, and optionally one kept completely clean as a fallback.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 28px;">
+            <div style="background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 18px 20px;">
+              <div style="font-size: 10.5px; letter-spacing: 0.15em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">MAIN BROWSER</div>
+              <ul style="margin: 0 0 14px; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #444;">
+                <li>Daily browsing</li><li>Banking</li><li>Email</li><li>Social media</li><li>Work</li>
+              </ul>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888;">RECOMMENDATION</div>
+              <div style="font-size: 12px; letter-spacing: 0.1em; font-weight: 600;">LibreWolf or Brave</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 18px 20px;">
+              <div style="font-size: 10.5px; letter-spacing: 0.15em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">THROWAWAY BROWSER</div>
+              <ul style="margin: 0 0 14px; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #444;">
+                <li>Shopping</li><li>Coupon sites</li><li>One-off logins</li><li>Risky links</li><li>Sketchy sites</li>
+              </ul>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888;">RECOMMENDATION</div>
+              <div style="font-size: 12px; letter-spacing: 0.1em; font-weight: 600;">Brave (with extensions you don't trust)</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 18px 20px;">
+              <div style="font-size: 10.5px; letter-spacing: 0.15em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">BACKUP</div>
+              <ul style="margin: 0 0 14px; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #444;">
+                <li>Clean, no add-ons</li><li>For broken sites</li>
+              </ul>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888;">RECOMMENDATION</div>
+              <div style="font-size: 12px; letter-spacing: 0.1em; font-weight: 600;">Safari or Edge</div>
+            </div>
+          </div>
+
+          <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 12px;">Step-by-Step Setup</div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">STEP 1</div>
+              <div style="font-size: 12.5px; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Install your main browser</div>
+              <ul style="margin: 0; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #555;">
+                <li>Download from the official website, not a third-party download site</li>
+                <li>Set it as your default browser in your OS settings</li>
+              </ul>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">STEP 2</div>
+              <div style="font-size: 12.5px; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Install your throwaway browser</div>
+              <ul style="margin: 0; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #555;">
+                <li>Use it for anything you don't want in your main browser profile</li>
+                <li>Install extensions that might be risky, like coupon finders</li>
+                <li>Never log in to your main accounts here</li>
+              </ul>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">STEP 3 &mdash; OPTIONAL</div>
+              <div style="font-size: 12.5px; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Keep a clean backup</div>
+              <ul style="margin: 0; padding-left: 16px; font-size: 11px; letter-spacing: 0.08em; line-height: 1.7; color: #555;">
+                <li>Leave this browser completely unmodified</li>
+                <li>Try it when a site breaks in your main browser</li>
+                <li>This is your "canary" for whether a site is broken or over-blocked</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPARISON -->
+        <section id="comparison" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">COMPARISON</h2>
+          <div style="overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: 1fr 90px 90px 90px 90px; min-width: 640px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">BROWSER</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">AD&nbsp;BLOCK</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">FINGERPRINT</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">GPC</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">EASE&nbsp;OF&nbsp;USE</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.08);">Brave</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Excellent</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Automatic</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Yes</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.08);">Mullvad Browser</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Excellent</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Automatic</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Yes</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.08);">LibreWolf</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Excellent</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Automatic</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Yes</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.08);">Firefox</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Manual</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Manual</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Manual</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.08);">Safari</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Limited</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">iOS only</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">No</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em;">Tor Browser</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center;">N/A</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center;">Minimal</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center;">No</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center;">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FURTHER READING -->
+        <section id="further-reading" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 28px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 18px;">FURTHER READING</h2>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; font-size: 11.5px; letter-spacing: 0.1em; line-height: 1.7; color: #555;">
+            <p style="margin: 0;">[1] <a href="https://www.privacytools.io/">PrivacyTools.io</a> &mdash; browser hardening guide.</p>
+            <p style="margin: 0;">[2] <a href="https://prism-break.org/en/">PRISM Break</a> &mdash; browser alternatives by platform.</p>
+            <p style="margin: 0;">[3] <a href="https://digdeeper.neocities.org/index.xhtml">Dig Deeper</a> &mdash; fingerprinting deep dive.</p>
+          </div>
+        </section>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.12); font-size: 12px; letter-spacing: 0.1em;">
+          <a href="Browser Privacy Guide.dc.html">&larr; Guide Overview</a>
+          <a href="Browser Extensions.dc.html">Next: Set Up Your Browser &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer id="contact" style="border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666;">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { query: '', category: 'All' };
+
+  handleSearchSubmit = () => {
+    window.location.href = 'Homepage.dc.html';
+  };
+
+  renderVals() {
+    return {
+      query: this.state.query,
+      category: this.state.category,
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onCategoryChange: (e) => this.setState({ category: e.target.value }),
+      onKeyDown: (e) => { if (e.key === 'Enter') this.handleSearchSubmit(); },
+      handleSearchSubmit: this.handleSearchSubmit,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

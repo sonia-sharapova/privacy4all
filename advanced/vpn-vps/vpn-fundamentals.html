@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VPN Fundamentals — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#what-is-a-vpn" class="p4a-6">What Is a VPN?</a>
+        <a href="#does-does-not" class="p4a-6">What It Does / Doesn't</a>
+        <a href="#self-hosted" class="p4a-6">Self-Hosted VPNs</a>
+        <a href="#higher-levels" class="p4a-6">Higher Levels of Protection</a>
+      </nav>
+
+      <div class="p4a-4">GUIDE</div>
+      <div class="p4a-7">
+        <a href="index.html" class="p4a-8">&larr; Guide Overview</a>
+        <a href="providers.html" class="p4a-8">VPN &amp; VPS Providers</a>
+        <a href="vpn-configuration.html" class="p4a-8">Configure &amp; Lock Down</a>
+        <a href="vps-setup.html" class="p4a-8">VPS &amp; Self-Hosting</a>
+        <a href="resources.html" class="p4a-8">Test, Glossary &amp; Resources</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../../index.html" style="color:inherit;">Home</a> / <a href="index.html" style="color:inherit;">VPNs &amp; VPS Guide</a> / VPN Fundamentals</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section class="p4a-1v">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="index.html">&larr; guide overview</a></div>
+            <h1 class="p4a-1x">VPN Fundamentals</h1>
+          </div>
+          <div class="p4a-1y">
+            READ&nbsp;TIME&nbsp;8&nbsp;MIN
+          </div>
+        </section>
+
+        <!-- INTRO -->
+        <section class="p4a-1z">
+          <div class="p4a-22" style="grid-template-columns: 0.55fr 1fr 0.75fr;">
+            <div style="padding: 0 24px 0 0; border-right: 1px solid rgba(0,0,0,0.12);">
+              <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;">WHY IT MATTERS</div>
+              <p style="font-size: 14px; letter-spacing: 0.06em; line-height: 1.8; margin: 0;">A practical primer on how VPNs work, how to pick a provider you can actually trust, and how to set one up and test it yourself.</p>
+            </div>
+            <div style="padding: 0 24px; border-right: 1px solid rgba(0,0,0,0.12);">
+              <p style="font-size: 20px; letter-spacing: 0.06em; line-height: 1.55; margin: 0; font-style: italic;">"<span style="font-family: 'Averia Libre', serif; font-size: 40px; line-height: 0; vertical-align: -12px; font-style: normal;">A</span> VPN is a little like using a friend's address to get your kids into a better school district, except here the friend is usually a stranger you are paying."</p>
+            </div>
+            <div style="padding: 0 0 0 24px;">
+              <img src="../../assets/vpn.jpg" alt="VPN" style="width: 100%; height: 140px; object-fit: cover; box-shadow: 0 6px 16px rgba(0,0,0,0.18); display: block;">
+              <div style="font-size: 9px; letter-spacing: 0.1em; color: #888; margin-top: 8px;">FIG.&nbsp;1 &mdash; AN ENCRYPTED TUNNEL, VISUALIZED</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WHAT IS A VPN -->
+        <section id="what-is-a-vpn" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">WHAT IS A VPN?</h2>
+          <p class="p4a-21">A VPN (virtual private network) creates an encrypted tunnel between your device and a server run by the VPN provider. Think of it like putting on a shield before walking into enemy territory &mdash; you do not know what will come your way, but you keep yourself covered.</p>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; gap: 20px;">
+            <p style="font-size:14px; letter-spacing:0.1em; margin:0;">In plain English:</p>
+            <ul style="margin:0; padding-left:20px; font-size:14px; line-height:1.8; color:#333;">
+              <li><b>Normally:</b> You &rarr; Website (the website sees your IP).</li>
+              <li><b>With a VPN:</b> You &rarr; VPN Server &rarr; Website (the website sees the VPN's IP, not yours).</li>
+            </ul>
+          </div>
+
+          <p class="p4a-21" style="margin-top:22px;">Example: normally, typing google.com sends your request straight to Google's servers. With a VPN active, your request goes to the VPN provider's servers first, and those servers relay it to Google. The same logic applies to any site, including ones that might be blocked or restricted where you live. Your data and activity are still being recorded somewhere &mdash; what the encryption buys you is that it becomes much harder to link that activity back to you.</p>
+
+          <div class="p4a-27">
+            <p><b>Legal note:</b> VPNs are legal in most countries but restricted in places like Iran, Russia, China, and Turkey. Check your local laws.</p>
+          </div>
+        </section>
+
+        <!-- WHAT IT DOES / DOES NOT -->
+        <section id="does-does-not" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">WHAT A VPN DOES</h2>
+          <ul style="margin:0 0 28px; padding-left:20px; font-size:14px; line-height:1.9; color:#333;">
+            <li>Hides your browsing from your ISP, who then see only encrypted traffic.</li>
+            <li>Changes your apparent location by connecting to servers elsewhere.</li>
+            <li>Lets you reach geo-restricted services, like a US-only Netflix catalog, by connecting to a server in that country.</li>
+            <li>Lets you download torrents in places where torrent traffic is blocked outright or deliberately slowed by the ISP.</li>
+            <li>Lets you reach websites blocked in your country, because your traffic appears to come from wherever the VPN server sits.</li>
+            <li>Makes your information harder to read, which makes you a less inviting target for fraud.</li>
+            <li>Protects you while traveling, when you may not know local laws or policies and don't want to paint a target on your back.</li>
+          </ul>
+
+          <h2 class="p4a-20 p4a-20-tight">WHAT A VPN DOES NOT DO</h2>
+          <div class="p4a-22-3">
+            <div class="p4a-23">
+              <div class="p4a-24">Activity</div>
+              <p class="p4a-25">Your VPN provider CAN see your activity. You are shifting trust from your ISP to your VPN provider, so choose wisely.</p>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-24">Anonymity</div>
+              <p class="p4a-25">A VPN does NOT make you anonymous. It makes you private from your ISP, not from the VPN provider.</p>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-24">Watch the Speed</div>
+              <p class="p4a-25">If your VPN suddenly crawls, treat it as a warning sign &mdash; slow VPN traffic can mean someone is poking at your data.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SELF-HOSTED -->
+        <section id="self-hosted" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">USING A SELF-HOSTED VPN ON A VPS</h2>
+          <p class="p4a-21">You can rent a VPS and install VPN server software on it yourself, effectively becoming your own VPN provider. Doing this is a technical, legal, and political decision all at once, so go in with your eyes open. Looking for a commercial VPN or VPS instead? See <a href="providers.html">VPN &amp; VPS Providers</a>. If you want to set up the server itself, see <a href="vps-setup.html">Part 4: VPS &amp; Self-Hosting</a>.</p>
+
+          <div class="p4a-27">
+            <p><b>The downside &mdash; more traceable:</b> a self-hosted VPN on a personally rented VPS gives you a single IP address used only by you. Commercial VPN providers use shared server IPs that mix many users' traffic, which makes it hard to link specific activity back to any one person. So it's a trade-off &mdash; rolling your own gives you control, while a good commercial VPN gives you a crowd to hide in.</p>
+          </div>
+        </section>
+
+        <!-- HIGHER LEVELS OF PROTECTION -->
+        <section id="higher-levels" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 class="p4a-20">HIGHER LEVELS OF PROTECTION</h2>
+          <p class="p4a-21">A VPN is a solid shield, but it is not the only one.</p>
+          <div class="p4a-22-3">
+            <div class="p4a-23">
+              <div class="p4a-24">Algo</div>
+              <p class="p4a-25">An open-source toolkit that helps you stand up your own private VPN server quickly, so you aren't trusting anyone else's.</p>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-24">Tor (The Onion Router)</div>
+              <p class="p4a-25">Triple-encrypted. Your traffic bounces through three separate computers before reaching its destination, which makes tracing it back to your real machine extremely difficult. A regular VPN just swaps your IP for one other IP; Tor wraps it in three layers.</p>
+            </div>
+            <div class="p4a-23">
+              <div class="p4a-24">Ports, the Internet's "Little Doors"</div>
+              <p class="p4a-25">Networks talk through ports, which you can picture as little doors &mdash; different doors carry different kinds of traffic. OpenVPN can run on almost any port, including the one ordinary secure web traffic uses, so configured that way, activity like torrenting can blend in and look like plain web browsing from the outside.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav" style="justify-content: space-between;">
+          <a href="index.html" class="p4a-glass-btn p4a-btn-home">&larr; Guide Overview</a>
+          <a href="providers.html" class="p4a-glass-btn p4a-btn-nav">Next: VPN &amp; VPS Providers &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

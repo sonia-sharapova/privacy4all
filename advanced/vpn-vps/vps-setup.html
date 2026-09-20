@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VPS &amp; Self-Hosting — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#overview" class="p4a-6">Overview</a>
+        <a href="#rent-server" class="p4a-6">Rent &amp; Set Up the Server</a>
+        <a href="#dns" class="p4a-6">Point Your Domain (DNS)</a>
+        <a href="#connect" class="p4a-6">Connect to Your Server</a>
+        <a href="#nginx" class="p4a-6">Install the Web Server</a>
+        <a href="#https" class="p4a-6">Add HTTPS</a>
+        <a href="#troubleshooting" class="p4a-6">Troubleshooting</a>
+      </nav>
+
+      <div class="p4a-4">GUIDE</div>
+      <div class="p4a-7">
+        <a href="index.html" class="p4a-8">&larr; Guide Overview</a>
+        <a href="vpn-fundamentals.html" class="p4a-8">VPN Fundamentals</a>
+        <a href="providers.html" class="p4a-8">VPN &amp; VPS Providers</a>
+        <a href="vpn-configuration.html" class="p4a-8">Configure &amp; Lock Down</a>
+        <a href="resources.html" class="p4a-8">Test, Glossary &amp; Resources</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../../index.html" style="color:inherit;">Home</a> / <a href="index.html" style="color:inherit;">VPNs &amp; VPS Guide</a> / VPS &amp; Self-Hosting</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section id="overview" class="p4a-1v">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="index.html">&larr; guide overview</a></div>
+            <h1 class="p4a-1x">VPS &amp; Self-Hosting</h1>
+          </div>
+          <div class="p4a-1y">
+            READ&nbsp;TIME&nbsp;12&nbsp;MIN
+          </div>
+        </section>
+
+        <!-- INTRO -->
+        <section class="p4a-1z">
+          <div class="p4a-1g" style="grid-template-columns: 0.55fr 1fr; padding: 32px;">
+            <div style="padding: 0 24px 0 0; border-right: 1px solid rgba(0,0,0,0.12);">
+              <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;">WHAT IS A VPS?</div>
+              <p style="font-size: 14px; letter-spacing: 0.06em; line-height: 1.8; margin: 0;">A VPS (virtual private server) is a virtualized slice of a physical server, giving you your own dedicated operating system and resources with full control, at a lower cost than a full dedicated server.</p>
+            </div>
+            <div style="padding: 0 24px;">
+              <p style="font-size: 20px; letter-spacing: 0.06em; line-height: 1.55; margin: 0; font-style: italic;">"<span style="font-family: 'Averia Libre', serif; font-size: 40px; line-height: 0; vertical-align: -12px; font-style: normal;">Y</span>ou do not need to be an expert. You will mostly be copying and pasting a handful of commands."</p>
+            </div>
+          </div>
+        </section>
+
+        <p class="p4a-21">This walkthrough sets up a simple, real, self-hosted website reachable at your own domain and secured with HTTPS. It uses <b>Vultr</b> as the VPS provider, <b>GoDaddy</b> as the domain registrar, and <b>Debian</b> as the server OS &mdash; the same ideas apply to other providers and registrars, with minor differences in the menus. If you'd rather run your own VPN server instead of a website, see <a href="vpn-fundamentals.html#self-hosted">self-hosted VPNs</a> in Part 1.</p>
+
+        <!-- RENT & SET UP THE SERVER -->
+        <section id="rent-server" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">RENT &amp; SET UP THE SERVER</h2>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="bph-steps">
+            <details class="bph-step" open>
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 1</span> <span class="bph-step-title">Create an account with a provider</span></span></summary>
+              <p class="bph-step-body">For this example, sign up at <a href="https://my.vultr.com/deploy-beta/" target="_blank" rel="noopener">Vultr</a>. New accounts often come with promotional credit, though the amount changes over time, so check what's currently offered.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 2</span> <span class="bph-step-title">Start a new server</span></span></summary>
+              <p class="bph-step-body">Choose the <b>Cloud Compute (shared)</b> option. This is the standard, affordable VPS.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 3</span> <span class="bph-step-title">Pick a plan</span></span></summary>
+              <p class="bph-step-body">Vultr's cheapest plans change often and come with catches, so pick with care. The very cheapest plan (around $2.50/month) is available only in a few locations and is IPv6-only, meaning some services won't reach it &mdash; avoid this for a normal website. A better starting point is the roughly <b>$5/month plan with 1GB RAM</b>, which is widely available and has enough resources for a real site.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 4</span> <span class="bph-step-title">Choose a location</span></span></summary>
+              <p class="bph-step-body">Pick a data center close to the people who will use your site.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 5</span> <span class="bph-step-title">Choose the operating system</span></span></summary>
+              <p class="bph-step-body">Select <b>Debian</b>, the classic, rock-solid choice for servers. Older guides often say "Debian 11," but Debian 11 is now reaching the end of its security support &mdash; choose the current version, <b>Debian 13 ("Trixie")</b>, supported into 2028. If you use a different version or a different Linux entirely, the steps below still apply, but some details may vary slightly.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 6</span> <span class="bph-step-title">Set the additional features</span></span></summary>
+              <ul style="margin:0; padding-left:18px; font-size:14px; letter-spacing:0.05em; line-height:1.8; color:#555;">
+                <li><b>Automatic backups:</b> you can turn this off to save a little money each month. You can always take a manual snapshot for free when you need one (consider turning backups back on later if your site becomes important).</li>
+                <li><b>Enable IPv6:</b> turn this on.</li>
+                <li><b>Keep IPv4 enabled:</b> leave this on, since most things still need it.</li>
+              </ul>
+            </details>
+            <details class="bph-step bph-step-last">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 7</span> <span class="bph-step-title">Deploy the server</span></span></summary>
+              <p class="bph-step-body">Confirm and create it. Wait until the status shows the server is running.</p>
+            </details>
+          </div>
+          </div>
+        </section>
+
+        <!-- DNS -->
+        <section id="dns" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">POINT YOUR DOMAIN AT THE SERVER (DNS)</h2>
+          <p class="p4a-21">DNS is the system that connects your domain name (like example.com) to your server's address. You set this up at your domain registrar.</p>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="bph-steps">
+            <details class="bph-step" open>
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 1</span> <span class="bph-step-title">Find your server's addresses</span></span></summary>
+              <p class="bph-step-body">In Vultr, open your server's details page. Note down two things: the IPv4 address (looks like <code>45.63.9.32</code>) and the IPv6 address (looks like <code>2001:19f0:1000:e1f4:5400:05ff:fec5:d935</code>), which you'll find under the IPv6 tab in the server's settings.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 2</span> <span class="bph-step-title">Open your domain's DNS settings</span></span></summary>
+              <p class="bph-step-body">Log in to your registrar (for example, GoDaddy), click your domain, and open the DNS records section. If the registrar has added default records, you can delete them so you start with a clean slate.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 3</span> <span class="bph-step-title">Add records that point to your server</span></span></summary>
+              <div class="p4a-2d">
+                <table>
+                  <thead>
+                    <tr><th>TYPE</th><th>HOST</th><th>VALUE</th><th>PURPOSE</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>A</td><td>@</td><td>your IPv4 address</td><td>Points your bare domain (example.com) to your server.</td></tr>
+                    <tr><td>A</td><td>*</td><td>your IPv4 address</td><td>Wildcard &mdash; sends every subdomain (mail., blog., etc.) to the same place.</td></tr>
+                    <tr><td>AAAA</td><td>@</td><td>your IPv6 address</td><td>IPv6 equivalent of the first record.</td></tr>
+                    <tr><td>AAAA</td><td>*</td><td>your IPv6 address</td><td>IPv6 wildcard.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+            <details class="bph-step bph-step-last">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 4</span> <span class="bph-step-title">Save and test</span></span></summary>
+              <p class="bph-step-body" style="margin-bottom:14px;">DNS changes can take anywhere from a few minutes to a few hours to spread across the internet. Once ready, open a terminal on your own computer and run:</p>
+              <div class="p4a-term"><pre>ping example.com</pre></div>
+              <p class="bph-step-body">If the replies come from your server's IP address, your DNS is working. You can also run <code>host example.com</code>, which lists both the IPv4 and IPv6 addresses your domain now points to.</p>
+            </details>
+          </div>
+          </div>
+        </section>
+
+        <!-- CONNECT -->
+        <section id="connect" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">CONNECT TO YOUR SERVER</h2>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="bph-steps">
+            <details class="bph-step" open>
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 1</span> <span class="bph-step-title">Get your login details</span></span></summary>
+              <p class="bph-step-body">In Vultr, your server's page shows a root password. Copy it.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 2</span> <span class="bph-step-title">Log in over SSH</span></span></summary>
+              <p class="bph-step-body" style="margin-bottom:14px;">On your own computer, open a terminal and connect (replace example.com with your domain, or use the server's IP address):</p>
+              <div class="p4a-term"><pre>ssh root@example.com</pre></div>
+              <p class="bph-step-body">Paste the password when asked. You will not see the characters as you paste &mdash; that is normal.</p>
+            </details>
+            <details class="bph-step bph-step-last">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 3</span> <span class="bph-step-title">Update the system</span></span></summary>
+              <p class="bph-step-body" style="margin-bottom:14px;">Once you're logged in, bring everything up to date:</p>
+              <div class="p4a-term"><pre>apt update
+apt upgrade</pre></div>
+            </details>
+          </div>
+          </div>
+        </section>
+
+        <!-- NGINX -->
+        <section id="nginx" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">INSTALL THE WEB SERVER &amp; CREATE YOUR SITE</h2>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="bph-steps">
+            <details class="bph-step" open>
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 1</span> <span class="bph-step-title">Install nginx</span></span></summary>
+              <p class="bph-step-body" style="margin-bottom:14px;">Nginx is the software that serves your website to visitors:</p>
+              <div class="p4a-term"><pre>apt install nginx</pre></div>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 2</span> <span class="bph-step-title">Create a folder for your site's files</span></span></summary>
+              <div class="p4a-term"><pre>mkdir /var/www/mysite</pre></div>
+              <p class="bph-step-body">If you see a message that <code>/var/www/</code> already exists, ignore it &mdash; that's fine.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 3</span> <span class="bph-step-title">Create the home page</span></span></summary>
+              <div class="p4a-term"><pre>nano /var/www/mysite/index.html</pre></div>
+              <p class="bph-step-body" style="margin-bottom:14px;">Paste in some simple content, for example:</p>
+              <div class="p4a-term"><pre>&lt;!DOCTYPE html&gt;
+&lt;h1&gt;Hello World!&lt;/h1&gt;
+&lt;p&gt;I am your website. Thank you for making me.&lt;/p&gt;</pre></div>
+              <p class="bph-step-body">Save and exit nano by pressing <code>Ctrl+X</code>, then <code>Y</code>, then <code>Enter</code>.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 4</span> <span class="bph-step-title">Create the nginx configuration for your site</span></span></summary>
+              <div class="p4a-term"><pre>nano /etc/nginx/sites-available/mysite</pre></div>
+              <p class="bph-step-body" style="margin-bottom:14px;">Paste in the following, replacing example.org with your domain and mysite with your folder name:</p>
+              <div class="p4a-term"><pre>server {
+   listen 80;
+   listen [::]:80;
+   server_name example.org;
+   root /var/www/mysite;
+   index index.html index.htm;
+
+    location / {
+       try_files $uri $uri/ =404;
+    }
+}</pre></div>
+              <p class="bph-step-body">Save and exit (<code>Ctrl+X</code>, then <code>Y</code>, then <code>Enter</code>).</p>
+            </details>
+            <details class="bph-step bph-step-last">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 5</span> <span class="bph-step-title">Turn your site on</span></span></summary>
+              <p class="bph-step-body" style="margin-bottom:14px;">Link your new configuration into the folder of active sites:</p>
+              <div class="p4a-term"><pre>ln -s /etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/</pre></div>
+              <p class="bph-step-body" style="margin-bottom:14px;">Check the configuration and restart nginx:</p>
+              <div class="p4a-term"><pre>nginx -t
+systemctl restart nginx</pre></div>
+              <p class="bph-step-body">If <code>nginx -t</code> reports "syntax is ok" and "test is successful," you're good. Visit <code>http://example.com</code> in a browser and you should see your page.</p>
+            </details>
+          </div>
+          </div>
+        </section>
+
+        <!-- HTTPS -->
+        <section id="https" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">ADD HTTPS (THE PADLOCK) FOR FREE</h2>
+          <p class="p4a-21">HTTPS encrypts the connection between your site and its visitors. Certbot sets this up for free using Let's Encrypt.</p>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="bph-steps">
+            <details class="bph-step" open>
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 1</span> <span class="bph-step-title">Install Certbot</span></span></summary>
+              <div class="p4a-term"><pre>apt install certbot python3-certbot-nginx</pre></div>
+            </details>
+            <details class="bph-step bph-step-last">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 2</span> <span class="bph-step-title">Get and install the certificate</span></span></summary>
+              <p class="bph-step-body" style="margin-bottom:14px;">Run this, listing your domain and its www version:</p>
+              <div class="p4a-term"><pre>certbot --nginx -d example.com -d www.example.com</pre></div>
+              <p class="bph-step-body">Certbot will ask a couple of simple questions and then automatically update your nginx setup to use HTTPS. After it finishes, your site will work at <code>https://example.com</code>.</p>
+            </details>
+          </div>
+
+          <div class="p4a-27" style="margin-top:24px;">
+            <p>That's a complete, working, self-hosted website on a server you fully control, reachable at your own domain and secured with HTTPS.</p>
+          </div>
+          </div>
+        </section>
+
+        <!-- TROUBLESHOOTING -->
+        <section id="troubleshooting" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 class="p4a-20">TROUBLESHOOTING</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div>
+            <details class="p4a-details" open>
+              <summary>You see the default nginx welcome page instead of your site</summary>
+              <p>This means nginx is still serving its built-in default site. First, see which sites are active:</p>
+              <div class="p4a-term"><pre>ls -la /etc/nginx/sites-enabled/</pre></div>
+              <p>If a default site is listed, remove it:</p>
+              <div class="p4a-term"><pre>rm /etc/nginx/sites-enabled/default</pre></div>
+              <p>Confirm your own site is still active, then reload nginx:</p>
+              <div class="p4a-term"><pre>ls -la /etc/nginx/sites-enabled/mysite
+systemctl restart nginx</pre></div>
+              <p>Reload <code>http://example.com</code> and your real site should appear.</p>
+            </details>
+            <details class="p4a-details">
+              <summary>nginx -t complains about server names</summary>
+              <p>If <code>nginx -t</code> warns about <code>server_names_hash_bucket_size</code>, open the main config:</p>
+              <div class="p4a-term"><pre>nano /etc/nginx/nginx.conf</pre></div>
+              <p>Find the line containing <code>server_names_hash_bucket_size</code>, remove the <code>#</code> at the start to uncomment it, then save, and run <code>nginx -t</code> and <code>systemctl restart nginx</code> again.</p>
+            </details>
+            <details class="p4a-details">
+              <summary>Leftover DNS records from an old host</summary>
+              <p>If your domain used to be hosted somewhere else, go back into your registrar's DNS settings and delete any old records pointing to the previous host, so nothing conflicts with your new server.</p>
+            </details>
+          </div>
+          </div>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav" style="justify-content: space-between;">
+          <a href="vpn-configuration.html" class="p4a-glass-btn p4a-btn-home">&larr; Configure &amp; Lock Down</a>
+          <a href="resources.html" class="p4a-glass-btn p4a-btn-nav">Next: Test, Glossary &amp; Resources &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

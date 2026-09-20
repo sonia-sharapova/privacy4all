@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!-- saved from url=(0122)https://mohitmishra786.github.io/chessman/2024/10/02/Understanding-and-Managing-Zombie-Processes-in-Unix-like-Systems.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Understanding And Managing Zombie Processes In Unix Like Systems">
+<meta name="author" content="Mohit Mishra">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="In the world of Unix-like operating systems, processes are fundamental units of execution. They come to life, perform their tasks, and eventually terminate. However, sometimes these processes linger in a state between life and death, known as “zombie processes.” This blog post explains the nature of zombie processes, their implications, and how to manage them effectively.">
+<meta property="og:description" content="In the world of Unix-like operating systems, processes are fundamental units of execution. They come to life, perform their tasks, and eventually terminate. However, sometimes these processes linger in a state between life and death, known as “zombie processes.” This blog post explains the nature of zombie processes, their implications, and how to manage them effectively.">
+<link rel="canonical" href="https://mohitmishra786.github.io/chessman/2024/10/02/Understanding-and-Managing-Zombie-Processes-in-Unix-like-Systems.html">
+<meta property="og:url" content="https://mohitmishra786.github.io/chessman/2024/10/02/Understanding-and-Managing-Zombie-Processes-in-Unix-like-Systems.html">
+<meta property="og:site_name" content="Mohit Mishra">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-10-02T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Understanding And Managing Zombie Processes In Unix Like Systems">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mohit Mishra"},"dateModified":"2024-10-02T00:00:00+00:00","datePublished":"2024-10-02T00:00:00+00:00","description":"In the world of Unix-like operating systems, processes are fundamental units of execution. They come to life, perform their tasks, and eventually terminate. However, sometimes these processes linger in a state between life and death, known as “zombie processes.” This blog post explains the nature of zombie processes, their implications, and how to manage them effectively.","headline":"Understanding And Managing Zombie Processes In Unix Like Systems","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohitmishra786.github.io/chessman/2024/10/02/Understanding-and-Managing-Zombie-Processes-in-Unix-like-Systems.html"},"url":"https://mohitmishra786.github.io/chessman/2024/10/02/Understanding-and-Managing-Zombie-Processes-in-Unix-like-Systems.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./Understanding And Managing Zombie Processes In Unix Like Systems_files/main.css"> <!-- -- Corrected ---->
+    <link rel="shortcut icon" type="image/x-icon" href="https://mohitmishra786.github.io/chessman/favicon.ico"> <!-- -- Corrected assuming it's in the root ---->
+    <link rel="stylesheet" href="./Understanding And Managing Zombie Processes In Unix Like Systems_files/agate.css"> <!-- -- Corrected ---->
+    <script src="./Understanding And Managing Zombie Processes In Unix Like Systems_files/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><link type="application/atom+xml" rel="alternate" href="https://mohitmishra786.github.io/chessman/feed.xml" title="Mohit Mishra"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="post h-entry" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+        <script type="text/javascript" async="" src="./Understanding And Managing Zombie Processes In Unix Like Systems_files/MathJax.js"></script>
+        <script src="./Understanding And Managing Zombie Processes In Unix Like Systems_files/d3.min.js"></script>
+        <script src="./Understanding And Managing Zombie Processes In Unix Like Systems_files/index.min.js"></script>
+        <script src="./Understanding And Managing Zombie Processes In Unix Like Systems_files/d3-graphviz.min.js"></script>
+        <title>Understanding And Managing Zombie Processes In Unix Like Systems</title>
+    
+    <header class="post-header">
+        <div class="post-back">
+            <a class="black-link" href="https://mohitmishra786.github.io/chessman/">
+                ← Home
+            </a>
+        </div>
+        <h1 class="post-title p-name" itemprop="name headline">
+            Understanding And Managing Zombie Processes In Unix Like Systems
+        </h1>
+        <p class="post-meta">
+            <time class="dt-published" datetime="2024-10-02T00:00:00+00:00" itemprop="datePublished">Oct 2, 2024
+            </time></p>
+    </header>
+    <div class="post-content e-content" itemprop="articleBody">
+        <p>In the world of Unix-like operating systems, processes are fundamental units of execution. They come to life, perform their tasks, and eventually terminate. However, sometimes these processes linger in a state between life and death, known as “zombie processes.” This blog post explains the nature of zombie processes, their implications, and how to manage them effectively.</p>
+
+<h2 id="what-are-zombie-processes">What are Zombie Processes?</h2>
+
+<p>Zombie processes, also known as defunct processes, are a unique phenomenon in Unix-like systems. They occur when a child process has completed execution, but its exit status has not yet been read by its parent process. In this state, the process is essentially dead (it has finished execution), but it still occupies an entry in the process table.</p>
+
+<p>The term “zombie” is apt because these processes are neither fully alive nor completely dead. They consume minimal system resources but can become problematic if they accumulate in large numbers.</p>
+
+<h3 id="the-life-cycle-of-a-process">The Life Cycle of a Process</h3>
+
+<p>To understand zombie processes, we need to first grasp the typical life cycle of a process:</p>
+
+<ol>
+  <li>Creation: A parent process creates a child process using the <code class="language-plaintext highlighter-rouge">fork()</code> system call.</li>
+  <li>Execution: The child process runs and performs its tasks.</li>
+  <li>Termination: The child process completes its execution and calls <code class="language-plaintext highlighter-rouge">exit()</code>.</li>
+  <li>Reaping: The parent process calls <code class="language-plaintext highlighter-rouge">wait()</code> or <code class="language-plaintext highlighter-rouge">waitpid()</code> to collect the child’s exit status.</li>
+  <li>Removal: The operating system removes the process from the process table.</li>
+</ol>
+
+<p>Zombie processes occur when step 4 (reaping) is delayed or doesn’t happen at all.</p>
+
+<h2 id="why-do-zombie-processes-occur">Why Do Zombie Processes Occur?</h2>
+
+<p>Zombie processes are a natural part of the Unix process model. They serve as a mechanism for the operating system to maintain information about the terminated child process until the parent can retrieve it. This information includes the process ID, termination status, and resource usage statistics.</p>
+
+<p>Common scenarios that lead to zombie processes include:</p>
+
+<ol>
+  <li>Parent processes that don’t call <code class="language-plaintext highlighter-rouge">wait()</code> or <code class="language-plaintext highlighter-rouge">waitpid()</code> to collect child exit statuses.</li>
+  <li>Long-running parent processes that create many short-lived child processes.</li>
+  <li>Poorly designed daemon processes that don’t properly handle their child processes.</li>
+</ol>
+
+<h2 id="the-impact-of-zombie-processes">The Impact of Zombie Processes</h2>
+
+<p>While individual zombie processes consume minimal system resources, they can become problematic in large numbers:</p>
+
+<ol>
+  <li>Process Table Saturation: Each zombie occupies an entry in the process table, which has a finite size. If this table fills up, it can prevent new processes from being created.</li>
+  <li>PID Exhaustion: Zombies tie up process IDs, which are a finite resource. In extreme cases, this can prevent new processes from obtaining a PID.</li>
+  <li>System Monitoring Confusion: A large number of zombie processes can make system monitoring and troubleshooting more difficult.</li>
+</ol>
+
+<h2 id="detecting-zombie-processes">Detecting Zombie Processes</h2>
+
+<p>You can identify zombie processes using various system monitoring tools:</p>
+
+<ol>
+  <li>Using the <code class="language-plaintext highlighter-rouge">ps</code> command:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs nginx"><span class="hljs-attribute">ps</span> aux | grep Z
+</code></pre></div>    </div>
+    <p>This command lists processes with a ‘Z’ status, indicating zombies.</p>
+  </li>
+  <li>
+    <p>Using the <code class="language-plaintext highlighter-rouge">top</code> command:
+Look for processes with a ‘Z’ status in the ‘S’ (State) column.</p>
+  </li>
+  <li>Using <code class="language-plaintext highlighter-rouge">htop</code>:
+This interactive process viewer color-codes zombie processes for easy identification.</li>
+</ol>
+
+<h2 id="preventing-zombie-processes">Preventing Zombie Processes</h2>
+
+<p>Now that we understand what zombie processes are and why they occur, let’s explore strategies to prevent their creation.</p>
+
+<h3 id="1-proper-child-process-handling">1. Proper Child Process Handling</h3>
+
+<p>The most straightforward way to prevent zombie processes is to ensure that parent processes properly handle their children. This typically involves using the <code class="language-plaintext highlighter-rouge">wait()</code> or <code class="language-plaintext highlighter-rouge">waitpid()</code> system calls.</p>
+
+<p>Here’s a simple example in C that demonstrates proper child process handling:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;sys/wait.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-keyword">pid_t</span></span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">&lt;</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"fork failed"</span></span><span class="p">);</span>
+        <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+    <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"><span class="hljs-comment">// Child process</span></span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Child process (PID: %d) is running</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi"><span class="hljs-number">2</span></span><span class="p">);</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Child process (PID: %d) is exiting</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+        <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">);</span>
+    <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="p">{</span>
+        <span class="c1"><span class="hljs-comment">// Parent process</span></span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Parent process (PID: %d) created child (PID: %d)</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">getpid</span><span class="p">(),</span> <span class="n">pid</span><span class="p">);</span>
+        <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">status</span><span class="p">;</span>
+        <span class="n">waitpid</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">status</span><span class="p">,</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">WIFEXITED</span><span class="p">(</span><span class="n">status</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Child process exited with status %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, the parent process uses <code class="language-plaintext highlighter-rouge">waitpid()</code> to wait for the child process to terminate and collect its exit status. This ensures that no zombie process is created.</p>
+
+<h3 id="2-signal-handling">2. Signal Handling</h3>
+
+<p>For more complex scenarios where a parent process needs to continue running while creating child processes, we can use signal handling to reap child processes asynchronously.</p>
+
+<p>Here’s an example that demonstrates this approach:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;signal.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;sys/wait.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">sigchld_handler</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">signo</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">status</span><span class="p">;</span>
+    <span class="n"><span class="hljs-keyword">pid_t</span></span> <span class="n">pid</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">while</span></span> <span class="p">((</span><span class="n">pid</span> <span class="o">=</span> <span class="n">waitpid</span><span class="p">(</span><span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">,</span> <span class="o">&amp;</span><span class="n">status</span><span class="p">,</span> <span class="n">WNOHANG</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Child process %d terminated</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">sigaction</span> <span class="n">sa</span><span class="p">;</span>
+    <span class="n">sa</span><span class="p">.</span><span class="n">sa_handler</span> <span class="o">=</span> <span class="n">sigchld_handler</span><span class="p">;</span>
+    <span class="n">sigemptyset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sa</span><span class="p">.</span><span class="n">sa_mask</span><span class="p">);</span>
+    <span class="n">sa</span><span class="p">.</span><span class="n">sa_flags</span> <span class="o">=</span> <span class="n">SA_RESTART</span> <span class="o">|</span> <span class="n">SA_NOCLDSTOP</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">sigaction</span><span class="p">(</span><span class="n">SIGCHLD</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sa</span><span class="p">,</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"sigaction"</span></span><span class="p">);</span>
+        <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi"><span class="hljs-number">5</span></span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-keyword">pid_t</span></span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">&lt;</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"fork failed"</span></span><span class="p">);</span>
+            <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+        <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1"><span class="hljs-comment">// Child process</span></span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Child process (PID: %d) is running</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi"><span class="hljs-number">2</span></span><span class="p">);</span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Child process (PID: %d) is exiting</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+            <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">);</span>
+        <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="p">{</span>
+            <span class="c1"><span class="hljs-comment">// Parent process</span></span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Parent process created child (PID: %d)</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// Parent continues to run</span></span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi"><span class="hljs-number">10</span></span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Parent process is working...</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, we set up a signal handler for <code class="language-plaintext highlighter-rouge">SIGCHLD</code>, which is sent to the parent process when a child terminates. The handler uses <code class="language-plaintext highlighter-rouge">waitpid()</code> with the <code class="language-plaintext highlighter-rouge">WNOHANG</code> option to reap any terminated child processes without blocking.</p>
+
+<h3 id="3-using-sa_nocldwait">3. Using SA_NOCLDWAIT</h3>
+
+<p>For scenarios where you don’t need to collect the exit status of child processes at all, you can use the <code class="language-plaintext highlighter-rouge">SA_NOCLDWAIT</code> flag when setting up signal handling for <code class="language-plaintext highlighter-rouge">SIGCHLD</code>. This flag tells the system to automatically reap child processes without creating zombies.</p>
+
+<p>Here’s an example:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;signal.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;sys/wait.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">sigaction</span> <span class="n">sa</span><span class="p">;</span>
+    <span class="n">sa</span><span class="p">.</span><span class="n">sa_handler</span> <span class="o">=</span> <span class="n">SIG_DFL</span><span class="p">;</span>
+    <span class="n">sigemptyset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sa</span><span class="p">.</span><span class="n">sa_mask</span><span class="p">);</span>
+    <span class="n">sa</span><span class="p">.</span><span class="n">sa_flags</span> <span class="o">=</span> <span class="n">SA_NOCLDWAIT</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">sigaction</span><span class="p">(</span><span class="n">SIGCHLD</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sa</span><span class="p">,</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="o">==</span> <span class="o"><span class="hljs-number">-</span></span><span class="mi"><span class="hljs-number">1</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"sigaction"</span></span><span class="p">);</span>
+        <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi"><span class="hljs-number">5</span></span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-keyword">pid_t</span></span> <span class="n">pid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">&lt;</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">perror</span><span class="p">(</span><span class="s"><span class="hljs-string">"fork failed"</span></span><span class="p">);</span>
+            <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+        <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1"><span class="hljs-comment">// Child process</span></span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Child process (PID: %d) is running</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi"><span class="hljs-number">2</span></span><span class="p">);</span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Child process (PID: %d) is exiting</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+            <span class="n"><span class="hljs-built_in">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">);</span>
+        <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="p">{</span>
+            <span class="c1"><span class="hljs-comment">// Parent process</span></span>
+            <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Parent process created child (PID: %d)</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// Parent continues to run</span></span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi"><span class="hljs-number">10</span></span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Parent process is working...</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, we use <code class="language-plaintext highlighter-rouge">SA_NOCLDWAIT</code> when setting up the <code class="language-plaintext highlighter-rouge">SIGCHLD</code> handler. This tells the system to automatically reap child processes without creating zombies, even if the parent doesn’t explicitly wait for them.</p>
+
+<h2 id="compiling-and-running-the-examples">Compiling and Running the Examples</h2>
+
+<p>To compile these examples, you can use GCC:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs css"><span class="hljs-selector-tag">gcc</span> <span class="nt"><span class="hljs-selector-tag">-o</span></span> <span class="hljs-selector-tag">example</span> <span class="hljs-selector-tag">example</span><span class="hljs-selector-class">.c</span>
+</code></pre></div></div>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">example.c</code> with the name of your source file.</p>
+
+<p>To run the compiled program:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs">./example
+</code></pre></div></div>
+
+<h2 id="analyzing-the-assembly-code">Analyzing the Assembly Code</h2>
+
+<p>To see the assembly code generated by these programs, you can use GCC with the <code class="language-plaintext highlighter-rouge">-S</code> flag:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs css"><span class="hljs-selector-tag">gcc</span> <span class="nt"><span class="hljs-selector-tag">-S</span></span> <span class="nt"><span class="hljs-selector-tag">-o</span></span> <span class="hljs-selector-tag">example</span><span class="hljs-selector-class">.s</span> <span class="hljs-selector-tag">example</span><span class="hljs-selector-class">.c</span>
+</code></pre></div></div>
+
+<p>This will generate an assembly file named <code class="language-plaintext highlighter-rouge">example.s</code>. You can open this file with any text editor to view the assembly code.</p>
+
+<p>When analyzing the assembly code, pay attention to:</p>
+
+<ol>
+  <li>
+    <p>System call numbers: Look for <code class="language-plaintext highlighter-rouge">syscall</code> instructions and the values loaded into the <code class="language-plaintext highlighter-rouge">rax</code> register before them. For example, <code class="language-plaintext highlighter-rouge">mov $57, %rax</code> followed by <code class="language-plaintext highlighter-rouge">syscall</code> indicates a <code class="language-plaintext highlighter-rouge">fork()</code> system call.</p>
+  </li>
+  <li>
+    <p>Signal handling setup: Look for calls to <code class="language-plaintext highlighter-rouge">sigaction</code> and how the <code class="language-plaintext highlighter-rouge">sigaction</code> struct is set up in memory.</p>
+  </li>
+  <li>
+    <p>Process creation and waiting: Observe how <code class="language-plaintext highlighter-rouge">fork()</code> is implemented and how <code class="language-plaintext highlighter-rouge">wait()</code> or <code class="language-plaintext highlighter-rouge">waitpid()</code> are called.</p>
+  </li>
+  <li>
+    <p>Stack manipulation: Notice how the stack is used to pass arguments to functions and system calls.</p>
+  </li>
+</ol>
+
+<p>Here’s a brief example of what you might see in the assembly code for the <code class="language-plaintext highlighter-rouge">fork()</code> system call:</p>
+
+<pre><code class="language-assembly">    movl    $57, %eax    # 57 is the system call number for fork
+    syscall
+    testq   %rax, %rax   # Test the return value
+    js      .L2          # Jump if sign flag is set (error occurred)
+    je      .L3          # Jump if zero flag is set (child process)
+    # Parent process code follows
+</code></pre>
+
+<p>Understanding the assembly code can give you deeper insights into how the operating system interacts with your program and how system calls are implemented at a low level.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Zombie processes are a natural part of the Unix process model, but they can become problematic if not managed properly. By understanding how they occur and implementing proper child process handling techniques, you can prevent zombies from accumulating and ensure smooth system operation.</p>
+
+<p>Remember, the key to preventing zombie processes is to always have a plan for how child processes will be reaped, whether that’s through explicit waiting, signal handling, or using flags like <code class="language-plaintext highlighter-rouge">SA_NOCLDWAIT</code>. By following these practices, you can write more robust and efficient Unix programs that interact seamlessly with the operating system’s process management mechanisms.</p>
+
+<h2 id="references">References</h2>
+
+<ol>
+  <li><a href="https://man7.org/linux/man-pages/man2/fork.2.html">Linux Programmer’s Manual: fork(2)</a></li>
+  <li><a href="https://man7.org/linux/man-pages/man2/wait.2.html">Linux Programmer’s Manual: wait(2)</a></li>
+  <li><a href="https://man7.org/linux/man-pages/man2/sigaction.2.html">Linux Programmer’s Manual: sigaction(2)</a></li>
+  <li>Stevens, W. R., &amp; Rago, S. A. (2013). Advanced Programming in the UNIX Environment (3rd ed.). Addison-Wesley Professional.</li>
+  <li>Kerrisk, M. (2010). The Linux Programming Interface: A Linux and UNIX System Programming Handbook. No Starch Press.</li>
+</ol>
+
+        <script>
+            function d3ize(elem) {
+                var par = elem.parentElement;
+                d3.select(par).append("div").graphviz().renderDot(elem.innerText);
+                d3.select(elem).style("display", "none");
+            }
+            var dotelems = document.getElementsByClassName("language-dot");
+            for (let elem of dotelems) {
+                d3ize(elem);
+            }
+        </script>
+    </div>
+    <a class="u-url" href="https://mohitmishra786.github.io/chessman/2024/10/02/Understanding-and-Managing-Zombie-Processes-in-Unix-like-Systems.html" hidden=""></a>
+</article>
+
+        </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/chessman/"></data>
+
+  <div class="wrapper"><p>© 2025 Mohit Mishra</p><p><a class="black-link" href="mailto:immadmohit@gmail.com">immadmohit@gmail.com</a></p>
+
+      <p class="text">Learning to Learn.
+</p>
+
+      <nav>
+<!--           <a href="/chessman/">Home</a> -->
+          <a href="https://mohitmishra786.github.io/chessman/about.html">About</a>
+      </nav>
+
+  </div>
+</footer>
+
+
+</body></html>

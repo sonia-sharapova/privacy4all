@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<!-- saved from url=(0127)https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Implementing Threads In C: Designing Concurrent Programs With Pthreads">
+<meta name="author" content="Mohit Mishra">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Table of Contents Introduction Understanding Threads: The Basics Threads vs. Processes: A Quick Comparison The POSIX Threads (pthreads) API Key Functions in pthreads Creating Your First Thread Thread Synchronization: The Critical Section Problem Solving the Race Condition: Mutexes The Cost of Synchronization Beyond Basics: Condition Variables and Read-Write Locks Potential Pitfalls: Deadlocks and Priority Inversion Conclusion">
+<meta property="og:description" content="Table of Contents Introduction Understanding Threads: The Basics Threads vs. Processes: A Quick Comparison The POSIX Threads (pthreads) API Key Functions in pthreads Creating Your First Thread Thread Synchronization: The Critical Section Problem Solving the Race Condition: Mutexes The Cost of Synchronization Beyond Basics: Condition Variables and Read-Write Locks Potential Pitfalls: Deadlocks and Priority Inversion Conclusion">
+<link rel="canonical" href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html">
+<meta property="og:url" content="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html">
+<meta property="og:site_name" content="Mohit Mishra">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-09-24T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Implementing Threads In C: Designing Concurrent Programs With Pthreads">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mohit Mishra"},"dateModified":"2024-09-24T00:00:00+00:00","datePublished":"2024-09-24T00:00:00+00:00","description":"Table of Contents Introduction Understanding Threads: The Basics Threads vs. Processes: A Quick Comparison The POSIX Threads (pthreads) API Key Functions in pthreads Creating Your First Thread Thread Synchronization: The Critical Section Problem Solving the Race Condition: Mutexes The Cost of Synchronization Beyond Basics: Condition Variables and Read-Write Locks Potential Pitfalls: Deadlocks and Priority Inversion Conclusion","headline":"Implementing Threads In C: Designing Concurrent Programs With Pthreads","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html"},"url":"https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./Implementing Threads In C_ Designing Concurrent Programs With Pthreads_files/main.css"> <!-- -- Corrected ---->
+    <link rel="shortcut icon" type="image/x-icon" href="https://mohitmishra786.github.io/chessman/favicon.ico"> <!-- -- Corrected assuming it's in the root ---->
+    <link rel="stylesheet" href="./Implementing Threads In C_ Designing Concurrent Programs With Pthreads_files/agate.css"> <!-- -- Corrected ---->
+    <script src="./Implementing Threads In C_ Designing Concurrent Programs With Pthreads_files/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><link type="application/atom+xml" rel="alternate" href="https://mohitmishra786.github.io/chessman/feed.xml" title="Mohit Mishra"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="post h-entry" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+        <script type="text/javascript" async="" src="./Implementing Threads In C_ Designing Concurrent Programs With Pthreads_files/MathJax.js"></script>
+        <script src="./Implementing Threads In C_ Designing Concurrent Programs With Pthreads_files/d3.min.js"></script>
+        <script src="./Implementing Threads In C_ Designing Concurrent Programs With Pthreads_files/index.min.js"></script>
+        <script src="./Implementing Threads In C_ Designing Concurrent Programs With Pthreads_files/d3-graphviz.min.js"></script>
+        <title>Implementing Threads In C: Designing Concurrent Programs With Pthreads</title>
+    
+    <header class="post-header">
+        <div class="post-back">
+            <a class="black-link" href="https://mohitmishra786.github.io/chessman/">
+                ← Home
+            </a>
+        </div>
+        <h1 class="post-title p-name" itemprop="name headline">
+            Implementing Threads In C: Designing Concurrent Programs With Pthreads
+        </h1>
+        <p class="post-meta">
+            <time class="dt-published" datetime="2024-09-24T00:00:00+00:00" itemprop="datePublished">Sep 24, 2024
+            </time></p>
+    </header>
+    <div class="post-content e-content" itemprop="articleBody">
+        <h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#introduction">Introduction</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#understanding-threads-the-basics">Understanding Threads: The Basics</a>
+    <ul>
+      <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#threads-vs-processes-a-quick-comparison">Threads vs. Processes: A Quick Comparison</a></li>
+    </ul>
+  </li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#the-posix-threads-pthreads-api">The POSIX Threads (pthreads) API</a>
+    <ul>
+      <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#key-functions-in-pthreads">Key Functions in pthreads</a></li>
+    </ul>
+  </li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#creating-your-first-thread">Creating Your First Thread</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#thread-synchronization-the-critical-section-problem">Thread Synchronization: The Critical Section Problem</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#solving-the-race-condition-mutexes">Solving the Race Condition: Mutexes</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#the-cost-of-synchronization">The Cost of Synchronization</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#beyond-basics-condition-variables-and-read-write-locks">Beyond Basics: Condition Variables and Read-Write Locks</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#potential-pitfalls-deadlocks-and-priority-inversion">Potential Pitfalls: Deadlocks and Priority Inversion</a></li>
+  <li><a href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+<p>In the world of modern computing, the ability to perform multiple tasks simultaneously is not just a luxury—it’s a necessity. Enter threads: a powerful, fascinating, and sometimes daunting tool in a programmer’s arsenal. Today, we’re going to get on a journey into the world of concurrent programming, specifically focusing on <code class="language-plaintext highlighter-rouge">threads</code> in C.</p>
+
+<h2 id="understanding-threads-the-basics">Understanding Threads: The Basics</h2>
+
+<p>At its core, a thread is an independent sequence of instructions that can be scheduled and executed by the operating system. Unlike processes, which are isolated instances of a program with their own memory space, threads exist within a process and share the same memory space.</p>
+
+<h3 id="threads-vs-processes-a-quick-comparison">Threads vs. Processes: A Quick Comparison</h3>
+
+<ol>
+  <li><strong>Concurrency</strong>: Both threads and processes allow for concurrent execution.</li>
+  <li><strong>Memory</strong>: Threads share memory within a process, while processes have isolated memory spaces.</li>
+  <li><strong>Communication</strong>: Inter-thread communication is generally faster and easier than inter-process communication.</li>
+  <li><strong>Creation Overhead</strong>: Creating a thread is typically faster and less resource-intensive than creating a new process.</li>
+</ol>
+
+<h2 id="the-posix-threads-pthreads-api">The POSIX Threads (pthreads) API</h2>
+
+<p>For our exploration, we’ll focus on the POSIX Threads (pthreads) API, a standardized interface for thread manipulation that’s widely available on Unix-like systems and can be used on Windows with third-party libraries.</p>
+
+<h3 id="key-functions-in-pthreads">Key Functions in pthreads</h3>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">pthread_create</code>: Creates a new thread</li>
+  <li><code class="language-plaintext highlighter-rouge">pthread_join</code>: Waits for a thread to terminate</li>
+  <li><code class="language-plaintext highlighter-rouge">pthread_exit</code>: Terminates the calling thread</li>
+  <li><code class="language-plaintext highlighter-rouge">pthread_self</code>: Returns the ID of the calling thread</li>
+  <li><code class="language-plaintext highlighter-rouge">pthread_mutex_init</code>, <code class="language-plaintext highlighter-rouge">pthread_mutex_lock</code>, <code class="language-plaintext highlighter-rouge">pthread_mutex_unlock</code>: Functions for handling mutexes (we’ll cover these in depth later)</li>
+</ol>
+
+<h2 id="creating-your-first-thread">Creating Your First Thread</h2>
+
+<p>Let’s start with a simple example to illustrate thread creation and execution:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;pthread.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="o"><span class="hljs-function">*</span></span><span class="nf"><span class="hljs-function"><span class="hljs-title">print_message</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">void</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">arg</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">char</span></span> <span class="o">*</span><span class="p">)</span><span class="n">arg</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi"><span class="hljs-number">5</span></span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"%s: Iteration %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-keyword">pthread_t</span></span> <span class="n">thread1</span><span class="p">,</span> <span class="n">thread2</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="o">*</span><span class="n">message1</span> <span class="o">=</span> <span class="s"><span class="hljs-string">"Thread 1"</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">char</span></span> <span class="o">*</span><span class="n">message2</span> <span class="o">=</span> <span class="s"><span class="hljs-string">"Thread 2"</span></span><span class="p">;</span>
+
+    <span class="c1"><span class="hljs-comment">// Create two threads</span></span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">thread1</span><span class="p">,</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">,</span> <span class="n">print_message</span><span class="p">,</span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">void</span></span> <span class="o">*</span><span class="p">)</span><span class="n">message1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">fprintf</span></span><span class="p">(</span><span class="n"><span class="hljs-built_in">stderr</span></span><span class="p">,</span> <span class="s"><span class="hljs-string">"Error creating thread 1</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">thread2</span><span class="p">,</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">,</span> <span class="n">print_message</span><span class="p">,</span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">void</span></span> <span class="o">*</span><span class="p">)</span><span class="n">message2</span><span class="p">)</span> <span class="o">!=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+        <span class="n"><span class="hljs-built_in">fprintf</span></span><span class="p">(</span><span class="n"><span class="hljs-built_in">stderr</span></span><span class="p">,</span> <span class="s"><span class="hljs-string">"Error creating thread 2</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+        <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// Wait for both threads to complete</span></span>
+    <span class="n">pthread_join</span><span class="p">(</span><span class="n">thread1</span><span class="p">,</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">);</span>
+    <span class="n">pthread_join</span><span class="p">(</span><span class="n">thread2</span><span class="p">,</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">);</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Both threads have completed.</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Let’s break down this example:</p>
+
+<ol>
+  <li>
+    <p>We define a function <code class="language-plaintext highlighter-rouge">print_message</code> that will be executed by our threads. It takes a <code class="language-plaintext highlighter-rouge">void *</code> argument, which allows us to pass any type of data to the thread function.</p>
+  </li>
+  <li>
+    <p>In <code class="language-plaintext highlighter-rouge">main</code>, we declare two <code class="language-plaintext highlighter-rouge">pthread_t</code> variables to hold our thread identifiers.</p>
+  </li>
+  <li>We use <code class="language-plaintext highlighter-rouge">pthread_create</code> to spawn two threads. The function takes four arguments:
+    <ul>
+      <li>A pointer to a <code class="language-plaintext highlighter-rouge">pthread_t</code> variable to store the thread ID</li>
+      <li>Thread attributes (NULL for default)</li>
+      <li>The function to be executed by the thread</li>
+      <li>Arguments to pass to the thread function</li>
+    </ul>
+  </li>
+  <li>We use <code class="language-plaintext highlighter-rouge">pthread_join</code> to wait for both threads to complete before exiting the program.</li>
+</ol>
+
+<p>When you run this program, you’ll see the messages from both threads interleaved, demonstrating concurrent execution.</p>
+
+<h2 id="thread-synchronization-the-critical-section-problem">Thread Synchronization: The Critical Section Problem</h2>
+
+<p>While threads offer powerful concurrency benefits, they also introduce new challenges, particularly when it comes to shared resources. Let’s consider a more complex example that illustrates the need for synchronization:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;pthread.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> NUM_THREADS 5</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ITERATIONS 1000000</span>
+</span>
+<span class="kt"><span class="hljs-keyword">long</span></span> <span class="kt"><span class="hljs-keyword">long</span></span> <span class="n">shared_counter</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="o"><span class="hljs-function">*</span></span><span class="nf"><span class="hljs-function"><span class="hljs-title">increment_counter</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">void</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">arg</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ITERATIONS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">shared_counter</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-keyword">pthread_t</span></span> <span class="n">threads</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span>
+
+    <span class="c1"><span class="hljs-comment">// Create threads</span></span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">threads</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">,</span> <span class="n">increment_counter</span><span class="p">,</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="o">!=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="n"><span class="hljs-built_in">fprintf</span></span><span class="p">(</span><span class="n"><span class="hljs-built_in">stderr</span></span><span class="p">,</span> <span class="s"><span class="hljs-string">"Error creating thread %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// Wait for threads to complete</span></span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pthread_join</span><span class="p">(</span><span class="n">threads</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Final counter value: %lld</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">shared_counter</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Expected value: %lld</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">long</span></span> <span class="kt"><span class="hljs-keyword">long</span></span><span class="p">)</span><span class="n">NUM_THREADS</span> <span class="o">*</span> <span class="n">ITERATIONS</span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, we have multiple threads incrementing a shared counter. You might expect the final value to be <code class="language-plaintext highlighter-rouge">NUM_THREADS * ITERATIONS</code>, but if you run this program, you’ll likely get a different (and lower) result.</p>
+
+<p>This discrepancy occurs due to a race condition. The operation <code class="language-plaintext highlighter-rouge">shared_counter++</code> is not atomic; it involves reading the value, incrementing it, and writing it back. If two threads perform this operation simultaneously, they might read the same initial value, leading to lost increments.</p>
+
+<h2 id="solving-the-race-condition-mutexes">Solving the Race Condition: Mutexes</h2>
+
+<p>To solve this problem, we need to ensure that only one thread can access the shared resource at a time. This is where mutexes (mutual exclusion locks) come in handy. Let’s modify our example to use a mutex:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;pthread.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><span class="cp">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span></span></span><span class="hljs-meta"> </span><span class="cpf"><span class="hljs-meta"><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span></span><span class="cp">
+</span>
+<span class="cp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> NUM_THREADS 5</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ITERATIONS 1000000</span>
+</span>
+<span class="kt"><span class="hljs-keyword">long</span></span> <span class="kt"><span class="hljs-keyword">long</span></span> <span class="n">shared_counter</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="n"><span class="hljs-keyword">pthread_mutex_t</span></span> <span class="n">counter_mutex</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="o"><span class="hljs-function">*</span></span><span class="nf"><span class="hljs-function"><span class="hljs-title">increment_counter</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">void</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">arg</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ITERATIONS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">counter_mutex</span><span class="p">);</span>
+        <span class="n">shared_counter</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">counter_mutex</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">main</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-keyword">pthread_t</span></span> <span class="n">threads</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span>
+
+    <span class="c1"><span class="hljs-comment">// Create threads</span></span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">threads</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">,</span> <span class="n">increment_counter</span><span class="p">,</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">)</span> <span class="o">!=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>
+            <span class="n"><span class="hljs-built_in">fprintf</span></span><span class="p">(</span><span class="n"><span class="hljs-built_in">stderr</span></span><span class="p">,</span> <span class="s"><span class="hljs-string">"Error creating thread %d</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// Wait for threads to complete</span></span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pthread_join</span><span class="p">(</span><span class="n">threads</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Final counter value: %lld</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="n">shared_counter</span><span class="p">);</span>
+    <span class="n"><span class="hljs-built_in">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Expected value: %lld</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">long</span></span> <span class="kt"><span class="hljs-keyword">long</span></span><span class="p">)</span><span class="n">NUM_THREADS</span> <span class="o">*</span> <span class="n">ITERATIONS</span><span class="p">);</span>
+
+    <span class="n">pthread_mutex_destroy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">counter_mutex</span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this version:</p>
+
+<ol>
+  <li>We declare a mutex <code class="language-plaintext highlighter-rouge">counter_mutex</code> and initialize it.</li>
+  <li>In the <code class="language-plaintext highlighter-rouge">increment_counter</code> function, we lock the mutex before incrementing the counter and unlock it afterward.</li>
+  <li>We destroy the mutex at the end of the program.</li>
+</ol>
+
+<p>Now, when you run this program, you should get the expected result. The mutex ensures that only one thread can increment the counter at a time, preventing race conditions.</p>
+
+<h2 id="the-cost-of-synchronization">The Cost of Synchronization</h2>
+
+<p>While mutexes solve our race condition problem, they come with a performance cost. Each lock and unlock operation takes time, and threads may need to wait to acquire the lock. In our example, we’re locking and unlocking the mutex for every increment, which is inefficient for such a simple operation.</p>
+
+<p>For better performance, we could modify our code to perform multiple increments within a single lock:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="o"><span class="hljs-function">*</span></span><span class="nf"><span class="hljs-function"><span class="hljs-title">increment_counter</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="kt"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">void</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">arg</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">long</span></span> <span class="kt"><span class="hljs-keyword">long</span></span> <span class="n">local_counter</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ITERATIONS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">local_counter</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">counter_mutex</span><span class="p">);</span>
+    <span class="n">shared_counter</span> <span class="o">+=</span> <span class="n">local_counter</span><span class="p">;</span>
+    <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">counter_mutex</span><span class="p">);</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="nb"><span class="hljs-literal">NULL</span></span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This approach reduces the number of lock/unlock operations, potentially improving performance, especially for more complex operations.</p>
+
+<h2 id="beyond-basics-condition-variables-and-read-write-locks">Beyond Basics: Condition Variables and Read-Write Locks</h2>
+
+<p>While mutexes are fundamental to thread synchronization, pthreads offers other synchronization primitives for more complex scenarios:</p>
+
+<ol>
+  <li>
+    <p><strong>Condition Variables</strong>: These allow threads to synchronize based on the actual value of data, rather than simple mutual exclusion.</p>
+  </li>
+  <li>
+    <p><strong>Read-Write Locks</strong>: These allow multiple readers to access shared data simultaneously, while ensuring exclusive access for writers.</p>
+  </li>
+</ol>
+
+<h2 id="potential-pitfalls-deadlocks-and-priority-inversion">Potential Pitfalls: Deadlocks and Priority Inversion</h2>
+
+<p>As powerful as threads are, they come with potential pitfalls:</p>
+
+<ol>
+  <li>
+    <p><strong>Deadlocks</strong>: These occur when two or more threads are waiting for each other to release resources, resulting in a standstill.</p>
+  </li>
+  <li>
+    <p><strong>Priority Inversion</strong>: This happens when a high-priority thread is indirectly preempted by a lower-priority thread.</p>
+  </li>
+</ol>
+
+<p>Understanding and mitigating these issues is crucial for developing robust multithreaded applications.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Threads offer a powerful way to achieve concurrency within a single process, allowing for efficient utilization of modern multi-core processors. However, with great power comes great responsibility. Proper synchronization, careful design, and thorough testing are essential when working with threads.</p>
+
+<p>As we’ve seen, even simple operations like incrementing a counter can become complex in a multithreaded environment. As you try to get into concurrent programming, you’ll encounter more advanced concepts and techniques for managing shared resources and coordinating thread execution.</p>
+
+<p>Remember, the key to successful multithreaded programming lies not just in understanding the APIs and techniques, but also in developing a mindset that anticipates and addresses the unique challenges of concurrent execution.</p>
+
+        <script>
+            function d3ize(elem) {
+                var par = elem.parentElement;
+                d3.select(par).append("div").graphviz().renderDot(elem.innerText);
+                d3.select(elem).style("display", "none");
+            }
+            var dotelems = document.getElementsByClassName("language-dot");
+            for (let elem of dotelems) {
+                d3ize(elem);
+            }
+        </script>
+    </div>
+    <a class="u-url" href="https://mohitmishra786.github.io/chessman/2024/09/24/Implementing-Threads-in-C-Designing-Concurrent-Programs-with-pthreads.html" hidden=""></a>
+</article>
+
+        </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/chessman/"></data>
+
+  <div class="wrapper"><p>© 2025 Mohit Mishra</p><p><a class="black-link" href="mailto:immadmohit@gmail.com">immadmohit@gmail.com</a></p>
+
+      <p class="text">Learning to Learn.
+</p>
+
+      <nav>
+<!--           <a href="/chessman/">Home</a> -->
+          <a href="https://mohitmishra786.github.io/chessman/about.html">About</a>
+      </nav>
+
+  </div>
+</footer>
+
+
+</body></html>

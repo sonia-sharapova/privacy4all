@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em;">
+
+  <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0;">
+
+    <aside style="position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box;">
+      <a href="Homepage.dc.html" style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px; display: block; color: #1b1b1b;">p4a</a>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">ON THIS PAGE</div>
+      <nav style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <a href="#overview" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Overview</a>
+        <a href="#setup-steps" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Step-by-Step Configuration</a>
+        <a href="#extensions" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Minimal Extension Set</a>
+        <a href="#matrix" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Risk &amp; Utility Matrix</a>
+        <a href="#red-flags" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Red Flags</a>
+        <a href="#safety-check" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Checking Safety</a>
+      </nav>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">RELATED TOPICS</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px;">
+        <a href="Browser Privacy Guide.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">&larr; Guide Overview</a>
+        <a href="Troubleshooting.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Troubleshooting Guide</a>
+        <a href="Browsers.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Choose Your Browser</a>
+        <a href="Homepage.dc.html#topic-data" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Data</a>
+        <a href="Homepage.dc.html#topic-networks" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Networks</a>
+        <a href="Homepage.dc.html#topic-auth" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Auth / 2FA</a>
+      </div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GOOD TO KNOW</div>
+      <p style="font-size: 11px; line-height: 1.6; color: #555; margin: 0;">Every extension is a piece of code with broad access to what you see and type. Fewer is safer.</p>
+    </aside>
+
+    <div style="min-width: 0; position: relative;">
+
+      <div style="position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none;"></div>
+
+      <header style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <div style="width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box;">
+          <nav style="display: flex; width: 100%; box-sizing: border-box; border: 1px solid rgba(0,0,0,0.06); border-radius: 0;">
+            <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." style="flex: 1; height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none;" style-focus="background: rgba(255,255,255,0.7);"><select value="{{ category }}" onChange="{{ onCategoryChange }}" style="height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none;">
+                <option value="All">All</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select><button type="button" onClick="{{ handleSearchSubmit }}" style="height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0;">Go</button>
+          </nav>
+        </div>
+        <div style="max-width: 1160px; margin: 0 auto; padding: 20px 40px 24px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;"><a href="Homepage.dc.html" style="color: #888;">Home</a> / <a href="Browser Privacy Guide.dc.html" style="color: #888;">Browser Privacy Guide</a> / <span style="color: #1b1b1b;">Set Up Your Browser</span></div>
+          <nav style="display: flex; flex-wrap: wrap; gap: 16px 20px;">
+            <a href="Homepage.dc.html#projects" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">PROJECTS</a>
+            <a href="Homepage.dc.html#additional-resources" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">RESOURCES</a>
+            <a href="Homepage.dc.html#contact" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <div style="background: rgba(255,255,255,0.55); backdrop-filter: blur(16px) saturate(160%) contrast(1.05); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.35); margin: 0 32px; border-radius: 6px;">
+      <main style="max-width: 1160px; margin: 0 auto; padding: 48px 40px 96px;">
+
+        <!-- MASTHEAD -->
+        <section id="overview" style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; border-bottom: 2px solid #1b1b1b; padding-bottom: 18px; margin-bottom: 8px;">
+          <div>
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">TOPIC 02 / MOBILE &amp; DEVICE</div>
+            <h1 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 64px; letter-spacing: 0.1em; margin: 0; line-height: 0.95;">Browser Extensions</h1>
+          </div>
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: right; line-height: 1.7;">
+            FILE&nbsp;NO.&nbsp;015<br>REV.&nbsp;2026&ndash;08<br>READ&nbsp;TIME&nbsp;5&nbsp;MIN
+          </div>
+        </section>
+
+        <!-- INTRO -->
+        <section style="display: grid; grid-template-columns: 0.55fr 1fr; gap: 0; margin-bottom: 56px;">
+          <div style="padding: 26px 24px 26px 0; border-right: 1px solid rgba(0,0,0,0.12);">
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;">WHY IT MATTERS</div>
+            <p style="font-size: 12.5px; letter-spacing: 0.1em; line-height: 1.8; margin: 0;">Every extension is a piece of code with broad access to what you see and type. Where a setting can do the job instead of an extension, prefer the setting &mdash; keep the list deliberately short.</p>
+          </div>
+          <div style="padding: 26px 24px;">
+            <p style="font-size: 20px; letter-spacing: 0.06em; line-height: 1.55; margin: 0; font-style: italic;">"<span style="font-family: 'Averia Libre', serif; font-size: 40px; line-height: 0; vertical-align: -12px; font-style: normal;">I</span>nstall as few extensions as possible. A minimal, well-audited set beats a long list of unaudited convenience tools."</p>
+          </div>
+        </section>
+
+        <!-- STEP-BY-STEP CONFIGURATION -->
+        <section id="setup-steps" style="margin-bottom: 56px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 8px;">STEP-BY-STEP CONFIGURATION</h2>
+          <p style="font-size: 12.5px; letter-spacing: 0.1em; color: #555; line-height: 1.7; margin: 0 0 20px; max-width: 720px;">Every browser's privacy settings live in a different place. Pick yours below.</p>
+
+          <div style="display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;">
+            <button type="button" onClick="{{ selectTabFirefox }}" style="{{ tabBtnStyleFirefox }}">Firefox / LibreWolf</button>
+            <button type="button" onClick="{{ selectTabBrave }}" style="{{ tabBtnStyleBrave }}">Brave</button>
+            <button type="button" onClick="{{ selectTabChrome }}" style="{{ tabBtnStyleChrome }}">Chrome</button>
+            <button type="button" onClick="{{ selectTabOther }}" style="{{ tabBtnStyleOther }}">Your Browser Here</button>
+          </div>
+
+          <div style="background: #faf6ea; padding: 32px 36px;">
+
+            <sc-if value="{{ isTabFirefox }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 22px;">
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 1 &mdash; Enhanced Tracking Protection</div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                    <code style="background: #fff; border: 1px solid rgba(0,0,0,0.15); padding: 4px 10px; font-size: 12px; border-radius: 3px;">about:preferences#privacy</code>
+                    <button type="button" onClick="{{ copyAboutPreferencesPrivacy }}" style="border: 1px solid rgba(0,0,0,0.2); background: #fff; font-size: 10.5px; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 3px; cursor: pointer;">{{ copyLabelAboutPreferencesPrivacy }}</button>
+                  </div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;"><b>Action:</b> select "Strict" (instead of Standard or Custom). <b>Why:</b> blocks most trackers and enables Firefox's fingerprinting protection automatically.</p>
+                </div>
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 2 &mdash; Turn Off Telemetry</div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;">On the same <em>about:preferences#privacy</em> page, scroll to "Firefox Data Collection and Use" and uncheck all four boxes: technical/interaction data, personalized extension recommendations, study installs, and backlogged crash reports.</p>
+                </div>
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 3 &mdash; DNS over HTTPS</div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                    <code style="background: #fff; border: 1px solid rgba(0,0,0,0.15); padding: 4px 10px; font-size: 12px; border-radius: 3px;">about:preferences#general</code>
+                    <button type="button" onClick="{{ copyAboutPreferencesGeneral }}" style="border: 1px solid rgba(0,0,0,0.2); background: #fff; font-size: 10.5px; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 3px; cursor: pointer;">{{ copyLabelAboutPreferencesGeneral }}</button>
+                  </div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;"><b>Action:</b> scroll to "Network Settings," click Settings, and enable DNS over HTTPS &mdash; pick NextDNS if you also want ad/tracker blocking at the DNS level, or Cloudflare for a simpler option.</p>
+                </div>
+
+                <button type="button" onClick="{{ toggleFirefoxAdvanced }}" style="align-self: flex-start; background: transparent; border: none; padding: 0; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 600;">{{ firefoxAdvancedLabel }}</button>
+                <sc-if value="{{ firefoxAdvancedOpen }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-top: 1px dashed rgba(0,0,0,0.2); padding-top: 16px; display: flex; flex-direction: column; gap: 16px;">
+                    <p style="font-size: 11px; letter-spacing: 0.08em; color: #b23; margin: 0;">Advanced &mdash; only for users comfortable editing low-level browser settings.</p>
+                    <div>
+                      <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; color: #1b1b1b; margin-bottom: 6px;">Certificate Authorities</div>
+                      <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;">Scroll to "Certificates" on the privacy page, click View Certificates &rarr; Authorities. Consider removing certificate authorities you don't trust (this guide flags TrustCor and Chinese government-linked CAs specifically).</p>
+                    </div>
+                    <div>
+                      <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; color: #1b1b1b; margin-bottom: 6px;">Block Firefox's Own Telemetry Server</div>
+                      <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;">Block <code>telemetry.mozilla.org</code> at the DNS level through your router or a DNS filtering service, as an extra layer beyond the in-browser toggles.</p>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isTabBrave }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 22px;">
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 1 &mdash; Shields</div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                    <code style="background: #fff; border: 1px solid rgba(0,0,0,0.15); padding: 4px 10px; font-size: 12px; border-radius: 3px;">brave://settings/shields</code>
+                    <button type="button" onClick="{{ copyBraveShields }}" style="border: 1px solid rgba(0,0,0,0.2); background: #fff; font-size: 10.5px; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 3px; cursor: pointer;">{{ copyLabelBraveShields }}</button>
+                  </div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;"><b>Action:</b> confirm ad and tracker blocking is active on all sites (Settings &rarr; Shields also works). <b>Why:</b> it's on by default, but worth a quick check.</p>
+                </div>
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 2 &mdash; Block Notification Requests</div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;">Go to Settings &rarr; Additional settings &rarr; Privacy and security &rarr; Site and Shields Settings &rarr; Notifications, and set it to block sites from asking for notification permission.</p>
+                </div>
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 3 &mdash; Social Media Blocking</div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                    <code style="background: #fff; border: 1px solid rgba(0,0,0,0.15); padding: 4px 10px; font-size: 12px; border-radius: 3px;">brave://settings/socialBlocking</code>
+                    <button type="button" onClick="{{ copyBraveSocial }}" style="border: 1px solid rgba(0,0,0,0.2); background: #fff; font-size: 10.5px; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 3px; cursor: pointer;">{{ copyLabelBraveSocial }}</button>
+                  </div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;"><b>Action:</b> disable Google and Facebook login/social widgets if you don't use them.</p>
+                </div>
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 4 &mdash; Confirm Global Privacy Control</div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;">Visit <a href="https://globalprivacycontrol.org/" target="_blank" rel="noopener">globalprivacycontrol.org</a> to confirm it's working &mdash; Brave supports this by default. See <a href="Verify Everything Works.dc.html">Part 4: Test &amp; Verify</a> for how to read the result.</p>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isTabChrome }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 22px;">
+                <p style="font-size: 12px; letter-spacing: 0.08em; color: #888; margin: 0;">If you can't fully leave Chrome (work requirements, specific extensions, etc.), do at least the following.</p>
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 1 &mdash; Disable Enhanced Spellcheck</div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                    <code style="background: #fff; border: 1px solid rgba(0,0,0,0.15); padding: 4px 10px; font-size: 12px; border-radius: 3px;">chrome://settings/?search=Enhanced+Spell+Check</code>
+                    <button type="button" onClick="{{ copyChromeSpellcheck }}" style="border: 1px solid rgba(0,0,0,0.2); background: #fff; font-size: 10.5px; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 3px; cursor: pointer; flex-shrink: 0;">{{ copyLabelChromeSpellcheck }}</button>
+                  </div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;"><b>Why:</b> with Enhanced Spellcheck on, Chrome can send the text you type in web forms &mdash; including passwords in some cases &mdash; to Google's servers for spell-checking.</p>
+                </div>
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 2 &mdash; Clear Site Data Periodically</div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                    <code style="background: #fff; border: 1px solid rgba(0,0,0,0.15); padding: 4px 10px; font-size: 12px; border-radius: 3px;">chrome://settings/siteData</code>
+                    <button type="button" onClick="{{ copyChromeSiteData }}" style="border: 1px solid rgba(0,0,0,0.2); background: #fff; font-size: 10.5px; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 3px; cursor: pointer;">{{ copyLabelChromeSiteData }}</button>
+                  </div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;"><b>Action:</b> click Remove All periodically to clear cookies and site data.</p>
+                </div>
+
+                <div>
+                  <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 15px; color: #1b1b1b; margin-bottom: 8px;">Step 3 &mdash; Skip Cloud Spellcheck Extensions</div>
+                  <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;">Don't install Microsoft Editor or similar cloud-spellcheck extensions in Chrome or Edge, for the same reason as Step 1.</p>
+                </div>
+
+                <button type="button" onClick="{{ toggleChromeAdvanced }}" style="align-self: flex-start; background: transparent; border: none; padding: 0; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 600;">{{ chromeAdvancedLabel }}</button>
+                <sc-if value="{{ chromeAdvancedOpen }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-top: 1px dashed rgba(0,0,0,0.2); padding-top: 16px; display: flex; flex-direction: column; gap: 16px;">
+                    <div>
+                      <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; color: #1b1b1b; margin-bottom: 6px;">Incognito Isn't Private</div>
+                      <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;">Incognito Mode only hides your activity from other people using the same device. It does not stop Google, your internet provider, or the websites you visit from logging what you do, and Google's own employees have acknowledged its privacy limits fall short of what users expect.</p>
+                    </div>
+                    <div>
+                      <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; color: #1b1b1b; margin-bottom: 6px;">On-Device AI Downloads</div>
+                      <p style="font-size: 12.5px; color: #555; line-height: 1.6; margin: 0;">As of May 2026, Chrome downloads a roughly 4GB file to support on-device AI features without a clear notification to the user; if disk space or bandwidth is a concern, check Chrome's AI/on-device model settings and disable this if you don't need it.</p>
+                    </div>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isTabOther }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 22px;">
+                <p style="font-size: 12px; letter-spacing: 0.08em; color: #888; margin: 0;">Not using Firefox, Brave, or Chrome? The same handful of settings apply almost everywhere &mdash; look for these in your browser's privacy or settings menu.</p>
+                <ol style="margin: 0; padding-left: 20px; font-size: 12.5px; letter-spacing: normal; line-height: 1.9; color: #333;">
+                  <li>Enable the strictest built-in tracking protection option available.</li>
+                  <li>Turn off any "usage data," "telemetry," or "diagnostics" sharing toggle.</li>
+                  <li>Turn off autofill for addresses and payment cards if you don't want the browser storing that information.</li>
+                  <li>Turn off search suggestions that send your keystrokes to a server as you type.</li>
+                  <li>Enable HTTPS-only mode if the browser offers it.</li>
+                  <li>Set a private search engine as default (see <a href="Browsers.dc.html">Part 1</a>).</li>
+                </ol>
+              </div>
+            </sc-if>
+
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+            <a href="#extensions" style="font-size: 11.5px; letter-spacing: 0.1em;">Continue to: Essential Extensions &darr;</a>
+          </div>
+        </section>
+
+        <!-- MINIMAL EXTENSION SET -->
+        <section id="extensions" style="margin-bottom: 56px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">INSTALL A MINIMAL SET OF PRIVACY EXTENSIONS</h2>
+
+          <div style="background: #faf6ea; padding: 36px 40px; display: flex; flex-direction: column; gap: 32px;">
+
+            <div>
+              <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: normal; color: #1b1b1b; margin: 0 0 10px;">uBlock Origin <span style="color: #888; font-weight: 400; font-size: 14px;">&mdash; top pick across every source consulted</span></h3>
+              <p style="font-size: 13px; letter-spacing: normal; color: #888; line-height: 1.6; margin: 0 0 12px;">Blocks ads and trackers, and is widely regarded as the most effective and best-maintained blocker available.</p>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 16px;">
+                <button type="button" onClick="{{ openInstallFirefox }}" style="padding: 9px 16px; border: 1px solid #1b1b1b; background: #1b1b1b; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.08em; border-radius: 3px; cursor: pointer;">Install for Firefox</button>
+                <button type="button" onClick="{{ openInstallChrome }}" style="padding: 9px 16px; border: 1px solid #1b1b1b; background: #1b1b1b; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.08em; border-radius: 3px; cursor: pointer;">Install for Chrome</button>
+                <button type="button" onClick="{{ openInstallBrave }}" style="padding: 9px 16px; border: 1px solid #1b1b1b; background: #1b1b1b; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.08em; border-radius: 3px; cursor: pointer;">Install for Brave</button>
+              </div>
+              <ol style="margin: 0; padding-left: 20px; font-size: 13px; letter-spacing: normal; line-height: 1.8; color: #333;">
+                <li>Go to the extension store for your browser (Firefox Add-ons, Chrome Web Store, or Brave/Edge's respective stores).</li>
+                <li>Search for "uBlock Origin" and confirm the developer listed is Raymond Hill, also known as gorhill. Do not install look-alikes such as "uBlock" (no "Origin") or "uBlock Pro," and note that it has no connection to the website "ublock.org."</li>
+                <li>Click Install/Add to Browser.</li>
+                <li>If you're on Chrome specifically: Google disabled the original uBlock Origin for most Chrome users in 2025 as part of the Manifest V3 changes. Install uBlock Origin Lite instead (also by Raymond Hill) if the full version isn't available to you. Firefox and Firefox-based browsers like LibreWolf still support the full, more capable version.</li>
+                <li>If you use Mullvad Browser, you can skip this step: uBlock Origin comes built in.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: normal; color: #1b1b1b; margin: 0 0 10px;">Privacy Badger <span style="color: #888; font-weight: 400; font-size: 14px;">(by the Electronic Frontier Foundation)</span></h3>
+              <p style="font-size: 13px; letter-spacing: normal; color: #888; line-height: 1.6; margin: 0 0 12px;">Learns which trackers are following you across sites and blocks them, with almost no configuration needed.</p>
+              <ol style="margin: 0; padding-left: 20px; font-size: 13px; letter-spacing: normal; line-height: 1.8; color: #333;">
+                <li>Search your browser's extension store for "Privacy Badger" and confirm the publisher is the EFF (Electronic Frontier Foundation).</li>
+                <li>Install it and leave it running in the background; it needs no setup.</li>
+              </ol>
+              <p style="font-size: 13px; letter-spacing: normal; color: #888; line-height: 1.6; margin: 12px 0 0;">Note it currently doesn't work on Safari (macOS or iOS), though the EFF was working on Safari support as of June 2025.</p>
+            </div>
+
+            <div>
+              <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: normal; color: #1b1b1b; margin: 0 0 10px;">Decentraleyes</h3>
+              <p style="font-size: 13px; letter-spacing: normal; color: #888; line-height: 1.6; margin: 0 0 12px;">Serves common website code libraries locally instead of letting your browser fetch them from Google or other third-party servers, which reduces one common way sites can track you across the web.</p>
+              <ol style="margin: 0; padding-left: 20px; font-size: 13px; letter-spacing: normal; line-height: 1.8; color: #333;">
+                <li>Search your browser's extension store for "Decentraleyes" and install it.</li>
+                <li>No configuration is required after installation.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: normal; color: #1b1b1b; margin: 0 0 10px;">Facebook Container <span style="color: #888; font-weight: 400; font-size: 14px;">(Firefox and LibreWolf only)</span></h3>
+              <p style="font-size: 13px; letter-spacing: normal; color: #888; line-height: 1.6; margin: 0 0 12px;">Isolates Facebook in its own contained tab so it can't track your activity on other websites you visit.</p>
+              <ol style="margin: 0; padding-left: 20px; font-size: 13px; letter-spacing: normal; line-height: 1.8; color: #333;">
+                <li>Search Firefox Add-ons for "Facebook Container" (made by Mozilla) and install it.</li>
+                <li>After installation, any Facebook tab automatically opens in an isolated container; no further setup needed.</li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: normal; color: #1b1b1b; margin: 0 0 10px;">Disable HTML5 Autoplay</h3>
+              <p style="font-size: 13px; letter-spacing: normal; color: #888; line-height: 1.6; margin: 0 0 12px;">Stops videos on websites from automatically starting with sound.</p>
+              <ol style="margin: 0; padding-left: 20px; font-size: 13px; letter-spacing: normal; line-height: 1.8; color: #333;">
+                <li>Search your extension store for "Disable HTML5 Autoplay" and install it.</li>
+                <li>Optionally review its settings to allowlist specific sites where you do want autoplay.</li>
+              </ol>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- MATRIX -->
+        <section id="matrix" style="margin-bottom: 56px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 22px;">
+            <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0;">EXTENSION RISK &amp; UTILITY MATRIX</h2>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" onClick="{{ selectMatrixSimple }}" style="{{ matrixBtnStyleSimple }}">Simple</button>
+              <button type="button" onClick="{{ selectMatrixDetailed }}" style="{{ matrixBtnStyleDetailed }}">Detailed</button>
+            </div>
+          </div>
+
+          <sc-if value="{{ matrixIsSimple }}" hint-placeholder-val="{{ false }}">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+            <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">EXTENSION</div>
+            <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">REQUIRED?</div>
+
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">uBlock Origin</div>
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; font-weight: 600; color: #2f6fed; border-bottom: 1px solid rgba(0,0,0,0.08);">Essential</div>
+
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Privacy Badger</div>
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Recommended</div>
+
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Decentraleyes</div>
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.08);">Optional</div>
+
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Facebook Container</div>
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">If you use Facebook</div>
+
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">NoScript</div>
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.08);">Advanced only</div>
+
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">TamperMonkey</div>
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; color: #b23;">Avoid unless expert</div>
+
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Paywall bypass</div>
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.08);">Optional</div>
+
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em;">HTTPS Everywhere</div>
+            <div style="padding: 10px 0; font-size: 12.5px; letter-spacing: 0.08em; color: #888;">No longer needed</div>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ matrixIsDetailed }}" hint-placeholder-val="{{ true }}">
+          <div style="overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: 1.4fr 1.4fr 1.4fr 1fr; min-width: 720px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">EXTENSION</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">PRIVACY BENEFIT</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">SECURITY RISK</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">REQUIRED?</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">uBlock Origin</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★★★★★ Blocks most trackers</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★☆☆☆☆ Low risk (well-audited)</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; font-weight: 600; color: #2f6fed; border-bottom: 1px solid rgba(0,0,0,0.08);">Essential</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Privacy Badger</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★★★★☆ Blocks unknown trackers</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★☆☆☆☆ Low risk (EFF)</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Recommended</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Decentraleyes</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★★★☆☆ Reduces CDN tracking</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★☆☆☆☆ Low risk</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.08);">Optional</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Facebook Container</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★★★★☆ Isolates Facebook</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★☆☆☆☆ Low risk</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">If you use Facebook</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">NoScript</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★★★★★ Blocks all scripts</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★★☆☆☆ Breaks many sites</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.08);">Advanced only</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">TamperMonkey</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.08);">☆☆☆☆☆ (User scripts)</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #b23; font-weight: 600; border-bottom: 1px solid rgba(0,0,0,0.08);">★★★★★ HIGH RISK</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #b23; border-bottom: 1px solid rgba(0,0,0,0.08);">Avoid unless expert</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Paywall bypass</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.08);">☆☆☆☆☆ (Access only)</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">★★☆☆☆ May violate ToS</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.08);">Optional</div>
+
+              <div style="padding: 10px 0; font-size: 12px; letter-spacing: 0.08em;">HTTPS Everywhere</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #888;">★★☆☆☆ (Mostly redundant)</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">★☆☆☆☆ Low risk</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #888;">No longer needed</div>
+            </div>
+          </div>
+          </sc-if>
+        </section>
+
+        <!-- CHECKPOINT: Red flags -->
+        <section id="red-flags" style="margin: 0 0 56px; border: 1px dashed rgba(0,0,0,0.25); background: rgba(255,255,255,0.3); backdrop-filter: blur(12px) saturate(140%);">
+          <button type="button" onClick="{{ toggleRedFlags }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 28px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 10px; letter-spacing: 0.2em; color: #2f6fed; font-weight: 700; border: 1px solid #2f6fed; padding: 3px 8px; border-radius: 2px;">CHECKPOINT</span>
+              <span style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em;">Red Flags &mdash; When to Avoid an Extension</span>
+            </div>
+            <span style="font-size: 20px; line-height: 1; flex-shrink: 0; width: 30px; height: 30px; border: 1px solid rgba(0,0,0,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">{{ redFlagsChevron }}</span>
+          </button>
+          <sc-if value="{{ redFlagsOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="padding: 0 28px 24px; border-top: 1px solid rgba(0,0,0,0.1);">
+            <p style="font-size: 12.5px; letter-spacing: 0.1em; line-height: 1.7; margin: 20px 0 16px;">Never install an extension that shows one of these signs. Click each to see why it matters.</p>
+            <div style="display: flex; flex-direction: column; gap: 0;">
+
+              <div style="border-top: 1px solid rgba(0,0,0,0.15);">
+                <button type="button" onClick="{{ toggleFlag1 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                  <span style="font-size: 12.5px; letter-spacing: 0.08em; font-weight: 600;">Asks for "Read and change all your data on websites you visit" for no clear reason</span>
+                  <span style="font-size: 16px; color: #888; flex-shrink: 0;">{{ flag1Chevron }}</span>
+                </button>
+                <sc-if value="{{ flag1Open }}" hint-placeholder-val="{{ false }}">
+                  <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0 0 14px; padding: 0 4px;">Legitimate ad/tracker blockers need this permission to work. A note-taking app, theme, or unrelated utility asking for it has no good reason to &mdash; that's the warning sign.</p>
+                </sc-if>
+              </div>
+
+              <div style="border-top: 1px solid rgba(0,0,0,0.15);">
+                <button type="button" onClick="{{ toggleFlag2 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                  <span style="font-size: 12.5px; letter-spacing: 0.08em; font-weight: 600;">Has few users but many glowing reviews</span>
+                  <span style="font-size: 16px; color: #888; flex-shrink: 0;">{{ flag2Chevron }}</span>
+                </button>
+                <sc-if value="{{ flag2Open }}" hint-placeholder-val="{{ false }}">
+                  <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0 0 14px; padding: 0 4px;">Fake or paid reviews are a common way to disguise a rushed or malicious extension launch. A low install count with a wall of five-star reviews rarely adds up naturally.</p>
+                </sc-if>
+              </div>
+
+              <div style="border-top: 1px solid rgba(0,0,0,0.15);">
+                <button type="button" onClick="{{ toggleFlag3 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                  <span style="font-size: 12.5px; letter-spacing: 0.08em; font-weight: 600;">Was recently bought by an unknown company</span>
+                  <span style="font-size: 16px; color: #888; flex-shrink: 0;">{{ flag3Chevron }}</span>
+                </button>
+                <sc-if value="{{ flag3Open }}" hint-placeholder-val="{{ false }}">
+                  <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0 0 14px; padding: 0 4px;">A well-regarded extension can turn hostile overnight after an acquisition. Check the changelog and reviews around the sale date before trusting an update from a new owner.</p>
+                </sc-if>
+              </div>
+
+              <div style="border-top: 1px solid rgba(0,0,0,0.15);">
+                <button type="button" onClick="{{ toggleFlag4 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                  <span style="font-size: 12.5px; letter-spacing: 0.08em; font-weight: 600;">Hasn't been updated in over a year</span>
+                  <span style="font-size: 16px; color: #888; flex-shrink: 0;">{{ flag4Chevron }}</span>
+                </button>
+                <sc-if value="{{ flag4Open }}" hint-placeholder-val="{{ false }}">
+                  <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0 0 14px; padding: 0 4px;">Unmaintained extensions accumulate unpatched security holes as browsers change their APIs underneath them.</p>
+                </sc-if>
+              </div>
+
+              <div style="border-top: 1px solid rgba(0,0,0,0.15);">
+                <button type="button" onClick="{{ toggleFlag5 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                  <span style="font-size: 12.5px; letter-spacing: 0.08em; font-weight: 600;">Comes from a third-party website, not the official store</span>
+                  <span style="font-size: 16px; color: #888; flex-shrink: 0;">{{ flag5Chevron }}</span>
+                </button>
+                <sc-if value="{{ flag5Open }}" hint-placeholder-val="{{ false }}">
+                  <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0 0 14px; padding: 0 4px;">Store review processes catch obvious malware before it reaches you. A sideloaded file skips that check entirely.</p>
+                </sc-if>
+              </div>
+
+              <div style="border-top: 1px solid rgba(0,0,0,0.15); border-bottom: 1px solid rgba(0,0,0,0.15);">
+                <button type="button" onClick="{{ toggleFlag6 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                  <span style="font-size: 12.5px; letter-spacing: 0.08em; font-weight: 600;">Has a name that mimics a popular extension</span>
+                  <span style="font-size: 16px; color: #888; flex-shrink: 0;">{{ flag6Chevron }}</span>
+                </button>
+                <sc-if value="{{ flag6Open }}" hint-placeholder-val="{{ false }}">
+                  <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0 0 14px; padding: 0 4px;">E.g. "uBlock" vs "uBlock Origin." Copycats piggyback on a trusted name's search ranking to catch users who don't check the developer.</p>
+                </sc-if>
+              </div>
+
+            </div>
+          </div>
+          </sc-if>
+        </section>
+
+        <!-- INSTALL CONFIRMATION MODAL -->
+        <sc-if value="{{ installModalOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; padding: 20px;">
+            <div style="background: #fff; border-radius: 6px; max-width: 380px; width: 100%; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+              <div style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 10px;">Open {{ installModalLabel }}?</div>
+              <p style="font-size: 12.5px; letter-spacing: 0.02em; color: #555; line-height: 1.6; margin: 0 0 22px;">You're about to leave privacy4all and open the official extension store to install uBlock Origin.</p>
+              <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button type="button" onClick="{{ closeInstallModal }}" style="padding: 9px 16px; border: 1px solid rgba(0,0,0,0.2); background: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.08em; border-radius: 3px; cursor: pointer;">Cancel</button>
+                <button type="button" onClick="{{ confirmInstall }}" style="padding: 9px 16px; border: 1px solid #1b1b1b; background: #1b1b1b; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.08em; border-radius: 3px; cursor: pointer;">Continue</button>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- SAFETY CHECK -->
+        <section id="safety-check" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">HOW TO CHECK AN EXTENSION'S SAFETY</h2>
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;">
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">01</div>
+              <div style="font-size: 12px; letter-spacing: 0.08em; line-height: 1.6; color: #333;">Read the reviews &mdash; look for complaints about data collection</div>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">02</div>
+              <div style="font-size: 12px; letter-spacing: 0.08em; line-height: 1.6; color: #333;">Check the user count &mdash; thousands of users means more scrutiny</div>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">03</div>
+              <div style="font-size: 12px; letter-spacing: 0.08em; line-height: 1.6; color: #333;">Verify the developer &mdash; is this a known entity?</div>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">04</div>
+              <div style="font-size: 12px; letter-spacing: 0.08em; line-height: 1.6; color: #333;">Check the permissions &mdash; does it need more access than makes sense?</div>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 6px;">05</div>
+              <div style="font-size: 12px; letter-spacing: 0.08em; line-height: 1.6; color: #333;">Search online &mdash; "[Extension name] privacy concerns"</div>
+            </div>
+          </div>
+        </section>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.12); font-size: 12px; letter-spacing: 0.1em;">
+          <a href="Browsers.dc.html">&larr; Choose Your Browser</a>
+          <a href="Browser Fingerprinting.dc.html">Next: Advanced Tools &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer id="contact" style="border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666;">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    query: '', category: 'All', redFlagsOpen: false,
+    configTab: 'firefox', firefoxAdvancedOpen: false, chromeAdvancedOpen: false, copiedField: null,
+    matrixView: 'detailed',
+    flag1Open: false, flag2Open: false, flag3Open: false, flag4Open: false, flag5Open: false, flag6Open: false,
+    installModalOpen: false, installModalLabel: '', installModalUrl: '',
+  };
+
+  installUrls = {
+    firefox: { label: 'Firefox Add-ons', url: 'https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/' },
+    chrome: { label: 'the Chrome Web Store', url: 'https://chromewebstore.google.com/search/ublock%20origin' },
+    brave: { label: 'the Chrome Web Store (works in Brave)', url: 'https://chromewebstore.google.com/search/ublock%20origin' },
+  };
+
+  handleSearchSubmit = () => {
+    window.location.href = 'Homepage.dc.html';
+  };
+
+  activeTabBtn = 'padding: 8px 16px; border: 1px solid #1b1b1b; background: #1b1b1b; color: #fff; font-family: "IBM Plex Mono", monospace; font-size: 11.5px; letter-spacing: 0.1em; border-radius: 3px; cursor: pointer;';
+  inactiveTabBtn = 'padding: 8px 16px; border: 1px solid rgba(0,0,0,0.2); background: rgba(255,255,255,0.5); color: #1b1b1b; font-family: "IBM Plex Mono", monospace; font-size: 11.5px; letter-spacing: 0.1em; border-radius: 3px; cursor: pointer;';
+
+  copy(field, text) {
+    if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
+    this.setState({ copiedField: field });
+    setTimeout(() => this.setState(s => (s.copiedField === field ? { copiedField: null } : {})), 1500);
+  }
+
+  renderVals() {
+    const tab = this.state.configTab;
+    const label = (field) => this.state.copiedField === field ? 'Copied!' : 'Copy';
+    return {
+      query: this.state.query,
+      category: this.state.category,
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onCategoryChange: (e) => this.setState({ category: e.target.value }),
+      onKeyDown: (e) => { if (e.key === 'Enter') this.handleSearchSubmit(); },
+      handleSearchSubmit: this.handleSearchSubmit,
+
+      redFlagsOpen: this.state.redFlagsOpen,
+      toggleRedFlags: () => this.setState(s => ({ redFlagsOpen: !s.redFlagsOpen })),
+      redFlagsChevron: this.state.redFlagsOpen ? '\u2212' : '+',
+
+      isTabFirefox: tab === 'firefox',
+      isTabBrave: tab === 'brave',
+      isTabChrome: tab === 'chrome',
+      isTabOther: tab === 'other',
+      selectTabFirefox: () => this.setState({ configTab: 'firefox' }),
+      selectTabBrave: () => this.setState({ configTab: 'brave' }),
+      selectTabChrome: () => this.setState({ configTab: 'chrome' }),
+      selectTabOther: () => this.setState({ configTab: 'other' }),
+      tabBtnStyleFirefox: tab === 'firefox' ? this.activeTabBtn : this.inactiveTabBtn,
+      tabBtnStyleBrave: tab === 'brave' ? this.activeTabBtn : this.inactiveTabBtn,
+      tabBtnStyleChrome: tab === 'chrome' ? this.activeTabBtn : this.inactiveTabBtn,
+      tabBtnStyleOther: tab === 'other' ? this.activeTabBtn : this.inactiveTabBtn,
+
+      firefoxAdvancedOpen: this.state.firefoxAdvancedOpen,
+      toggleFirefoxAdvanced: () => this.setState(s => ({ firefoxAdvancedOpen: !s.firefoxAdvancedOpen })),
+      firefoxAdvancedLabel: this.state.firefoxAdvancedOpen ? '\u2212 Hide advanced: Certificate Authorities' : '+ Advanced: Certificate Authorities',
+
+      chromeAdvancedOpen: this.state.chromeAdvancedOpen,
+      toggleChromeAdvanced: () => this.setState(s => ({ chromeAdvancedOpen: !s.chromeAdvancedOpen })),
+      chromeAdvancedLabel: this.state.chromeAdvancedOpen ? '\u2212 Hide advanced notes' : '+ Advanced: what Incognito and on-device AI mean for you',
+
+      copyAboutPreferencesPrivacy: () => this.copy('privacy', 'about:preferences#privacy'),
+      copyAboutPreferencesGeneral: () => this.copy('general', 'about:preferences#general'),
+      copyBraveShields: () => this.copy('shields', 'brave://settings/shields'),
+      copyBraveSocial: () => this.copy('social', 'brave://settings/socialBlocking'),
+      copyChromeSpellcheck: () => this.copy('spellcheck', 'chrome://settings/?search=Enhanced+Spell+Check'),
+      copyChromeSiteData: () => this.copy('sitedata', 'chrome://settings/siteData'),
+      copyLabelAboutPreferencesPrivacy: label('privacy'),
+      copyLabelAboutPreferencesGeneral: label('general'),
+      copyLabelBraveShields: label('shields'),
+      copyLabelBraveSocial: label('social'),
+      copyLabelChromeSpellcheck: label('spellcheck'),
+      copyLabelChromeSiteData: label('sitedata'),
+
+      matrixIsSimple: this.state.matrixView === 'simple',
+      matrixIsDetailed: this.state.matrixView === 'detailed',
+      selectMatrixSimple: () => this.setState({ matrixView: 'simple' }),
+      selectMatrixDetailed: () => this.setState({ matrixView: 'detailed' }),
+      matrixBtnStyleSimple: this.state.matrixView === 'simple' ? this.activeTabBtn : this.inactiveTabBtn,
+      matrixBtnStyleDetailed: this.state.matrixView === 'detailed' ? this.activeTabBtn : this.inactiveTabBtn,
+
+      flag1Open: this.state.flag1Open, flag2Open: this.state.flag2Open, flag3Open: this.state.flag3Open,
+      flag4Open: this.state.flag4Open, flag5Open: this.state.flag5Open, flag6Open: this.state.flag6Open,
+      flag1Chevron: this.state.flag1Open ? '\u2212' : '+',
+      flag2Chevron: this.state.flag2Open ? '\u2212' : '+',
+      flag3Chevron: this.state.flag3Open ? '\u2212' : '+',
+      flag4Chevron: this.state.flag4Open ? '\u2212' : '+',
+      flag5Chevron: this.state.flag5Open ? '\u2212' : '+',
+      flag6Chevron: this.state.flag6Open ? '\u2212' : '+',
+      toggleFlag1: () => this.setState(s => ({ flag1Open: !s.flag1Open })),
+      toggleFlag2: () => this.setState(s => ({ flag2Open: !s.flag2Open })),
+      toggleFlag3: () => this.setState(s => ({ flag3Open: !s.flag3Open })),
+      toggleFlag4: () => this.setState(s => ({ flag4Open: !s.flag4Open })),
+      toggleFlag5: () => this.setState(s => ({ flag5Open: !s.flag5Open })),
+      toggleFlag6: () => this.setState(s => ({ flag6Open: !s.flag6Open })),
+
+      installModalOpen: this.state.installModalOpen,
+      installModalLabel: this.state.installModalLabel,
+      openInstallFirefox: () => this.setState({ installModalOpen: true, installModalLabel: this.installUrls.firefox.label, installModalUrl: this.installUrls.firefox.url }),
+      openInstallChrome: () => this.setState({ installModalOpen: true, installModalLabel: this.installUrls.chrome.label, installModalUrl: this.installUrls.chrome.url }),
+      openInstallBrave: () => this.setState({ installModalOpen: true, installModalLabel: this.installUrls.brave.label, installModalUrl: this.installUrls.brave.url }),
+      closeInstallModal: () => this.setState({ installModalOpen: false }),
+      confirmInstall: () => { window.open(this.state.installModalUrl, '_blank', 'noopener'); this.setState({ installModalOpen: false }); },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">JUMP TO TOPIC</div>
+      <nav class="p4a-5">
+        <a href="#flowchart" class="p4a-6">Quick Flowchart</a>
+        <a href="#from-browsers" class="p4a-6">From: Choose Your Browser</a>
+        <a href="#from-extensions" class="p4a-6">From: Set Up Your Browser</a>
+        <a href="#from-advanced" class="p4a-6">From: Advanced Configurations</a>
+        <a href="#from-verify" class="p4a-6">From: Test &amp; Verify</a>
+        <a href="#whitelist" class="p4a-6">Whitelisting a Site</a>
+      </nav>
+
+      <div class="p4a-4">THE GUIDE</div>
+      <div class="p4a-7">
+        <a href="index.html" class="p4a-8">&larr; Guide Overview</a>
+        <a href="browsers.html" class="p4a-8">1. Choose Your Browser</a>
+        <a href="extensions.html" class="p4a-8">2. Set Up Your Browser</a>
+        <a href="fingerprinting.html" class="p4a-8">3. Advanced Configurations</a>
+        <a href="verify.html" class="p4a-8">4. Test &amp; Verify</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../index.html" style="color:inherit;">Home</a> / Troubleshooting</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="resources.html" class="p4a-o">RESOURCES</a>
+              <a href="../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section class="p4a-1v">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="../index.html">&larr; back home</a></div>
+            <h1 class="p4a-1x">Troubleshooting</h1>
+          </div>
+          <div class="p4a-1y">
+            FILE&nbsp;NO.&nbsp;018<br>REV.&nbsp;2026&ndash;08
+          </div>
+        </section>
+
+        <!-- FLOWCHART -->
+        <section id="flowchart" class="p4a-1z" style="border-top: none; padding-top: 0;">
+          <h2 class="p4a-20">QUICK TROUBLESHOOTING FLOWCHART</h2>
+          <div class="p4a-39">
+            <div class="p4a-39-box">Site looks broken</div>
+            <div class="p4a-39-arrow">&rarr;</div>
+            <div class="p4a-39-box">Hard reload the page</div>
+            <div class="p4a-39-arrow">&rarr;</div>
+            <div class="p4a-39-box">Still broken?</div>
+
+            <div class="p4a-39-divider"></div>
+
+            <div class="p4a-39-box">Disable blocker for this site</div>
+            <div class="p4a-39-arrow">&rarr;</div>
+            <div class="p4a-39-box">Reload again</div>
+            <div class="p4a-39-arrow">&rarr;</div>
+            <div class="p4a-39-box highlight">Still broken? Try your backup browser</div>
+          </div>
+        </section>
+
+        <!-- FROM: BROWSERS -->
+        <section id="from-browsers" class="p4a-1z">
+          <div class="p4a-3a">FROM: <a href="browsers.html">CHOOSE YOUR BROWSER</a></div>
+          <h2 class="p4a-20">BROWSER &amp; LINEUP ISSUES</h2>
+          <div class="p4a-2d">
+            <table>
+              <thead>
+                <tr><th>PROBLEM</th><th>LIKELY CAUSE</th><th>SOLUTION</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A site logs me out constantly</td>
+                  <td>You're using a throwaway/clean browser for logins</td>
+                  <td>Log into that account from your main browser only, per the 3-browser lineup</td>
+                </tr>
+                <tr>
+                  <td>A browser feels slow after switching</td>
+                  <td>Tor Browser or a heavily hardened setup</td>
+                  <td>Expected trade-off for anonymity; use a faster browser for everyday, low-risk browsing</td>
+                </tr>
+                <tr>
+                  <td>A site says my browser is unsupported</td>
+                  <td>Older browser detection scripts don't recognize LibreWolf/Mullvad's user agent</td>
+                  <td>Try your backup browser for that one site</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- FROM: EXTENSIONS -->
+        <section id="from-extensions" class="p4a-1z">
+          <div class="p4a-3a">FROM: <a href="extensions.html">SET UP YOUR BROWSER</a></div>
+          <h2 class="p4a-20">WHEN SITES BREAK</h2>
+          <div class="p4a-2d">
+            <table>
+              <thead>
+                <tr><th>PROBLEM</th><th>LIKELY CAUSE</th><th>SOLUTION</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Video won't play</td>
+                  <td>Ad blocker blocking video player</td>
+                  <td>Disable uBlock Origin for that site temporarily, or whitelist just the video domain</td>
+                </tr>
+                <tr>
+                  <td>Login button does nothing</td>
+                  <td>Script blocked by uBlock Origin</td>
+                  <td>Click the uBlock icon &rarr; toggle "Disable on this site"</td>
+                </tr>
+                <tr>
+                  <td>Page loads blank</td>
+                  <td>Overly aggressive protection</td>
+                  <td>Use your backup browser for this site, or temporarily switch protection to "Standard"</td>
+                </tr>
+                <tr>
+                  <td>Comments or reviews missing</td>
+                  <td>Third-party scripts blocked</td>
+                  <td>Check for a site "privacy mode" setting; some sites detect blockers and hide content</td>
+                </tr>
+                <tr>
+                  <td>CAPTCHA loop (infinite puzzles)</td>
+                  <td>Privacy settings interfering with CAPTCHA</td>
+                  <td>Enable "Temporary allow all" in uBlock Origin for that session</td>
+                </tr>
+                <tr>
+                  <td>Payments failing</td>
+                  <td>Payment processor script blocked</td>
+                  <td>Whitelist the payment domain, e.g. <em>*.stripe.com</em> or <em>*.braintree.com</em></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="whitelist" class="p4a-36" style="margin-top: 28px; margin-bottom: 0;">
+            <h3>How to Whitelist a Site</h3>
+            <ol style="max-width: 720px;">
+              <li>Click the uBlock Origin icon in your toolbar.</li>
+              <li>Click the large power button to disable blocking on the current site only.</li>
+              <li>Reload the page &mdash; the site reactivates its scripts immediately.</li>
+              <li>If only one feature is broken (like a video or a login), prefer disabling the specific tracker/script instead of the whole page &mdash; click the icon, open the dashboard, and unblock the single domain causing the issue.</li>
+              <li>Whitelisting is per-site and persists until you toggle it back &mdash; review your whitelist occasionally and remove sites you no longer trust.</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- FROM: ADVANCED -->
+        <section id="from-advanced" class="p4a-1z">
+          <div class="p4a-3a">FROM: <a href="fingerprinting.html">ADVANCED CONFIGURATIONS</a></div>
+          <h2 class="p4a-20">FINGERPRINTING &amp; TOOL ISSUES</h2>
+          <div class="p4a-2d">
+            <table>
+              <thead>
+                <tr><th>PROBLEM</th><th>LIKELY CAUSE</th><th>SOLUTION</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Fingerprint test still says "unique"</td>
+                  <td>Strict/randomization setting not actually enabled</td>
+                  <td>Re-check Enhanced Tracking Protection (Firefox) or Shields (Brave), then retest</td>
+                </tr>
+                <tr>
+                  <td>Password manager won't autofill</td>
+                  <td>Browser's built-in password manager conflicting with the extension</td>
+                  <td>Disable your browser's native password manager per the Password Managers setup step</td>
+                </tr>
+                <tr>
+                  <td>DNS filtering blocks a site I need</td>
+                  <td>Overly aggressive DNS-level blocklist</td>
+                  <td>Whitelist the domain in your NextDNS/ControlD/AdGuard DNS dashboard</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- FROM: VERIFY -->
+        <section id="from-verify" class="p4a-1z">
+          <div class="p4a-3a">FROM: <a href="verify.html">TEST &amp; VERIFY</a></div>
+          <h2 class="p4a-20">TEST SUITE ISSUES</h2>
+          <div class="p4a-2d">
+            <table>
+              <thead>
+                <tr><th>PROBLEM</th><th>LIKELY CAUSE</th><th>SOLUTION</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>"GPC signal detected" doesn't show</td>
+                  <td>Browser doesn't support GPC, or it's off</td>
+                  <td>Safari and stock Chrome don't support it natively; switch to Brave, Firefox, or LibreWolf</td>
+                </tr>
+                <tr>
+                  <td>DNS leak test shows my ISP</td>
+                  <td>VPN or private DNS not actually active during the test</td>
+                  <td>Confirm your VPN/DNS provider is connected, then rerun the test</td>
+                </tr>
+                <tr>
+                  <td>Ad-blocker test shows slots as "not blocked"</td>
+                  <td>Extension disabled on that domain, or filter list out of date</td>
+                  <td>Re-enable on the domain and update filter lists from the extension's dashboard</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav p4a-2c-left">
+          <a href="index.html" class="p4a-glass-btn p4a-btn-home">&larr; Back to Guide Overview</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

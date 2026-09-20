@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em;">
+
+  <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0;">
+
+    <aside style="position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box;">
+      <a href="Homepage.dc.html" style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px; display: block; color: #1b1b1b;">p4a</a>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">ON THIS PAGE</div>
+      <nav style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <a href="#faq" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">FAQ</a>
+        <a href="#glossary" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Glossary</a>
+        <a href="#updates" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Updates</a>
+        <a href="#links" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Curated Links</a>
+      </nav>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">THE GUIDE</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px;">
+        <a href="Browser Privacy Guide.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">&larr; Guide Overview</a>
+        <a href="Troubleshooting.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Troubleshooting Guide</a>
+      </div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GOOD TO KNOW</div>
+      <p style="font-size: 11px; line-height: 1.6; color: #555; margin: 0;">Can't find a term? Search this page &mdash; the glossary covers most jargon used across the site.</p>
+    </aside>
+
+    <div style="min-width: 0; position: relative;">
+
+      <div style="position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none;"></div>
+
+      <header style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <div style="width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box;">
+          <nav style="display: flex; width: 100%; box-sizing: border-box; border: 1px solid rgba(0,0,0,0.06); border-radius: 0;">
+            <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." style="flex: 1; height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none;" style-focus="background: rgba(255,255,255,0.7);"><select value="{{ category }}" onChange="{{ onCategoryChange }}" style="height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none;">
+                <option value="All">All</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select><button type="button" onClick="{{ handleSearchSubmit }}" style="height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0;">Go</button>
+          </nav>
+        </div>
+        <div style="max-width: 1160px; margin: 0 auto; padding: 20px 40px 24px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;"><a href="Homepage.dc.html" style="color: #888;">Home</a> / <span style="color: #1b1b1b;">Resources</span></div>
+          <nav style="display: flex; flex-wrap: wrap; gap: 16px 20px;">
+            <a href="Homepage.dc.html#projects" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">PROJECTS</a>
+            <a href="Troubleshooting.dc.html" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">TROUBLESHOOTING</a>
+            <a href="Homepage.dc.html#contact" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <div style="background: rgba(255,255,255,0.55); backdrop-filter: blur(16px) saturate(160%) contrast(1.05); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.35); margin: 0 32px; border-radius: 6px;">
+      <main style="max-width: 1160px; margin: 0 auto; padding: 48px 40px 96px;">
+
+        <!-- MASTHEAD -->
+        <section style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; border-bottom: 2px solid #1b1b1b; padding-bottom: 18px; margin-bottom: 40px;">
+          <div>
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">SITE-WIDE</div>
+            <h1 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 56px; letter-spacing: 0.1em; margin: 0; line-height: 0.95;">Resources</h1>
+          </div>
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: right; line-height: 1.7;">
+            FILE&nbsp;NO.&nbsp;019<br>REV.&nbsp;2026&ndash;08
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" style="margin-bottom: 56px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">FAQ</h2>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+
+            <div style="border-top: 1px solid #1b1b1b;">
+              <button type="button" onClick="{{ toggleFaq1 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em;">Why can't I just use Chrome?</span>
+                <span style="font-size: 18px; color: #888;">{{ faq1Chevron }}</span>
+              </button>
+              <sc-if value="{{ faq1Open }}" hint-placeholder-val="{{ true }}">
+                <p style="font-size: 12.5px; letter-spacing: 0.06em; color: #555; line-height: 1.7; margin: 0 0 18px; padding: 0 4px;">Chrome is free because Google's business is advertising, and your browsing history feeds that business. It ships without built-in tracker blocking, and its Manifest V3 changes weakened some ad/tracker blockers. You can use it if you must, but see <a href="Browser Extensions.dc.html#setup-steps">Set Up Your Browser</a> for the minimum steps to limit the damage.</p>
+              </sc-if>
+            </div>
+
+            <div style="border-top: 1px solid #1b1b1b;">
+              <button type="button" onClick="{{ toggleFaq2 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em;">What about VPNs?</span>
+                <span style="font-size: 18px; color: #888;">{{ faq2Chevron }}</span>
+              </button>
+              <sc-if value="{{ faq2Open }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 12.5px; letter-spacing: 0.06em; color: #555; line-height: 1.7; margin: 0 0 18px; padding: 0 4px;">A VPN hides your IP address and encrypts traffic from your ISP, which is useful, but it does nothing about cookies, fingerprinting, or the tracking scripts a site loads once your traffic arrives. A VPN and a hardened browser solve different problems &mdash; you likely want both.</p>
+              </sc-if>
+            </div>
+
+            <div style="border-top: 1px solid #1b1b1b;">
+              <button type="button" onClick="{{ toggleFaq3 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em;">Is private/incognito browsing enough?</span>
+                <span style="font-size: 18px; color: #888;">{{ faq3Chevron }}</span>
+              </button>
+              <sc-if value="{{ faq3Open }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 12.5px; letter-spacing: 0.06em; color: #555; line-height: 1.7; margin: 0 0 18px; padding: 0 4px;">No. Private browsing only stops your device from saving history and cookies locally. It does not stop your ISP, the sites you visit, or fingerprinting techniques from tracking you. Treat it as a local-privacy feature, not a real anonymity tool.</p>
+              </sc-if>
+            </div>
+
+            <div style="border-top: 1px solid #1b1b1b;">
+              <button type="button" onClick="{{ toggleFaq4 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em;">Do I really need more than one browser?</span>
+                <span style="font-size: 18px; color: #888;">{{ faq4Chevron }}</span>
+              </button>
+              <sc-if value="{{ faq4Open }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 12.5px; letter-spacing: 0.06em; color: #555; line-height: 1.7; margin: 0 0 18px; padding: 0 4px;">No, one hardened browser is a fine starting point. A 2&ndash;3 browser lineup is a further step for people who want to separate risk (shopping, coupon extensions) from what matters (banking, work, main accounts). See <a href="Browsers.dc.html#browser-lineup">Choose Your Browser</a>.</p>
+              </sc-if>
+            </div>
+
+            <div style="border-top: 1px solid #1b1b1b; border-bottom: 1px solid #1b1b1b;">
+              <button type="button" onClick="{{ toggleFaq5 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em;">Will any of this break the sites I use?</span>
+                <span style="font-size: 18px; color: #888;">{{ faq5Chevron }}</span>
+              </button>
+              <sc-if value="{{ faq5Open }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 12.5px; letter-spacing: 0.06em; color: #555; line-height: 1.7; margin: 0 0 18px; padding: 0 4px;">Occasionally. Ad blockers and strict tracking protection can break a video player, login button, or payment form on rare sites. The <a href="Troubleshooting.dc.html">Troubleshooting Guide</a> covers the common cases and how to whitelist just one site instead of turning protection off entirely.</p>
+              </sc-if>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- GLOSSARY -->
+        <section id="glossary" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">GLOSSARY</h2>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 40px;">
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 6px;">Certificate Authority (CA)</div>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0;">An organization your browser trusts to verify that a website is who it claims to be. A compromised or untrustworthy CA can undermine that trust for every site it vouches for.</p>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 6px;">Manifest V3</div>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0;">Chrome's current extension platform. It limits how much content-blocking extensions can do compared to the older Manifest V2, which is why some ad blockers ship a "Lite" version for Chrome.</p>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 6px;">GPC (Global Privacy Control)</div>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0;">A browser signal that tells websites "don't sell or share my data," recognized under some state privacy laws. Brave, Firefox, and LibreWolf support it; Safari and stock Chrome don't.</p>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 6px;">WebRTC</div>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0;">A browser technology for real-time audio/video that can, if misconfigured, leak your real IP address even behind a VPN.</p>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 6px;">Fingerprinting</div>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0;">Identifying a device from a combination of details like screen size, fonts, and timezone &mdash; without needing cookies at all. See <a href="Browser Fingerprinting.dc.html">Advanced Configurations</a>.</p>
+            </div>
+            <div style="border-top: 1px solid #1b1b1b; padding-top: 12px;">
+              <div style="font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 6px;">DNS over HTTPS (DoH)</div>
+              <p style="font-size: 12px; letter-spacing: 0.06em; color: #555; line-height: 1.6; margin: 0;">Encrypts the lookups that turn a domain name into an IP address, so your ISP can't easily see which sites you visit just by watching DNS traffic.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- UPDATES -->
+        <section id="updates" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">WHAT'S CHANGED</h2>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 16px;">
+              <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;">AUG 2026</div>
+              <p style="font-size: 12.5px; letter-spacing: 0.06em; color: #333; line-height: 1.7; margin: 0;">Added the full Browser Privacy Guide (Choose, Set Up, Advanced Configurations, Test &amp; Verify), a site-wide Troubleshooting Guide, and this Resources page.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 16px;">
+              <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;">AUG 2025</div>
+              <p style="font-size: 12.5px; letter-spacing: 0.06em; color: #333; line-height: 1.7; margin: 0;">Safari added uBlock Origin support and on-by-default fingerprinting protection under "All Browsing" mode.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 110px 1fr; gap: 16px;">
+              <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;">2025</div>
+              <p style="font-size: 12.5px; letter-spacing: 0.06em; color: #333; line-height: 1.7; margin: 0;">Chrome's Manifest V3 rollout disabled the full uBlock Origin for most users; uBlock Origin Lite became the Chrome-compatible fallback.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- LINKS -->
+        <section id="links" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">CURATED LINKS</h2>
+          <ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 12.5px; letter-spacing: 0.06em; line-height: 1.6; color: #333;">
+            <li><a href="https://www.privacyguides.org/" target="_blank" rel="noopener"><b>Privacy Guides</b></a> &mdash; community-maintained recommendations for privacy tools and services.</li>
+            <li><a href="https://www.privacytools.io/" target="_blank" rel="noopener"><b>PrivacyTools.io</b></a> &mdash; browser hardening and encrypted software guide.</li>
+            <li><a href="https://prism-break.org/en/" target="_blank" rel="noopener"><b>PRISM Break</b></a> &mdash; opt out of global data surveillance programs, by platform.</li>
+            <li><a href="https://www.eff.org/" target="_blank" rel="noopener"><b>Electronic Frontier Foundation (EFF)</b></a> &mdash; digital rights nonprofit behind Privacy Badger and Cover Your Tracks.</li>
+            <li><a href="https://digdeeper.neocities.org/index.xhtml" target="_blank" rel="noopener"><b>Dig Deeper</b></a> &mdash; deep dive on cybersecurity, hacking, and privacy.</li>
+            <li><a href="https://haveibeenpwned.com/" target="_blank" rel="noopener"><b>Have I Been Pwned</b></a> &mdash; check if your email has appeared in a known data breach.</li>
+          </ul>
+        </section>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.12); font-size: 12px; letter-spacing: 0.1em;">
+          <a href="Browser Privacy Guide.dc.html">Back to Guide Overview</a>
+        </div>
+
+      </main>
+
+      <footer id="contact" style="border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666;">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { query: '', category: 'All', faq1Open: true, faq2Open: false, faq3Open: false, faq4Open: false, faq5Open: false };
+
+  handleSearchSubmit = () => {
+    window.location.href = 'Homepage.dc.html';
+  };
+
+  renderVals() {
+    return {
+      query: this.state.query,
+      category: this.state.category,
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onCategoryChange: (e) => this.setState({ category: e.target.value }),
+      onKeyDown: (e) => { if (e.key === 'Enter') this.handleSearchSubmit(); },
+      handleSearchSubmit: this.handleSearchSubmit,
+
+      faq1Open: this.state.faq1Open, faq2Open: this.state.faq2Open, faq3Open: this.state.faq3Open,
+      faq4Open: this.state.faq4Open, faq5Open: this.state.faq5Open,
+      faq1Chevron: this.state.faq1Open ? '\u2212' : '+',
+      faq2Chevron: this.state.faq2Open ? '\u2212' : '+',
+      faq3Chevron: this.state.faq3Open ? '\u2212' : '+',
+      faq4Chevron: this.state.faq4Open ? '\u2212' : '+',
+      faq5Chevron: this.state.faq5Open ? '\u2212' : '+',
+      toggleFaq1: () => this.setState(s => ({ faq1Open: !s.faq1Open })),
+      toggleFaq2: () => this.setState(s => ({ faq2Open: !s.faq2Open })),
+      toggleFaq3: () => this.setState(s => ({ faq3Open: !s.faq3Open })),
+      toggleFaq4: () => this.setState(s => ({ faq4Open: !s.faq4Open })),
+      toggleFaq5: () => this.setState(s => ({ faq5Open: !s.faq5Open })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

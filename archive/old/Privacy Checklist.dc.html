@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em;">
+
+  <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0;">
+
+    <aside style="position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box;">
+      <a href="Homepage.dc.html" style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px; display: block; color: #1b1b1b;">p4a</a>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">ON THIS PAGE</div>
+      <nav style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <a href="#tier-1" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Low-Energy Fixes</a>
+        <a href="#tier-2" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">A Little More Work</a>
+        <a href="#tier-3" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">More Complex</a>
+        <a href="#tier-4" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Ongoing Habits</a>
+      </nav>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GO DEEPER</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px;">
+        <a href="Browser Privacy Guide.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Browser Privacy</a>
+        <a href="Password Check.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Accounts &amp; Authentication</a>
+        <a href="Delete Yourself.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Personal Data &amp; Tracking</a>
+        <a href="VPNs.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Networks &amp; VPNs</a>
+      </div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GOOD TO KNOW</div>
+      <p style="font-size: 11px; line-height: 1.6; color: #555; margin: 0;">Work through the tiers in order. None of them requires technical skill, and you don't need to finish everything in one sitting.</p>
+    </aside>
+
+    <div style="min-width: 0; position: relative;">
+
+      <div style="position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none;"></div>
+
+      <header style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <div style="width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box;">
+          <nav style="display: flex; width: 100%; box-sizing: border-box; border: 1px solid rgba(0,0,0,0.06); border-radius: 0;">
+            <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." style="flex: 1; height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none;" style-focus="background: rgba(255,255,255,0.7);"><select value="{{ category }}" onChange="{{ onCategoryChange }}" style="height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none;">
+                <option value="All">All</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select><button type="button" onClick="{{ handleSearchSubmit }}" style="height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0;">Go</button>
+          </nav>
+        </div>
+        <div style="max-width: 1160px; margin: 0 auto; padding: 20px 40px 24px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;"><a href="Homepage.dc.html" style="color: #888;">Home</a> / <span style="color: #1b1b1b;">Privacy Checklist</span></div>
+          <nav style="display: flex; flex-wrap: wrap; gap: 16px 20px;">
+            <a href="Homepage.dc.html#projects" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">PROJECTS</a>
+            <a href="Resources.dc.html" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">RESOURCES</a>
+            <a href="Homepage.dc.html#contact" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <div style="background: rgba(255,255,255,0.55); backdrop-filter: blur(16px) saturate(160%) contrast(1.05); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.35); margin: 0 32px; border-radius: 6px;">
+      <main style="max-width: 1160px; margin: 0 auto; padding: 48px 40px 96px;">
+
+        <!-- MASTHEAD -->
+        <section style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; border-bottom: 2px solid #1b1b1b; padding-bottom: 18px; margin-bottom: 12px;">
+          <div>
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">QUICK CHECK</div>
+            <h1 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 56px; letter-spacing: 0.1em; margin: 0; line-height: 0.95;">Privacy Checklist: Quickstart</h1>
+          </div>
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: right; line-height: 1.7;">
+            FILE&nbsp;NO.&nbsp;021<br>REV.&nbsp;2026&ndash;08
+          </div>
+        </section>
+
+        <p style="font-size: 12.5px; letter-spacing: 0.08em; color: #555; line-height: 1.8; margin: 0 0 40px; max-width: 760px;">A simple, checkable list to get you meaningfully more secure and private, starting today. Work through the tiers in order &mdash; each builds on the last, and none requires technical skill. Check items off as you go; for the reasoning behind any item, the full guides (linked in the sidebar) go deeper.</p>
+
+        <sc-for list="{{ tiers }}" as="tier" hint-placeholder-count="4">
+          <section id="{{ tier.id }}" style="margin-bottom: 40px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 14px;">
+              <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 22px; letter-spacing: 0.1em; margin: 0;">{{ tier.label }}</h2>
+              <span style="font-size: 11px; letter-spacing: 0.08em; color: #888;">{{ tier.progress }}</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0;">
+              <sc-for list="{{ tier.items }}" as="item" hint-placeholder-count="6">
+                <button type="button" onClick="{{ item.toggle }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; background: transparent; border: none; border-top: 1px solid rgba(0,0,0,0.1); cursor: pointer; text-align: left; font-family: inherit;">
+                  <span style="{{ item.boxStyle }}">{{ item.mark }}</span>
+                  <span style="{{ item.textStyle }}">{{ item.text }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </section>
+        </sc-for>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.12); font-size: 12px; letter-spacing: 0.1em;">
+          <a href="Homepage.dc.html">Back to Home</a>
+        </div>
+
+      </main>
+
+      <footer style="border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666;">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { query: '', category: 'All', checked: {} };
+
+  raw = [
+    { id: 'tier-1', label: 'LOW-ENERGY FIXES', items: [
+      'Install uBlock Origin in your main browser. Confirm the developer is Raymond Hill ("gorhill") before installing.',
+      'Set your default search engine to Mojeek or DuckDuckGo instead of Google or Bing.',
+      'Sign up for a password manager (Bitwarden is a solid free starting point).',
+      'Change your email and banking passwords to unique, manager-generated ones first, since those accounts matter most.',
+      'Turn on two-factor authentication with an authenticator app (not SMS) on your email account.',
+      'Turn off your phone\'s advertising ID. Android: Settings, search "advertising ID," delete it. iOS: Settings, Privacy & Security, Tracking, turn off "Allow Apps to Request to Track."',
+      'Check your email address at haveibeenpwned.com to see if it\'s already been exposed in a breach.',
+      'Stop using "Log in with Google/Facebook" on other websites going forward; use your password manager instead.',
+    ]},
+    { id: 'tier-2', label: 'A LITTLE MORE WORK, BUT STILL EASY', items: [
+      'Turn on 2FA with an authenticator app on your password manager, bank, and any other account you\'d consider catastrophic to lose.',
+      'Install Signal and move at least one sensitive conversation to it.',
+      'Set up email aliasing (Firefox Relay or DuckDuckGo Email Protection) and use a new alias the next time a site asks for your email.',
+      'Opt out of the highest-priority data brokers using the Big Ass Data Broker Opt-Out List (BADBOOL); start with its top tier of roughly 14 sites.',
+      'Freeze your credit for free with Experian, Equifax, TransUnion, Innovis, and ChexSystems.',
+      'Turn off Google Location History, or set it to auto-delete every few months, at myaccount.google.com/activitycontrols/location.',
+      'Review your phone\'s app permissions for location, camera, microphone, and contacts, and turn off anything you don\'t actively need.',
+      'Set Firefox or LibreWolf\'s Enhanced Tracking Protection to Strict (or confirm Brave\'s Shields are on, which they are by default).',
+      'Turn on DNS over HTTPS in your browser\'s network settings.',
+      'Decline notification permission requests from websites by default.',
+    ]},
+    { id: 'tier-3', label: 'MORE COMPLEX, MIGHT NOT BE NEEDED FOR EVERYONE', items: [
+      'Get a hardware security key (like a YubiKey) for your email and password manager if you\'re ready for the strongest available 2FA tier.',
+      'Scrub metadata from photos before sharing anything sensitive (use your phone\'s built-in "remove location" share option, or a tool like ExifCleaner).',
+      'Sign up for an encrypted cloud storage provider (Proton Drive, Sync.com) or wrap your existing cloud storage with Cryptomator.',
+      'Set up a real local backup (external drive or NAS), and actually test restoring a file from it once.',
+      'Get a secondary phone number (TextNow, Hushed, or MySudo) for lower-stakes sign-ups, so your real number isn\'t everywhere.',
+      'Check your mobile carrier\'s privacy dashboard and opt out of ad targeting and data sharing.',
+      'Run coveryourtracks.eff.org and globalprivacycontrol.org to confirm your browser protections are actually working.',
+      'Set up your IRS Identity Protection PIN at irs.gov and check your Social Security account at ssa.gov.',
+      'Consider a VPN from a provider with a verified no-logs track record (Mullvad or IVPN, for example) if hiding your activity from your ISP matters to you.',
+    ]},
+    { id: 'tier-4', label: 'ONGOING HABITS AND PRACTICES', items: [
+      'Re-run coveryourtracks.eff.org and globalprivacycontrol.org after any browser or OS update.',
+      'Check haveibeenpwned.com every few months for new breach exposures.',
+      'Revisit your BADBOOL opt-outs yearly &mdash; data brokers tend to repopulate listings over time.',
+      'Review app and browser extension permissions quarterly, and remove anything you no longer use.',
+      'Rotate the password for any account involved in a new breach immediately.',
+      'Keep your password manager, OS, and browser updated to the latest version.',
+    ]},
+  ];
+
+  toggleItem = (key) => {
+    this.setState(s => ({ checked: { ...s.checked, [key]: !s.checked[key] } }));
+  };
+
+  renderVals() {
+    const checked = this.state.checked;
+    const tiers = this.raw.map(tier => {
+      const items = tier.items.map((text, i) => {
+        const key = tier.id + '-' + i;
+        const isChecked = !!checked[key];
+        return {
+          text,
+          mark: isChecked ? '\u2713' : '',
+          boxStyle: 'flex-shrink: 0; width: 18px; height: 18px; border-radius: 3px; border: 1px solid ' + (isChecked ? '#2f6fed' : 'rgba(0,0,0,0.3)') + '; background: ' + (isChecked ? '#2f6fed' : 'transparent') + '; color: #fff; font-size: 12px; line-height: 16px; text-align: center; margin-top: 1px;',
+          textStyle: 'font-size: 12.5px; letter-spacing: 0.04em; line-height: 1.6; color: ' + (isChecked ? '#999' : '#333') + '; text-decoration: ' + (isChecked ? 'line-through' : 'none') + ';',
+          toggle: () => this.toggleItem(key),
+        };
+      });
+      const doneCount = tier.items.filter((_, i) => checked[tier.id + '-' + i]).length;
+      return { id: tier.id, label: tier.label, items, progress: doneCount + ' / ' + tier.items.length + ' done' };
+    });
+    return {
+      query: this.state.query,
+      category: this.state.category,
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onCategoryChange: (e) => this.setState({ category: e.target.value }),
+      onKeyDown: (e) => { if (e.key === 'Enter') this.handleSearchSubmit(); },
+      handleSearchSubmit: () => { window.location.href = 'Homepage.dc.html'; },
+      tiers,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

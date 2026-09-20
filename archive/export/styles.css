@@ -1,0 +1,75 @@
+/* privacy4all — Homepage style guide (extracted) */
+
+
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  
+
+.p4a-0 { position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em; }
+.p4a-1 { position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0; }
+.p4a-2 { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box; }
+.p4a-3 { font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px; }
+.p4a-4 { font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px; }
+.p4a-5 { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.p4a-6 { font-size: 12.5px; color: #1b1b1b; }
+.p4a-6:hover { color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em; }
+.p4a-7 { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+.p4a-8 { font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333; }
+.p4a-9 { font-size: 11px; line-height: 1.6; color: #555; margin: 0; }
+.p4a-a { min-width: 0; position: relative; }
+.p4a-b { position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none; }
+.p4a-c { margin-bottom: 0; }
+.p4a-d { width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box; }
+.p4a-e { display: flex; width: 100%; box-sizing: border-box; border-radius: 0; }
+.p4a-f { flex: 1; height: 30px; border: none; background: #fff; padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none; }
+.p4a-f:focus { background: #f4f4f4; }
+.p4a-g { height: 30px; border: none; background: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none; }
+.p4a-h { height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0; }
+.p4a-i { position: relative; background-image: url('assets/wires.png'); background-size: cover; background-position: top; padding: 40px 40px 44px; }
+.p4a-j { max-width: 1160px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+.p4a-k { font-family: 'Averia Libre', serif; font-weight: 700; font-size: 52px; line-height: 1; }
+.p4a-l { font-size: 15px; margin: 24px 0 0; max-width: 380px; line-height: 1.5; }
+.p4a-m { font-size: 11px; color: #444; margin: 8px 0 0; display:none; }
+.p4a-n { display: flex; flex-direction: column; gap: 16px; padding-top: 10px; align-items: flex-end; }
+.p4a-o { color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap; }
+.p4a-o:hover { color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em; }
+.p4a-p { background: rgba(255,255,255,0.32); backdrop-filter: blur(9px) saturate(145%) contrast(1.02); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.25); }
+.p4a-q { max-width: 1160px; margin: 0 auto; padding: 24px 40px 96px; }
+.p4a-r { padding: 20px 0 0; }
+.p4a-s { font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px; }
+.p4a-t { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.p4a-u { background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; color: #1b1b1b; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.p4a-u:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.12); text-decoration: underline; letter-spacing: 0.14em; }
+.p4a-v { width: 44px; height: 44px; object-fit: cover; flex-shrink: 0; }
+.p4a-w { font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; line-height: 1.3; margin-bottom: 4px; }
+.p4a-x { font-size: 11.5px; letter-spacing: 0.1em; color: #555; line-height: 1.4; }
+.p4a-y { width: 44px; height: 44px; object-fit: contain; flex-shrink: 0; }
+.p4a-z { padding: 64px 0 0; }
+.p4a-10 { background: rgba(255,255,255,0.5); backdrop-filter: blur(22px) saturate(160%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-radius: 6px; padding: 40px; display: grid; grid-template-columns: 1.1fr 0.7fr; gap: 56px; align-items: center; }
+.p4a-11 { display: grid; grid-template-columns: repeat(4, 130px); gap: 34px 24px; }
+.p4a-12 { display: block; color: inherit; text-decoration: none; }
+.p4a-13 { width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden; }
+.p4a-14 { width: 100%; height: 100%; object-fit: cover; }
+.p4a-15 { font-size: 9px; letter-spacing: 0.1em; text-align: center; margin-top: 8px; color: #444; }
+.p4a-16 { width: 130px; height: 97px; box-shadow: 0 6px 16px rgba(0,0,0,0.18); overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+.p4a-17 { background: #4b3f9e; color: #fff; font-size: 7px; font-weight: 600; padding: 2px 5px; line-height: 1.2; flex-shrink: 0; }
+.p4a-18 { flex: 1; min-height: 0; display: flex; align-items: center; gap: 6px; padding: 4px 6px; }
+.p4a-19 { width: 8px; height: 8px; background: #d9b64a; border-radius: 50%; flex-shrink: 0; }
+.p4a-1a { font-size: 9px; color: #333; }
+.p4a-1b { display: flex; flex-direction: column; gap: 26px; font-size: 12.5px; line-height: 1.9; letter-spacing: 0.25em; text-align: right; color: #1b1b1b; }
+.p4a-1c { margin: 0; }
+.p4a-1d { margin: 0; text-align: left; }
+.p4a-1e { display: flex; align-items: flex-start; justify-content: flex-end; gap: 12px; }
+.p4a-1f { font-size: 16px; margin-top: -2px; }
+.p4a-1g { background: rgba(255,255,255,0.5); backdrop-filter: blur(22px) saturate(160%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-radius: 6px; padding: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.p4a-1h { display: flex; flex-direction: column; gap: 28px; font-size: 12.5px; line-height: 1.9; letter-spacing: 0.25em; }
+.p4a-1i { margin: 0; text-align: right; margin-left: auto; max-width: 340px; }
+.p4a-1j { background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.6); padding: 6px 20px; }
+.p4a-1k { display: block; padding: 14px 0; border-bottom: 1px solid #ececec; text-align: right; color: inherit; text-decoration: none; }
+.p4a-1l { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; }
+.p4a-1m { font-size: 11.5px; letter-spacing: 0.1em; color: #888; margin-top: 2px; }
+.p4a-1n { padding: 14px 0; border-bottom: 1px solid #ececec; text-align: right; }
+.p4a-1o { padding: 14px 0; text-align: right; }
+.p4a-1p { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 12.5px; letter-spacing: 0.1em; line-height: 1.6; color: #333; }
+.p4a-1q { border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666; }

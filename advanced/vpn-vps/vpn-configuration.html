@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configure &amp; Lock Down a VPN — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#overview" class="p4a-6">Overview</a>
+        <a href="#lab-procedure" class="p4a-6">Lab Procedure</a>
+        <a href="#browser-leak" class="p4a-6">Browser Leak Fix</a>
+        <a href="#ipv6-leak" class="p4a-6">IPv6 Leak Fix</a>
+        <a href="#riseup-maintenance" class="p4a-6">RiseUp Maintenance</a>
+      </nav>
+
+      <div class="p4a-4">GUIDE</div>
+      <div class="p4a-7">
+        <a href="index.html" class="p4a-8">&larr; Guide Overview</a>
+        <a href="vpn-fundamentals.html" class="p4a-8">VPN Fundamentals</a>
+        <a href="providers.html" class="p4a-8">VPN &amp; VPS Providers</a>
+        <a href="vps-setup.html" class="p4a-8">VPS &amp; Self-Hosting</a>
+        <a href="resources.html" class="p4a-8">Test, Glossary &amp; Resources</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../../index.html" style="color:inherit;">Home</a> / <a href="index.html" style="color:inherit;">VPNs &amp; VPS Guide</a> / Configure &amp; Lock Down</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section id="overview" class="p4a-1v">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="index.html">&larr; guide overview</a></div>
+            <h1 class="p4a-1x">Configure &amp; Lock Down</h1>
+          </div>
+          <div class="p4a-1y">
+            READ&nbsp;TIME&nbsp;10&nbsp;MIN
+          </div>
+        </section>
+
+        <!-- INTRO -->
+        <section class="p4a-1z">
+          <div class="p4a-1g" style="grid-template-columns: 0.55fr 1fr; padding: 32px;">
+            <div style="padding: 0 24px 0 0; border-right: 1px solid rgba(0,0,0,0.12);">
+              <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;">OBJECTIVE</div>
+              <p style="font-size: 14px; letter-spacing: 0.06em; line-height: 1.8; margin: 0;">Configure an OpenVPN connection on Linux and lock the firewall so nothing leaks outside the VPN tunnel.</p>
+            </div>
+            <div style="padding: 0 24px;">
+              <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;">PREREQUISITES</div>
+              <p style="font-size: 14px; letter-spacing: 0.06em; line-height: 1.8; margin: 0;">A Linux machine or VM running a systemd-free distribution. This walkthrough assumes systemd is not managing DNS, since systemd-resolved will overwrite the DNS configuration on restart and break this setup. Basic terminal familiarity is assumed.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- LAB PROCEDURE -->
+        <section id="lab-procedure" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">STEP-BY-STEP LAB PROCEDURE</h2>
+          <p class="p4a-21">The source walkthrough uses RiseUp VPN as its free example. Work through these in order.</p>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="bph-steps">
+            <details class="bph-step" open>
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 1</span> <span class="bph-step-title">Install dependencies</span></span></summary>
+              <p class="bph-step-body">Install the OpenVPN package and its dependency <code>iproute2</code> using your distro's package manager, along with the UFW firewall package.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 2</span> <span class="bph-step-title">Get a config file</span></span></summary>
+              <p class="bph-step-body">Obtain a <code>.conf</code> configuration file from your VPN provider and place it in <code>/etc/openvpn</code>. For RiseUp, run its <code>generate.sh</code> script, then edit the resulting config file to remove any duplicate "remote" lines.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 3</span> <span class="bph-step-title">Allow the VPN server through the firewall</span></span></summary>
+              <p class="bph-step-body" style="margin-bottom:14px;">Open the config file and find the "remote" line, which lists the VPN server's IP address and port. Run:</p>
+              <div class="p4a-term"><pre>sudo ufw allow out to [SERVER_IP] port [PORT]</pre></div>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 4</span> <span class="bph-step-title">Name the tunnel interface</span></span></summary>
+              <p class="bph-step-body">In the config file, change the "dev tun" line to something identifiable, such as "tun_myvpn," so you can reference it in firewall rules.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 5</span> <span class="bph-step-title">Allow traffic on the tunnel interface</span></span></summary>
+              <div class="p4a-term"><pre>sudo ufw allow in on tun_myvpn
+sudo ufw allow out on tun_myvpn</pre></div>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 6</span> <span class="bph-step-title">Allow your local router</span></span></summary>
+              <p class="bph-step-body" style="margin-bottom:14px;">Find your local router's IP address with <code>sudo ifconfig</code>, and allow it explicitly:</p>
+              <div class="p4a-term"><pre>sudo ufw allow out to [LOCAL_ROUTER_IP]</pre></div>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 7</span> <span class="bph-step-title">Switch to the VPN's DNS servers</span></span></summary>
+              <p class="bph-step-body">Replace your ISP's DNS servers with the VPN's own DNS servers. Run <code>sudo resolvconf -l</code> to see current settings, then edit <code>/etc/resolv.conf</code> to insert the VPN's nameserver (the RiseUp example given is <code>nameserver 172.27.0.1</code>).</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 8</span> <span class="bph-step-title">Lock the DNS file</span></span></summary>
+              <p class="bph-step-body">Make that DNS configuration file immutable so nothing silently overwrites it later, either with <code>chattr +i</code> on the file, or by adding the line <code>nohook resolv.conf wpa_supplicant</code> to <code>/etc/dhcpcd.conf</code>.</p>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 9</span> <span class="bph-step-title">Allow each DNS server individually</span></span></summary>
+              <div class="p4a-term"><pre>sudo ufw allow out to [DNS_SERVER_IP]</pre></div>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 10</span> <span class="bph-step-title">Deny everything else by default</span></span></summary>
+              <div class="p4a-term"><pre>sudo ufw default deny incoming
+sudo ufw default deny outgoing</pre></div>
+            </details>
+            <details class="bph-step">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 11</span> <span class="bph-step-title">Reapply the firewall on every boot</span></span></summary>
+              <p class="bph-step-body">Add startup code to <code>/etc/rc.d/rc.local</code> so this firewall configuration is automatically reapplied every time the machine boots.</p>
+            </details>
+            <details class="bph-step bph-step-last">
+              <summary class="bph-step-summary"><span><span class="p4a-26" style="margin:0;">STEP 12</span> <span class="bph-step-title">Start the VPN connection</span></span></summary>
+              <div class="p4a-term"><pre>cd /etc/openvpn; sudo openvpn [your_config_file.conf]&amp;</pre></div>
+            </details>
+          </div>
+          </div>
+        </section>
+
+        <!-- BROWSER LEAK FIX -->
+        <section id="browser-leak" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">BROWSER LEAK FIX (DO THIS IN THE SAME SESSION)</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 28px;">
+          <p class="p4a-21" style="margin-bottom:0;">WebRTC, a browser technology, can leak your real IP address even while a VPN is active. In Firefox, disable it by going to <code>about:config</code> and setting <code>media.peerconnection.enabled</code> to <code>false</code>. In Chrome-based browsers, install a WebRTC-blocking extension such as WebRTC Control. Pale Moon users don't need to do anything, since it doesn't implement WebRTC the same way.</p>
+          </div>
+        </section>
+
+        <!-- IPV6 LEAK FIX -->
+        <section id="ipv6-leak" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">IPv6 LEAK FIX, IF NEEDED</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 28px;">
+          <p class="p4a-21" style="margin-bottom:0;">If testing (see <a href="resources.html#testing">Part 5: Test, Glossary &amp; Resources</a>) reveals an IPv6 leak, disable IPv6 system-wide: blacklist the IPv6 kernel module from the terminal, then edit <code>/etc/sysctl.conf</code> to add disable rules for all IPv6 interfaces, and apply the change with <code>sudo sysctl -p</code>.</p>
+          </div>
+        </section>
+
+        <!-- RISEUP MAINTENANCE -->
+        <section id="riseup-maintenance" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 class="p4a-20">MAINTENANCE NOTE: FREE RISEUP CERTIFICATES</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 28px;">
+          <p class="p4a-21" style="margin-bottom:0;">RiseUp's VPN certificates expire roughly monthly. When the connection stops working: rename your current working config file, run <code>generate.sh</code> again to get a fresh one, copy just the new certificate block (the content between the <code>&lt;ca&gt;</code> tags) out of the new file, paste it into the renamed old file in place of the expired certificate, then delete the newly generated file and rename your edited file back to its original name.</p>
+          </div>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav" style="justify-content: space-between;">
+          <a href="vpn-fundamentals.html" class="p4a-glass-btn p4a-btn-home">&larr; VPN Fundamentals</a>
+          <a href="vps-setup.html" class="p4a-glass-btn p4a-btn-nav">Next: VPS &amp; Self-Hosting &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

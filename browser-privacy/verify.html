@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verify Everything Works — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">TABLE OF CONTENTS</div>
+      <nav class="p4a-5">
+        <a href="index.html" class="p4a-6">Guide Overview</a>
+        <a href="browsers.html" class="p4a-6">1. Choose Your Browser</a>
+        <a href="extensions.html" class="p4a-6">2. Set Up Your Browser</a>
+        <a href="fingerprinting.html" class="p4a-6">3. Advanced Configurations</a>
+        <a href="verify.html" class="p4a-6">4. Test &amp; Verify</a>
+      </nav>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#overview" class="p4a-6">Test Suite</a>
+      </nav>
+
+      <div class="p4a-4">RESOURCES</div>
+      <div class="p4a-7">
+        <a href="troubleshooting.html" class="p4a-8">Troubleshooting Guide</a>
+        <a href="fingerprinting.html" class="p4a-8">Advanced Configurations</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../index.html" style="color:inherit;">Home</a> / <a href="index.html" style="color:inherit;">Browser Privacy Guide</a> / Test &amp; Verify</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section id="overview" class="p4a-1v" style="margin-bottom: 8px;">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="../index.html">&larr; back home</a></div>
+            <h1 class="p4a-1x" style="font-size: 64px;">Verify Everything Works</h1>
+          </div>
+          <div class="p4a-1y">
+            FILE&nbsp;NO.&nbsp;017<br>REV.&nbsp;2026&ndash;08<br>READ&nbsp;TIME&nbsp;5&nbsp;MIN
+          </div>
+        </section>
+
+        <section class="p4a-32">
+          <div>
+            <div class="p4a-33">WHY IT MATTERS</div>
+            <p class="p4a-34">A protection you can't verify isn't a protection you can rely on. After setting up your browser, extensions, and fingerprint defenses, run the full test suite below to confirm each layer is actually doing its job.</p>
+          </div>
+          <div>
+            <p class="p4a-35">"<span class="p4a-35-cap">T</span>rust, but verify. Five minutes of testing catches misconfigurations that would otherwise sit unnoticed for months."</p>
+          </div>
+        </section>
+
+        <!-- TEST SUITE TABLE -->
+        <section id="test-suite" class="p4a-1z" style="border-top: none; padding-top: 0;">
+          <h2 class="p4a-20">COMPLETE TEST SUITE</h2>
+          <div class="p4a-2d">
+            <table>
+              <thead>
+                <tr><th>TEST</th><th>TOOL / URL</th><th>WHAT TO EXPECT</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tracker &amp; ad blocking</td>
+                  <td><a href="https://coveryourtracks.eff.org/" target="_blank" rel="noopener">coveryourtracks.eff.org</a></td>
+                  <td>"Your browser has strong protection against Web tracking"</td>
+                </tr>
+                <tr>
+                  <td>Fingerprint uniqueness</td>
+                  <td><a href="https://amiunique.org/" target="_blank" rel="noopener">amiunique.org</a></td>
+                  <td>A fingerprint shared with a large percentage of other visitors, not a "1 in a million" result</td>
+                </tr>
+                <tr>
+                  <td>Global Privacy Control</td>
+                  <td><a href="https://globalprivacycontrol.org/" target="_blank" rel="noopener">globalprivacycontrol.org</a></td>
+                  <td>"GPC signal detected"</td>
+                </tr>
+                <tr>
+                  <td>DNS leak</td>
+                  <td><a href="https://dnsleaktest.com/" target="_blank" rel="noopener">dnsleaktest.com</a></td>
+                  <td>Only your VPN or private DNS provider listed, not your ISP</td>
+                </tr>
+                <tr>
+                  <td>WebRTC leak</td>
+                  <td><a href="https://browserleaks.com/webrtc" target="_blank" rel="noopener">browserleaks.com/webrtc</a></td>
+                  <td>No local or public IP address revealed beyond what your VPN shows</td>
+                </tr>
+                <tr>
+                  <td>Ad-blocker effectiveness</td>
+                  <td><a href="https://canyoublockit.com/" target="_blank" rel="noopener">canyoublockit.com</a></td>
+                  <td>All test ad slots reported as blocked</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TROUBLESHOOTING POINTER -->
+        <section class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">SOMETHING NOT WORKING?</h2>
+          <p class="p4a-21" style="margin-bottom:0;">If a site breaks after any of these tests, the full site-wide <a href="troubleshooting.html">Troubleshooting Guide</a> covers common issues, a quick flowchart, and how to whitelist a site &mdash; indexed by which part of the guide sent you there.</p>
+        </section>
+
+        <div class="p4a-2c p4a-2c-nav" style="justify-content: space-between;">
+          <a href="fingerprinting.html" class="p4a-glass-btn p4a-btn-home">&larr; Advanced Configurations</a>
+          <a href="index.html" class="p4a-glass-btn p4a-btn-nav">Back to Guide Overview &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../index.html';
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+</body>
+</html>

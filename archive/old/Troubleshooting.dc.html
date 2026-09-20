@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em;">
+
+  <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0;">
+
+    <aside style="position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box;">
+      <a href="Homepage.dc.html" style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px; display: block; color: #1b1b1b;">p4a</a>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">JUMP TO TOPIC</div>
+      <nav style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+        <a href="#flowchart" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Quick Flowchart</a>
+        <a href="#from-browsers" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">From: Choose Your Browser</a>
+        <a href="#from-extensions" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">From: Set Up Your Browser</a>
+        <a href="#from-advanced" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">From: Advanced Configurations</a>
+        <a href="#from-verify" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">From: Test &amp; Verify</a>
+        <a href="#whitelist" style="font-size: 12.5px; color: #1b1b1b;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">Whitelisting a Site</a>
+      </nav>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">THE GUIDE</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px;">
+        <a href="Browser Privacy Guide.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">&larr; Guide Overview</a>
+        <a href="Browsers.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">1. Choose Your Browser</a>
+        <a href="Browser Extensions.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">2. Set Up Your Browser</a>
+        <a href="Browser Fingerprinting.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">3. Advanced Configurations</a>
+        <a href="Verify Everything Works.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">4. Test &amp; Verify</a>
+      </div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GOOD TO KNOW</div>
+      <p style="font-size: 11px; line-height: 1.6; color: #555; margin: 0;">This page covers troubleshooting for the entire site &mdash; sections are grouped by which guide page sent you here.</p>
+    </aside>
+
+    <div style="min-width: 0; position: relative;">
+
+      <div style="position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none;"></div>
+
+      <header style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <div style="width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box;">
+          <nav style="display: flex; width: 100%; box-sizing: border-box; border: 1px solid rgba(0,0,0,0.06); border-radius: 0;">
+            <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." style="flex: 1; height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none;" style-focus="background: rgba(255,255,255,0.7);"><select value="{{ category }}" onChange="{{ onCategoryChange }}" style="height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none;">
+                <option value="All">All</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select><button type="button" onClick="{{ handleSearchSubmit }}" style="height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0;">Go</button>
+          </nav>
+        </div>
+        <div style="max-width: 1160px; margin: 0 auto; padding: 20px 40px 24px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;"><a href="Homepage.dc.html" style="color: #888;">Home</a> / <span style="color: #1b1b1b;">Troubleshooting</span></div>
+          <nav style="display: flex; flex-wrap: wrap; gap: 16px 20px;">
+            <a href="Homepage.dc.html#projects" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">PROJECTS</a>
+            <a href="Resources.dc.html" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">RESOURCES</a>
+            <a href="Homepage.dc.html#contact" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <div style="background: rgba(255,255,255,0.55); backdrop-filter: blur(16px) saturate(160%) contrast(1.05); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.35); margin: 0 32px; border-radius: 6px;">
+      <main style="max-width: 1160px; margin: 0 auto; padding: 48px 40px 96px;">
+
+        <!-- MASTHEAD -->
+        <section style="display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; border-bottom: 2px solid #1b1b1b; padding-bottom: 18px; margin-bottom: 40px;">
+          <div>
+            <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">SITE-WIDE</div>
+            <h1 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 56px; letter-spacing: 0.1em; margin: 0; line-height: 0.95;">Troubleshooting</h1>
+          </div>
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: right; line-height: 1.7;">
+            FILE&nbsp;NO.&nbsp;018<br>REV.&nbsp;2026&ndash;08
+          </div>
+        </section>
+
+        <!-- FLOWCHART -->
+        <section id="flowchart" style="margin-bottom: 56px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">QUICK TROUBLESHOOTING FLOWCHART</h2>
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; align-items: center;">
+            <div style="border: 1px solid rgba(0,0,0,0.2); border-radius: 4px; padding: 14px 12px; font-size: 11px; letter-spacing: 0.08em; text-align: center; background: rgba(255,255,255,0.4);">Site looks broken</div>
+            <div style="text-align: center; color: #888; font-size: 16px;">&rarr;</div>
+            <div style="border: 1px solid rgba(0,0,0,0.2); border-radius: 4px; padding: 14px 12px; font-size: 11px; letter-spacing: 0.08em; text-align: center; background: rgba(255,255,255,0.4);">Hard reload the page</div>
+            <div style="text-align: center; color: #888; font-size: 16px;">&rarr;</div>
+            <div style="border: 1px solid rgba(0,0,0,0.2); border-radius: 4px; padding: 14px 12px; font-size: 11px; letter-spacing: 0.08em; text-align: center; background: rgba(255,255,255,0.4);">Still broken?</div>
+
+            <div style="grid-column: 1 / -1; height: 1px; background: rgba(0,0,0,0.12); margin: 4px 0;"></div>
+
+            <div style="border: 1px solid rgba(0,0,0,0.2); border-radius: 4px; padding: 14px 12px; font-size: 11px; letter-spacing: 0.08em; text-align: center; background: rgba(255,255,255,0.4);">Disable blocker for this site</div>
+            <div style="text-align: center; color: #888; font-size: 16px;">&rarr;</div>
+            <div style="border: 1px solid rgba(0,0,0,0.2); border-radius: 4px; padding: 14px 12px; font-size: 11px; letter-spacing: 0.08em; text-align: center; background: rgba(255,255,255,0.4);">Reload again</div>
+            <div style="text-align: center; color: #888; font-size: 16px;">&rarr;</div>
+            <div style="border: 1px solid #2f6fed; border-radius: 4px; padding: 14px 12px; font-size: 11px; letter-spacing: 0.08em; text-align: center; background: rgba(47,111,237,0.08); color: #2f6fed; font-weight: 600;">Still broken? Try your backup browser</div>
+          </div>
+        </section>
+
+        <!-- FROM: BROWSERS -->
+        <section id="from-browsers" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 8px;">FROM: <a href="Browsers.dc.html">CHOOSE YOUR BROWSER</a></div>
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">BROWSER &amp; LINEUP ISSUES</h2>
+          <div style="overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1.4fr; min-width: 640px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">PROBLEM</div>
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">LIKELY CAUSE</div>
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">SOLUTION</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">A site logs me out constantly</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">You're using a throwaway/clean browser for logins</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Log into that account from your main browser only, per the 3-browser lineup</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">A browser feels slow after switching</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Tor Browser or a heavily hardened setup</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Expected trade-off for anonymity; use a faster browser for everyday, low-risk browsing</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em;">A site says my browser is unsupported</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">Older browser detection scripts don't recognize LibreWolf/Mullvad's user agent</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">Try your backup browser for that one site</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FROM: EXTENSIONS -->
+        <section id="from-extensions" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 8px;">FROM: <a href="Browser Extensions.dc.html">SET UP YOUR BROWSER</a></div>
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">WHEN SITES BREAK</h2>
+          <div style="overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1.4fr; min-width: 640px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">PROBLEM</div>
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">LIKELY CAUSE</div>
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">SOLUTION</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Video won't play</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Ad blocker blocking video player</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Disable uBlock Origin for that site temporarily, or whitelist just the video domain</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Login button does nothing</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Script blocked by uBlock Origin</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Click the uBlock icon &rarr; toggle "Disable on this site"</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Page loads blank</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Overly aggressive protection</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Use your backup browser for this site, or temporarily switch protection to "Standard"</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Comments or reviews missing</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Third-party scripts blocked</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Check for a site "privacy mode" setting; some sites detect blockers and hide content</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">CAPTCHA loop (infinite puzzles)</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Privacy settings interfering with CAPTCHA</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Enable "Temporary allow all" in uBlock Origin for that session</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em;">Payments failing</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">Payment processor script blocked</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">Whitelist the payment domain, e.g. <em>*.stripe.com</em> or <em>*.braintree.com</em></div>
+            </div>
+          </div>
+
+          <div id="whitelist" style="background: #faf6ea; padding: 32px 36px; margin-top: 28px;">
+            <h3 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: normal; color: #1b1b1b; margin: 0 0 14px;">How to Whitelist a Site</h3>
+            <ol style="margin: 0; padding-left: 20px; font-size: 13px; letter-spacing: normal; line-height: 1.9; color: #333; max-width: 720px;">
+              <li>Click the uBlock Origin icon in your toolbar.</li>
+              <li>Click the large power button to disable blocking on the current site only.</li>
+              <li>Reload the page &mdash; the site reactivates its scripts immediately.</li>
+              <li>If only one feature is broken (like a video or a login), prefer disabling the specific tracker/script instead of the whole page &mdash; click the icon, open the dashboard, and unblock the single domain causing the issue.</li>
+              <li>Whitelisting is per-site and persists until you toggle it back &mdash; review your whitelist occasionally and remove sites you no longer trust.</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- FROM: ADVANCED -->
+        <section id="from-advanced" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 8px;">FROM: <a href="Browser Fingerprinting.dc.html">ADVANCED CONFIGURATIONS</a></div>
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">FINGERPRINTING &amp; TOOL ISSUES</h2>
+          <div style="overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1.4fr; min-width: 640px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">PROBLEM</div>
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">LIKELY CAUSE</div>
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">SOLUTION</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Fingerprint test still says "unique"</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Strict/randomization setting not actually enabled</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Re-check Enhanced Tracking Protection (Firefox) or Shields (Brave), then retest</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">Password manager won't autofill</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Browser's built-in password manager conflicting with the extension</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Disable your browser's native password manager per the Password Managers setup step</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em;">DNS filtering blocks a site I need</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">Overly aggressive DNS-level blocklist</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">Whitelist the domain in your NextDNS/ControlD/AdGuard DNS dashboard</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FROM: VERIFY -->
+        <section id="from-verify" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 8px;">FROM: <a href="Verify Everything Works.dc.html">TEST &amp; VERIFY</a></div>
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">TEST SUITE ISSUES</h2>
+          <div style="overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1.4fr; min-width: 640px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">PROBLEM</div>
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">LIKELY CAUSE</div>
+              <div style="padding: 8px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">SOLUTION</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">"GPC signal detected" doesn't show</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Browser doesn't support GPC, or it's off</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Safari and stock Chrome don't support it natively; switch to Brave, Firefox, or LibreWolf</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; border-bottom: 1px solid rgba(0,0,0,0.08);">DNS leak test shows my ISP</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">VPN or private DNS not actually active during the test</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555; border-bottom: 1px solid rgba(0,0,0,0.08);">Confirm your VPN/DNS provider is connected, then rerun the test</div>
+
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em;">Ad-blocker test shows slots as "not blocked"</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">Extension disabled on that domain, or filter list out of date</div>
+              <div style="padding: 10px 0; font-size: 11.5px; letter-spacing: 0.08em; color: #555;">Re-enable on the domain and update filter lists from the extension's dashboard</div>
+            </div>
+          </div>
+        </section>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.12); font-size: 12px; letter-spacing: 0.1em;">
+          <a href="Browser Privacy Guide.dc.html">Back to Guide Overview</a>
+        </div>
+
+      </main>
+
+      <footer id="contact" style="border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666;">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { query: '', category: 'All' };
+
+  handleSearchSubmit = () => {
+    window.location.href = 'Homepage.dc.html';
+  };
+
+  renderVals() {
+    return {
+      query: this.state.query,
+      category: this.state.category,
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onCategoryChange: (e) => this.setState({ category: e.target.value }),
+      onKeyDown: (e) => { if (e.key === 'Enter') this.handleSearchSubmit(); },
+      handleSearchSubmit: this.handleSearchSubmit,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

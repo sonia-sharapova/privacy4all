@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)https://mohitmishra786.github.io/chessman/2024/10/04/Context-Switching-in-Operating-Systems.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Context Switching In Operating Systems">
+<meta name="author" content="Mohit Mishra">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Table of Contents Introduction What is a Process Context? Anatomy of a Context Switch Hardware Support for Context Switching Implementation Details Performance Implications Real-World Examples Advanced Topics Conclusion">
+<meta property="og:description" content="Table of Contents Introduction What is a Process Context? Anatomy of a Context Switch Hardware Support for Context Switching Implementation Details Performance Implications Real-World Examples Advanced Topics Conclusion">
+<link rel="canonical" href="https://mohitmishra786.github.io/chessman/2024/10/04/Context-Switching-in-Operating-Systems.html">
+<meta property="og:url" content="https://mohitmishra786.github.io/chessman/2024/10/04/Context-Switching-in-Operating-Systems.html">
+<meta property="og:site_name" content="Mohit Mishra">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-10-04T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Context Switching In Operating Systems">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mohit Mishra"},"dateModified":"2024-10-04T00:00:00+00:00","datePublished":"2024-10-04T00:00:00+00:00","description":"Table of Contents Introduction What is a Process Context? Anatomy of a Context Switch Hardware Support for Context Switching Implementation Details Performance Implications Real-World Examples Advanced Topics Conclusion","headline":"Context Switching In Operating Systems","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohitmishra786.github.io/chessman/2024/10/04/Context-Switching-in-Operating-Systems.html"},"url":"https://mohitmishra786.github.io/chessman/2024/10/04/Context-Switching-in-Operating-Systems.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./Context Switching In Operating Systems_files/main.css"> <!-- -- Corrected ---->
+    <link rel="shortcut icon" type="image/x-icon" href="https://mohitmishra786.github.io/chessman/favicon.ico"> <!-- -- Corrected assuming it's in the root ---->
+    <link rel="stylesheet" href="./Context Switching In Operating Systems_files/agate.css"> <!-- -- Corrected ---->
+    <script src="./Context Switching In Operating Systems_files/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><link type="application/atom+xml" rel="alternate" href="https://mohitmishra786.github.io/chessman/feed.xml" title="Mohit Mishra"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="post h-entry" itemscope="" itemtype="http://schema.org/BlogPosting">
+    
+        <script type="text/javascript" async="" src="./Context Switching In Operating Systems_files/MathJax.js"></script>
+        <script src="./Context Switching In Operating Systems_files/d3.min.js"></script>
+        <script src="./Context Switching In Operating Systems_files/index.min.js"></script>
+        <script src="./Context Switching In Operating Systems_files/d3-graphviz.min.js"></script>
+        <title>Context Switching In Operating Systems</title>
+    
+    <header class="post-header">
+        <div class="post-back">
+            <a class="black-link" href="https://mohitmishra786.github.io/chessman/">
+                ← Home
+            </a>
+        </div>
+        <h1 class="post-title p-name" itemprop="name headline">
+            Context Switching In Operating Systems
+        </h1>
+        <p class="post-meta">
+            <time class="dt-published" datetime="2024-10-04T00:00:00+00:00" itemprop="datePublished">Oct 4, 2024
+            </time></p>
+    </header>
+    <div class="post-content e-content" itemprop="articleBody">
+        <h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+  <li>Introduction</li>
+  <li>What is a Process Context?</li>
+  <li>Anatomy of a Context Switch</li>
+  <li>Hardware Support for Context Switching</li>
+  <li>Implementation Details</li>
+  <li>Performance Implications</li>
+  <li>Real-World Examples</li>
+  <li>Advanced Topics</li>
+  <li>Conclusion</li>
+</ol>
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<p>Context switching is one of the most fundamental operations in modern operating systems, enabling multitasking by allowing multiple processes to share a single CPU. While it might seem magical from the user perspective, under the hood it’s a complex dance of hardware and software working in perfect harmony. In this article, we’ll peel back the layers and examine exactly what happens when your OS performs a context switch, right down to the register level.</p>
+
+<h2 id="2-what-is-a-process-context">2. What is a Process Context?</h2>
+
+<p>Before we dive into switching contexts, let’s understand what makes up a process context. At its core, a process context consists of:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">process_context</span> <span class="p">{</span>
+    <span class="c1"><span class="hljs-comment">// CPU Registers</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">rax</span><span class="p">,</span> <span class="n">rbx</span><span class="p">,</span> <span class="n">rcx</span><span class="p">,</span> <span class="n">rdx</span><span class="p">;</span>    <span class="c1"><span class="hljs-comment">// General purpose registers</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">rsi</span><span class="p">,</span> <span class="n">rdi</span><span class="p">;</span>              <span class="c1"><span class="hljs-comment">// Source and destination index registers</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">rbp</span><span class="p">,</span> <span class="n">rsp</span><span class="p">;</span>              <span class="c1"><span class="hljs-comment">// Stack base and stack pointer</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">r8</span><span class="p">,</span> <span class="n">r9</span><span class="p">,</span> <span class="n">r10</span><span class="p">,</span> <span class="n">r11</span><span class="p">;</span>      <span class="c1"><span class="hljs-comment">// Extended registers</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">r12</span><span class="p">,</span> <span class="n">r13</span><span class="p">,</span> <span class="n">r14</span><span class="p">,</span> <span class="n">r15</span><span class="p">;</span>    <span class="c1"><span class="hljs-comment">// Extended registers</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">rip</span><span class="p">;</span>                   <span class="c1"><span class="hljs-comment">// Instruction pointer</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">rflags</span><span class="p">;</span>                <span class="c1"><span class="hljs-comment">// CPU flags</span></span>
+
+    <span class="c1"><span class="hljs-comment">// Segment Registers</span></span>
+    <span class="kt"><span class="hljs-keyword">uint16_t</span></span> <span class="n">cs</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">es</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">gs</span><span class="p">,</span> <span class="n">ss</span><span class="p">;</span>
+
+    <span class="c1"><span class="hljs-comment">// Control Registers</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">cr3</span><span class="p">;</span>                   <span class="c1"><span class="hljs-comment">// Page table base register</span></span>
+
+    <span class="c1"><span class="hljs-comment">// FPU/SSE State</span></span>
+    <span class="kt"><span class="hljs-keyword">uint8_t</span></span> <span class="n">fpu_state</span><span class="p">[</span><span class="mi"><span class="hljs-number">512</span></span><span class="p">];</span>         <span class="c1"><span class="hljs-comment">// FPU and SSE registers state</span></span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>This structure represents the minimal context that must be saved and restored during a context switch. Let’s examine each component:</p>
+
+<ol>
+  <li><strong>General Purpose Registers</strong>: Store intermediate computational results</li>
+  <li><strong>Stack Pointers</strong>: Track the current execution stack</li>
+  <li><strong>Instruction Pointer</strong>: Points to the next instruction to execute</li>
+  <li><strong>CPU Flags</strong>: Store status information about the last arithmetic operation</li>
+  <li><strong>Segment Registers</strong>: Used for memory segmentation</li>
+  <li><strong>CR3</strong>: Contains the physical address of the page directory</li>
+  <li><strong>FPU/SSE State</strong>: Floating-point and SIMD execution state</li>
+</ol>
+
+<h2 id="3-anatomy-of-a-context-switch">3. Anatomy of a Context Switch</h2>
+
+<p>A context switch can occur for several reasons:</p>
+<ul>
+  <li>Timer interrupt (preemption)</li>
+  <li>System call</li>
+  <li>I/O request</li>
+  <li>Inter-process communication</li>
+</ul>
+
+<p>Here’s a simplified view of the context switch handler:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs php"><span class="kt">void</span> <span class="nf">context_switch</span><span class="p">(</span><span class="k">struct</span> <span class="n">process_context</span><span class="o">*</span> <span class="n">old_context</span><span class="p">,</span>
+                   <span class="k">struct</span> <span class="n">process_context</span><span class="o">*</span> <span class="n">new_context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"><span class="hljs-comment">// 1. Save CPU registers of current process</span></span>
+    <span class="n">save_cpu_state</span><span class="p">(</span><span class="n">old_context</span><span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// 2. Save FPU/SSE state if used</span></span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">fpu_used</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">save_fpu_state</span><span class="p">(</span><span class="n">old_context</span><span class="o">-&gt;</span><span class="n">fpu_state</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// 3. Switch to new page tables</span></span>
+    <span class="n">load_cr3</span><span class="p">(</span><span class="n">new_context</span><span class="o">-&gt;</span><span class="n">cr3</span><span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// 4. Restore FPU/SSE state if necessary</span></span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">fpu_used</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">restore_fpu_state</span><span class="p">(</span><span class="n">new_context</span><span class="o">-&gt;</span><span class="n">fpu_state</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// 5. Restore CPU registers of new process</span></span>
+    <span class="n">restore_cpu_state</span><span class="p">(</span><span class="n">new_context</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">save_cpu_state</span><span class="p">(</span><span class="k">struct</span> <span class="n">process_context</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">__asm__</span> <span class="k">volatile</span> <span class="p">(</span>
+        <span class="s"><span class="hljs-string">"movq %%rax, %0</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%rbx, %1</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%rcx, %2</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%rdx, %3</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%rsi, %4</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%rdi, %5</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%rbp, %6</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%rsp, %7</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="c1"><span class="hljs-comment">// ... save other registers ...</span></span>
+        <span class="o">:</span> <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">rax</span><span class="p">),</span> <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">rbx</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">rcx</span><span class="p">),</span> <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">rdx</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">rsi</span><span class="p">),</span> <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">rdi</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">rbp</span><span class="p">),</span> <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">rsp</span><span class="p">)</span>
+        <span class="o">:</span>
+        <span class="o">:</span> <span class="s"><span class="hljs-string">"memory"</span></span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="4-hardware-support-for-context-switching">4. Hardware Support for Context Switching</h2>
+
+<p>Modern CPUs provide several features to optimize context switching:</p>
+
+<h3 id="task-state-segment-tss">Task State Segment (TSS)</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">tss_struct</span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">uint32_t</span></span> <span class="n">reserved1</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">rsp0</span><span class="p">;</span>        <span class="c1"><span class="hljs-comment">// Stack pointer for ring 0</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">rsp1</span><span class="p">;</span>        <span class="c1"><span class="hljs-comment">// Stack pointer for ring 1</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">rsp2</span><span class="p">;</span>        <span class="c1"><span class="hljs-comment">// Stack pointer for ring 2</span></span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">reserved2</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">ist</span><span class="p">[</span><span class="mi"><span class="hljs-number">7</span></span><span class="p">];</span>      <span class="c1"><span class="hljs-comment">// Interrupt stack table</span></span>
+    <span class="kt"><span class="hljs-keyword">uint32_t</span></span> <span class="n">reserved3</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint32_t</span></span> <span class="n">reserved4</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint16_t</span></span> <span class="n">reserved5</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint16_t</span></span> <span class="n">iopb_offset</span><span class="p">;</span> <span class="c1"><span class="hljs-comment">// I/O permission bitmap offset</span></span>
+<span class="p">}</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">setup_tss</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">struct</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">tss_struct</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">tss</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="n"><span class="hljs-built_in">memset</span></span><span class="p">(</span><span class="n">tss</span><span class="p">,</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">,</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">tss_struct</span><span class="p">));</span>
+    <span class="n">tss</span><span class="o">-&gt;</span><span class="n">rsp0</span> <span class="o">=</span> <span class="n">KERNEL_STACK_TOP</span><span class="p">;</span>
+    <span class="n">tss</span><span class="o">-&gt;</span><span class="n">iopb_offset</span> <span class="o">=</span> <span class="k"><span class="hljs-keyword">sizeof</span></span><span class="p">(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">tss_struct</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="memory-management-unit-mmu">Memory Management Unit (MMU)</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">page_table_entry</span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">present</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">writable</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">user_accessible</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">write_through</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">cache_disabled</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">accessed</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">dirty</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">page_size</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">global</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">available</span><span class="o">:</span><span class="mi"><span class="hljs-number">3</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">page_frame</span><span class="o">:</span><span class="mi"><span class="hljs-number">40</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">reserved</span><span class="o">:</span><span class="mi"><span class="hljs-number">11</span></span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">nx</span><span class="o">:</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">;</span>
+<span class="p">}</span> <span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h2 id="5-implementation-details">5. Implementation Details</h2>
+
+<p>Let’s look at a more detailed context switch implementation:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">schedule</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">()</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">prev</span><span class="p">,</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+
+    <span class="c1"><span class="hljs-comment">// Disable interrupts during switch</span></span>
+    <span class="n">local_irq_disable</span><span class="p">();</span>
+
+    <span class="n">prev</span> <span class="o">=</span> <span class="n">current</span><span class="p">;</span>
+    <span class="n">next</span> <span class="o">=</span> <span class="n">pick_next_task</span><span class="p">();</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">prev</span> <span class="o">!=</span> <span class="n">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"><span class="hljs-comment">// Update runtime statistics</span></span>
+        <span class="n">update_task_runtime_stats</span><span class="p">(</span><span class="n">prev</span><span class="p">);</span>
+
+        <span class="c1"><span class="hljs-comment">// Switch process memory space</span></span>
+        <span class="n">switch_mm</span><span class="p">(</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">mm</span><span class="p">,</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">mm</span><span class="p">);</span>
+
+        <span class="c1"><span class="hljs-comment">// Switch kernel stacks</span></span>
+        <span class="n">switch_to</span><span class="p">(</span><span class="n">prev</span><span class="p">,</span> <span class="n">next</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">local_irq_enable</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">switch_to</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">struct</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">task_struct</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">prev</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">struct</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">task_struct</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="n"><span class="hljs-function"><span class="hljs-params">next</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">thread_struct</span> <span class="o">*</span><span class="n">prev_thread</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="kr">thread</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">thread_struct</span> <span class="o">*</span><span class="n">next_thread</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">next</span><span class="o">-&gt;</span><span class="kr">thread</span><span class="p">;</span>
+
+    <span class="c1"><span class="hljs-comment">// Save FPU state if necessary</span></span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">task_thread_info</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">status</span> <span class="o">&amp;</span> <span class="n">TS_USEDFPU</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">save_fpu</span><span class="p">(</span><span class="n">prev_thread</span><span class="p">);</span>
+        <span class="n">task_thread_info</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">status</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">TS_USEDFPU</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// Save debug registers if used</span></span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">prev_thread</span><span class="o">-&gt;</span><span class="n">debugreg7</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">loaddebug_inactive</span><span class="p">(</span><span class="n">prev</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// Perform actual context switch</span></span>
+    <span class="n">__switch_to</span><span class="p">(</span><span class="n">prev</span><span class="p">,</span> <span class="n">next</span><span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// Handle return path</span></span>
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">task_thread_info</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">_TIF_WORK_CTXSW</span><span class="p">))</span>
+        <span class="n">__work_ctxsw</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="6-performance-implications">6. Performance Implications</h2>
+
+<p>Context switching isn’t free. Here’s a simple benchmark tool:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs perl"><span class="cp"><span class="hljs-comment">#define ITERATIONS 1000000</span>
+</span>
+<span class="kt">uint64_t</span> <span class="nf">rdtsc</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">;</span>
+    <span class="n">__asm_<span class="hljs-number">_</span></span> <span class="k">volatile</span> <span class="p">(</span><span class="s"><span class="hljs-string">"rdtsc"</span></span> <span class="o">:</span> <span class="s"><span class="hljs-string">"=a"</span></span> <span class="p">(</span><span class="n">lo</span><span class="p">),</span> <span class="s"><span class="hljs-string">"=d"</span></span> <span class="p">(</span><span class="n">hi</span><span class="p">));</span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="p">((</span><span class="kt">uint64_t</span><span class="p">)</span><span class="n">hi</span> <span class="o">&lt;&lt;</span> <span class="mi"><span class="hljs-number">32</span></span><span class="p">)</span> <span class="o">|</span> <span class="n">lo</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">measure_context_switch</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">pid_t</span> <span class="n">pid</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">pipe_fd</span><span class="p">[</span><span class="mi"><span class="hljs-number">2</span></span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">byte</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span>
+    <span class="kt">uint64_t</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">;</span>
+
+    <span class="n"><span class="hljs-keyword">pipe</span></span><span class="p">(</span><span class="n">pipe_fd</span><span class="p">);</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n"><span class="hljs-keyword">fork</span></span><span class="p">();</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">)</span> <span class="p">{</span>  <span class="c1"><span class="hljs-regexp">//</span> Child</span>
+        <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ITERATIONS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n"><span class="hljs-keyword">read</span></span><span class="p">(</span><span class="n">pipe_fd</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">],</span> <span class="o">&amp;</span><span class="n">byte</span><span class="p">,</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+            <span class="n"><span class="hljs-keyword">write</span></span><span class="p">(</span><span class="n">pipe_fd</span><span class="p">[</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">],</span> <span class="o">&amp;</span><span class="n">byte</span><span class="p">,</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n"><span class="hljs-keyword">exit</span></span><span class="p">(</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">);</span>
+    <span class="p">}</span> <span class="k"><span class="hljs-keyword">else</span></span> <span class="p">{</span>  <span class="c1"><span class="hljs-regexp">//</span> Parent</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">rdtsc</span><span class="p">();</span>
+
+        <span class="k"><span class="hljs-keyword">for</span></span> <span class="p">(</span><span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">i</span> <span class="o">=</span> <span class="mi"><span class="hljs-number">0</span></span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ITERATIONS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n"><span class="hljs-keyword">write</span></span><span class="p">(</span><span class="n">pipe_fd</span><span class="p">[</span><span class="mi"><span class="hljs-number">1</span></span><span class="p">],</span> <span class="o">&amp;</span><span class="n">byte</span><span class="p">,</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+            <span class="n"><span class="hljs-keyword">read</span></span><span class="p">(</span><span class="n">pipe_fd</span><span class="p">[</span><span class="mi"><span class="hljs-number">0</span></span><span class="p">],</span> <span class="o">&amp;</span><span class="n">byte</span><span class="p">,</span> <span class="mi"><span class="hljs-number">1</span></span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">end</span> <span class="o">=</span> <span class="n">rdtsc</span><span class="p">();</span>
+        <span class="n"><span class="hljs-keyword">printf</span></span><span class="p">(</span><span class="s"><span class="hljs-string">"Average context switch time: %lu cycles</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span><span class="p">,</span>
+               <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">ITERATIONS</span> <span class="o">*</span> <span class="mi"><span class="hljs-number">2</span></span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Common context switch costs include:</p>
+
+<ol>
+  <li><strong>Direct Costs</strong>
+    <ul>
+      <li>Saving CPU registers</li>
+      <li>Saving FPU state</li>
+      <li>Loading new process state</li>
+      <li>Switching page tables</li>
+    </ul>
+  </li>
+  <li><strong>Indirect Costs</strong>
+    <ul>
+      <li>TLB flush</li>
+      <li>Cache pollution</li>
+      <li>Pipeline flush</li>
+      <li>Branch predictor reset</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="7-real-world-examples">7. Real-World Examples</h2>
+
+<p>Let’s look at how the Linux kernel handles context switching in practice:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="cm"><span class="hljs-comment">/*
+ * This is the actual context switch function.
+ * It only needs to be this big because everybody else is eating
+ * up all the register space.
+ * This is only called from schedule() and schedule_tail().
+ */</span></span>
+<span class="n">__visible</span> <span class="n">__notrace_funcgraph</span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">task_struct</span> <span class="o">*</span>
+<span class="nf">__switch_to</span><span class="p">(</span><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">prev_p</span><span class="p">,</span> <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">next_p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">thread_struct</span> <span class="o">*</span><span class="n">prev</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">prev_p</span><span class="o">-&gt;</span><span class="kr">thread</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">thread_struct</span> <span class="o">*</span><span class="n">next</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">next_p</span><span class="o">-&gt;</span><span class="kr">thread</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">cpu</span> <span class="o">=</span> <span class="n">smp_processor_id</span><span class="p">();</span>
+
+    <span class="c1"><span class="hljs-comment">// Switch kernel page table</span></span>
+    <span class="n">switch_mm_irqs_off</span><span class="p">(</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">mm</span><span class="p">,</span> <span class="n">next</span><span class="o">-&gt;</span><span class="n">mm</span><span class="p">,</span> <span class="n">next_p</span><span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// Switch kernel stack</span></span>
+    <span class="n">this_cpu_write</span><span class="p">(</span><span class="n">current_task</span><span class="p">,</span> <span class="n">next_p</span><span class="p">);</span>
+    <span class="n">this_cpu_write</span><span class="p">(</span><span class="n">cpu_current_top_of_stack</span><span class="p">,</span> <span class="n">task_top_of_stack</span><span class="p">(</span><span class="n">next_p</span><span class="p">));</span>
+
+    <span class="c1"><span class="hljs-comment">// Load TLS and update syscall entry/exit</span></span>
+    <span class="n">load_TLS</span><span class="p">(</span><span class="n">next</span><span class="p">,</span> <span class="n">cpu</span><span class="p">);</span>
+    <span class="n">arch_update_syscall_work</span><span class="p">(</span><span class="n">next_p</span><span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// Restore all registers</span></span>
+    <span class="k"><span class="hljs-keyword">return</span></span> <span class="n">__switch_to_asm</span><span class="p">(</span><span class="n">prev_p</span><span class="p">,</span> <span class="n">next_p</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="8-advanced-topics">8. Advanced Topics</h2>
+
+<h3 id="thread-context-vs-process-context">Thread Context vs Process Context</h3>
+
+<p>Thread context switches are generally lighter:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs php"><span class="k">struct</span> <span class="n">thread_context</span> <span class="p">{</span>
+    <span class="c1"><span class="hljs-comment">// Subset of process context</span></span>
+    <span class="kt">uint64_t</span> <span class="n">rsp</span><span class="p">;</span>                   <span class="c1"><span class="hljs-comment">// Stack pointer</span></span>
+    <span class="kt">uint64_t</span> <span class="n">rbp</span><span class="p">;</span>                   <span class="c1"><span class="hljs-comment">// Base pointer</span></span>
+    <span class="kt">uint64_t</span> <span class="n">rip</span><span class="p">;</span>                   <span class="c1"><span class="hljs-comment">// Instruction pointer</span></span>
+    <span class="kt">uint64_t</span> <span class="n">r12</span><span class="p">,</span> <span class="n">r13</span><span class="p">,</span> <span class="n">r14</span><span class="p">,</span> <span class="n">r15</span><span class="p">;</span>    <span class="c1"><span class="hljs-comment">// Callee-saved registers</span></span>
+
+    <span class="c1"><span class="hljs-comment">// Thread-local storage</span></span>
+    <span class="kt">uint64_t</span> <span class="n">fs_base</span><span class="p">;</span>              <span class="c1"><span class="hljs-comment">// FS segment base address</span></span>
+    <span class="kt">uint64_t</span> <span class="n">gs_base</span><span class="p">;</span>              <span class="c1"><span class="hljs-comment">// GS segment base address</span></span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">thread_switch</span><span class="p">(</span><span class="k">struct</span> <span class="n">thread_context</span><span class="o">*</span> <span class="n">old_thread</span><span class="p">,</span>
+                  <span class="k">struct</span> <span class="n">thread_context</span><span class="o">*</span> <span class="n">new_thread</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"><span class="hljs-comment">// Save minimal register set</span></span>
+    <span class="n">__asm__</span> <span class="k">volatile</span> <span class="p">(</span>
+        <span class="s"><span class="hljs-string">"movq %%rsp, %0</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%rbp, %1</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%r12, %2</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%r13, %3</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%r14, %4</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %%r15, %5</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="o">:</span> <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">old_thread</span><span class="o">-&gt;</span><span class="n">rsp</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">old_thread</span><span class="o">-&gt;</span><span class="n">rbp</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">old_thread</span><span class="o">-&gt;</span><span class="n">r12</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">old_thread</span><span class="o">-&gt;</span><span class="n">r13</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">old_thread</span><span class="o">-&gt;</span><span class="n">r14</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"=m"</span></span> <span class="p">(</span><span class="n">old_thread</span><span class="o">-&gt;</span><span class="n">r15</span><span class="p">)</span>
+        <span class="o">:</span>
+        <span class="o">:</span> <span class="s"><span class="hljs-string">"memory"</span></span>
+    <span class="p">);</span>
+
+    <span class="c1"><span class="hljs-comment">// Switch to new thread</span></span>
+    <span class="n">__asm__</span> <span class="k">volatile</span> <span class="p">(</span>
+        <span class="s"><span class="hljs-string">"movq %0, %%rsp</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %1, %%rbp</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %2, %%r12</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %3, %%r13</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %4, %%r14</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="s"><span class="hljs-string">"movq %5, %%r15</span></span><span class="se"><span class="hljs-string">\n</span></span><span class="s"><span class="hljs-string">"</span></span>
+        <span class="o">:</span>
+        <span class="o">:</span> <span class="s"><span class="hljs-string">"m"</span></span> <span class="p">(</span><span class="n">new_thread</span><span class="o">-&gt;</span><span class="n">rsp</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"m"</span></span> <span class="p">(</span><span class="n">new_thread</span><span class="o">-&gt;</span><span class="n">rbp</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"m"</span></span> <span class="p">(</span><span class="n">new_thread</span><span class="o">-&gt;</span><span class="n">r12</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"m"</span></span> <span class="p">(</span><span class="n">new_thread</span><span class="o">-&gt;</span><span class="n">r13</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"m"</span></span> <span class="p">(</span><span class="n">new_thread</span><span class="o">-&gt;</span><span class="n">r14</span><span class="p">),</span>
+          <span class="s"><span class="hljs-string">"m"</span></span> <span class="p">(</span><span class="n">new_thread</span><span class="o">-&gt;</span><span class="n">r15</span><span class="p">)</span>
+        <span class="o">:</span> <span class="s"><span class="hljs-string">"memory"</span></span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="numa-considerations">NUMA Considerations</h3>
+
+<p>On NUMA systems, context switching becomes more complex:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code class="hljs cpp"><span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">numa_context</span> <span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">current_node</span><span class="p">;</span>
+    <span class="kt"><span class="hljs-keyword">uint64_t</span></span> <span class="n">node_mask</span><span class="p">;</span>
+    <span class="k"><span class="hljs-keyword">struct</span></span> <span class="n">page_table_entry</span><span class="o">*</span> <span class="n">per_node_page_tables</span><span class="p">[</span><span class="n">MAX_NUMA_NODES</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="kt"><span class="hljs-function"><span class="hljs-keyword">void</span></span></span><span class="hljs-function"> </span><span class="nf"><span class="hljs-function"><span class="hljs-title">numa_aware_context_switch</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">struct</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">process_context</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">old_context</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params">
+                             </span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">struct</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">process_context</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">new_context</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params">
+                             </span></span><span class="k"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">struct</span></span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">numa_context</span></span></span><span class="o"><span class="hljs-function"><span class="hljs-params">*</span></span></span><span class="hljs-function"><span class="hljs-params"> </span></span><span class="n"><span class="hljs-function"><span class="hljs-params">numa_ctx</span></span></span><span class="p"><span class="hljs-function"><span class="hljs-params">)</span></span></span><span class="hljs-function"> </span><span class="p">{</span>
+    <span class="kt"><span class="hljs-keyword">int</span></span> <span class="n">target_node</span><span class="p">;</span>
+
+    <span class="c1"><span class="hljs-comment">// Determine optimal NUMA node</span></span>
+    <span class="n">target_node</span> <span class="o">=</span> <span class="n">find_optimal_numa_node</span><span class="p">(</span><span class="n">new_context</span><span class="p">);</span>
+
+    <span class="k"><span class="hljs-keyword">if</span></span> <span class="p">(</span><span class="n">target_node</span> <span class="o">!=</span> <span class="n">numa_ctx</span><span class="o">-&gt;</span><span class="n">current_node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"><span class="hljs-comment">// Switch to page tables for target node</span></span>
+        <span class="n">load_cr3</span><span class="p">(</span><span class="n">numa_ctx</span><span class="o">-&gt;</span><span class="n">per_node_page_tables</span><span class="p">[</span><span class="n">target_node</span><span class="p">]);</span>
+        <span class="n">numa_ctx</span><span class="o">-&gt;</span><span class="n">current_node</span> <span class="o">=</span> <span class="n">target_node</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"><span class="hljs-comment">// Perform regular context switch</span></span>
+    <span class="n">context_switch</span><span class="p">(</span><span class="n">old_context</span><span class="p">,</span> <span class="n">new_context</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="9-conclusion">9. Conclusion</h2>
+
+<p>Context switching is a fundamental OS operation that requires careful coordination between hardware and software. Understanding its low-level details is crucial for:</p>
+
+<ol>
+  <li>Operating system development</li>
+  <li>Performance optimization</li>
+  <li>Debugging system-level issues</li>
+  <li>Understanding process scheduling</li>
+</ol>
+
+<p>Modern CPUs continue to evolve with new features to optimize context switching, but the basic principles remain the same. Whether you’re developing an OS, optimizing performance, or just curious about how your computer juggles multiple processes, understanding context switching at this level provides valuable insights into system behavior.</p>
+
+<p>The code examples provided here are simplified for clarity but demonstrate the key concepts involved in real-world context switching implementations. For production systems, additional considerations like security, error handling, and hardware-specific optimizations would need to be addressed.</p>
+
+        <script>
+            function d3ize(elem) {
+                var par = elem.parentElement;
+                d3.select(par).append("div").graphviz().renderDot(elem.innerText);
+                d3.select(elem).style("display", "none");
+            }
+            var dotelems = document.getElementsByClassName("language-dot");
+            for (let elem of dotelems) {
+                d3ize(elem);
+            }
+        </script>
+    </div>
+    <a class="u-url" href="https://mohitmishra786.github.io/chessman/2024/10/04/Context-Switching-in-Operating-Systems.html" hidden=""></a>
+</article>
+
+        </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/chessman/"></data>
+
+  <div class="wrapper"><p>© 2025 Mohit Mishra</p><p><a class="black-link" href="mailto:immadmohit@gmail.com">immadmohit@gmail.com</a></p>
+
+      <p class="text">Learning to Learn.
+</p>
+
+      <nav>
+<!--           <a href="/chessman/">Home</a> -->
+          <a href="https://mohitmishra786.github.io/chessman/about.html">About</a>
+      </nav>
+
+  </div>
+</footer>
+
+
+</body></html>
