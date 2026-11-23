@@ -646,6 +646,7 @@
     { key: 'meta', label: 'Right-hand note, e.g. date or “READ TIME 12 MIN” (masthead style)', type: 'html', small: true },
     { key: 'lede', label: 'Introduction (hero style)', type: 'html', small: true },
     { key: 'toc', label: 'Table of contents', type: 'select', options: [['auto', 'Automatic — guide map for 4 or fewer, table for more'], ['guidemap', 'Always a guide map'], ['table', 'Always a table'], ['none', 'None']] },
+    { key: 'tocSource', label: 'On pages with parts, the table of contents lists…', type: 'select', options: [['parts', 'The parts (sub-pages)'], ['sections', 'This page’s own subsections']] },
     { key: 'tocTitle', label: 'Table of contents heading (optional)', type: 'text' },
     { key: 'download', label: 'Show a “Download” menu (prints/downloads the checklists on this page)', type: 'checkbox' }
   ];

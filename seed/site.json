@@ -513,7 +513,9 @@
       ],
       "topics": [
         "mobile"
-      ]
+      ],
+      "summary": "Messaging, email, calls and social media",
+      "keywords": "messaging messenger signal email alias disposable sms phone number social mastodon rss whistleblower"
     },
     "storage": {
       "title": "Storage",
@@ -574,13 +576,16 @@
     "privacy-starter-kit": {
       "title": "Privacy Starter Kit",
       "path": "quick-action/privacy-starter-kit.html",
-      "summary": "Three switches that make every other step easier.",
+      "summary": "Six essentials — start with three.",
       "image": "assets/privacytest.png",
       "imageFit": "contain",
       "kind": "guide",
       "topics": [
         "passwords",
-        "browsers"
+        "browsers",
+        "communication",
+        "vpns",
+        "cloud"
       ],
       "related": [
         "privacy-checklist",

@@ -3,9 +3,9 @@
   "meta": "Nov 23, 2026",
   "subsections": [
     {
-      "id": "first-three",
-      "title": "Start Here",
-      "summary": "Browser, search engine, password manager.",
+      "id": "essentials",
+      "title": "The Essentials",
+      "summary": "Six tools that protect most of your digital life.",
       "blocks": [
         {
           "type": "numbered",
@@ -13,22 +13,37 @@
           "cols": 3,
           "items": [
             {
-              "title": "Switch your browser",
+              "title": "A private browser",
               "url": "page:browsers#recommended",
-              "text": "Move to a browser that blocks trackers by default, like Brave, Firefox or LibreWolf."
+              "text": "Your browser sees everything you do online. A private one blocks trackers, ads and fingerprinting by default, so websites and advertisers learn far less about you &mdash; without changing how you browse."
             },
             {
-              "title": "Switch your search engine",
+              "title": "A private search engine",
               "url": "page:de-google#search",
-              "text": "Search with an engine that doesn’t profile you, like DuckDuckGo, Brave Search or Mojeek."
+              "text": "Searches reveal your health, money, plans and worries. A private search engine answers them without building a profile of you or tying them to your accounts."
             },
             {
-              "title": "Turn on a password manager",
+              "title": "A password manager",
               "url": "page:passwords",
-              "text": "Let a password manager create and remember a unique password for every account."
+              "text": "A unique, random password for every account, remembered for you. It stops one leaked password from unlocking the rest of your life, and it fills logins faster than typing."
+            },
+            {
+              "title": "An encrypted messenger",
+              "url": "page:communication#messaging",
+              "text": "With end-to-end encryption only you and the person you’re talking to can read your messages and hear your calls &mdash; not the app maker, your carrier or anyone who breaks in."
+            },
+            {
+              "title": "A VPN you can trust",
+              "url": "page:vpn-providers",
+              "text": "A VPN hides your browsing from your internet provider and public Wi-Fi, and swaps your IP address for its own. Choose an audited, no-logs provider &mdash; a bad VPN sees everything."
+            },
+            {
+              "title": "Encrypted storage",
+              "url": "page:cloud",
+              "text": "Keep photos, documents and backups where only you hold the key: an end-to-end encrypted cloud, or files encrypted on your own device before they’re uploaded."
             }
           ],
-          "after": "<p>Those three cover the widest surface for the least effort and make every other step easier.</p>"
+          "after": "<p><b>Start with the first three &mdash; browser, search engine and password manager.</b> Those three cover the widest surface for the least effort and make every other step easier.</p>"
         }
       ]
     },
