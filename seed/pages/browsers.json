@@ -8,6 +8,11 @@
         {
           "type": "text",
           "html": "<p>Your browser is the window you use to see almost everything online &mdash; and the window works both ways. Websites, advertisers and trackers can read a lot about you through it: what you visit, what you click, and enough details about your device to recognise you again later. Choosing a private browser and setting it up well removes most of that tracking without changing how you use the web.</p>"
+        },
+        {
+          "type": "callout",
+          "label": "Incognito isn’t privacy",
+          "html": "<p>Private or incognito mode only stops your browser from keeping a history on <i>your</i> device. The websites you visit, advertisers, your internet provider and Google can all still see what you do. Real privacy tools change what those parties can collect in the first place.</p>"
         }
       ]
     },
@@ -297,6 +302,252 @@
           "legend": true,
           "note": "Brave hides your IP only in its Tor windows (desktop); Safari only with a paid iCloud+ subscription (Private Relay).",
           "card": true
+        }
+      ]
+    },
+    {
+      "id": "safer-browsing",
+      "title": "Safer Browsing Habits",
+      "summary": "Settings and habits for any browser.",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Keep your browser updated",
+              "details": "<p>Most updates fix security holes. Firefox and Chrome update themselves, but check now and then; Tor Browser updates separately.</p>"
+            },
+            {
+              "text": "Consider two browsers",
+              "details": "<p>One hardened browser for sensitive things (banking, health, activism), another for everyday browsing.</p>"
+            },
+            {
+              "text": "Set a private default search engine",
+              "details": "<p>DuckDuckGo, Brave Search, Mojeek or Startpage. See <a href=\"page:alternatives#search-engines\">search engines</a>.</p>"
+            },
+            {
+              "text": "Type addresses instead of searching for them",
+              "details": "<p>Searching a bank’s name can surface lookalike scam sites. Turn off search suggestions in the address bar.</p>"
+            },
+            {
+              "text": "Turn on HTTPS-Only mode",
+              "details": "<p>Firefox: Settings &rarr; Privacy &amp; Security &rarr; HTTPS-Only Mode. Chrome: “Always use secure connections”.</p>"
+            },
+            {
+              "text": "Turn tracking protection up",
+              "details": "<p>Firefox: Enhanced Tracking Protection on Strict (drop to Standard if sites break). Chrome: block third-party cookies and use Enhanced Safe Browsing.</p>"
+            },
+            {
+              "text": "Review camera, microphone and location permissions",
+              "details": "<p>Only allow them for sites you trust, and remove old permissions.</p>"
+            },
+            {
+              "text": "Don’t save passwords in the browser",
+              "details": "<p>Use a <a href=\"page:passwords#managers\">password manager</a> instead, and delete the logins your browser saved.</p>"
+            },
+            {
+              "text": "Keep extensions few and trusted",
+              "details": "<p>Install only from the official add-on stores and remove anything you don’t use or recognise &mdash; every extension can see your browsing.</p>"
+            },
+            {
+              "text": "Clear history and cookies automatically",
+              "details": "<p>Set the browser to clear cookies and site data when it closes, and don’t reopen the last session on startup.</p>"
+            },
+            {
+              "text": "Turn off built-in AI features",
+              "details": "<p>They can send the page you’re reading to the browser maker. Firefox: Settings &rarr; AI Controls. Chrome: turn off Gemini features.</p>"
+            },
+            {
+              "text": "Heed security warnings",
+              "details": "<p>If the browser warns a site is dangerous, don’t continue. Pause before opening links sent by message or email.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "more-browsers",
+      "title": "More Private Browsers",
+      "summary": "Top picks for desktop and phone.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "LibreWolf",
+              "url": "https://librewolf.net/",
+              "desc": "Hardened Firefox with tracking and fingerprinting protection built in.",
+              "linkText": "Visit",
+              "meta": "Desktop"
+            },
+            {
+              "label": "Brave",
+              "url": "https://brave.com/",
+              "desc": "Blocks ads and trackers by default; easiest switch from Chrome.",
+              "linkText": "Visit",
+              "meta": "Desktop, Android, iOS"
+            },
+            {
+              "label": "Helium",
+              "url": "https://helium.computer/",
+              "desc": "Chromium-based, with uBlock Origin and tracker blocking on by default.",
+              "linkText": "Visit",
+              "meta": "Desktop"
+            },
+            {
+              "label": "Firefox",
+              "url": "https://www.mozilla.org/firefox/",
+              "desc": "Mozilla’s independent browser; harden it with a few settings.",
+              "linkText": "Visit",
+              "meta": "Desktop, Android, iOS"
+            },
+            {
+              "label": "Firefox Focus",
+              "url": "https://www.mozilla.org/firefox/browsers/mobile/focus/",
+              "desc": "Mobile browser that blocks trackers and forgets everything when closed.",
+              "linkText": "Visit",
+              "meta": "Android, iOS"
+            },
+            {
+              "label": "DuckDuckGo",
+              "url": "https://duckduckgo.com/",
+              "desc": "Simple browser that blocks trackers, with a one-tap Fire button.",
+              "linkText": "Visit",
+              "meta": "Desktop, Android, iOS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "android-browsers",
+      "title": "Android Browsers",
+      "summary": "Private browsers for Android phones.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Brave",
+              "url": "https://brave.com/",
+              "desc": "Blocks ads and trackers by default.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Firefox",
+              "url": "https://www.mozilla.org/firefox/",
+              "desc": "Supports full extensions like uBlock Origin on Android.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Firefox Focus",
+              "url": "https://www.mozilla.org/firefox/browsers/mobile/focus/",
+              "desc": "Private-by-default, forgets everything on close.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "DuckDuckGo",
+              "url": "https://duckduckgo.com/",
+              "desc": "Tracker blocking and a one-tap Fire button.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "IronFox",
+              "url": "https://ironfoxoss.org/",
+              "desc": "Hardened Firefox fork for Android with telemetry removed.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Cromite",
+              "url": "https://github.com/uazo/cromite",
+              "desc": "Open-source Chromium fork with ad blocking and anti-fingerprinting.",
+              "linkText": "Visit"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "html": "<p><small>On iPhone every browser uses Safari’s engine, so pick by features: Brave, DuckDuckGo, Firefox Focus or Safari with an ad blocker.</small></p>"
+        }
+      ]
+    },
+    {
+      "id": "extensions",
+      "title": "Privacy Extensions",
+      "summary": "Add-ons worth installing, by browser.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "uBlock Origin",
+              "url": "https://addons.mozilla.org/firefox/addon/ublock-origin/",
+              "desc": "The essential ad and tracker blocker. Full version works in Firefox.",
+              "linkText": "Get it",
+              "meta": "Firefox"
+            },
+            {
+              "label": "uBlock Origin Lite",
+              "url": "https://github.com/uBlockOrigin/uBOL-home",
+              "desc": "The version for Chrome, Edge, Brave and Safari.",
+              "linkText": "Get it",
+              "meta": "Chrome, Edge, Safari"
+            },
+            {
+              "label": "ClearURLs",
+              "url": "https://addons.mozilla.org/firefox/addon/clearurls/",
+              "desc": "Strips tracking codes out of the links you click.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome"
+            },
+            {
+              "label": "Decentraleyes",
+              "url": "https://addons.mozilla.org/firefox/addon/decentraleyes/",
+              "desc": "Serves common web libraries locally so third parties don’t see the request.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome"
+            },
+            {
+              "label": "Cookie AutoDelete",
+              "url": "https://addons.mozilla.org/firefox/addon/cookie-autodelete/",
+              "desc": "Deletes a site’s cookies when you close its tab.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome"
+            },
+            {
+              "label": "SponsorBlock",
+              "url": "https://sponsor.ajay.app/",
+              "desc": "Skips sponsor segments in YouTube videos.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome, Safari"
+            },
+            {
+              "label": "Privacy Badger",
+              "url": "https://privacybadger.org/",
+              "desc": "EFF’s tracker blocker that learns as you browse.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome, Edge"
+            },
+            {
+              "label": "NoScript",
+              "url": "https://noscript.net/",
+              "desc": "Blocks scripts on sites you don’t trust. Advanced — breaks many sites.",
+              "linkText": "Get it",
+              "meta": "Firefox"
+            }
+          ],
+          "before": "<p>Start with an ad blocker &mdash; uBlock Origin on Firefox, uBlock Origin Lite on Chrome-based browsers and Safari. Add others only if you need them. See <a href=\"page:browser-extensions\">Browser Extensions</a> for setup.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><small>Safari: uBlock Origin Lite and SponsorBlock are available from the App Store; AdGuard (a sponsored pick on privacytools.io) is another option.</small></p>"
         }
       ]
     },

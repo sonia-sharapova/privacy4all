@@ -144,7 +144,7 @@
             },
             {
               "text": "Watch without an account",
-              "details": "<p>Or use an alternative: <a href=\"page:google-alternatives#youtube\">see YouTube alternatives</a>.</p>"
+              "details": "<p>Or use an alternative: <a href=\"page:alternatives#youtube\">see YouTube alternatives</a>.</p>"
             }
           ]
         }
@@ -190,7 +190,7 @@
             },
             {
               "title": "Go further: a de-Googled OS",
-              "text": "<p>Advanced: <a href=\"https://grapheneos.org/\">GrapheneOS</a> or <a href=\"https://calyxos.org/\">CalyxOS</a> replace Android on supported phones. Installing an OS can break a phone if it goes wrong, so read their guides first. More options: <a href=\"page:google-alternatives#android\">Android alternatives</a>.</p>"
+              "text": "<p>Advanced: <a href=\"https://grapheneos.org/\">GrapheneOS</a> or <a href=\"https://calyxos.org/\">CalyxOS</a> replace Android on supported phones. Installing an OS can break a phone if it goes wrong, so read their guides first. More options: <a href=\"page:alternatives#android\">Android alternatives</a>.</p>"
             }
           ]
         }
@@ -249,17 +249,97 @@
     },
     {
       "id": "replace",
-      "title": "Replace the Rest",
-      "summary": "Private alternatives for every Google service.",
+      "title": "Replace Google Services",
+      "summary": "A private alternative for every Google product.",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Open a Google service to see its private replacements. Move one at a time &mdash; start with the one you use most.</p>"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Google Search",
+              "a": "<ul><li><a href=\"https://search.brave.com/\">Brave Search</a> &mdash; Independent search engine with its own index.</li><li><a href=\"https://www.mojeek.com/\">Mojeek</a> &mdash; UK search engine with its own crawler and index.</li><li><a href=\"https://duckduckgo.com/\">DuckDuckGo</a> &mdash; Blocks trackers and doesn’t build a profile of you.</li><li><a href=\"https://www.startpage.com/\">Startpage</a> &mdash; Google results with your identifying details stripped out.</li><li><a href=\"https://www.qwant.com/\">Qwant</a> &mdash; EU-hosted search mixing its own index with Bing.</li><li><a href=\"https://kagi.com/\">Kagi</a> &mdash; Paid, ad-free search you can tune to your taste.</li></ul><p><a href=\"page:alternatives#search-engines\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Gmail",
+              "a": "<ul><li><a href=\"https://www.startmail.com/\">StartMail</a> &mdash; Paid private email with unlimited aliases.</li><li><a href=\"https://proton.me/mail\">Proton Mail</a> &mdash; End-to-end encrypted email with a free plan.</li><li><a href=\"https://simplelogin.io/\">SimpleLogin</a> &mdash; Email aliases that forward to your real inbox.</li><li><a href=\"https://tuta.com/\">Tuta</a> &mdash; Zero-knowledge encrypted email on every platform.</li><li><a href=\"https://posteo.de/en\">Posteo</a> &mdash; German email with no sign-up data and green hosting.</li><li><a href=\"https://mailbox.org/\">mailbox.org</a> &mdash; German paid email with custom domains and encryption.</li></ul><p><a href=\"page:alternatives#email\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Chrome",
+              "a": "<ul><li><a href=\"https://librewolf.net/\">LibreWolf</a> &mdash; Hardened Firefox with tracking and fingerprinting protection built in.</li><li><a href=\"https://brave.com/\">Brave</a> &mdash; Blocks ads and trackers by default; easiest switch from Chrome.</li><li><a href=\"https://helium.computer/\">Helium</a> &mdash; Chromium-based, with uBlock Origin and tracker blocking on by default.</li><li><a href=\"https://www.mozilla.org/firefox/\">Firefox</a> &mdash; Mozilla’s independent browser; harden it with a few settings.</li><li><a href=\"https://www.mozilla.org/firefox/browsers/mobile/focus/\">Firefox Focus</a> &mdash; Mobile browser that blocks trackers and forgets everything when closed.</li><li><a href=\"https://duckduckgo.com/\">DuckDuckGo</a> &mdash; Simple browser that blocks trackers, with a one-tap Fire button.</li></ul><p><a href=\"page:alternatives#browsers\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Drive",
+              "a": "<ul><li><a href=\"https://internxt.com/\">Internxt Drive</a> &mdash; Zero-knowledge storage with 1 GB free.</li><li><a href=\"https://nordlocker.com/\">NordLocker</a> &mdash; Encrypted paid cloud storage.</li><li><a href=\"https://privacynotes.app/\">PrivacyNotes</a> &mdash; Encrypted notes, files, calendar and passwords in one app.</li><li><a href=\"https://mega.io/\">MEGA</a> &mdash; Encrypted cloud storage with a 20 GB free plan.</li><li><a href=\"https://proton.me/drive\">Proton Drive</a> &mdash; End-to-end encrypted storage from Proton.</li><li><a href=\"https://tresorit.com/\">Tresorit</a> &mdash; Swiss end-to-end encrypted storage.</li></ul><p><a href=\"page:alternatives#cloud-storage\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Maps",
+              "a": "<ul><li><a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> &mdash; Free, community-made map of the world.</li><li><a href=\"https://organicmaps.app/\">Organic Maps</a> &mdash; Offline maps and navigation for Android and iOS.</li><li><a href=\"https://osmand.net/\">OsmAnd</a> &mdash; Online and offline OpenStreetMap navigation.</li><li><a href=\"https://comaps.app/\">CoMaps</a> &mdash; Community fork of Organic Maps with tracking removed.</li></ul><p><a href=\"page:alternatives#maps\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Photos",
+              "a": "<ul><li><a href=\"https://internxt.com/\">Internxt Photos</a> &mdash; Zero-knowledge encrypted photo storage.</li><li><a href=\"https://ente.io/\">ente</a> &mdash; Encrypted photo backup, with import from Google and Apple.</li><li><a href=\"https://immich.app/\">Immich</a> &mdash; Self-hosted photo backup that feels like Google Photos.</li><li><a href=\"https://crypt.ee/\">Cryptee</a> &mdash; Encrypted documents and photos.</li><li><a href=\"https://photoprism.app/\">PhotoPrism</a> &mdash; Self-hosted photo library with automatic tagging.</li><li><a href=\"https://piwigo.org/\">Piwigo</a> &mdash; Hosted or self-hosted photo gallery.</li></ul><p><a href=\"page:alternatives#photos\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Calendar",
+              "a": "<ul><li><a href=\"https://privacynotes.app/\">PrivacyNotes</a> &mdash; Encrypted calendar alongside notes, tasks and files.</li><li><a href=\"https://proton.me/calendar\">Proton Calendar</a> &mdash; End-to-end encrypted calendar from Proton.</li><li><a href=\"https://tuta.com/\">Tuta</a> &mdash; Free zero-knowledge calendar on every platform.</li><li><a href=\"https://www.etesync.com/\">EteSync</a> &mdash; Encrypted calendar and contact sync; self-hostable.</li><li><a href=\"https://silentsuite.io/\">SilentSuite</a> &mdash; Encrypted sync for calendars, contacts and tasks.</li><li><a href=\"https://radicale.org/\">Radicale</a> &mdash; Simple self-hosted calendar and contacts server.</li></ul><p><a href=\"page:alternatives#calendars\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Translate",
+              "a": "<ul><li><a href=\"https://translatelocally.com/\">TranslateLocally</a> &mdash; Offline translation on your own device.</li><li><a href=\"https://libretranslate.com/\">LibreTranslate</a> &mdash; Open-source translator you can self-host.</li><li><a href=\"https://github.com/thedaviddelta/lingva-translate\">Lingva Translate</a> &mdash; Translation front end that keeps Google from tracking you.</li><li><a href=\"https://github.com/translate-tools/linguist\">Linguist</a> &mdash; Browser translator that can work offline.</li><li><a href=\"https://f-droid.org/packages/com.simplytranslate_mobile/\">SimplyTranslate Mobile</a> &mdash; Private translation app for Android.</li><li><a href=\"https://languagetool.org/\">LanguageTool</a> &mdash; Grammar checker for browsers and office apps.</li></ul><p><a href=\"page:alternatives#translation\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google DNS",
+              "a": "<ul><li><a href=\"https://nextdns.io/\">NextDNS</a> &mdash; Configurable encrypted DNS with blocklists.</li><li><a href=\"https://adguard-dns.io/\">AdGuard DNS</a> &mdash; Easy encrypted DNS that blocks ads.</li><li><a href=\"https://pi-hole.net/\">Pi-hole</a> &mdash; Network-wide ad blocker you run at home.</li><li><a href=\"https://github.com/DNSCrypt/dnscrypt-proxy\">dnscrypt-proxy</a> &mdash; Local DNS proxy for encrypted DNS protocols.</li><li><a href=\"https://nlnetlabs.nl/projects/unbound/about/\">Unbound</a> &mdash; Validating, caching DNS resolver you run yourself.</li><li><a href=\"https://rethinkdns.com/\">RethinkDNS</a> &mdash; Android app with encrypted DNS and a firewall.</li></ul><p><a href=\"page:alternatives#dns\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Docs",
+              "a": "<ul><li><a href=\"https://cryptpad.fr/\">CryptPad</a> &mdash; Encrypted collaborative documents, sheets and forms.</li><li><a href=\"https://privmx.com/\">PrivMX</a> &mdash; Private team workspace with files, chat and tasks.</li><li><a href=\"https://www.collaboraonline.com/\">Collabora Online</a> &mdash; Self-hosted online office built on LibreOffice.</li><li><a href=\"https://www.onlyoffice.com/\">ONLYOFFICE</a> &mdash; Online document editors and collaboration.</li><li><a href=\"https://www.libreoffice.org/\">LibreOffice</a> &mdash; Free desktop office suite.</li><li><a href=\"https://etherpad.org/\">Etherpad</a> &mdash; Open-source real-time collaborative editor.</li></ul><p><a href=\"page:alternatives#documents\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Android",
+              "a": "<ul><li><a href=\"https://grapheneos.org/\">GrapheneOS</a> &mdash; Hardened Android for Google Pixel phones.</li><li><a href=\"https://calyxos.org/\">CalyxOS</a> &mdash; Private Android build for Pixel phones.</li><li><a href=\"https://e.foundation/e-os/\">/e/OS</a> &mdash; De-Googled Android using microG.</li><li><a href=\"https://www.lineageos.org/\">LineageOS</a> &mdash; Open-source Android for many devices.</li><li><a href=\"https://ubuntu-touch.io/\">Ubuntu Touch</a> &mdash; Open-source mobile OS, no account needed.</li><li><a href=\"https://www.apple.com/ios/\">iOS</a> &mdash; Locked down by default, but closed source.</li></ul><p><a href=\"page:alternatives#android\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "YouTube",
+              "a": "<ul><li><a href=\"https://odysee.com/\">Odysee</a> &mdash; Decentralised video platform.</li><li><a href=\"https://joinpeertube.org/\">PeerTube</a> &mdash; Free, federated video hosting.</li><li><a href=\"https://d.tube/\">DTube</a> &mdash; Decentralised video sharing.</li><li><a href=\"https://jely2002.github.io/youtube-dl-gui/\">Open Video Downloader</a> &mdash; Download videos to watch without tracking.</li></ul><p><a href=\"page:alternatives#youtube\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Keep",
+              "a": "<ul><li><a href=\"https://privacynotes.app/\">PrivacyNotes</a> &mdash; Encrypted notes, tasks and journal.</li><li><a href=\"https://standardnotes.com/\">Standard Notes</a> &mdash; Encrypted notes built to last.</li><li><a href=\"https://notesnook.com/\">Notesnook</a> &mdash; Open-source encrypted notes with a free tier.</li><li><a href=\"https://joplinapp.org/\">Joplin</a> &mdash; Open-source notes that sync across devices.</li><li><a href=\"https://anytype.io/\">Anytype</a> &mdash; Local-first encrypted knowledge base.</li><li><a href=\"https://crypt.ee/\">Cryptee</a> &mdash; Encrypted documents and notes.</li></ul><p><a href=\"page:alternatives#notes\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Gemini",
+              "a": "<ul><li><a href=\"https://proton.me/lumo\">Lumo</a> &mdash; Proton’s assistant with encrypted chat history.</li><li><a href=\"https://duck.ai/\">Duck.ai</a> &mdash; Private chat with several models, no account.</li><li><a href=\"https://euria.infomaniak.com/\">Euria</a> &mdash; Swiss-hosted assistant that doesn’t train on your data.</li><li><a href=\"https://www.apple.com/apple-intelligence/\">Apple Intelligence</a> &mdash; Runs on-device where possible.</li><li><a href=\"https://skales.app/\">Skales</a> &mdash; Local AI agent that keeps data on your machine.</li><li><a href=\"https://ollama.com/\">Ollama</a> &mdash; Run open models locally.</li></ul><p><a href=\"page:alternatives#ai\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Fit",
+              "a": "<ul><li><a href=\"https://privacynotes.app/\">PrivacyNotes</a> &mdash; Encrypted journal with mood and medication tracking.</li><li><a href=\"https://dripapp.org/\">drip</a> &mdash; Menstrual tracker that keeps data on your phone.</li><li><a href=\"https://eukiapp.com/\">Euki</a> &mdash; Reproductive health app that doesn’t store data in the cloud.</li><li><a href=\"https://play.google.com/store/apps/details?id=org.isoron.uhabits\">Loop Habit Tracker</a> &mdash; Open-source, ad-free habit tracker.</li><li><a href=\"https://hovancik.net/stretchly/\">Stretchly</a> &mdash; Reminds you to take breaks from the screen.</li><li><a href=\"https://www.commonhealth.org/\">CommonHealth</a> &mdash; Android app for managing your health records.</li></ul><p><a href=\"page:alternatives#health\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Reader",
+              "a": "<ul><li><a href=\"https://netnewswire.com/\">NetNewsWire</a> &mdash; Free, open-source reader for Mac and iOS.</li><li><a href=\"https://play.google.com/store/apps/details?id=com.nononsenseapps.feeder.play\">Feeder</a> &mdash; Open-source Android reader, no account.</li><li><a href=\"https://apps.kde.org/akregator/\">Akregator</a> &mdash; KDE’s desktop feed reader.</li><li><a href=\"https://nodetics.com/feedbro/\">Feedbro</a> &mdash; Feed reader browser extension.</li><li><a href=\"https://miniflux.app/\">Miniflux</a> &mdash; Minimalist self-hosted reader.</li><li><a href=\"https://newsboat.org/\">Newsboat</a> &mdash; Terminal feed reader.</li></ul><p><a href=\"page:alternatives#rss\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Cloud",
+              "a": "<ul><li><a href=\"https://privex.io/\">Privex</a> &mdash; Belize-based host that accepts cryptocurrency.</li><li><a href=\"https://orangewebsite.com/\">OrangeWebsite</a> &mdash; Icelandic green-energy host.</li><li><a href=\"https://www.1984hosting.com/\">1984 Web Hosting</a> &mdash; Icelandic host running on green energy.</li><li><a href=\"https://njal.la/\">Njalla</a> &mdash; Privacy-focused domain registrar in Sweden.</li><li><a href=\"https://bahnhof.cloud/en/\">Bahnhof Cloud</a> &mdash; Long-running Swedish host.</li></ul><p><a href=\"page:alternatives#hosting\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Google Authenticator",
+              "a": "<ul><li><a href=\"https://ente.io/auth\">ente Auth</a> &mdash; Encrypted backup and sync of your codes across devices.</li><li><a href=\"https://getaegis.app/\">Aegis Authenticator</a> &mdash; Encrypted, open-source authenticator.</li><li><a href=\"https://2fas.com/\">2FAS</a> &mdash; Backups, sync and a browser extension for one-tap codes.</li><li><a href=\"https://www.tofuauth.com/\">Tofu</a> &mdash; Simple open-source authenticator.</li><li><a href=\"https://proton.me/authenticator\">Proton Authenticator</a> &mdash; Free, open-source, on every platform.</li><li><a href=\"https://www.yubico.com/products/yubico-authenticator/\">Yubico Authenticator</a> &mdash; Keeps your codes on a YubiKey.</li></ul><p><a href=\"page:alternatives#authenticators\">Compare on the Alternatives page &rarr;</a></p>"
+            }
+          ]
+        },
         {
           "type": "redirects",
           "style": "buttons",
-          "before": "<p>Ready to move more? There’s a private alternative for every Google service, from Gmail to Maps.</p>",
           "items": [
             {
-              "label": "See all Google alternatives →",
-              "url": "page:google-alternatives"
+              "label": "See every alternative with details →",
+              "url": "page:alternatives"
             }
           ]
         }

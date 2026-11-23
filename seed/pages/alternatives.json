@@ -1,0 +1,1144 @@
+{
+  "subtitle": "Private replacements for everyday apps",
+  "meta": "Source: privacytools.io",
+  "tocTitle": "Jump to a category",
+  "intro": [
+    {
+      "type": "text",
+      "html": "<p>Private replacements for the apps and services most people use every day &mdash; including every Google service. You don’t have to switch everything at once: pick the one you use most, swap it, and come back for the next. Each list shows the top picks from <a href=\"https://privacytools.io/\">privacytools.io</a>, in their order.</p>"
+    },
+    {
+      "type": "callout",
+      "label": "Leaving Google?",
+      "html": "<p>Download a copy of everything first with <a href=\"https://takeout.google.com/\">Google Takeout</a>, then follow <a href=\"page:de-google\">De-Google Yourself</a>.</p>"
+    }
+  ],
+  "subsections": [
+    {
+      "id": "search-engines",
+      "title": "Search Engines",
+      "summary": "Instead of Google Search or Bing",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Brave Search",
+              "url": "https://search.brave.com/",
+              "desc": "Independent search engine with its own index.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Mojeek",
+              "url": "https://www.mojeek.com/",
+              "desc": "UK search engine with its own crawler and index.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "DuckDuckGo",
+              "url": "https://duckduckgo.com/",
+              "desc": "Blocks trackers and doesn’t build a profile of you.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Startpage",
+              "url": "https://www.startpage.com/",
+              "desc": "Google results with your identifying details stripped out.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Qwant",
+              "url": "https://www.qwant.com/",
+              "desc": "EU-hosted search mixing its own index with Bing.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Kagi",
+              "url": "https://kagi.com/",
+              "desc": "Paid, ad-free search you can tune to your taste.",
+              "linkText": "Visit",
+              "meta": "Paid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "browsers",
+      "title": "Browsers",
+      "summary": "Instead of Chrome, Edge or Safari",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "LibreWolf",
+              "url": "https://librewolf.net/",
+              "desc": "Hardened Firefox with tracking and fingerprinting protection built in.",
+              "linkText": "Visit",
+              "meta": "Desktop"
+            },
+            {
+              "label": "Brave",
+              "url": "https://brave.com/",
+              "desc": "Blocks ads and trackers by default; easiest switch from Chrome.",
+              "linkText": "Visit",
+              "meta": "Desktop, Android, iOS"
+            },
+            {
+              "label": "Helium",
+              "url": "https://helium.computer/",
+              "desc": "Chromium-based, with uBlock Origin and tracker blocking on by default.",
+              "linkText": "Visit",
+              "meta": "Desktop"
+            },
+            {
+              "label": "Firefox",
+              "url": "https://www.mozilla.org/firefox/",
+              "desc": "Mozilla’s independent browser; harden it with a few settings.",
+              "linkText": "Visit",
+              "meta": "Desktop, Android, iOS"
+            },
+            {
+              "label": "Firefox Focus",
+              "url": "https://www.mozilla.org/firefox/browsers/mobile/focus/",
+              "desc": "Mobile browser that blocks trackers and forgets everything when closed.",
+              "linkText": "Visit",
+              "meta": "Android, iOS"
+            },
+            {
+              "label": "DuckDuckGo",
+              "url": "https://duckduckgo.com/",
+              "desc": "Simple browser that blocks trackers, with a one-tap Fire button.",
+              "linkText": "Visit",
+              "meta": "Desktop, Android, iOS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "title": "Email",
+      "summary": "Instead of Gmail or Outlook",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "StartMail",
+              "url": "https://www.startmail.com/",
+              "desc": "Paid private email with unlimited aliases.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Proton Mail",
+              "url": "https://proton.me/mail",
+              "desc": "End-to-end encrypted email with a free plan.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "SimpleLogin",
+              "url": "https://simplelogin.io/",
+              "desc": "Email aliases that forward to your real inbox.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Tuta",
+              "url": "https://tuta.com/",
+              "desc": "Zero-knowledge encrypted email on every platform.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Posteo",
+              "url": "https://posteo.de/en",
+              "desc": "German email with no sign-up data and green hosting.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "mailbox.org",
+              "url": "https://mailbox.org/",
+              "desc": "German paid email with custom domains and encryption.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "messaging",
+      "title": "Messaging",
+      "summary": "Instead of WhatsApp, Messenger or SMS",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Signal",
+              "url": "https://signal.org/",
+              "desc": "Feels like WhatsApp, encrypted by default, run by a non-profit.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "SimpleX Chat",
+              "url": "https://simplex.chat/",
+              "desc": "No phone number and no user ID at all.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Molly",
+              "url": "https://molly.im/",
+              "desc": "Hardened Signal for Android.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Session",
+              "url": "https://getsession.org/",
+              "desc": "No phone number or email to sign up.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Threema",
+              "url": "https://threema.ch/",
+              "desc": "Swiss messenger, no phone number, paid once.",
+              "linkText": "Visit",
+              "meta": "Paid"
+            },
+            {
+              "label": "Briar",
+              "url": "https://briarproject.org/",
+              "desc": "No servers; works over Bluetooth, Wi-Fi or Tor.",
+              "linkText": "Visit",
+              "meta": "Android"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "title": "Maps",
+      "summary": "Instead of Google Maps",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "OpenStreetMap",
+              "url": "https://www.openstreetmap.org/",
+              "desc": "Free, community-made map of the world.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Organic Maps",
+              "url": "https://organicmaps.app/",
+              "desc": "Offline maps and navigation for Android and iOS.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "OsmAnd",
+              "url": "https://osmand.net/",
+              "desc": "Online and offline OpenStreetMap navigation.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "CoMaps",
+              "url": "https://comaps.app/",
+              "desc": "Community fork of Organic Maps with tracking removed.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "youtube",
+      "title": "Video",
+      "summary": "Instead of YouTube",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Odysee",
+              "url": "https://odysee.com/",
+              "desc": "Decentralised video platform.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "PeerTube",
+              "url": "https://joinpeertube.org/",
+              "desc": "Free, federated video hosting.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "DTube",
+              "url": "https://d.tube/",
+              "desc": "Decentralised video sharing.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Open Video Downloader",
+              "url": "https://jely2002.github.io/youtube-dl-gui/",
+              "desc": "Download videos to watch without tracking.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "social-front-ends",
+      "title": "Social Media Front-ends",
+      "summary": "Watch and read YouTube, Reddit and more without tracking",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "LibRedirect",
+              "url": "https://libredirect.manerakai.com/",
+              "desc": "Browser extension that sends YouTube, Reddit and others to private front-ends.",
+              "linkText": "Visit",
+              "meta": "Browser extension"
+            },
+            {
+              "label": "FreeTube",
+              "url": "https://freetubeapp.io/",
+              "desc": "Desktop YouTube app: no account, no ads, subscriptions stored locally.",
+              "linkText": "Visit",
+              "meta": "Windows, macOS, Linux"
+            },
+            {
+              "label": "NewPipe",
+              "url": "https://newpipe.net/",
+              "desc": "Android app for YouTube and PeerTube without an account.",
+              "linkText": "Visit",
+              "meta": "Android"
+            },
+            {
+              "label": "LibreTube",
+              "url": "https://libretube.dev/",
+              "desc": "Android YouTube client that routes through Piped.",
+              "linkText": "Visit",
+              "meta": "Android"
+            },
+            {
+              "label": "Invidious",
+              "url": "https://github.com/iv-org/invidious",
+              "desc": "Private web front-end for YouTube.",
+              "linkText": "Visit",
+              "meta": "Web"
+            },
+            {
+              "label": "libremdb",
+              "url": "https://github.com/zyachel/libremdb",
+              "desc": "Private front-end for IMDb.",
+              "linkText": "Visit",
+              "meta": "Web"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "html": "<p>Looking for social networks instead? See <a href=\"page:communication#social\">decentralised social media</a>.</p>"
+        }
+      ]
+    },
+    {
+      "id": "vpns",
+      "title": "VPNs",
+      "summary": "Hide your traffic from your internet provider",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "NordVPN",
+              "url": "https://nordvpn.com/",
+              "desc": "Large paid VPN with audited no-logs claims.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Surfshark",
+              "url": "https://surfshark.com/",
+              "desc": "Paid VPN with RAM-only servers.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Proton VPN",
+              "url": "https://protonvpn.com/",
+              "desc": "Swiss, open-source apps, with a genuinely free tier.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "AdGuard VPN",
+              "url": "https://adguard-vpn.com/",
+              "desc": "VPN from the AdGuard ad-blocker makers, small free tier.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Mullvad",
+              "url": "https://mullvad.net/",
+              "desc": "No account, no email; pay with cash or crypto. Open source.",
+              "linkText": "Visit",
+              "meta": "Paid"
+            },
+            {
+              "label": "Obscura VPN",
+              "url": "https://obscura.com/",
+              "desc": "Two-hop VPN where separate companies run each hop.",
+              "linkText": "Visit",
+              "meta": "Paid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "password-managers",
+      "title": "Password Managers",
+      "summary": "Instead of saving passwords in your browser",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "NordPass",
+              "url": "https://nordpass.com/",
+              "desc": "Zero-knowledge manager with breach scanning; closed source.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Proton Pass",
+              "url": "https://proton.me/pass",
+              "desc": "Open-source, end-to-end encrypted, with built-in email aliases.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "PrivacyNotes",
+              "url": "https://privacynotes.app/",
+              "desc": "Encrypted passwords alongside notes, tasks and files.",
+              "linkText": "Visit",
+              "meta": "privacytools.io’s own app"
+            },
+            {
+              "label": "KeePassXC",
+              "url": "https://keepassxc.org/",
+              "desc": "Free, open-source and offline — your vault is a file you control.",
+              "linkText": "Visit",
+              "meta": "Desktop · free"
+            },
+            {
+              "label": "Bitwarden",
+              "url": "https://bitwarden.com/",
+              "desc": "Open source, syncs everywhere, free for personal use.",
+              "linkText": "Visit",
+              "meta": "All devices · free"
+            },
+            {
+              "label": "1Password",
+              "url": "https://1password.com/",
+              "desc": "Polished paid manager with a Secret Key on top of your password.",
+              "linkText": "Visit",
+              "meta": "All devices · paid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "authenticators",
+      "title": "Authenticator Apps",
+      "summary": "Instead of Google Authenticator or SMS codes",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "ente Auth",
+              "url": "https://ente.io/auth",
+              "desc": "Encrypted backup and sync of your codes across devices.",
+              "linkText": "Visit",
+              "meta": "All devices · free"
+            },
+            {
+              "label": "Aegis Authenticator",
+              "url": "https://getaegis.app/",
+              "desc": "Encrypted, open-source authenticator.",
+              "linkText": "Visit",
+              "meta": "Android · free"
+            },
+            {
+              "label": "2FAS",
+              "url": "https://2fas.com/",
+              "desc": "Backups, sync and a browser extension for one-tap codes.",
+              "linkText": "Visit",
+              "meta": "Android, iOS · free"
+            },
+            {
+              "label": "Tofu",
+              "url": "https://www.tofuauth.com/",
+              "desc": "Simple open-source authenticator.",
+              "linkText": "Visit",
+              "meta": "iOS · free"
+            },
+            {
+              "label": "Proton Authenticator",
+              "url": "https://proton.me/authenticator",
+              "desc": "Free, open-source, on every platform.",
+              "linkText": "Visit",
+              "meta": "All devices · free"
+            },
+            {
+              "label": "Yubico Authenticator",
+              "url": "https://www.yubico.com/products/yubico-authenticator/",
+              "desc": "Keeps your codes on a YubiKey.",
+              "linkText": "Visit",
+              "meta": "Needs a YubiKey"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloud-storage",
+      "title": "Cloud Storage",
+      "summary": "Instead of Google Drive, OneDrive or Dropbox",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Internxt Drive",
+              "url": "https://internxt.com/",
+              "desc": "Zero-knowledge storage with 1 GB free.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "NordLocker",
+              "url": "https://nordlocker.com/",
+              "desc": "Encrypted paid cloud storage.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "PrivacyNotes",
+              "url": "https://privacynotes.app/",
+              "desc": "Encrypted notes, files, calendar and passwords in one app.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "MEGA",
+              "url": "https://mega.io/",
+              "desc": "Encrypted cloud storage with a 20 GB free plan.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Proton Drive",
+              "url": "https://proton.me/drive",
+              "desc": "End-to-end encrypted storage from Proton.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Tresorit",
+              "url": "https://tresorit.com/",
+              "desc": "Swiss end-to-end encrypted storage.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "photos",
+      "title": "Photos",
+      "summary": "Instead of Google Photos or iCloud Photos",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Internxt Photos",
+              "url": "https://internxt.com/",
+              "desc": "Zero-knowledge encrypted photo storage.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "ente",
+              "url": "https://ente.io/",
+              "desc": "Encrypted photo backup, with import from Google and Apple.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Immich",
+              "url": "https://immich.app/",
+              "desc": "Self-hosted photo backup that feels like Google Photos.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Cryptee",
+              "url": "https://crypt.ee/",
+              "desc": "Encrypted documents and photos.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "PhotoPrism",
+              "url": "https://photoprism.app/",
+              "desc": "Self-hosted photo library with automatic tagging.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Piwigo",
+              "url": "https://piwigo.org/",
+              "desc": "Hosted or self-hosted photo gallery.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calendars",
+      "title": "Calendars",
+      "summary": "Instead of Google Calendar",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "PrivacyNotes",
+              "url": "https://privacynotes.app/",
+              "desc": "Encrypted calendar alongside notes, tasks and files.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Proton Calendar",
+              "url": "https://proton.me/calendar",
+              "desc": "End-to-end encrypted calendar from Proton.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Tuta",
+              "url": "https://tuta.com/",
+              "desc": "Free zero-knowledge calendar on every platform.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "EteSync",
+              "url": "https://www.etesync.com/",
+              "desc": "Encrypted calendar and contact sync; self-hostable.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "SilentSuite",
+              "url": "https://silentsuite.io/",
+              "desc": "Encrypted sync for calendars, contacts and tasks.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Radicale",
+              "url": "https://radicale.org/",
+              "desc": "Simple self-hosted calendar and contacts server.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "documents",
+      "title": "Documents",
+      "summary": "Instead of Google Docs or Microsoft 365",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "CryptPad",
+              "url": "https://cryptpad.fr/",
+              "desc": "Encrypted collaborative documents, sheets and forms.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "PrivMX",
+              "url": "https://privmx.com/",
+              "desc": "Private team workspace with files, chat and tasks.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Collabora Online",
+              "url": "https://www.collaboraonline.com/",
+              "desc": "Self-hosted online office built on LibreOffice.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "ONLYOFFICE",
+              "url": "https://www.onlyoffice.com/",
+              "desc": "Online document editors and collaboration.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "LibreOffice",
+              "url": "https://www.libreoffice.org/",
+              "desc": "Free desktop office suite.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Etherpad",
+              "url": "https://etherpad.org/",
+              "desc": "Open-source real-time collaborative editor.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "notes",
+      "title": "Notes",
+      "summary": "Instead of Google Keep or Evernote",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "PrivacyNotes",
+              "url": "https://privacynotes.app/",
+              "desc": "Encrypted notes, tasks and journal.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Standard Notes",
+              "url": "https://standardnotes.com/",
+              "desc": "Encrypted notes built to last.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Notesnook",
+              "url": "https://notesnook.com/",
+              "desc": "Open-source encrypted notes with a free tier.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Joplin",
+              "url": "https://joplinapp.org/",
+              "desc": "Open-source notes that sync across devices.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Anytype",
+              "url": "https://anytype.io/",
+              "desc": "Local-first encrypted knowledge base.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Cryptee",
+              "url": "https://crypt.ee/",
+              "desc": "Encrypted documents and notes.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "translation",
+      "title": "Translation",
+      "summary": "Instead of Google Translate",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "TranslateLocally",
+              "url": "https://translatelocally.com/",
+              "desc": "Offline translation on your own device.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "LibreTranslate",
+              "url": "https://libretranslate.com/",
+              "desc": "Open-source translator you can self-host.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Lingva Translate",
+              "url": "https://github.com/thedaviddelta/lingva-translate",
+              "desc": "Translation front end that keeps Google from tracking you.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Linguist",
+              "url": "https://github.com/translate-tools/linguist",
+              "desc": "Browser translator that can work offline.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "SimplyTranslate Mobile",
+              "url": "https://f-droid.org/packages/com.simplytranslate_mobile/",
+              "desc": "Private translation app for Android.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "LanguageTool",
+              "url": "https://languagetool.org/",
+              "desc": "Grammar checker for browsers and office apps.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dns",
+      "title": "DNS",
+      "summary": "Instead of Google DNS",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "NextDNS",
+              "url": "https://nextdns.io/",
+              "desc": "Configurable encrypted DNS with blocklists.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "AdGuard DNS",
+              "url": "https://adguard-dns.io/",
+              "desc": "Easy encrypted DNS that blocks ads.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Pi-hole",
+              "url": "https://pi-hole.net/",
+              "desc": "Network-wide ad blocker you run at home.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "dnscrypt-proxy",
+              "url": "https://github.com/DNSCrypt/dnscrypt-proxy",
+              "desc": "Local DNS proxy for encrypted DNS protocols.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Unbound",
+              "url": "https://nlnetlabs.nl/projects/unbound/about/",
+              "desc": "Validating, caching DNS resolver you run yourself.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "RethinkDNS",
+              "url": "https://rethinkdns.com/",
+              "desc": "Android app with encrypted DNS and a firewall.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "android",
+      "title": "Mobile OS",
+      "summary": "Instead of stock Android",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "GrapheneOS",
+              "url": "https://grapheneos.org/",
+              "desc": "Hardened Android for Google Pixel phones.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "CalyxOS",
+              "url": "https://calyxos.org/",
+              "desc": "Private Android build for Pixel phones.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "/e/OS",
+              "url": "https://e.foundation/e-os/",
+              "desc": "De-Googled Android using microG.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "LineageOS",
+              "url": "https://www.lineageos.org/",
+              "desc": "Open-source Android for many devices.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Ubuntu Touch",
+              "url": "https://ubuntu-touch.io/",
+              "desc": "Open-source mobile OS, no account needed.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "iOS",
+              "url": "https://www.apple.com/ios/",
+              "desc": "Locked down by default, but closed source.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "title": "AI Assistants",
+      "summary": "Instead of Gemini or ChatGPT",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Lumo",
+              "url": "https://proton.me/lumo",
+              "desc": "Proton’s assistant with encrypted chat history.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Duck.ai",
+              "url": "https://duck.ai/",
+              "desc": "Private chat with several models, no account.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Euria",
+              "url": "https://euria.infomaniak.com/",
+              "desc": "Swiss-hosted assistant that doesn’t train on your data.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Apple Intelligence",
+              "url": "https://www.apple.com/apple-intelligence/",
+              "desc": "Runs on-device where possible.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Skales",
+              "url": "https://skales.app/",
+              "desc": "Local AI agent that keeps data on your machine.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Ollama",
+              "url": "https://ollama.com/",
+              "desc": "Run open models locally.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "title": "Health & Fitness",
+      "summary": "Instead of Google Fit",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "PrivacyNotes",
+              "url": "https://privacynotes.app/",
+              "desc": "Encrypted journal with mood and medication tracking.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "drip",
+              "url": "https://dripapp.org/",
+              "desc": "Menstrual tracker that keeps data on your phone.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Euki",
+              "url": "https://eukiapp.com/",
+              "desc": "Reproductive health app that doesn’t store data in the cloud.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Loop Habit Tracker",
+              "url": "https://play.google.com/store/apps/details?id=org.isoron.uhabits",
+              "desc": "Open-source, ad-free habit tracker.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Stretchly",
+              "url": "https://hovancik.net/stretchly/",
+              "desc": "Reminds you to take breaks from the screen.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "CommonHealth",
+              "url": "https://www.commonhealth.org/",
+              "desc": "Android app for managing your health records.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rss",
+      "title": "RSS Readers",
+      "summary": "Instead of Google Reader or algorithmic feeds",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "NetNewsWire",
+              "url": "https://netnewswire.com/",
+              "desc": "Free, open-source reader for Mac and iOS.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Feeder",
+              "url": "https://play.google.com/store/apps/details?id=com.nononsenseapps.feeder.play",
+              "desc": "Open-source Android reader, no account.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Akregator",
+              "url": "https://apps.kde.org/akregator/",
+              "desc": "KDE’s desktop feed reader.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Feedbro",
+              "url": "https://nodetics.com/feedbro/",
+              "desc": "Feed reader browser extension.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Miniflux",
+              "url": "https://miniflux.app/",
+              "desc": "Minimalist self-hosted reader.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Newsboat",
+              "url": "https://newsboat.org/",
+              "desc": "Terminal feed reader.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hosting",
+      "title": "Hosting & Domains",
+      "summary": "Instead of Google Cloud",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Privex",
+              "url": "https://privex.io/",
+              "desc": "Belize-based host that accepts cryptocurrency.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "OrangeWebsite",
+              "url": "https://orangewebsite.com/",
+              "desc": "Icelandic green-energy host.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "1984 Web Hosting",
+              "url": "https://www.1984hosting.com/",
+              "desc": "Icelandic host running on green energy.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Njalla",
+              "url": "https://njal.la/",
+              "desc": "Privacy-focused domain registrar in Sweden.",
+              "linkText": "Visit"
+            },
+            {
+              "label": "Bahnhof Cloud",
+              "url": "https://bahnhof.cloud/en/",
+              "desc": "Long-running Swedish host.",
+              "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": [
+    {
+      "type": "text",
+      "html": "<p><small>Some top spots on privacytools.io are paid placements; they’re marked “Sponsored” here. Check each service’s own terms before trusting it with your data.</small></p>"
+    }
+  ]
+}

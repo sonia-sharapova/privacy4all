@@ -10,7 +10,7 @@ them for 30 days).
 """
 import html, json, os, sys
 
-VERSION = '20261124'
+VERSION = '20261125'
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONTS = ('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700'
          '&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap')
@@ -60,4 +60,5 @@ for pid, p in site['pages'].items():
 # Old URLs that now live elsewhere.
 redirect('guides/browser-privacy/browser-privacy.html', 'browser-privacy/index.html')
 redirect('browser-privacy/browsers.html', 'browser-privacy/index.html#recommended')
+redirect('quick-action/google-alternatives.html', 'quick-action/alternatives.html')
 print(f'wrote {n} shells (v{VERSION})', file=sys.stderr)

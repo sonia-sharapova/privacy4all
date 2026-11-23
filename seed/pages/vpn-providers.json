@@ -86,6 +86,63 @@
           "card": true
         }
       ]
+    },
+    {
+      "id": "more-vpns",
+      "title": "More VPN Options",
+      "summary": "Top VPNs listed on privacytools.io.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "NordVPN",
+              "url": "https://nordvpn.com/",
+              "desc": "Large paid VPN with audited no-logs claims.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Surfshark",
+              "url": "https://surfshark.com/",
+              "desc": "Paid VPN with RAM-only servers.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Proton VPN",
+              "url": "https://protonvpn.com/",
+              "desc": "Swiss, open-source apps, with a genuinely free tier.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "AdGuard VPN",
+              "url": "https://adguard-vpn.com/",
+              "desc": "VPN from the AdGuard ad-blocker makers, small free tier.",
+              "linkText": "Visit",
+              "meta": "Sponsored on privacytools.io"
+            },
+            {
+              "label": "Mullvad",
+              "url": "https://mullvad.net/",
+              "desc": "No account, no email; pay with cash or crypto. Open source.",
+              "linkText": "Visit",
+              "meta": "Paid"
+            },
+            {
+              "label": "Obscura VPN",
+              "url": "https://obscura.com/",
+              "desc": "Two-hop VPN where separate companies run each hop.",
+              "linkText": "Visit",
+              "meta": "Paid"
+            }
+          ],
+          "before": "<p>The VPNs privacytools.io lists, in its order. Several are paid placements, marked “Sponsored” &mdash; weigh them against the trust checklist above, and prefer providers with independent audits.</p>"
+        }
+      ]
     }
   ],
   "meta": "READ TIME 6 MIN"

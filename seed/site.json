@@ -30,7 +30,16 @@
         "password-check",
         "delete-yourself",
         "takedown-templates",
-        "google-alternatives"
+        "alternatives"
+      ]
+    },
+    {
+      "id": "tutorials",
+      "title": "Tutorials",
+      "layout": "quick",
+      "description": "<p>Single-page walkthroughs you can finish in one sitting.</p>",
+      "items": [
+        "de-google"
       ]
     },
     {
@@ -47,20 +56,10 @@
         "networks",
         "operating-systems",
         "passwords",
-        "auth",
         "vpns",
         "communication",
         "storage",
         "surveillance"
-      ]
-    },
-    {
-      "id": "tutorials",
-      "title": "Tutorials",
-      "layout": "quick",
-      "description": "<p>Single-page walkthroughs you can finish in one sitting.</p>",
-      "items": [
-        "de-google"
       ]
     },
     {
@@ -183,7 +182,8 @@
           "url": "https://zeronet.io/",
           "desc": "Open, free and uncensorable websites."
         }
-      ]
+      ],
+      "items": []
     }
   ],
   "sidebar": {
@@ -217,6 +217,7 @@
       "image": "assets/lock.png",
       "imageFit": "contain",
       "related": [
+        "passwords",
         "privacy-checklist",
         "delete-yourself"
       ],
@@ -428,12 +429,10 @@
       "heading": "Accounts & Authentication",
       "image": "assets/robot.jpg",
       "keywords": "2fa authentication accounts",
-      "parts": [
-        "passkeys"
-      ],
       "topics": [
         "passwords"
-      ]
+      ],
+      "summary": "Two-factor authentication, explained."
     },
     "vpn-fundamentals": {
       "title": "VPN Fundamentals",
@@ -445,7 +444,10 @@
       "title": "VPN & VPS Providers",
       "path": "advanced/vpn-vps/providers.html",
       "summary": "Choose a VPN provider you can trust, and a VPS provider for self-hosting.",
-      "kind": "guide"
+      "kind": "guide",
+      "topics": [
+        "vpns"
+      ]
     },
     "vpn-configuration": {
       "title": "Configure & Lock Down",
@@ -567,10 +569,11 @@
       "title": "Passwords",
       "path": "guides/passwords/passwords.html",
       "image": "assets/lock.png",
-      "summary": "Strong, unique passwords and how to manage them",
-      "keywords": "password manager generator passphrase",
-      "topics": [
-        "auth"
+      "summary": "Password managers, 2FA, security keys and more",
+      "keywords": "password manager generator passphrase 2fa authenticator security key yubikey passkey bitcoin wallet",
+      "parts": [
+        "auth",
+        "passkeys"
       ]
     },
     "privacy-starter-kit": {
@@ -589,27 +592,10 @@
       ],
       "related": [
         "privacy-checklist",
-        "google-alternatives",
+        "alternatives",
         "de-google"
       ],
       "keywords": "start beginner first steps"
-    },
-    "google-alternatives": {
-      "title": "Google Alternatives",
-      "path": "quick-action/google-alternatives.html",
-      "summary": "Private replacements for every Google service.",
-      "image": "assets/duckduckgo.png",
-      "imageFit": "contain",
-      "kind": "resource",
-      "topics": [
-        "data",
-        "browsers"
-      ],
-      "related": [
-        "de-google",
-        "privacy-starter-kit"
-      ],
-      "keywords": "google alternatives gmail maps drive youtube search degoogle"
     },
     "de-google": {
       "title": "De-Google Yourself",
@@ -624,10 +610,30 @@
         "browsers"
       ],
       "related": [
-        "google-alternatives",
+        "alternatives",
         "privacy-starter-kit"
       ],
       "keywords": "google youtube android degoogle takeout"
+    },
+    "alternatives": {
+      "title": "Alternatives",
+      "path": "quick-action/alternatives.html",
+      "summary": "Private replacements for Google and everyday apps.",
+      "image": "assets/duckduckgo.png",
+      "imageFit": "contain",
+      "kind": "resource",
+      "topics": [
+        "data",
+        "browsers",
+        "communication",
+        "passwords",
+        "vpns"
+      ],
+      "related": [
+        "de-google",
+        "privacy-starter-kit"
+      ],
+      "keywords": "alternatives google gmail maps drive youtube search degoogle vpn password"
     }
   }
 }
