@@ -1,0 +1,76 @@
+{
+  "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>The operating system is the foundation everything else runs on, so it decides how much you can protect at all. Windows, macOS, Android and iOS all collect some data about how you use them; some let you turn most of it off, and Linux-based systems collect very little to begin with. Whatever you use, keeping it updated is the single most important security habit.</p>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "Telemetry",
+              "html": "<p>Usage and diagnostic data an OS sends back to its maker.</p>"
+            },
+            {
+              "title": "Linux distribution",
+              "html": "<p>A complete operating system built on the Linux kernel, such as Debian, Fedora or Ubuntu.</p>"
+            },
+            {
+              "title": "Open source",
+              "html": "<p>Software whose code anyone can read, so its behaviour can be checked independently.</p>"
+            },
+            {
+              "title": "Security update",
+              "html": "<p>A patch for a known hole. Attackers target unpatched systems first.</p>"
+            },
+            {
+              "title": "Disk encryption",
+              "html": "<p>BitLocker, FileVault or LUKS — makes your data unreadable if the device is stolen.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "everything",
+      "title": "Everything on Operating Systems",
+      "summary": "Guides, tools, checkers and resources.",
+      "blocks": [
+        {
+          "type": "topic-index",
+          "cols": 3
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Elsewhere on the web"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Privacy Guides: desktop OS",
+              "url": "https://www.privacyguides.org/en/desktop/",
+              "desc": "more private desktop operating systems."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

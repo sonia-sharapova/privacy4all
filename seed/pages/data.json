@@ -1,0 +1,90 @@
+{
+  "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Personal data is any information that can be tied back to you: your name, address, phone number, location history, what you buy and what you search for. It is collected by the apps and sites you use, then bought and sold by <b>data brokers</b> who build profiles to sell to advertisers, landlords, employers &mdash; or anyone who pays. You can't stop all of it, but you can shrink how much is collected and remove a lot of what's already out there.</p>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "Data broker",
+              "html": "<p>A company that collects and sells profiles of people, usually without ever dealing with them directly.</p>"
+            },
+            {
+              "title": "People-search site",
+              "html": "<p>A broker that sells lookups of a person’s address, phone and relatives to the public.</p>"
+            },
+            {
+              "title": "Opt-out",
+              "html": "<p>A request asking a company to stop selling your data or to delete it.</p>"
+            },
+            {
+              "title": "Metadata",
+              "html": "<p>Data about data — like when and where a photo was taken — which can reveal more than the content.</p>"
+            },
+            {
+              "title": "GDPR / CCPA",
+              "html": "<p>EU and California privacy laws that give you the right to see and delete data held about you.</p>"
+            },
+            {
+              "title": "Advertising ID",
+              "html": "<p>A number your phone gives apps so advertisers can track you across them. You can delete it.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "everything",
+      "title": "Everything on Data",
+      "summary": "Guides, tools, checkers and resources.",
+      "blocks": [
+        {
+          "type": "topic-index",
+          "cols": 3
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Elsewhere on the web"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "BADBOOL",
+              "url": "https://github.com/xLegoMan/BADBOOL",
+              "desc": "free data broker opt-out list."
+            },
+            {
+              "label": "JustDeleteMe",
+              "url": "https://backgroundchecks.org/justdeleteme/",
+              "desc": "direct links to delete your accounts."
+            },
+            {
+              "label": "Have I Been Pwned",
+              "url": "https://haveibeenpwned.com/",
+              "desc": "check if your email appears in a known breach."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

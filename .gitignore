@@ -1,0 +1,5 @@
+.DS_Store
+
+# Live-edited on the server via the admin panel (seed/ holds the starting copy)
+data/
+images/uploads/

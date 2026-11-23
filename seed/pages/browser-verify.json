@@ -1,0 +1,71 @@
+{
+  "subsections": [
+    {
+      "id": "test-suite",
+      "title": "Complete Test Suite",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "TEST",
+            "TOOL / URL",
+            "WHAT TO EXPECT"
+          ],
+          "rows": [
+            [
+              "Tracker & ad blocking",
+              "<a href=\"https://coveryourtracks.eff.org/\" rel=\"noopener\" target=\"_blank\">coveryourtracks.eff.org</a>",
+              "\"Your browser has strong protection against Web tracking\""
+            ],
+            [
+              "Fingerprint uniqueness",
+              "<a href=\"https://amiunique.org/\" rel=\"noopener\" target=\"_blank\">amiunique.org</a>",
+              "A fingerprint shared with a large percentage of other visitors, not a \"1 in a million\" result"
+            ],
+            [
+              "Global Privacy Control",
+              "<a href=\"https://globalprivacycontrol.org/\" rel=\"noopener\" target=\"_blank\">globalprivacycontrol.org</a>",
+              "\"GPC signal detected\""
+            ],
+            [
+              "DNS leak",
+              "<a href=\"https://dnsleaktest.com/\" rel=\"noopener\" target=\"_blank\">dnsleaktest.com</a>",
+              "Only your VPN or private DNS provider listed, not your ISP"
+            ],
+            [
+              "WebRTC leak",
+              "<a href=\"https://browserleaks.com/webrtc\" rel=\"noopener\" target=\"_blank\">browserleaks.com/webrtc</a>",
+              "No local or public IP address revealed beyond what your VPN shows"
+            ],
+            [
+              "Ad-blocker effectiveness",
+              "<a href=\"https://canyoublockit.com/\" rel=\"noopener\" target=\"_blank\">canyoublockit.com</a>",
+              "All test ad slots reported as blocked"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "something-not-working",
+      "title": "Something Not Working?",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>If a site breaks after any of these tests, the full site-wide <a href=\"page:browser-troubleshooting\">Troubleshooting Guide</a> covers common issues, a quick flowchart, and how to whitelist a site — indexed by which part of the guide sent you there.</p>"
+        }
+      ]
+    }
+  ],
+  "meta": "FILE NO. 017<br/>REV. 2026–08<br/>READ TIME 5 MIN",
+  "intro": [
+    {
+      "type": "html",
+      "html": "<div class=\"p4a-33\">WHY IT MATTERS</div>"
+    },
+    {
+      "type": "text",
+      "html": "<p>A protection you can't verify isn't a protection you can rely on. After setting up your browser, extensions, and fingerprint defenses, run the full test suite below to confirm each layer is actually doing its job.</p>\n<p>\"<span class=\"p4a-35-cap\">T</span>rust, but verify. Five minutes of testing catches misconfigurations that would otherwise sit unnoticed for months.\"</p>"
+    }
+  ]
+}

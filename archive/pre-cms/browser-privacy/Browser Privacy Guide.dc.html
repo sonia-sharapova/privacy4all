@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #dfe2e5; }
+    a { color: #2f6fed; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position: relative; font-family: 'Istok Web', 'IBM Plex Mono', monospace; color: #1b1b1b; letter-spacing: 0.1em;">
+
+  <div style="position: relative; z-index: 1; display: grid; grid-template-columns: 240px 1fr; min-width: 0;">
+
+    <aside style="position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; background: rgba(255,255,255,0.42); backdrop-filter: blur(20px) saturate(160%); border-right: 1px solid rgba(255,255,255,0.5); padding: 28px 20px; box-sizing: border-box;">
+      <a href="Homepage.dc.html" style="font-family: 'Averia Libre', serif; font-weight: 700; font-size: 22px; margin-bottom: 24px; display: block; color: #1b1b1b;">p4a</a>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">TABLE OF CONTENTS</div>
+      <nav style="display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; font-size: 12px;">
+
+        <button type="button" onClick="{{ toggleTocOverview }}" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; box-sizing: border-box; background: transparent; border: none; padding: 4px 0; cursor: pointer; text-align: left; font-family: inherit; color: #1b1b1b; font-weight: 700;">
+          <span>Guide Overview</span><span style="color: #888; font-weight: 400;">{{ tocOverviewChevron }}</span>
+        </button>
+        <sc-if value="{{ tocOverviewOpen }}" hint-placeholder-val="{{ true }}">
+          <a href="#quick-start" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Quick Start</a>
+          <a href="#guide-map" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Guide Map</a>
+          <a href="#comparison" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Browser Comparison</a>
+          <a href="#why" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Why This Matters</a>
+        </sc-if>
+
+        <button type="button" onClick="{{ toggleTocPart1 }}" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; box-sizing: border-box; background: transparent; border: none; padding: 10px 0 4px; cursor: pointer; text-align: left; font-family: inherit; color: #1b1b1b; font-weight: 700;">
+          <a href="Browsers.dc.html" style="color: #1b1b1b;">1. Choose Your Browser</a><span style="color: #888; font-weight: 400;">{{ tocPart1Chevron }}</span>
+        </button>
+        <sc-if value="{{ tocPart1Open }}" hint-placeholder-val="{{ false }}">
+          <a href="Browsers.dc.html#recommended" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Recommended Browsers</a>
+          <a href="Browsers.dc.html#browser-lineup" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Browser Lineup</a>
+          <a href="Browsers.dc.html#comparison" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Comparison</a>
+        </sc-if>
+
+        <button type="button" onClick="{{ toggleTocPart2 }}" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; box-sizing: border-box; background: transparent; border: none; padding: 10px 0 4px; cursor: pointer; text-align: left; font-family: inherit; color: #1b1b1b; font-weight: 700;">
+          <a href="Browser Extensions.dc.html" style="color: #1b1b1b;">2. Set Up Your Browser</a><span style="color: #888; font-weight: 400;">{{ tocPart2Chevron }}</span>
+        </button>
+        <sc-if value="{{ tocPart2Open }}" hint-placeholder-val="{{ false }}">
+          <a href="Browser Extensions.dc.html#setup-steps" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Step-by-Step Configuration</a>
+          <a href="Browser Extensions.dc.html#extensions" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Minimal Extension Set</a>
+          <a href="Browser Extensions.dc.html#matrix" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Risk &amp; Utility Matrix</a>
+          <a href="Browser Extensions.dc.html#red-flags" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Red Flags</a>
+        </sc-if>
+
+        <button type="button" onClick="{{ toggleTocPart3 }}" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; box-sizing: border-box; background: transparent; border: none; padding: 10px 0 4px; cursor: pointer; text-align: left; font-family: inherit; color: #1b1b1b; font-weight: 700;">
+          <a href="Browser Fingerprinting.dc.html" style="color: #1b1b1b;">3. Advanced Configurations</a><span style="color: #888; font-weight: 400;">{{ tocPart3Chevron }}</span>
+        </button>
+        <sc-if value="{{ tocPart3Open }}" hint-placeholder-val="{{ false }}">
+          <a href="Browser Fingerprinting.dc.html#protection" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Per-Browser Protection</a>
+          <a href="Browser Fingerprinting.dc.html#check" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Check Your Fingerprint</a>
+          <a href="Browser Fingerprinting.dc.html#companion-tools" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Companion Tools</a>
+        </sc-if>
+
+        <button type="button" onClick="{{ toggleTocPart4 }}" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; box-sizing: border-box; background: transparent; border: none; padding: 10px 0 4px; cursor: pointer; text-align: left; font-family: inherit; color: #1b1b1b; font-weight: 700;">
+          <a href="Verify Everything Works.dc.html" style="color: #1b1b1b;">4. Test &amp; Verify</a><span style="color: #888; font-weight: 400;">{{ tocPart4Chevron }}</span>
+        </button>
+        <sc-if value="{{ tocPart4Open }}" hint-placeholder-val="{{ false }}">
+          <a href="Verify Everything Works.dc.html#test-suite" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Test Suite</a>
+          <a href="Verify Everything Works.dc.html#expected" style="color: #555; padding: 3px 0 3px 16px;" style-hover="color: #2f6fed; text-decoration: underline;">&#9492; Expected Results</a>
+        </sc-if>
+
+      </nav>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">MORE</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px;">
+        <a href="Troubleshooting.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Troubleshooting Guide</a>
+        <a href="Resources.dc.html" style="font-size: 11.5px; padding: 6px 10px; background: rgba(255,255,255,0.55); border-radius: 5px; color: #333;">Resources, FAQ &amp; Glossary</a>
+      </div>
+
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: #1b1b1b; font-weight: 700; margin-bottom: 10px;">GOOD TO KNOW</div>
+      <p style="font-size: 11px; line-height: 1.6; color: #555; margin: 0;">You don't need to be technical to do this. Every step below is copy-paste simple.</p>
+    </aside>
+
+    <div style="min-width: 0; position: relative;">
+
+      <div style="position: absolute; inset: 0; z-index: -1; background-image: url('assets/wires.png'); background-repeat: repeat-y; background-size: 100% auto; background-position: top left; pointer-events: none;"></div>
+
+      <header style="border-bottom: 1px solid rgba(0,0,0,0.08);">
+        <div style="width: 100%; margin: 0; padding: 24px 0 0; box-sizing: border-box;">
+          <nav style="display: flex; width: 100%; box-sizing: border-box; border: 1px solid rgba(0,0,0,0.06); border-radius: 0;">
+            <input type="text" value="{{ query }}" onChange="{{ onQueryChange }}" onKeyDown="{{ onKeyDown }}" placeholder="Search topics..." style="flex: 1; height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); padding: 0 14px 0 40px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; box-sizing: border-box; outline: none;" style-focus="background: rgba(255,255,255,0.7);"><select value="{{ category }}" onChange="{{ onCategoryChange }}" style="height: 30px; border: none; border-right: 1px solid rgba(0,0,0,0.06); border-radius: 0; background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0 8px; width: 96px; flex-shrink: 0; outline: none;">
+                <option value="All">All</option>
+                <option value="Guides">Guides</option>
+                <option value="Projects">Projects</option>
+              </select><button type="button" onClick="{{ handleSearchSubmit }}" style="height: 30px; padding: 0 16px; margin-right: 40px; border: none; border-radius: 0; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; cursor: pointer; background-color: #1B1B1B53; flex-shrink: 0;">Go</button>
+          </nav>
+        </div>
+        <div style="max-width: 1160px; margin: 0 auto; padding: 20px 40px 24px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: #888;"><a href="Homepage.dc.html" style="color: #888;">Home</a> / <a href="Homepage.dc.html#topic-browsers" style="color: #888;">Privacy &amp; Security</a> / <span style="color: #1b1b1b;">Browser Privacy Guide</span></div>
+          <nav style="display: flex; flex-wrap: wrap; gap: 16px 20px;">
+            <a href="Homepage.dc.html#projects" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">PROJECTS</a>
+            <a href="Homepage.dc.html#additional-resources" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">RESOURCES</a>
+            <a href="Homepage.dc.html#contact" style="color: #1b1b1b; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; white-space: nowrap;" style-hover="color: #2f6fed; text-decoration: underline; letter-spacing: 0.16em;">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <div style="background: rgba(255,255,255,0.55); backdrop-filter: blur(16px) saturate(160%) contrast(1.05); box-shadow: 1px 1px 1.4px 3px rgba(255,255,255,0.35); margin: 0 32px; border-radius: 6px;">
+      <main style="max-width: 1160px; margin: 0 auto; padding: 48px 40px 96px;">
+
+        <!-- HERO -->
+        <section style="border-bottom: 2px solid #1b1b1b; padding-bottom: 28px; margin-bottom: 40px;">
+          <div style="font-size: 10.5px; letter-spacing: 0.1em; color: #2f6fed; font-weight: 700; margin-bottom: 10px;">MOBILE &amp; DEVICE / BROWSER PRIVACY</div>
+          <h1 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 56px; letter-spacing: 0.06em; margin: 0 0 12px; line-height: 1.05;">A Practical Guide to Browser Privacy</h1>
+          <p style="font-size: 15px; letter-spacing: 0.03em; color: #555; margin: 0 0 22px; max-width: 560px;">The step-by-step guide that actually works &mdash; four short parts, no jargon, five minutes to get meaningfully protected.</p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <button type="button" onClick="{{ scrollToQuickStart }}" style="background: #1b1b1b; color: #fff; border: none; padding: 12px 22px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; cursor: pointer; border-radius: 3px;">Start the Guide</button>
+            <button type="button" onClick="{{ scrollToComparison }}" style="background: rgba(255,255,255,0.6); color: #1b1b1b; border: 1px solid rgba(0,0,0,0.15); padding: 12px 22px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em; font-weight: 600; cursor: pointer; border-radius: 3px;">Compare Browsers</button>
+          </div>
+        </section>
+
+        <!-- QUICK START -->
+        <section id="quick-start" style="margin-bottom: 56px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 8px;">QUICK START</h2>
+          <p style="font-size: 12.5px; letter-spacing: 0.1em; color: #555; margin: 0 0 22px;">Get protected in about 5 minutes. Click a step to see the details.</p>
+
+          <div style="display: flex; flex-direction: column; gap: 0;">
+
+            <div style="border-top: 1px solid #1b1b1b;">
+              <button type="button" onClick="{{ toggleStep1 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                <div style="display: flex; align-items: baseline; gap: 14px;">
+                  <span style="font-size: 10.5px; color: #2f6fed; font-weight: 700;">STEP 1</span>
+                  <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.1em;">Install a private browser</span>
+                </div>
+                <span style="font-size: 18px; color: #888;">{{ step1Chevron }}</span>
+              </button>
+              <sc-if value="{{ step1Open }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 12.5px; letter-spacing: 0.08em; color: #555; line-height: 1.7; margin: 0 0 18px; padding: 0 4px;">Pick <a href="Browsers.dc.html#recommended">Brave, Mullvad Browser, or LibreWolf</a> and set it as your default. See <a href="Browsers.dc.html">Part 1: Choose Your Browser</a> for the full picture, including a two- or three-browser lineup.</p>
+              </sc-if>
+            </div>
+
+            <div style="border-top: 1px solid #1b1b1b;">
+              <button type="button" onClick="{{ toggleStep2 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                <div style="display: flex; align-items: baseline; gap: 14px;">
+                  <span style="font-size: 10.5px; color: #2f6fed; font-weight: 700;">STEP 2</span>
+                  <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.1em;">Install one extension</span>
+                </div>
+                <span style="font-size: 18px; color: #888;">{{ step2Chevron }}</span>
+              </button>
+              <sc-if value="{{ step2Open }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 12.5px; letter-spacing: 0.08em; color: #555; line-height: 1.7; margin: 0 0 18px; padding: 0 4px;">Install <b>uBlock Origin</b> &mdash; verify the developer is Raymond Hill (gorhill). It's the single most effective privacy tool you can add. Full walkthrough in <a href="Browser Extensions.dc.html">Part 2: Set Up Your Browser</a>.</p>
+              </sc-if>
+            </div>
+
+            <div style="border-top: 1px solid #1b1b1b;">
+              <button type="button" onClick="{{ toggleStep3 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                <div style="display: flex; align-items: baseline; gap: 14px;">
+                  <span style="font-size: 10.5px; color: #2f6fed; font-weight: 700;">STEP 3</span>
+                  <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.1em;">Turn on strict tracking protection</span>
+                </div>
+                <span style="font-size: 18px; color: #888;">{{ step3Chevron }}</span>
+              </button>
+              <sc-if value="{{ step3Open }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 12.5px; letter-spacing: 0.08em; color: #555; line-height: 1.7; margin: 0 0 18px; padding: 0 4px;">Firefox/LibreWolf: Enhanced Tracking Protection &rarr; Strict. Brave: Shields set to Aggressive. This also cuts down fingerprinting &mdash; see <a href="Browser Fingerprinting.dc.html">Part 3: Advanced Tools</a> for browser-specific detail.</p>
+              </sc-if>
+            </div>
+
+            <div style="border-top: 1px solid #1b1b1b; border-bottom: 1px solid #1b1b1b;">
+              <button type="button" onClick="{{ toggleStep4 }}" style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 4px; background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit; color: inherit;">
+                <div style="display: flex; align-items: baseline; gap: 14px;">
+                  <span style="font-size: 10.5px; color: #2f6fed; font-weight: 700;">STEP 4</span>
+                  <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.1em;">Verify it's working</span>
+                </div>
+                <span style="font-size: 18px; color: #888;">{{ step4Chevron }}</span>
+              </button>
+              <sc-if value="{{ step4Open }}" hint-placeholder-val="{{ false }}">
+                <p style="font-size: 12.5px; letter-spacing: 0.08em; color: #555; line-height: 1.7; margin: 0 0 18px; padding: 0 4px;">Visit <a href="https://coveryourtracks.eff.org/" target="_blank" rel="noopener">coveryourtracks.eff.org</a> and confirm strong tracking protection. Full test suite in <a href="Verify Everything Works.dc.html">Part 4: Test &amp; Verify</a>.</p>
+              </sc-if>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- GUIDE MAP -->
+        <section id="guide-map" style="margin-bottom: 56px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">GUIDE MAP</h2>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+            <a href="Browsers.dc.html" style="display: block; background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 20px 18px; color: #1b1b1b; transition: transform 0.15s ease, box-shadow 0.15s ease;" style-hover="transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.12);">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 8px;">PART 1</div>
+              <div style="font-family: 'Poppins', sans-serif; font-size: 14.5px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 6px;">Choose Your Browser</div>
+              <div style="font-size: 11px; letter-spacing: 0.06em; color: #555; line-height: 1.5;">Compare picks and build a lineup.</div>
+            </a>
+            <a href="Browser Extensions.dc.html" style="display: block; background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 20px 18px; color: #1b1b1b; transition: transform 0.15s ease, box-shadow 0.15s ease;" style-hover="transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.12);">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 8px;">PART 2</div>
+              <div style="font-family: 'Poppins', sans-serif; font-size: 14.5px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 6px;">Set Up Your Browser</div>
+              <div style="font-size: 11px; letter-spacing: 0.06em; color: #555; line-height: 1.5;">A minimal, well-audited extension set.</div>
+            </a>
+            <a href="Browser Fingerprinting.dc.html" style="display: block; background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 20px 18px; color: #1b1b1b; transition: transform 0.15s ease, box-shadow 0.15s ease;" style-hover="transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.12);">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 8px;">PART 3</div>
+              <div style="font-family: 'Poppins', sans-serif; font-size: 14.5px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 6px;">Advanced Configurations</div>
+              <div style="font-size: 11px; letter-spacing: 0.06em; color: #555; line-height: 1.5;">Kill fingerprinting, plus password managers, DNS filtering, and container tabs.</div>
+            </a>
+            <a href="Verify Everything Works.dc.html" style="display: block; background: rgba(255,255,255,0.6); backdrop-filter: blur(14px) saturate(150%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 6px 20px rgba(0,0,0,0.07); border-radius: 4px; padding: 20px 18px; color: #1b1b1b; transition: transform 0.15s ease, box-shadow 0.15s ease;" style-hover="transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.12);">
+              <div style="font-size: 10.5px; color: #2f6fed; font-weight: 700; margin-bottom: 8px;">PART 4</div>
+              <div style="font-family: 'Poppins', sans-serif; font-size: 14.5px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 6px;">Test &amp; Verify</div>
+              <div style="font-size: 11px; letter-spacing: 0.06em; color: #555; line-height: 1.5;">Confirm every layer, fix what breaks.</div>
+            </a>
+          </div>
+        </section>
+
+        <!-- COMPARISON -->
+        <section id="comparison" style="margin-bottom: 56px; border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 22px;">BROWSER COMPARISON</h2>
+          <div style="overflow-x: auto;">
+            <div style="display: grid; grid-template-columns: 1fr 90px 90px 90px 90px; min-width: 640px; border-top: 2px solid #1b1b1b; border-bottom: 2px solid #1b1b1b;">
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; border-bottom: 1px solid rgba(0,0,0,0.12);">BROWSER</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">AD&nbsp;BLOCK</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">FINGERPRINT</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">GPC</div>
+              <div style="padding: 10px 0; font-size: 10.5px; letter-spacing: 0.1em; color: #888; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.12);">EASE&nbsp;OF&nbsp;USE</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.08);">Brave</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Excellent</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Automatic</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Yes</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.08);">Mullvad Browser</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Excellent</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Automatic</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Yes</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.08);">LibreWolf</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Excellent</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Automatic</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Yes</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.08);">Firefox</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Manual</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Manual</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">Manual</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.08);">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+
+              <div style="padding: 12px 0; font-size: 12.5px; letter-spacing: 0.1em;">Safari</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center;">Limited</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center;">iOS only</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center;">No</div>
+              <div style="padding: 12px 0; font-size: 12.5px; text-align: center;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            </div>
+          </div>
+          <p style="font-size: 11.5px; letter-spacing: 0.08em; color: #888; margin: 14px 0 0;">Full seven-browser table, including Tor and DuckDuckGo, lives in <a href="Browsers.dc.html#comparison">Part 1</a>.</p>
+        </section>
+
+        <!-- WHY THIS MATTERS -->
+        <section id="why" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 40px;">
+          <h2 style="font-family: 'Alef', sans-serif; font-weight: 400; font-size: 26px; letter-spacing: 0.25em; margin: 0 0 18px;">WHY THIS MATTERS</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+            <p style="font-size: 12.5px; letter-spacing: 0.08em; line-height: 1.9; color: #333; margin: 0;">Every request your browser makes hands trackers your IP, device details, and behavior &mdash; building a profile that follows you across the web. Cookies are only half the story: fingerprinting can identify you even after you clear them. The good news is that a handful of deliberate choices &mdash; the right browser, one extension, one setting &mdash; close most of that gap in a few minutes.</p>
+            <div style="font-size: 12px; letter-spacing: 0.08em; line-height: 2; color: #555;">
+              <div>Visit a site &rarr;</div>
+              <div style="padding-left: 16px;">Trackers read your IP, device, fonts, timezone &rarr;</div>
+              <div style="padding-left: 32px;">A profile of you is built and follows you site to site &rarr;</div>
+              <div style="padding-left: 48px; color: #2f6fed; font-weight: 600;">The right browser + settings break this chain.</div>
+            </div>
+          </div>
+        </section>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.12); font-size: 12px; letter-spacing: 0.1em;">
+          <a href="Browsers.dc.html">Start with Part 1: Choose Your Browser &rarr;</a>
+        </div>
+
+      </main>
+
+      <footer id="contact" style="border-top: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.35); backdrop-filter: blur(14px); padding: 28px 40px; font-size: 12px; color: #666;">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    query: '', category: 'All', step1Open: true, step2Open: false, step3Open: false, step4Open: false,
+    tocOverviewOpen: true, tocPart1Open: false, tocPart2Open: false, tocPart3Open: false, tocPart4Open: false,
+  };
+
+  handleSearchSubmit = () => {
+    window.location.href = 'Homepage.dc.html';
+  };
+
+  scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 24, behavior: 'smooth' });
+  }
+
+  renderVals() {
+    return {
+      query: this.state.query,
+      category: this.state.category,
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onCategoryChange: (e) => this.setState({ category: e.target.value }),
+      onKeyDown: (e) => { if (e.key === 'Enter') this.handleSearchSubmit(); },
+      handleSearchSubmit: this.handleSearchSubmit,
+
+      scrollToQuickStart: () => this.scrollTo('quick-start'),
+      scrollToComparison: () => this.scrollTo('comparison'),
+
+      step1Open: this.state.step1Open,
+      step2Open: this.state.step2Open,
+      step3Open: this.state.step3Open,
+      step4Open: this.state.step4Open,
+      step1Chevron: this.state.step1Open ? '\u2212' : '+',
+      step2Chevron: this.state.step2Open ? '\u2212' : '+',
+      step3Chevron: this.state.step3Open ? '\u2212' : '+',
+      step4Chevron: this.state.step4Open ? '\u2212' : '+',
+      toggleStep1: () => this.setState(s => ({ step1Open: !s.step1Open })),
+      toggleStep2: () => this.setState(s => ({ step2Open: !s.step2Open })),
+      toggleStep3: () => this.setState(s => ({ step3Open: !s.step3Open })),
+      toggleStep4: () => this.setState(s => ({ step4Open: !s.step4Open })),
+
+      tocOverviewOpen: this.state.tocOverviewOpen,
+      tocPart1Open: this.state.tocPart1Open,
+      tocPart2Open: this.state.tocPart2Open,
+      tocPart3Open: this.state.tocPart3Open,
+      tocPart4Open: this.state.tocPart4Open,
+      tocOverviewChevron: this.state.tocOverviewOpen ? '\u2212' : '+',
+      tocPart1Chevron: this.state.tocPart1Open ? '\u2212' : '+',
+      tocPart2Chevron: this.state.tocPart2Open ? '\u2212' : '+',
+      tocPart3Chevron: this.state.tocPart3Open ? '\u2212' : '+',
+      tocPart4Chevron: this.state.tocPart4Open ? '\u2212' : '+',
+      toggleTocOverview: () => this.setState(s => ({ tocOverviewOpen: !s.tocOverviewOpen })),
+      toggleTocPart1: () => this.setState(s => ({ tocPart1Open: !s.tocPart1Open })),
+      toggleTocPart2: () => this.setState(s => ({ tocPart2Open: !s.tocPart2Open })),
+      toggleTocPart3: () => this.setState(s => ({ tocPart3Open: !s.tocPart3Open })),
+      toggleTocPart4: () => this.setState(s => ({ tocPart4Open: !s.tocPart4Open })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

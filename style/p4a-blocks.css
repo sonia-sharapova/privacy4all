@@ -1,0 +1,198 @@
+/* privacy4all — standardized content blocks rendered by js/p4a.js.
+   Builds on styles.css (p4a-* classes); this file only adds what the shared
+   templates need so every page type looks the same. */
+
+.p4a-block { margin: 0 0 22px; }
+.p4a-block:last-child { margin-bottom: 0; }
+.p4a-sub > .p4a-sub-title + .p4a-block { margin-top: 14px; }
+.p4a-card { display: block; padding: 32px; }
+.p4a-card:hover { transform: none; }
+.p4a-intro:empty, .p4a-outro:empty { display: none; }
+.p4a-intro { margin-bottom: 40px; }
+.p4a-outro { margin-top: 10px; }
+
+/* Rich text */
+.p4a-rich > :first-child { margin-top: 0; }
+.p4a-rich > :last-child { margin-bottom: 0; }
+.p4a-rich p { margin: 0 0 1em; }
+.p4a-rich ul, .p4a-rich ol { margin: 0 0 1em; padding-left: 22px; line-height: 1.8; }
+.p4a-rich code { font-family: 'IBM Plex Mono', monospace; font-size: 0.86em; background: rgba(0,0,0,0.05); padding: 1px 5px; border-radius: 3px; }
+.p4a-21.p4a-rich { max-width: 960px; }
+.p4a-before { margin-bottom: 18px; }
+.p4a-after { margin: 18px 0 0; }
+
+/* Masthead */
+.p4a-subtitle { font-size: 14px; color: #666; margin: 35px 0 0; letter-spacing: 0.1em; text-transform: uppercase; }
+.p4a-back { padding-top: 10px; font-size: 15px; letter-spacing: 0.1em; }
+.p4a-1y .pcl-download { margin-top: 10px; display: inline-block; }
+.p4a-hero-title { font-size: 56px; letter-spacing: 0.06em; line-height: 1.05; }
+.p4a-hero-lede { font-size: 15px; letter-spacing: 0.03em; max-width: 600px; margin-top: 18px; }
+.bph-hero .pcl-download { margin-top: 18px; display: inline-block; }
+
+/* Download menu (checklist pages) */
+.pcl-download { position: relative; }
+.pcl-download-trigger { padding: 10px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; }
+.pcl-download-menu { position: absolute; top: calc(100% + 8px); right: 0; z-index: 20; min-width: 200px; display: none; flex-direction: column; padding: 8px; background: rgba(255,255,255,0.92); backdrop-filter: blur(18px) saturate(160%); border: 1px solid rgba(255,255,255,0.7); border-radius: 12px; box-shadow: 0 12px 32px rgba(0,0,0,0.16); text-align: left; }
+.pcl-download.open .pcl-download-menu { display: flex; }
+.pcl-download-item { display: block; width: 100%; box-sizing: border-box; text-align: left; padding: 10px 14px; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #1b1b1b; }
+.pcl-download-item:hover { background: rgba(0,0,0,0.06); }
+
+/* Section headings */
+.p4a-h3 { font-size: 18px; }
+.p4a-label { font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+.p4a-label-sm { font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px; text-transform: uppercase; }
+.p4a-hr { border: 0; border-top: 1px solid rgba(0,0,0,0.12); margin: 0 0 10px; }
+.p4a-b-divider { margin: 28px 0; }
+.p4a-toc-h { font-size: 15px; }
+.p4a-tocsec .p4a-card { padding: 28px; }
+
+/* Grids shared by numbered cards, redirect cards and info columns */
+.p4a-grid { display: grid; gap: 24px; }
+.p4a-grid.cols-1 { grid-template-columns: 1fr; }
+.p4a-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.p4a-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.p4a-grid.cols-4 { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+/* Numbered containers */
+.p4a-num-card { display: flex; gap: 15px; }
+.p4a-num { padding-top: 5px; flex-shrink: 0; }
+.p4a-num-card .p4a-25 { color: #333; }
+.p4a-ol { margin: 0; padding-left: 22px; font-size: 14px; line-height: 1.8; color: #333; }
+.p4a-ol li { padding-left: 4px; }
+.bph-step-body.p4a-rich { margin-bottom: 18px; }
+.bph-step-body ul, .bph-step-body ol { font-size: 14px; color: #555; }
+
+/* Redirects */
+.p4a-meta { font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px; }
+.p4a-redirect-card .p4a-25 { margin-bottom: 8px; }
+.p4a-redirect-link { font-size: 10.5px; letter-spacing: 0.1em; }
+.p4a-plain { color: inherit; text-decoration: none; }
+.p4a-plain:hover { text-decoration: underline; }
+.p4a-redirect-rows { display: flex; flex-direction: column; border-top: 1px solid rgba(0,0,0,0.12); }
+.p4a-redirect-row { display: flex; align-items: center; gap: 18px; padding: 16px 4px; border-bottom: 1px solid rgba(0,0,0,0.12); }
+.p4a-redirect-row .p4a-26-icon { margin: 0; }
+.p4a-redirect-row-text { flex: 1; min-width: 0; }
+.p4a-redirect-row-text .p4a-24 { margin-bottom: 4px; }
+.p4a-b-redirects .p4a-29 { margin-bottom: 0; }
+
+/* Info columns */
+.p4a-col-h { font-family: 'Alef', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: 0.04em; margin: 0 0 10px; }
+.p4a-col-body { font-size: 14px; line-height: 1.8; color: #333; }
+.p4a-col-body ul { font-size: 14px; }
+
+/* Resources */
+.p4a-res-list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.6; color: #333; }
+.p4a-res-num { font-size: 15.5px; letter-spacing: 0.05em; line-height: 1.7; color: #555; display: flex; flex-direction: column; gap: 6px; }
+.p4a-res-num p { margin: 0; }
+
+.p4a-b-table .p4a-2d { margin-bottom: 0; }
+.p4a-b-table .p4a-2d th { text-transform: uppercase; }
+
+/* Code & templates */
+.p4a-code-label { font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px; text-transform: uppercase; }
+.p4a-b-code .p4a-term { margin-bottom: 0; }
+.tdt-box { position: relative; margin-bottom: 8px; }
+.tdt-box textarea { display: block; width: 100%; box-sizing: border-box; resize: none; overflow: hidden; background: rgba(255,255,255,0.55); border: 1px solid rgba(0,0,0,0.15); border-radius: 4px; padding: 18px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.7; color: #333; }
+.tdt-copy-row { display: flex; justify-content: flex-end; margin-top: 8px; }
+
+/* Callout */
+.p4a-b-callout .p4a-27 { margin-top: 0; }
+.p4a-27 .p4a-rich { font-size: 13.5px; letter-spacing: 0.06em; color: #444; line-height: 1.6; }
+.p4a-callout-label { font-size: 10px; letter-spacing: 0.15em; color: #888; margin-bottom: 6px; text-transform: uppercase; }
+
+/* Quote */
+.p4a-quote-wrap { display: grid; grid-template-columns: 1fr; gap: 0; }
+.p4a-quote-wrap.has-side { grid-template-columns: 0.72fr 0.38fr; }
+.p4a-quote-wrap.has-side.side-first { grid-template-columns: 0.55fr 1fr; }
+.p4a-quote-wrap.has-side > :first-child { padding: 0 32px 0 0; border-right: 1px solid rgba(0,0,0,0.12); }
+.p4a-quote-wrap.has-side > :last-child { padding: 0 0 0 28px; }
+.p4a-quote { font-size: 20px; letter-spacing: 0.06em; line-height: 1.6; margin: 0; font-style: italic; }
+.p4a-dropcap { font-family: 'Averia Libre', serif; font-size: 34px; line-height: 0; font-style: normal; }
+.p4a-quote-author { font-size: 16px; letter-spacing: 0.06em; text-align: right; margin: 10px 0 0; }
+.p4a-quote-img { margin: 0 auto; display: block; width: 80%; object-fit: cover; box-shadow: 0 6px 16px rgba(0,0,0,0.18); }
+.p4a-quote-sidetext { font-size: 15.5px; letter-spacing: 0.06em; line-height: 1.8; }
+
+/* Image */
+.p4a-figure { margin: 0; }
+.p4a-figure img { display: block; width: 100%; height: auto; box-shadow: 0 6px 16px rgba(0,0,0,0.18); }
+.p4a-figure figcaption { font-size: 11px; letter-spacing: 0.08em; color: #888; margin-top: 8px; }
+
+/* Checklist (accordion items) */
+.p4a-cl-title { font-family: 'Alef', sans-serif; font-weight: 400; font-size: 18px; letter-spacing: 0.2em; margin: 0; text-transform: uppercase; }
+.p4a-cl-item { border-top: 1px solid rgba(0,0,0,0.1); }
+.p4a-cl-row { display: flex; align-items: flex-start; }
+.p4a-cl-row .p4a-2h { border-top: none; flex: 1; }
+.p4a-cl-more { flex-shrink: 0; background: none; border: none; cursor: pointer; font-size: 18px; color: #888; padding: 8px 6px; line-height: 1; font-family: inherit; }
+.p4a-cl-more:hover { color: #2f6fed; }
+.p4a-cl-details { padding: 0 34px 16px 30px; font-size: 14.5px; letter-spacing: 0.03em; color: #555; line-height: 1.7; }
+.p4a-cl-item.open { background: rgba(47,111,237,0.03); }
+
+/* Widgets */
+.p4a-pw { border: none; padding: 0; max-width: none; }
+
+/* Topic hub: everything on this topic */
+.p4a-topic-group + .p4a-topic-group { margin-top: 28px; }
+.p4a-topic-group .p4a-label { margin-bottom: 12px; }
+.p4a-topic-card { display: flex; flex-direction: column; gap: 4px; color: inherit; text-decoration: none; transition: transform 0.15s ease; }
+.p4a-topic-card:hover { transform: translateY(-2px); text-decoration: none; }
+.p4a-topic-card:hover .p4a-24 { text-decoration: underline; }
+.p4a-topic-card .p4a-redirect-link { margin-top: 6px; color: #2f6fed; }
+
+/* Password generator */
+.p4a-gen-out { display: flex; gap: 8px; align-items: center; }
+.p4a-gen-pw { font-family: 'IBM Plex Mono', monospace; font-size: 15px; letter-spacing: 0.04em; flex: 1; min-width: 0; }
+.p4a-gen-opts { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; margin-top: 16px; font-size: 13px; letter-spacing: 0.04em; color: #333; }
+.p4a-gen-opts label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.p4a-gen-len { width: 160px; accent-color: #2f6fed; }
+.p4a-gen-note { font-size: 12px; color: #888; margin: 14px 0 0; letter-spacing: 0.04em; }
+html[data-night="on"] .p4a-gen-opts { color: #b8b8c0; }
+
+/* In progress */
+.p4a-inprogress { padding: 60px 0 40px; text-align: center; }
+.p4a-inprogress span { font-family: 'Alef', sans-serif; font-size: 26px; letter-spacing: 0.25em; color: #888; }
+.p4a-inprogress p { font-size: 13px; letter-spacing: 0.08em; color: #999; margin: 14px 0 0; }
+.p4a-tile-blank { display: inline-block; background: rgba(0,0,0,0.06); }
+
+/* Bottom nav */
+.p4a-bottom-nav { justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* Footer admin entry */
+.p4a-admin-entry { float: right; }
+.p4a-admin-login { color: #999; font-size: 11px; letter-spacing: 0.1em; text-decoration: none; }
+.p4a-admin-login:hover { color: #2f6fed; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .p4a-grid.cols-2, .p4a-grid.cols-3, .p4a-grid.cols-4 { grid-template-columns: 1fr; }
+  .p4a-quote-wrap.has-side, .p4a-quote-wrap.has-side.side-first { grid-template-columns: 1fr; }
+  .p4a-quote-wrap.has-side > :first-child { padding: 0 0 20px; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.12); }
+  .p4a-quote-wrap.has-side > :last-child { padding: 20px 0 0; }
+  .p4a-redirect-row { flex-wrap: wrap; }
+  .p4a-hero-title { font-size: 40px; }
+  .p4a-card { padding: 22px; }
+}
+
+/* Night mode */
+html[data-night="on"] .p4a-subtitle, html[data-night="on"] .p4a-meta, html[data-night="on"] .p4a-code-label,
+html[data-night="on"] .p4a-label-sm, html[data-night="on"] .p4a-callout-label { color: #9a9aa4; }
+html[data-night="on"] .p4a-ol, html[data-night="on"] .p4a-res-list, html[data-night="on"] .p4a-res-num,
+html[data-night="on"] .p4a-col-body, html[data-night="on"] .p4a-cl-details, html[data-night="on"] .p4a-num-card .p4a-25,
+html[data-night="on"] .p4a-27 .p4a-rich { color: #b8b8c0; }
+html[data-night="on"] .p4a-hr, html[data-night="on"] .p4a-cl-item, html[data-night="on"] .p4a-redirect-rows,
+html[data-night="on"] .p4a-redirect-row, html[data-night="on"] .p4a-quote-wrap.has-side > :first-child { border-color: rgba(255,255,255,0.18); }
+html[data-night="on"] .tdt-box textarea { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); color: #e7e7ea; }
+html[data-night="on"] .pcl-download-menu { background: rgba(30,32,38,0.92); border-color: rgba(255,255,255,0.14); }
+html[data-night="on"] .pcl-download-item { color: #e7e7ea; }
+html[data-night="on"] .p4a-rich code { background: rgba(255,255,255,0.08); }
+
+@media print {
+  .p4a-2, .p4a-c, .pcl-download, .p4a-2c, .p4a-1q, .p4a-adminbar, .p4a-ed { display: none !important; }
+  .p4a-1 { display: block !important; }
+  .p4a-a { margin: 0 !important; }
+  .p4a-p { background: none !important; }
+  .p4a-q { max-width: 100% !important; padding: 0 !important; }
+  .p4a-b { display: none !important; }
+  .p4a-1g, .p4a-u, .p4a-1z { box-shadow: none !important; backdrop-filter: none !important; background: none !important; }
+  .p4a-cl-details { display: block !important; }
+  a[href]:after { content: ""; }
+}

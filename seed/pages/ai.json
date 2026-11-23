@@ -1,0 +1,72 @@
+{
+  "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>AI chatbots and assistants are only as private as the company running them. What you type is usually stored, may be read by staff for review, and is often used to train future models unless you opt out. Treat a chatbot like a stranger with a very good memory: don't paste in passwords, private documents or other people's information, and check the data and training settings of any AI service you use.</p>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "Large language model (LLM)",
+              "html": "<p>The kind of AI behind chatbots, trained on huge amounts of text to predict the next word.</p>"
+            },
+            {
+              "title": "Training data",
+              "html": "<p>The material a model learns from. Your chats may become training data unless you opt out.</p>"
+            },
+            {
+              "title": "Prompt injection",
+              "html": "<p>Hidden instructions in a web page or file that trick an AI tool into doing something you didn’t ask.</p>"
+            },
+            {
+              "title": "Local model",
+              "html": "<p>An AI model that runs on your own computer, so your prompts never leave it.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "everything",
+      "title": "Everything on AI",
+      "summary": "Guides, tools, checkers and resources.",
+      "blocks": [
+        {
+          "type": "topic-index",
+          "cols": 3
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Elsewhere on the web"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Privacy Guides: AI chat",
+              "url": "https://www.privacyguides.org/en/ai-chat/",
+              "desc": "more private AI chat options, including local models."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

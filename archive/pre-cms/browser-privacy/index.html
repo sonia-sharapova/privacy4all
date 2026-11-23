@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Practical Guide to Browser Privacy — privacy4all</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=15">
+</head>
+<body>
+
+<div class="p4a-0">
+
+  <div class="p4a-1">
+
+    <aside class="p4a-2">
+      <a href="../index.html" class="p4a-3">p4a</a>
+
+      <div class="p4a-4">TABLE OF CONTENTS</div>
+      <nav class="p4a-5">
+        <a href="index.html" class="p4a-6">Guide Overview</a>
+        <a href="#recommended" class="p4a-6">1. Choose Your Browser</a>
+        <a href="extensions.html" class="p4a-6">2. Set Up Your Browser</a>
+        <a href="fingerprinting.html" class="p4a-6">3. Advanced Configurations</a>
+        <a href="verify.html" class="p4a-6">4. Test &amp; Verify</a>
+      </nav>
+
+      <div class="p4a-4">ON THIS PAGE</div>
+      <nav class="p4a-5">
+        <a href="#guide-map" class="p4a-6">Guide Map</a>
+        <a href="#recommended" class="p4a-6">Recommended Browsers</a>
+        <a href="#feature-matrix" class="p4a-6">At a Glance</a>
+        <a href="#further-reading" class="p4a-6">Further Reading</a>
+      </nav>
+
+      <div class="p4a-4">RESOURCES</div>
+      <div class="p4a-7">
+        <a href="troubleshooting.html" class="p4a-8">Troubleshooting Guide</a>
+        <a href="resources.html" class="p4a-8">Resources, FAQ &amp; Glossary</a>
+      </div>
+
+      <div class="p4a-4">THEME</div>
+      <div class="p4a-theme">
+        <label><input type="checkbox" id="theme-night">Night mode</label>
+        <label><input type="checkbox" id="theme-contrast">High contrast</label>
+        <label><input type="checkbox" id="theme-backdrop" checked>Backdrop visibility</label>
+        <label class="p4a-theme-range" for="theme-glass">Glass
+          <input type="range" id="theme-glass" min="0" max="150" step="5" value="100" aria-describedby="theme-glass-ends">
+          <span class="p4a-theme-range-ends" id="theme-glass-ends" aria-hidden="true"><span>CLEAR</span><span>FROSTED</span></span>
+        </label>
+      </div>
+    </aside>
+
+    <div class="p4a-a">
+
+      <div class="p4a-b"></div>
+
+      <header class="p4a-c">
+        <div class="p4a-i">
+          <div class="p4a-d">
+            <nav class="p4a-e">
+              <input type="text" placeholder="Search topics..." id="search-input" class="p4a-f"><select id="search-category" class="p4a-g">
+                  <option value="All">All</option>
+                  <option value="Guides">Guides</option>
+                  <option value="Projects">Projects</option>
+                </select><button type="button" id="search-go" class="p4a-h">Go</button>
+            </nav>
+          </div>
+          <div class="p4a-j">
+            <div>
+              <a href="../index.html" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>
+              <p class="p4a-l"><a href="../index.html" style="color:inherit;">Home</a> / <a href="../index.html#topic-browsers" style="color:inherit;">Privacy &amp; Security</a> / Browser Privacy</p>
+            </div>
+            <nav class="p4a-n">
+              <a href="../index.html#projects" class="p4a-o">PROJECTS</a>
+              <a href="../index.html" class="p4a-o">RESOURCES</a>
+              <a href="../index.html#contact" class="p4a-o">CONTACT</a>
+              <a href="../index.html#about" class="p4a-o">ABOUT</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="p4a-p">
+      <main class="p4a-q">
+
+        <!-- MASTHEAD -->
+        <section id="overview" class="p4a-1v">
+          <div>
+            <div class="p4a-1w" style="padding-top: 10px; font-size: 15px; letter-spacing: 0.1em;"><a href="../index.html">&larr; back home</a></div>
+            <h1 class="p4a-1x">Browsers</h1>
+          </div>
+          <div class="p4a-1y">
+            WWW<br>DOT&nbsp;COM<br>INTERNET
+          </div>
+        </section>
+
+
+        <!-- INTRO -->
+        <section class="p4a-1z">
+          <div class="p4a-1g" style="grid-template-columns: 0.75fr 0.35fr; padding: 45px;">
+            
+            <div style="padding: 10px 40px 0 0; border-right: 1px solid rgba(0,0,0,0.12);">
+              <p style="font-size: 20px; letter-spacing: 0.06em; line-height: 1.6; margin: 0; font-style: italic;">"<span style="font-family: 'Averia Libre', serif; font-size: 30px; line-height: 0; vertical-align: 0px; font-style: normal;"> S</span>aying that you don't care about privacy because you have <span style="text-decoration: underline;">nothing to hide</span> is no different from saying you don't care about freedom of speech because you have <span style="text-decoration: underline;">nothing to say</span>."</p>
+              <p style="font-size: 16px; letter-spacing: 0.06em; float: right"> - Edward Snowden</p>
+
+            </div>
+            
+            <div style="padding: 0 0 0 24px;">
+              <img src="../assets/www.jpg" alt="Browsers" style="margin: 0 auto; display: block; width: 80%; object-fit: cover; box-shadow: 0 6px 16px rgba(0,0,0,0.18); display: block;">
+            </div>
+          </div>
+          
+        </section>
+
+        <!--
+        <div style="padding: 0 24px 0 0; border-right: 1px solid rgba(0,0,0,0.12);">
+              <div style="font-size: 15px; letter-spacing: 0.1em; color: #888; margin-bottom: 14px;">WHEN YOU GO ONLINE</div>
+              <p style="font-size: 15.5px; letter-spacing: 0.06em; line-height: 1.8; margin: 15px;">  Where do you go? <br>  What for? <br>  Who do you talk to? </p>
+            </div>
+          -->
+
+        <!-- GUIDE MAP -->
+        <section id="guide-map" class="p4a-1z">
+          <div class="p4a-guide-map">
+            <a href="#recommended" class="p4a-guide-map-tile">
+              <div class="p4a-26" style="margin:0 0 8px;">PART 1</div>
+              <div class="p4a-w" style="margin-bottom:6px;">Install a Private Browser</div>
+              <div class="p4a-25">Comparing browsers.</div>
+            </a>
+            <a href="extensions.html" class="p4a-guide-map-tile">
+              <div class="p4a-26" style="margin:0 0 8px;">PART 2</div>
+              <div class="p4a-w" style="margin-bottom:6px;">Expand your Browser</div>
+              <div class="p4a-25">Browser extentions.</div>
+            </a>
+            <a href="fingerprinting.html" class="p4a-guide-map-tile">
+              <div class="p4a-26" style="margin:0 0 8px;">PART 3</div>
+              <div class="p4a-w" style="margin-bottom:6px;">Protect Your Identity</div>
+              <div class="p4a-25">Passwords, fingerprinting, etc.</div>
+            </a>
+            <a href="verify.html" class="p4a-guide-map-tile">
+              <div class="p4a-26" style="margin:0 0 8px;">PART 4</div>
+              <div class="p4a-w" style="margin-bottom:6px;">Diagnostics</div>
+              <div class="p4a-25">Tests your browser's privacy.</div>
+            </a>
+          </div>
+        </section>
+
+      
+
+        <!-- RECOMMENDED -->
+        <section id="recommended" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">RECOMMENDED BROWSERS</h2>
+          <p class="p4a-21">Judged on usability, privacy, customizability, philosophy, respect for the user, looks, and resource usage.</p>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div class="p4a-22-4">
+            <div class="p4a-23">
+              <img src="../assets/icon-brave.jpg" alt="Brave" class="p4a-26-icon" width="28" height="28">
+              <div class="p4a-24">Brave</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop, Android, iOS &middot; Chromium-based</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Blocks ads, trackers and fingerprinting the moment you install it, no setup needed. It runs Chrome extensions, which makes it the easiest switch if you're coming from Chrome. You can switch off the extras you don't need (crypto wallet, Rewards, the Leo AI assistant) in settings.</p>
+              <a href="https://brave.com/download/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-duckduckgo.png" alt="DuckDuckGo" class="p4a-26-icon" width="28" height="28">
+              <div class="p4a-24">DuckDuckGo</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop, Android, iOS</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Blocks trackers and tells sites not to sell your data (Global Privacy Control) by default. The Fire button wipes your tabs and browsing data in one tap. The simplest option here, but it has no extensions on desktop and only limited ad blocking. Its AI features can be turned off in settings.</p>
+              <a href="https://duckduckgo.com/app" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-mullvad.png" alt="Mullvad Browser" class="p4a-26-icon" width="28" height="28">
+              <div class="p4a-24">Mullvad Browser</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop &middot; Firefox-based</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Built with the Tor Project. It has Tor Browser's anti-fingerprinting, so every user looks the same to websites, but it skips the slow Tor network. Ads and trackers are blocked by default. It doesn't hide your IP on its own, so pair it with a VPN.</p>
+              <a href="https://mullvad.net/browser" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-safari.jpeg" alt="Safari" class="p4a-26-icon" width="28" height="28">
+              <div class="p4a-24">Safari</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">iOS, macOS</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Apple's built-in browser. It limits cross-site tracking and fingerprinting automatically. On iPhone every browser uses Safari's engine anyway, which is why Privacy Guides recommends it for iOS. Add uBlock Origin Lite (available since 2025) to block ads.</p>
+              <a href="https://support.apple.com/safari" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Learn more &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-firefox.webp" alt="Firefox" class="p4a-26-icon" width="28" height="28">
+              <div class="p4a-24">Firefox</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">The main independent alternative to Chrome, with the widest range of privacy extensions. Out of the box, though, it sends usage data to Mozilla and has AI features switched on. Change a few settings to make it private; our hardening guide walks you through it.</p>
+              <a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a> &nbsp;&middot;&nbsp; <a href="fingerprinting.html#protection" style="font-size: 10.5px; letter-spacing: 0.1em;">Hardening guide &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/icon-librewolf.svg" alt="LibreWolf" class="p4a-26-icon" width="28" height="28">
+              <div class="p4a-24">LibreWolf</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop &middot; Firefox-based</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Firefox with the privacy work already done: Mozilla's telemetry removed, strict tracking protection on, and uBlock Origin pre-installed. You keep Firefox's flexibility and extensions without configuring anything yourself.</p>
+              <a href="https://librewolf.net/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a>
+            </div>
+
+            <div class="p4a-23">
+              <img src="../assets/tor.svg" alt="Tor Browser" class="p4a-26-icon" width="28" height="28">
+              <div class="p4a-24">Tor Browser</div>
+              <div style="font-size: 10px; letter-spacing: 0.1em; color: #888; margin-bottom: 6px;">Desktop, Android</div>
+              <p class="p4a-25" style="margin-bottom: 8px;">Routes your traffic through three volunteer-run relays, so the sites you visit never see your real IP or location. It offers the strongest anonymity available, but pages load slower and some sites block it. Use it when anonymity matters, not for everyday browsing.</p>
+              <a href="https://www.torproject.org/download/" target="_blank" rel="noopener" style="font-size: 10.5px; letter-spacing: 0.1em;">Download &rarr;</a>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <!-- AT A GLANCE -->
+        <section id="feature-matrix" class="p4a-1z">
+          <h2 class="p4a-20 p4a-20-tight">AT A GLANCE</h2>
+          <p class="p4a-21">How each browser stacks up on the privacy features that matter most, out of the box. Select a column to download that browser.</p>
+
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 32px;">
+          <div>
+          <div class="p4a-3m">
+            <table>
+              <thead>
+                <tr><th scope="col"><span class="p4a-3m-label">KEY METRICS</span></th><th scope="col" data-href="https://brave.com/download/"><a class="p4a-3m-head" href="https://brave.com/download/" target="_blank" rel="noopener" title="Get Brave (opens in a new tab)"><img src="../assets/icon-brave.jpg" alt="" width="40" height="40"><span class="p4a-3m-name">Brave</span></a></th><th scope="col" data-href="https://duckduckgo.com/app"><a class="p4a-3m-head" href="https://duckduckgo.com/app" target="_blank" rel="noopener" title="Get DuckDuckGo (opens in a new tab)"><img src="../assets/icon-duckduckgo.png" alt="" width="40" height="40"><span class="p4a-3m-name">DuckDuckGo</span></a></th><th scope="col" data-href="https://mullvad.net/browser"><a class="p4a-3m-head" href="https://mullvad.net/browser" target="_blank" rel="noopener" title="Get Mullvad (opens in a new tab)"><img src="../assets/icon-mullvad.png" alt="" width="40" height="40"><span class="p4a-3m-name">Mullvad</span></a></th><th scope="col" data-href="https://librewolf.net/"><a class="p4a-3m-head" href="https://librewolf.net/" target="_blank" rel="noopener" title="Get LibreWolf (opens in a new tab)"><img src="../assets/icon-librewolf.svg" alt="" width="40" height="40"><span class="p4a-3m-name">LibreWolf</span></a></th><th scope="col" data-href="https://www.mozilla.org/firefox/new/"><a class="p4a-3m-head" href="https://www.mozilla.org/firefox/new/" target="_blank" rel="noopener" title="Get Firefox (opens in a new tab)"><img src="../assets/icon-firefox.webp" alt="" width="40" height="40"><span class="p4a-3m-name">Firefox</span></a></th><th scope="col" data-href="https://support.apple.com/safari"><a class="p4a-3m-head" href="https://support.apple.com/safari" target="_blank" rel="noopener" title="Get Safari (opens in a new tab)"><img src="../assets/icon-safari.jpeg" alt="" width="40" height="40"><span class="p4a-3m-name">Safari</span></a></th><th scope="col" data-href="https://www.torproject.org/download/"><a class="p4a-3m-head" href="https://www.torproject.org/download/" target="_blank" rel="noopener" title="Get Tor (opens in a new tab)"><img src="../assets/tor.svg" alt="" width="40" height="40"><span class="p4a-3m-name">Tor</span></a></th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Blocks ads by default</th><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td></tr>
+                <tr><th scope="row">Blocks trackers by default</th><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td></tr>
+                <tr><th scope="row">Fingerprinting protection</th><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td></tr>
+                <tr><th scope="row">Global Privacy Control</th><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td></tr>
+                <tr><th scope="row">No telemetry by default</th><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td></tr>
+                <tr><th scope="row">Private search by default</th><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td></tr>
+                <tr><th scope="row">Hides your IP address</th><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td></tr>
+                <tr><th scope="row">Open source</th><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td></tr>
+                <tr><th scope="row">Extension support</th><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td><td><span class="p4a-3m-mark part" aria-hidden="true"></span><span class="sr-only">Partial</span></td></tr>
+                <tr><th scope="row">Available on mobile</th><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark no" aria-hidden="true"></span><span class="sr-only">No</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td><td><span class="p4a-3m-mark yes" aria-hidden="true"></span><span class="sr-only">Yes</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="p4a-3m-legend">
+            <span><span class="p4a-3m-mark yes" aria-hidden="true"></span>YES</span>
+            <span><span class="p4a-3m-mark part" aria-hidden="true"></span>PARTIAL / WITH CAVEATS</span>
+            <span><span class="p4a-3m-mark no" aria-hidden="true"></span>NO</span>
+          </div>
+          <p class="p4a-3m-note">Brave hides your IP only in its Tor windows (desktop); Safari only with a paid iCloud+ subscription (Private Relay).</p>
+          </div>
+          </div>
+        </section>
+
+       
+
+
+        <!-- FURTHER READING -->
+        <section id="further-reading" style="border-top: 1px solid rgba(0,0,0,0.12); padding-top: 28px;">
+          <h2 class="p4a-20">FURTHER READING</h2>
+          <div class="p4a-1g" style="grid-template-columns: 1fr; padding: 28px;">
+          <div class="p4a-22-3" style="font-size: 15.5px; letter-spacing: 0.05em; line-height: 1.7; color: #555;">
+            <p style="margin: 0;">[1] <a href="https://www.privacytools.io/" target="_blank" rel="noopener">PrivacyTools.io</a> &mdash; browser hardening guide.</p>
+            <p style="margin: 0;">[2] <a href="https://prism-break.org/en/" target="_blank" rel="noopener">PRISM Break</a> &mdash; Opt out of global data surveillance programs like PRISM, XKeyscore and Tempora.</p>
+            <p style="margin: 0;">[3] <a href="https://digdeeper.neocities.org/index.xhtml" target="_blank" rel="noopener">Dig Deeper</a> &mdash; fingerprinting deep dive.</p>
+          </div>
+          </div>
+        </section>
+
+
+      </main>
+
+      <footer class="p4a-1q">
+        privacy4all — because accessible privacy shouldn't come at a cost.
+      </footer>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('search-go').addEventListener('click', function () {
+  window.location.href = '../index.html';
+});
+document.getElementById('search-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') window.location.href = '../index.html';
+});
+
+document.querySelectorAll('.p4a-3m').forEach(function (wrap) {
+  var table = wrap.querySelector('table');
+  var lift = document.createElement('div');
+  lift.className = 'p4a-3m-lift';
+  wrap.insertBefore(lift, table);
+  var current = -1;
+  function place(col) {
+    var th = table.rows[0].cells[col];
+    lift.style.left = (table.offsetLeft + th.offsetLeft) + 'px';
+    lift.style.width = th.offsetWidth + 'px';
+    lift.style.top = (table.offsetTop - 10) + 'px';
+    lift.style.height = (table.offsetHeight + 20) + 'px';
+  }
+  table.addEventListener('focusin', function (e) { show(e.target); });
+  table.addEventListener('focusout', hide);
+  table.addEventListener('mouseover', function (e) { show(e.target); });
+  function show(target) {
+    var cell = target.closest && target.closest('td, th');
+    if (!cell || cell.cellIndex === 0) { hide(); return; }
+    if (cell.cellIndex === current) return;
+    lift.classList.toggle('slide', current !== -1);
+    current = cell.cellIndex;
+    place(current);
+    lift.classList.add('on');
+  }
+  function hide() { current = -1; lift.classList.remove('on', 'slide'); }
+  table.addEventListener('mouseleave', hide);
+  table.addEventListener('click', function (e) {
+    var cell = e.target.closest('td, th');
+    if (!cell || cell.cellIndex === 0 || e.target.closest('a')) return;
+    var url = table.rows[0].cells[cell.cellIndex].dataset.href;
+    if (url) window.open(url, '_blank', 'noopener');
+  });
+  window.addEventListener('resize', function () { if (current !== -1) place(current); });
+});
+
+document.getElementById('theme-night').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-night', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-contrast').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-contrast', e.target.checked ? 'on' : 'off');
+});
+document.getElementById('theme-backdrop').addEventListener('change', function (e) {
+  document.documentElement.setAttribute('data-backdrop', e.target.checked ? 'on' : 'off');
+});
+</script>
+<script src="../js/glass.js"></script>
+</body>
+</html>

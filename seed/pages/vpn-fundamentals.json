@@ -1,0 +1,111 @@
+{
+  "subsections": [
+    {
+      "id": "what-is-a-vpn",
+      "title": "What is a VPN?",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>A VPN (virtual private network) creates an encrypted tunnel between your device and a server run by the VPN provider. Think of it like putting on a shield before walking into enemy territory — you do not know what will come your way, but you keep yourself covered.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>In plain English:</p>\n<ul style=\"margin:0; padding-left:20px; font-size:14px; line-height:1.8; color:#333;\">\n<li><b>Normally:</b> You → Website (the website sees your IP).</li>\n<li><b>With a VPN:</b> You → VPN Server → Website (the website sees the VPN's IP, not yours).</li>\n</ul>",
+          "card": true
+        },
+        {
+          "type": "text",
+          "html": "<p>Example: normally, typing google.com sends your request straight to Google's servers. With a VPN active, your request goes to the VPN provider's servers first, and those servers relay it to Google. The same logic applies to any site, including ones that might be blocked or restricted where you live. Your data and activity are still being recorded somewhere — what the encryption buys you is that it becomes much harder to link that activity back to you.</p>"
+        },
+        {
+          "type": "callout",
+          "html": "<p><b>Legal note:</b> VPNs are legal in most countries but restricted in places like Iran, Russia, China, and Turkey. Check your local laws.</p>"
+        }
+      ]
+    },
+    {
+      "id": "does-does-not",
+      "title": "What a VPN Does",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<ul style=\"margin:0 0 28px; padding-left:20px; font-size:14px; line-height:1.9; color:#333;\">\n<li>Hides your browsing from your ISP, who then see only encrypted traffic.</li>\n<li>Changes your apparent location by connecting to servers elsewhere.</li>\n<li>Lets you reach geo-restricted services, like a US-only Netflix catalog, by connecting to a server in that country.</li>\n<li>Lets you download torrents in places where torrent traffic is blocked outright or deliberately slowed by the ISP.</li>\n<li>Lets you reach websites blocked in your country, because your traffic appears to come from wherever the VPN server sits.</li>\n<li>Makes your information harder to read, which makes you a less inviting target for fraud.</li>\n<li>Protects you while traveling, when you may not know local laws or policies and don't want to paint a target on your back.</li>\n</ul>"
+        },
+        {
+          "type": "subheading",
+          "style": "h3",
+          "text": "What a VPN Does Not Do"
+        },
+        {
+          "type": "columns",
+          "cols": 3,
+          "style": "divided",
+          "items": [
+            {
+              "title": "Activity",
+              "html": "<p>Your VPN provider CAN see your activity. You are shifting trust from your ISP to your VPN provider, so choose wisely.</p>"
+            },
+            {
+              "title": "Anonymity",
+              "html": "<p>A VPN does NOT make you anonymous. It makes you private from your ISP, not from the VPN provider.</p>"
+            },
+            {
+              "title": "Watch the Speed",
+              "html": "<p>If your VPN suddenly crawls, treat it as a warning sign — slow VPN traffic can mean someone is poking at your data.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "self-hosted",
+      "title": "Using a Self-hosted VPN on a VPS",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>You can rent a VPS and install VPN server software on it yourself, effectively becoming your own VPN provider. Doing this is a technical, legal, and political decision all at once, so go in with your eyes open. Looking for a commercial VPN or VPS instead? See <a href=\"page:vpn-providers\">VPN &amp; VPS Providers</a>. If you want to set up the server itself, see <a href=\"page:vps-setup\">Part 4: VPS &amp; Self-Hosting</a>.</p>"
+        },
+        {
+          "type": "callout",
+          "html": "<p><b>The downside — more traceable:</b> a self-hosted VPN on a personally rented VPS gives you a single IP address used only by you. Commercial VPN providers use shared server IPs that mix many users' traffic, which makes it hard to link specific activity back to any one person. So it's a trade-off — rolling your own gives you control, while a good commercial VPN gives you a crowd to hide in.</p>"
+        }
+      ]
+    },
+    {
+      "id": "higher-levels",
+      "title": "Higher Levels of Protection",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>A VPN is a solid shield, but it is not the only one.</p>"
+        },
+        {
+          "type": "columns",
+          "cols": 3,
+          "style": "divided",
+          "items": [
+            {
+              "title": "Algo",
+              "html": "<p>An open-source toolkit that helps you stand up your own private VPN server quickly, so you aren't trusting anyone else's.</p>"
+            },
+            {
+              "title": "Tor (The Onion Router)",
+              "html": "<p>Triple-encrypted. Your traffic bounces through three separate computers before reaching its destination, which makes tracing it back to your real machine extremely difficult. A regular VPN just swaps your IP for one other IP; Tor wraps it in three layers.</p>"
+            },
+            {
+              "title": "Ports, the Internet's \"Little Doors\"",
+              "html": "<p>Networks talk through ports, which you can picture as little doors — different doors carry different kinds of traffic. OpenVPN can run on almost any port, including the one ordinary secure web traffic uses, so configured that way, activity like torrenting can blend in and look like plain web browsing from the outside.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": "READ TIME 8 MIN",
+  "intro": [
+    {
+      "type": "html",
+      "html": "<div class=\"p4a-22\" style=\"grid-template-columns: 0.55fr 1fr 0.75fr;\">\n<div style=\"padding: 0 24px 0 0; border-right: 1px solid rgba(0,0,0,0.12);\">\n<div style=\"font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;\">WHY IT MATTERS</div>\n<p style=\"font-size: 15.5px; letter-spacing: 0.06em; line-height: 1.8; margin: 0;\">A practical primer on how VPNs work, how to pick a provider you can actually trust, and how to set one up and test it yourself.</p>\n</div>\n<div style=\"padding: 0 24px; border-right: 1px solid rgba(0,0,0,0.12);\">\n<p style=\"font-size: 20px; letter-spacing: 0.06em; line-height: 1.55; margin: 0; font-style: italic;\">\"<span style=\"font-family: 'Averia Libre', serif; font-size: 40px; line-height: 0; vertical-align: -12px; font-style: normal;\">A</span> VPN is a little like using a friend's address to get your kids into a better school district, except here the friend is usually a stranger you are paying.\"</p>\n</div>\n<div style=\"padding: 0 0 0 24px;\">\n<img alt=\"VPN\" src=\"assets/vpn.jpg\" style=\"width: 100%; height: 140px; object-fit: cover; box-shadow: 0 6px 16px rgba(0,0,0,0.18); display: block;\"/>\n<div style=\"font-size: 9px; letter-spacing: 0.1em; color: #888; margin-top: 8px;\">FIG. 1 — AN ENCRYPTED TUNNEL, VISUALIZED</div>\n</div>\n</div>"
+    }
+  ]
+}

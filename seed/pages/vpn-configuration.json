@@ -1,0 +1,110 @@
+{
+  "subsections": [
+    {
+      "id": "lab-procedure",
+      "title": "Step-by-step Lab Procedure",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>The source walkthrough uses RiseUp VPN as its free example. Work through these in order.</p>"
+        },
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "label": "STEP",
+          "items": [
+            {
+              "title": "Install dependencies",
+              "text": "<p class=\"bph-step-body\">Install the OpenVPN package and its dependency <code>iproute2</code> using your distro's package manager, along with the UFW firewall package.</p>"
+            },
+            {
+              "title": "Get a config file",
+              "text": "<p class=\"bph-step-body\">Obtain a <code>.conf</code> configuration file from your VPN provider and place it in <code>/etc/openvpn</code>. For RiseUp, run its <code>generate.sh</code> script, then edit the resulting config file to remove any duplicate \"remote\" lines.</p>"
+            },
+            {
+              "title": "Allow the VPN server through the firewall",
+              "text": "<p class=\"bph-step-body\" style=\"margin-bottom:14px;\">Open the config file and find the \"remote\" line, which lists the VPN server's IP address and port. Run:</p>\n<div class=\"p4a-term\"><pre>sudo ufw allow out to [SERVER_IP] port [PORT]</pre></div>"
+            },
+            {
+              "title": "Name the tunnel interface",
+              "text": "<p class=\"bph-step-body\">In the config file, change the \"dev tun\" line to something identifiable, such as \"tun_myvpn,\" so you can reference it in firewall rules.</p>"
+            },
+            {
+              "title": "Allow traffic on the tunnel interface",
+              "text": "<div class=\"p4a-term\"><pre>sudo ufw allow in on tun_myvpn\nsudo ufw allow out on tun_myvpn</pre></div>"
+            },
+            {
+              "title": "Allow your local router",
+              "text": "<p class=\"bph-step-body\" style=\"margin-bottom:14px;\">Find your local router's IP address with <code>sudo ifconfig</code>, and allow it explicitly:</p>\n<div class=\"p4a-term\"><pre>sudo ufw allow out to [LOCAL_ROUTER_IP]</pre></div>"
+            },
+            {
+              "title": "Switch to the VPN's DNS servers",
+              "text": "<p class=\"bph-step-body\">Replace your ISP's DNS servers with the VPN's own DNS servers. Run <code>sudo resolvconf -l</code> to see current settings, then edit <code>/etc/resolv.conf</code> to insert the VPN's nameserver (the RiseUp example given is <code>nameserver 172.27.0.1</code>).</p>"
+            },
+            {
+              "title": "Lock the DNS file",
+              "text": "<p class=\"bph-step-body\">Make that DNS configuration file immutable so nothing silently overwrites it later, either with <code>chattr +i</code> on the file, or by adding the line <code>nohook resolv.conf wpa_supplicant</code> to <code>/etc/dhcpcd.conf</code>.</p>"
+            },
+            {
+              "title": "Allow each DNS server individually",
+              "text": "<div class=\"p4a-term\"><pre>sudo ufw allow out to [DNS_SERVER_IP]</pre></div>"
+            },
+            {
+              "title": "Deny everything else by default",
+              "text": "<div class=\"p4a-term\"><pre>sudo ufw default deny incoming\nsudo ufw default deny outgoing</pre></div>"
+            },
+            {
+              "title": "Reapply the firewall on every boot",
+              "text": "<p class=\"bph-step-body\">Add startup code to <code>/etc/rc.d/rc.local</code> so this firewall configuration is automatically reapplied every time the machine boots.</p>"
+            },
+            {
+              "title": "Start the VPN connection",
+              "text": "<div class=\"p4a-term\"><pre>cd /etc/openvpn; sudo openvpn [your_config_file.conf]&amp;</pre></div>"
+            }
+          ],
+          "card": true
+        }
+      ]
+    },
+    {
+      "id": "browser-leak",
+      "title": "Browser Leak Fix (do This in the Same Session)",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>WebRTC, a browser technology, can leak your real IP address even while a VPN is active. In Firefox, disable it by going to <code>about:config</code> and setting <code>media.peerconnection.enabled</code> to <code>false</code>. In Chrome-based browsers, install a WebRTC-blocking extension such as WebRTC Control. Pale Moon users don't need to do anything, since it doesn't implement WebRTC the same way.</p>",
+          "card": true
+        }
+      ]
+    },
+    {
+      "id": "ipv6-leak",
+      "title": "IPv6 Leak Fix, if Needed",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>If testing (see <a href=\"page:vpn-resources#testing\">Part 5: Test, Glossary &amp; Resources</a>) reveals an IPv6 leak, disable IPv6 system-wide: blacklist the IPv6 kernel module from the terminal, then edit <code>/etc/sysctl.conf</code> to add disable rules for all IPv6 interfaces, and apply the change with <code>sudo sysctl -p</code>.</p>",
+          "card": true
+        }
+      ]
+    },
+    {
+      "id": "riseup-maintenance",
+      "title": "Maintenance Note: Free Riseup Certificates",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>RiseUp's VPN certificates expire roughly monthly. When the connection stops working: rename your current working config file, run <code>generate.sh</code> again to get a fresh one, copy just the new certificate block (the content between the <code>&lt;ca&gt;</code> tags) out of the new file, paste it into the renamed old file in place of the expired certificate, then delete the newly generated file and rename your edited file back to its original name.</p>",
+          "card": true
+        }
+      ]
+    }
+  ],
+  "meta": "READ TIME 10 MIN",
+  "intro": [
+    {
+      "type": "html",
+      "html": "<div class=\"p4a-1g\" style=\"grid-template-columns: 0.55fr 1fr; padding: 32px;\">\n<div style=\"padding: 0 24px 0 0; border-right: 1px solid rgba(0,0,0,0.12);\">\n<div style=\"font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;\">OBJECTIVE</div>\n<p style=\"font-size: 15.5px; letter-spacing: 0.06em; line-height: 1.8; margin: 0;\">Configure an OpenVPN connection on Linux and lock the firewall so nothing leaks outside the VPN tunnel.</p>\n</div>\n<div style=\"padding: 0 24px;\">\n<div style=\"font-size: 10.5px; letter-spacing: 0.1em; color: #888; margin-bottom: 8px;\">PREREQUISITES</div>\n<p style=\"font-size: 15.5px; letter-spacing: 0.06em; line-height: 1.8; margin: 0;\">A Linux machine or VM running a systemd-free distribution. This walkthrough assumes systemd is not managing DNS, since systemd-resolved will overwrite the DNS configuration on restart and break this setup. Basic terminal familiarity is assumed.</p>\n</div>\n</div>"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "subsections": [
+    {
+      "id": "testing",
+      "title": "Testing Checklist",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Once your VPN is configured, confirm it's actually doing what you think it's doing.</p>\n<ul style=\"margin:0; padding-left:20px; font-size:14px; line-height:1.9; color:#333;\">\n<li><b>Close or disable other connections.</b> Before connecting, close all browsers and applications, and disable any network interface (Wi-Fi, cellular) you aren't actively using, to reduce the chance of traffic slipping outside the tunnel.</li>\n<li><b>Check for leaks.</b> Visit <a href=\"https://ipleak.net/\" rel=\"noopener\" target=\"_blank\">ipleak.net</a> after connecting to check for IP, DNS, and WebRTC leaks in one place.</li>\n<li><b>Check your public IP address.</b> You can check it at <a href=\"https://ipchicken.com/\" rel=\"noopener\" target=\"_blank\">ipchicken.com</a>, or your VPN provider's own IP-checking page.</li>\n<li><b>Check DNS.</b> Run <code>nslookup</code> commands to confirm DNS queries are going through the VPN's DNS servers, not your ISP's.</li>\n<li><b>Check the kill switch.</b> Confirm it works by manually disconnecting the VPN process and checking whether your internet access stops immediately.</li>\n<li><b>Check isolation.</b> If available, use a network-scanning app like Fing to confirm your device is properly isolated from other devices on the local network while the VPN is active.</li>\n</ul>",
+          "card": true
+        }
+      ]
+    },
+    {
+      "id": "wireshark",
+      "title": "Analyze Your Own Traffic with Wireshark",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Wireshark is a free, open-source tool that lets you watch your own traffic in real time. It captures each packet's origin, destination, and protocol, and you can sort by bytes to see what's eating up the most time and data. It's a good way to confirm with your own eyes that your traffic is going where you think it is.</p>",
+          "card": true
+        },
+        {
+          "type": "callout",
+          "html": "<p><b>Protect your privates, and keep your information safe from net perverts and lurkers.</b></p>",
+          "card": true
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "openFirst": true,
+          "items": [
+            {
+              "q": "Is a VPN enough on its own?",
+              "a": "<p>No. A VPN hides your IP address and encrypts traffic from your ISP, but it does nothing about cookies, browser fingerprinting, or the tracking scripts a site loads once your traffic arrives. Pair it with the <a href=\"page:browsers\">Browser Privacy Guide</a> for the other half of the picture.</p>"
+            },
+            {
+              "q": "Should I trust a \"no-log\" claim?",
+              "a": "<p>Only as far as the audit behind it. Anyone can claim \"no logs\" — look for independent audits and, ideally, a real police raid that came up empty. See <a href=\"page:vpn-fundamentals#choosing\">Choosing a Provider</a>.</p>"
+            },
+            {
+              "q": "Is a self-hosted VPN more private than a commercial one?",
+              "a": "<p>Not necessarily. A self-hosted VPN on your own VPS gives you a single IP used only by you, which is actually more traceable — commercial VPNs mix many users' traffic on shared IPs, giving you crowd anonymity. Self-hosting buys you control, not anonymity. See <a href=\"page:vpn-fundamentals#self-hosted\">Self-Hosted VPNs</a>.</p>"
+            },
+            {
+              "q": "Do I need to test my VPN after setting it up?",
+              "a": "<p>Yes, always. A misconfigured VPN can leak your real IP, DNS queries, or WebRTC data with no visible sign anything is wrong. Run through the <a href=\"#testing\">Testing Checklist</a> above every time you change your setup.</p>"
+            },
+            {
+              "q": "Why does my VPN provider matter if the connection is encrypted?",
+              "a": "<p>Encryption protects your traffic from your ISP and anyone snooping on the network in between — it does not protect you from the VPN provider itself, since your traffic is decrypted at their server before going to its destination. You're shifting who can see your activity, not eliminating visibility altogether.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glossary",
+      "title": "Glossary",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "VPN (Virtual Private Network)",
+              "html": "<p class=\"p4a-25\">A service that encrypts your device's traffic and routes it through a provider's server, so websites and your ISP see the provider's server instead of you directly.</p>"
+            },
+            {
+              "title": "VPS (Virtual Private Server)",
+              "html": "<p class=\"p4a-25\">A virtualized slice of a physical server, giving you your own dedicated operating system and resources with full control, at a lower cost than a full dedicated server.</p>"
+            },
+            {
+              "title": "OpenVPN / WireGuard",
+              "html": "<p class=\"p4a-25\">Two open, independently auditable VPN protocols, contrasted with closed, proprietary VPN apps.</p>"
+            },
+            {
+              "title": "DNS Leak",
+              "html": "<p class=\"p4a-25\">When your device's domain-lookup requests bypass the VPN tunnel and go to your normal ISP's DNS servers instead of the VPN's, potentially revealing your activity even while otherwise connected.</p>"
+            },
+            {
+              "title": "WebRTC Leak",
+              "html": "<p class=\"p4a-25\">A browser technology that can reveal your real IP address even while a VPN is active, unless specifically disabled or blocked.</p>"
+            },
+            {
+              "title": "Kill Switch",
+              "html": "<p class=\"p4a-25\">A VPN feature (or a manually configured firewall default, as in <a href=\"page:vpn-configuration\">Configure &amp; Lock Down</a>) that blocks all internet traffic if the VPN connection drops, preventing accidental exposure.</p>"
+            },
+            {
+              "title": "Split Tunneling",
+              "html": "<p class=\"p4a-25\">A VPN configuration that lets specific sites or apps bypass the VPN tunnel intentionally, useful for sites that block VPN traffic outright.</p>"
+            },
+            {
+              "title": "Multi-Hop / Double VPN",
+              "html": "<p class=\"p4a-25\">Routing traffic through two VPN servers in different locations for additional protection against timing-based tracking.</p>"
+            },
+            {
+              "title": "Five Eyes",
+              "html": "<p class=\"p4a-25\">An intelligence-sharing alliance among the US, UK, Canada, Australia, and New Zealand — a reason some privacy-focused users prefer VPN providers based outside those countries.</p>"
+            },
+            {
+              "title": "Monero",
+              "html": "<p class=\"p4a-25\">A cryptocurrency designed for stronger transaction privacy than Bitcoin, treated as a stronger payment-privacy signal for both VPN and VPS providers.</p>"
+            }
+          ],
+          "card": true
+        }
+      ]
+    },
+    {
+      "id": "further-reading",
+      "title": "Further Reading",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>CORE SOURCES</p>\n<ul style=\"margin:0 0 28px; padding-left:18px; display:flex; flex-direction:column; gap:8px; font-size:14px; letter-spacing:0.05em; line-height:1.6; color:#555;\">\n<li><a href=\"https://digdeeper.neocities.org/articles/vpn.xhtml\" rel=\"noopener\" target=\"_blank\"><b>VPN Basics</b></a> — digdeeper.neocities.org</li>\n<li><a href=\"https://defensivecomputingchecklist.com/vpn.php\" rel=\"noopener\" target=\"_blank\"><b>Defensive Computing Checklist</b></a> — VPN section</li>\n<li><a href=\"https://ipleak.net/\" rel=\"noopener\" target=\"_blank\"><b>ipleak.net</b></a> — combined IP, DNS, and WebRTC leak test</li>\n<li><a href=\"https://digdeeper.neocities.org/articles/vps.xhtml\" rel=\"noopener\" target=\"_blank\"><b>VPS Reviews and Recommendations</b></a> — digdeeper.neocities.org</li>\n</ul>\n<p>VPN GUIDES & TUTORIALS</p>\n<ul style=\"margin:0 0 28px; padding-left:18px; display:flex; flex-direction:column; gap:8px; font-size:14px; letter-spacing:0.05em; line-height:1.6; color:#555;\">\n<li><a href=\"https://thatoneprivacysite.net/vpn-section/\" rel=\"noopener\" target=\"_blank\"><b>That One Privacy Site</b></a> — VPN comparisons</li>\n<li><a href=\"https://www.reddit.com/r/VPN/comments/4iho8e/that_one_privacy_guys_guide_to_choosing_the_best/\" rel=\"noopener\" target=\"_blank\"><b>That One Privacy Guy's Guide to Choosing the Best VPN</b></a></li>\n<li><a href=\"https://www.reddit.com/r/VPN/wiki/index\" rel=\"noopener\" target=\"_blank\"><b>/r/VPN Wiki</b></a> — FAQ-type resource</li>\n<li><a href=\"https://ssd.eff.org/en/module/choosing-vpn-thats-right-you\" rel=\"noopener\" target=\"_blank\"><b>EFF: Choosing the VPN That's Right for You</b></a></li>\n<li><a href=\"https://torrentfreak.com/vpn-services-keep-anonymous-2018/\" rel=\"noopener\" target=\"_blank\"><b>TorrentFreak: Which VPN Services Keep You Anonymous</b></a></li>\n<li><a href=\"https://www.privacytools.io/\" rel=\"noopener\" target=\"_blank\"><b>privacytools.io</b></a></li>\n<li><a href=\"https://wiki.archlinux.org/index.php/VPN_over_SSH\" rel=\"noopener\" target=\"_blank\"><b>VPN Over SSH</b></a> — ArchWiki \"poor man's VPN\"</li>\n<li><a href=\"https://www.reddit.com/r/VPNTorrents\" rel=\"noopener\" target=\"_blank\"><b>/r/VPNTorrents</b></a></li>\n</ul>\n<p>VPN SUBSCRIPTION SERVICES</p>\n<ul style=\"margin:0 0 28px; padding-left:18px; display:flex; flex-direction:column; gap:8px; font-size:14px; letter-spacing:0.05em; line-height:1.6; color:#555;\">\n<li><a href=\"https://www.privateinternetaccess.com/\" rel=\"noopener\" target=\"_blank\"><b>Private Internet Access</b></a></li>\n<li><a href=\"https://mullvad.net/en/\" rel=\"noopener\" target=\"_blank\"><b>Mullvad</b></a></li>\n<li><a href=\"https://protonvpn.com/\" rel=\"noopener\" target=\"_blank\"><b>ProtonVPN</b></a></li>\n<li><a href=\"https://nordvpn.com/\" rel=\"noopener\" target=\"_blank\"><b>NordVPN</b></a></li>\n<li><a href=\"https://windscribe.com/\" rel=\"noopener\" target=\"_blank\"><b>Windscribe</b></a></li>\n<li><a href=\"https://www.expressvpn.com/\" rel=\"noopener\" target=\"_blank\"><b>ExpressVPN</b></a></li>\n</ul>\n<p>SELF-HOSTED VPN SOFTWARE</p>\n<ul style=\"margin:0; padding-left:18px; display:flex; flex-direction:column; gap:8px; font-size:14px; letter-spacing:0.05em; line-height:1.6; color:#555;\">\n<li><a href=\"https://github.com/ntop/n2n\" rel=\"noopener\" target=\"_blank\"><b>n2n</b></a> — peer-to-peer VPN</li>\n<li><a href=\"https://peervpn.net/\" rel=\"noopener\" target=\"_blank\"><b>PeerVPN</b></a></li>\n<li><a href=\"https://openvpn.net/\" rel=\"noopener\" target=\"_blank\"><b>OpenVPN</b></a></li>\n<li><a href=\"https://github.com/slackhq/nebula\" rel=\"noopener\" target=\"_blank\"><b>Nebula</b></a></li>\n<li><a href=\"https://pritunl.com/\" rel=\"noopener\" target=\"_blank\"><b>Pritunl</b></a></li>\n<li><a href=\"https://www.wireguard.com/\" rel=\"noopener\" target=\"_blank\"><b>WireGuard</b></a></li>\n<li><a href=\"https://github.com/sshuttle/sshuttle\" rel=\"noopener\" target=\"_blank\"><b>sshuttle</b></a> — poor man's VPN</li>\n<li><a href=\"https://www.zerotier.com/\" rel=\"noopener\" target=\"_blank\"><b>ZeroTier</b></a></li>\n<li><a href=\"https://www.getoutline.org/\" rel=\"noopener\" target=\"_blank\"><b>Outline</b></a> by Alphabet</li>\n<li><a href=\"https://mysterium.network/\" rel=\"noopener\" target=\"_blank\"><b>Mysterium Network</b></a></li>\n<li><a href=\"https://tinc-vpn.org/\" rel=\"noopener\" target=\"_blank\"><b>tinc</b></a> — mesh routing</li>\n<li><a href=\"https://www.infradead.org/openconnect/\" rel=\"noopener\" target=\"_blank\"><b>OpenConnect</b></a></li>\n<li><a href=\"https://shadowsocks.org/\" rel=\"noopener\" target=\"_blank\"><b>Shadowsocks</b></a></li>\n</ul>",
+          "card": true
+        }
+      ]
+    }
+  ]
+}

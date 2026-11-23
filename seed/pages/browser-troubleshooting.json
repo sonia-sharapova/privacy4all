@@ -1,0 +1,174 @@
+{
+  "subsections": [
+    {
+      "id": "flowchart",
+      "title": "Quick Troubleshooting Flowchart",
+      "blocks": [
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-39\">\n<div class=\"p4a-39-box\">Site looks broken</div>\n<div class=\"p4a-39-arrow\">→</div>\n<div class=\"p4a-39-box\">Hard reload the page</div>\n<div class=\"p4a-39-arrow\">→</div>\n<div class=\"p4a-39-box\">Still broken?</div>\n<div class=\"p4a-39-divider\"></div>\n<div class=\"p4a-39-box\">Disable blocker for this site</div>\n<div class=\"p4a-39-arrow\">→</div>\n<div class=\"p4a-39-box\">Reload again</div>\n<div class=\"p4a-39-arrow\">→</div>\n<div class=\"p4a-39-box highlight\">Still broken? Try your backup browser</div>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "from-browsers",
+      "title": "Browser & Lineup Issues",
+      "blocks": [
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-3a\">FROM: <a href=\"page:browsers#recommended\">CHOOSE YOUR BROWSER</a></div>"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "PROBLEM",
+            "LIKELY CAUSE",
+            "SOLUTION"
+          ],
+          "rows": [
+            [
+              "A site logs me out constantly",
+              "You're using a throwaway/clean browser for logins",
+              "Log into that account from your main browser only, per the 3-browser lineup"
+            ],
+            [
+              "A browser feels slow after switching",
+              "Tor Browser or a heavily hardened setup",
+              "Expected trade-off for anonymity; use a faster browser for everyday, low-risk browsing"
+            ],
+            [
+              "A site says my browser is unsupported",
+              "Older browser detection scripts don't recognize LibreWolf/Mullvad's user agent",
+              "Try your backup browser for that one site"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "from-extensions",
+      "title": "When Sites Break",
+      "blocks": [
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-3a\">FROM: <a href=\"page:browser-extensions\">SET UP YOUR BROWSER</a></div>"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "PROBLEM",
+            "LIKELY CAUSE",
+            "SOLUTION"
+          ],
+          "rows": [
+            [
+              "Video won't play",
+              "Ad blocker blocking video player",
+              "Disable uBlock Origin for that site temporarily, or whitelist just the video domain"
+            ],
+            [
+              "Login button does nothing",
+              "Script blocked by uBlock Origin",
+              "Click the uBlock icon → toggle \"Disable on this site\""
+            ],
+            [
+              "Page loads blank",
+              "Overly aggressive protection",
+              "Use your backup browser for this site, or temporarily switch protection to \"Standard\""
+            ],
+            [
+              "Comments or reviews missing",
+              "Third-party scripts blocked",
+              "Check for a site \"privacy mode\" setting; some sites detect blockers and hide content"
+            ],
+            [
+              "CAPTCHA loop (infinite puzzles)",
+              "Privacy settings interfering with CAPTCHA",
+              "Enable \"Temporary allow all\" in uBlock Origin for that session"
+            ],
+            [
+              "Payments failing",
+              "Payment processor script blocked",
+              "Whitelist the payment domain, e.g. <em>*.stripe.com</em> or <em>*.braintree.com</em>"
+            ]
+          ]
+        },
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-36\" id=\"whitelist\" style=\"margin-top: 28px; margin-bottom: 0;\">\n<h3>How to Whitelist a Site</h3>\n<ol style=\"max-width: 720px;\">\n<li>Click the uBlock Origin icon in your toolbar.</li>\n<li>Click the large power button to disable blocking on the current site only.</li>\n<li>Reload the page — the site reactivates its scripts immediately.</li>\n<li>If only one feature is broken (like a video or a login), prefer disabling the specific tracker/script instead of the whole page — click the icon, open the dashboard, and unblock the single domain causing the issue.</li>\n<li>Whitelisting is per-site and persists until you toggle it back — review your whitelist occasionally and remove sites you no longer trust.</li>\n</ol>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "from-advanced",
+      "title": "Fingerprinting & Tool Issues",
+      "blocks": [
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-3a\">FROM: <a href=\"page:browser-fingerprinting\">ADVANCED CONFIGURATIONS</a></div>"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "PROBLEM",
+            "LIKELY CAUSE",
+            "SOLUTION"
+          ],
+          "rows": [
+            [
+              "Fingerprint test still says \"unique\"",
+              "Strict/randomization setting not actually enabled",
+              "Re-check Enhanced Tracking Protection (Firefox) or Shields (Brave), then retest"
+            ],
+            [
+              "Password manager won't autofill",
+              "Browser's built-in password manager conflicting with the extension",
+              "Disable your browser's native password manager per the Password Managers setup step"
+            ],
+            [
+              "DNS filtering blocks a site I need",
+              "Overly aggressive DNS-level blocklist",
+              "Whitelist the domain in your NextDNS/ControlD/AdGuard DNS dashboard"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "from-verify",
+      "title": "Test Suite Issues",
+      "blocks": [
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-3a\">FROM: <a href=\"page:browser-verify\">TEST &amp; VERIFY</a></div>"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "PROBLEM",
+            "LIKELY CAUSE",
+            "SOLUTION"
+          ],
+          "rows": [
+            [
+              "\"GPC signal detected\" doesn't show",
+              "Browser doesn't support GPC, or it's off",
+              "Safari and stock Chrome don't support it natively; switch to Brave, Firefox, or LibreWolf"
+            ],
+            [
+              "DNS leak test shows my ISP",
+              "VPN or private DNS not actually active during the test",
+              "Confirm your VPN/DNS provider is connected, then rerun the test"
+            ],
+            [
+              "Ad-blocker test shows slots as \"not blocked\"",
+              "Extension disabled on that domain, or filter list out of date",
+              "Re-enable on the domain and update filter lists from the extension's dashboard"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": "FILE NO. 018<br/>REV. 2026–08"
+}

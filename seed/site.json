@@ -1,0 +1,564 @@
+{
+  "tagline": "All things <u>security</u>, <u>privacy</u>,<br>and <u>protection</u>",
+  "footer": "privacy4all — because accessible privacy shouldn't come at a cost.",
+  "nav": [
+    {
+      "label": "PROJECTS",
+      "url": "#projects"
+    },
+    {
+      "label": "RESOURCES",
+      "url": "#additional-resources"
+    },
+    {
+      "label": "CONTACT",
+      "url": "#contact"
+    },
+    {
+      "label": "ABOUT",
+      "url": "#about"
+    }
+  ],
+  "sections": [
+    {
+      "id": "quick-check",
+      "title": "Quick Check",
+      "layout": "quick",
+      "items": [
+        "privacy-checklist",
+        "password-check",
+        "delete-yourself",
+        "takedown-templates"
+      ]
+    },
+    {
+      "id": "privacy-security",
+      "title": "Privacy & Security",
+      "layout": "topics",
+      "description": "<p class=\"p4a-1c\">The choice to live a private and safe life should be <b>available</b> and <b>accessible</b> to everyone.</p>\n<p class=\"p4a-1d\">There are plenty of steps you can take to better understand your options, and start cutting down the amount of data that may be available about you without your knowledge.</p>\n<div class=\"p4a-1e\">\n<span class=\"p4a-1f\">←</span>\n<p class=\"p4a-1c\">The manuals here are digestible for any experience level.</p>\n</div>",
+      "items": [
+        "browsers",
+        "data",
+        "cloud",
+        "ai",
+        "mobile",
+        "networks",
+        "operating-systems",
+        "passwords",
+        "auth",
+        "vpns",
+        "communication",
+        "storage",
+        "surveillance"
+      ]
+    },
+    {
+      "id": "projects",
+      "title": "Projects",
+      "layout": "projects",
+      "description": "<p class=\"p4a-1c\">Hands-on experience is the best way to learn and interact with new systems.</p>\n<p class=\"p4a-1i\">Look through this catalogue of projects to follow along to, or give inspiration for your next endeavor.</p>\n<p class=\"p4a-1c\">The manuals here are digestible for any experience level.</p>",
+      "items": [
+        "browsers",
+        "operating-systems",
+        "backups",
+        "streaming",
+        "vpns",
+        "raspberry-pi",
+        "dark-web"
+      ]
+    },
+    {
+      "id": "additional-resources",
+      "title": "Additional Resources",
+      "layout": "resources",
+      "links": [
+        {
+          "label": "Awesome Piracy",
+          "url": "https://github.com/Igglybuff/awesome-piracy/blob/master/readme.md",
+          "desc": "A curated list of arrrrrrrrr!"
+        },
+        {
+          "label": "Defensive Computing Checklist",
+          "url": "https://defensivecomputingchecklist.com/",
+          "desc": "Internet-related security steps."
+        },
+        {
+          "label": "Dig Deeper",
+          "url": "https://digdeeper.neocities.org/index.xhtml",
+          "desc": "Everything on cybersecurity, hacking, and privacy."
+        },
+        {
+          "label": "Hack Skills",
+          "url": "https://www.root-me.org/?lang=en",
+          "desc": "Develop your hacking skills."
+        },
+        {
+          "label": "Hacking Your Neighbours WiFi",
+          "url": "https://mango.pdf.zone/hacking-your-neighbours-wifi/",
+          "desc": "How-to on hacking WiFi."
+        },
+        {
+          "label": "Have I Been PWNED",
+          "url": "https://haveibeenpwned.com/",
+          "desc": "Check if your email is in a data breach."
+        },
+        {
+          "label": "How Secure Is My Password?",
+          "url": "https://www.security.org/how-secure-is-my-password/",
+          "desc": "Check password security."
+        },
+        {
+          "label": "Hyphanet",
+          "url": "https://www.hyphanet.org/index.html",
+          "desc": "FreeNet."
+        },
+        {
+          "label": "IP Filter",
+          "url": "https://github.com/fonic/ipfilter",
+          "desc": "ipfilter updater & generator."
+        },
+        {
+          "label": "I2P",
+          "url": "https://geti2p.net/en/",
+          "desc": "Invisible Internet Project."
+        },
+        {
+          "label": "JustDeleteMe",
+          "url": "https://backgroundchecks.org/justdeleteme/",
+          "desc": "Direct links to delete your account from web services."
+        },
+        {
+          "label": "LogMeIn Hamachi",
+          "url": "https://secure.logmein.com/products/hamachi/",
+          "desc": "VPN software."
+        },
+        {
+          "label": "OpenPuff",
+          "url": "https://embeddedsw.net/OpenPuff_Steganography_Home.html",
+          "desc": "Stenography tool."
+        },
+        {
+          "label": "PRISM Break",
+          "url": "https://prism-break.org/en/",
+          "desc": "Opt out of global data surveillance programs."
+        },
+        {
+          "label": "PrivacyTools.io",
+          "url": "https://www.privacytools.io/",
+          "desc": "Privacy tools guide for encrypted software."
+        },
+        {
+          "label": "Security practice games",
+          "url": "https://overthewire.org/wargames/",
+          "desc": "Games to develop security practices."
+        },
+        {
+          "label": "SpywareBlaster",
+          "url": "http://www.brightfort.com/spywareblaster.html",
+          "desc": "Pre-emptive blocking protection."
+        },
+        {
+          "label": "SpywareWatchdog",
+          "url": "https://spyware.neocities.org/",
+          "desc": "Tool for spyware awareness."
+        },
+        {
+          "label": "Tor",
+          "url": "https://torproject.org/",
+          "desc": "Free anonymizing proxy with SOCKS interface."
+        },
+        {
+          "label": "ZeroNet",
+          "url": "https://zeronet.io/",
+          "desc": "Open, free and uncensorable websites."
+        }
+      ]
+    }
+  ],
+  "sidebar": {
+    "groups": [
+      {
+        "label": "TOPICS",
+        "showOn": "home",
+        "fromSection": "privacy-security",
+        "items": []
+      }
+    ]
+  },
+  "pages": {
+    "privacy-checklist": {
+      "title": "Privacy Checklist",
+      "path": "quick-action/privacy-checklist.html",
+      "summary": "Small tasks, plus protest & border privacy.",
+      "image": "assets/watch.jpg",
+      "imageFit": "cover",
+      "topics": [
+        "data",
+        "mobile",
+        "surveillance"
+      ],
+      "kind": "checklist"
+    },
+    "password-check": {
+      "title": "Password Check",
+      "path": "quick-action/password-check.html",
+      "summary": "How strong is your password?",
+      "image": "assets/lock.png",
+      "imageFit": "contain",
+      "related": [
+        "privacy-checklist",
+        "delete-yourself"
+      ],
+      "topics": [
+        "passwords",
+        "auth"
+      ],
+      "kind": "checker"
+    },
+    "delete-yourself": {
+      "title": "Delete Yourself",
+      "path": "quick-action/delete-yourself.html",
+      "summary": "Scrub your personal information from the web.",
+      "image": "assets/qc-delete.png",
+      "imageFit": "contain",
+      "related": [
+        "takedown-templates",
+        "privacy-checklist"
+      ],
+      "topics": [
+        "data"
+      ],
+      "kind": "guide"
+    },
+    "takedown-templates": {
+      "title": "Takedown Templates",
+      "path": "quick-action/takedown-templates.html",
+      "summary": "Ready-to-send data removal request templates.",
+      "image": "assets/notif.jpg",
+      "imageFit": "cover",
+      "related": [
+        "delete-yourself"
+      ],
+      "topics": [
+        "data"
+      ],
+      "kind": "template"
+    },
+    "browser-extensions": {
+      "title": "Browser Extensions",
+      "path": "browser-privacy/extensions.html",
+      "summary": "Expand your browser with a minimal set of privacy extensions.",
+      "kind": "guide"
+    },
+    "browser-fingerprinting": {
+      "title": "Advanced Configurations",
+      "path": "browser-privacy/fingerprinting.html",
+      "summary": "Protect your identity: fingerprinting and per-browser hardening.",
+      "topics": [
+        "data"
+      ],
+      "kind": "tutorial"
+    },
+    "browser-verify": {
+      "title": "Verify Everything Works",
+      "path": "browser-privacy/verify.html",
+      "summary": "Diagnostics that test your browser's privacy.",
+      "topics": [
+        "browsers"
+      ],
+      "kind": "checker"
+    },
+    "browser-troubleshooting": {
+      "title": "Troubleshooting",
+      "path": "browser-privacy/troubleshooting.html",
+      "summary": "Fixes for broken sites and misbehaving tools.",
+      "kind": "guide"
+    },
+    "browser-resources": {
+      "title": "Browser Resources",
+      "path": "browser-privacy/resources.html",
+      "heading": "Resources",
+      "summary": "FAQ, glossary and curated links.",
+      "kind": "guide"
+    },
+    "browsers": {
+      "title": "Browsers",
+      "path": "browser-privacy/index.html",
+      "heading": "Browsers",
+      "summary": "Quick start guide to a private browser",
+      "image": "assets/www.jpg",
+      "keywords": "browser privacy brave firefox librewolf tor",
+      "parts": [
+        "browser-extensions",
+        "browser-fingerprinting",
+        "browser-verify",
+        "browser-troubleshooting",
+        "browser-resources"
+      ],
+      "topics": [
+        "data"
+      ]
+    },
+    "browser-fingerprinting-and-tracking": {
+      "title": "Browser Fingerprinting and Tracking",
+      "path": "guides/personal-data-tracking/browser-fingerprinting-and-tracking.html",
+      "topics": [
+        "browsers"
+      ],
+      "kind": "guide"
+    },
+    "data": {
+      "title": "Data",
+      "path": "guides/personal-data-tracking/overview.html",
+      "heading": "Personal Data & Tracking",
+      "image": "assets/notif.jpg",
+      "parts": [
+        "browser-fingerprinting-and-tracking"
+      ],
+      "topics": [
+        "browsers",
+        "surveillance"
+      ]
+    },
+    "backups": {
+      "title": "Backups & Data Management",
+      "path": "advanced/cloud-storage-files/local-backup-and-encryption-basics.html",
+      "heading": "Local Backup and Encryption Basics",
+      "summary": "Learn how to keep a backup of your data",
+      "topics": [
+        "storage"
+      ],
+      "kind": "tutorial"
+    },
+    "sharing-files": {
+      "title": "Sharing Files with Others",
+      "path": "advanced/cloud-storage-files/sharing-files-with-others.html",
+      "topics": [
+        "storage"
+      ],
+      "kind": "guide"
+    },
+    "cloud": {
+      "title": "Cloud",
+      "path": "advanced/cloud-storage-files/overview.html",
+      "heading": "Cloud Storage & Files",
+      "image": "assets/cloud.jpg",
+      "parts": [
+        "backups",
+        "sharing-files"
+      ],
+      "topics": [
+        "storage"
+      ]
+    },
+    "ai": {
+      "title": "AI",
+      "path": "guides/ai-security/ai-security.html",
+      "heading": "AI Security",
+      "image": "assets/ai.jpg"
+    },
+    "choosing-a-private-phone": {
+      "title": "Choosing a More Private Phone",
+      "path": "guides/mobile-device-privacy/choosing-a-more-private-phone.html",
+      "kind": "guide"
+    },
+    "hardening-your-phone": {
+      "title": "Rendering Whatever Phone You Actually Have",
+      "path": "guides/mobile-device-privacy/rendering-whatever-phone-you-actually-have.html",
+      "kind": "guide"
+    },
+    "phone-data": {
+      "title": "Interrogating the Data Actually Stored on Your Device",
+      "path": "guides/mobile-device-privacy/interrogating-the-data-actually-stored-on-your-device.html",
+      "kind": "guide"
+    },
+    "mobile": {
+      "title": "Mobile & Device",
+      "path": "guides/mobile-device-privacy/overview.html",
+      "heading": "Mobile & Device Privacy",
+      "image": "assets/sec.jpg",
+      "parts": [
+        "choosing-a-private-phone",
+        "hardening-your-phone",
+        "phone-data"
+      ],
+      "topics": [
+        "communication"
+      ]
+    },
+    "networks": {
+      "title": "Networks",
+      "path": "guides/network-privacy/network-privacy.html",
+      "heading": "Network Privacy",
+      "image": "assets/networks.jpg",
+      "topics": [
+        "vpns"
+      ]
+    },
+    "operating-systems": {
+      "title": "Operating Systems",
+      "path": "guides/secure-os-systems/secure-os-systems.html",
+      "heading": "Secure Operating Systems",
+      "summary": "Choose the right OS for your needs",
+      "image": "assets/os.jpeg",
+      "keywords": "os linux"
+    },
+    "passkeys": {
+      "title": "Passkeys Explained",
+      "path": "guides/accounts-authentication/passkeys-explained.html",
+      "topics": [
+        "passwords"
+      ],
+      "kind": "guide"
+    },
+    "auth": {
+      "title": "Auth / 2FA",
+      "path": "guides/accounts-authentication/accounts-and-authentication.html",
+      "heading": "Accounts & Authentication",
+      "image": "assets/robot.jpg",
+      "keywords": "2fa authentication accounts",
+      "parts": [
+        "passkeys"
+      ],
+      "topics": [
+        "passwords"
+      ]
+    },
+    "vpn-fundamentals": {
+      "title": "VPN Fundamentals",
+      "path": "advanced/vpn-vps/vpn-fundamentals.html",
+      "summary": "What a VPN does (and doesn't do), and where a VPN's protection stops.",
+      "kind": "guide"
+    },
+    "vpn-providers": {
+      "title": "VPN & VPS Providers",
+      "path": "advanced/vpn-vps/providers.html",
+      "summary": "Choose a VPN provider you can trust, and a VPS provider for self-hosting.",
+      "kind": "guide"
+    },
+    "vpn-configuration": {
+      "title": "Configure & Lock Down",
+      "path": "advanced/vpn-vps/vpn-configuration.html",
+      "summary": "Manually configure OpenVPN on Linux and firewall-lock it so nothing leaks.",
+      "topics": [
+        "networks"
+      ],
+      "kind": "tutorial"
+    },
+    "vps-setup": {
+      "title": "VPS & Self-Hosting",
+      "path": "advanced/vpn-vps/vps-setup.html",
+      "summary": "Rent a VPS, point a domain at it, and self-host a website with HTTPS.",
+      "topics": [
+        "networks"
+      ],
+      "kind": "tutorial"
+    },
+    "vpn-resources": {
+      "title": "Test, Glossary & Resources",
+      "path": "advanced/vpn-vps/resources.html",
+      "summary": "Confirm your setup isn't leaking, plus FAQ, glossary, and further reading.",
+      "topics": [
+        "networks"
+      ],
+      "kind": "checker"
+    },
+    "vpns": {
+      "title": "VPNs & VPS",
+      "path": "advanced/vpn-vps/index.html",
+      "heading": "A Practical Guide to VPNs & VPS",
+      "summary": "Projects to protect your internet traffic",
+      "image": "assets/vpn.jpg",
+      "keywords": "vpn vps self-hosting",
+      "parts": [
+        "vpn-fundamentals",
+        "vpn-providers",
+        "vpn-configuration",
+        "vps-setup",
+        "vpn-resources"
+      ],
+      "topics": [
+        "networks"
+      ]
+    },
+    "email-alternatives": {
+      "title": "Email Alternatives and Aliasing",
+      "path": "guides/communication-privacy/email-alternatives-and-aliasing.html",
+      "kind": "guide"
+    },
+    "voip-privacy": {
+      "title": "VoIP and Calling Privacy",
+      "path": "guides/communication-privacy/voip-and-calling-privacy.html",
+      "kind": "guide"
+    },
+    "communication": {
+      "title": "Communication",
+      "path": "guides/communication-privacy/overview.html",
+      "heading": "Communication Privacy",
+      "image": "assets/commu.jpg",
+      "parts": [
+        "email-alternatives",
+        "voip-privacy"
+      ],
+      "topics": [
+        "mobile"
+      ]
+    },
+    "storage": {
+      "title": "Storage",
+      "path": "guides/storage/storage.html",
+      "summary": "Trusted devices",
+      "topics": [
+        "cloud"
+      ]
+    },
+    "surveillance": {
+      "title": "Surveillance",
+      "path": "guides/surveillance/surveillance.html",
+      "image": "assets/surveillance.jpg",
+      "topics": [
+        "data"
+      ]
+    },
+    "streaming": {
+      "title": "Streaming",
+      "path": "projects/streaming.html",
+      "summary": "See your streaming options",
+      "topics": [
+        "data"
+      ],
+      "kind": "project"
+    },
+    "raspberry-pi": {
+      "title": "Raspberry Pi Projects",
+      "path": "projects/raspberry-pi.html",
+      "summary": "Build your own computer",
+      "image": "assets/raspberry-pi-logo.jpg",
+      "topics": [
+        "networks",
+        "operating-systems"
+      ],
+      "kind": "project"
+    },
+    "dark-web": {
+      "title": "Dark Web",
+      "path": "projects/dark-web.html",
+      "summary": "shhhh",
+      "topics": [
+        "networks",
+        "browsers"
+      ],
+      "kind": "project"
+    },
+    "passwords": {
+      "title": "Passwords",
+      "path": "guides/passwords/passwords.html",
+      "image": "assets/lock.png",
+      "summary": "Strong, unique passwords and how to manage them",
+      "keywords": "password manager generator passphrase",
+      "topics": [
+        "auth"
+      ]
+    }
+  }
+}

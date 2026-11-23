@@ -1,0 +1,77 @@
+{
+  "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Storage privacy is about the devices your data physically lives on: laptops, phones, USB drives and backup disks. If one is lost, stolen or seized, encryption is what keeps the data unreadable. Good habits &mdash; encrypting drives, keeping real backups, and wiping old devices properly &mdash; protect you against both accidents and attackers.</p>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "Full-disk encryption",
+              "html": "<p>Encrypts a whole drive so nothing on it is readable without the key.</p>"
+            },
+            {
+              "title": "3-2-1 backup",
+              "html": "<p>Three copies of your data, on two kinds of media, with one kept somewhere else.</p>"
+            },
+            {
+              "title": "Secure erase",
+              "html": "<p>Wiping a drive so deleted files can’t be recovered before you sell or recycle it.</p>"
+            },
+            {
+              "title": "NAS",
+              "html": "<p>Network-attached storage: a small home server that holds files and backups.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "everything",
+      "title": "Everything on Storage",
+      "summary": "Guides, tools, checkers and resources.",
+      "blocks": [
+        {
+          "type": "topic-index",
+          "cols": 3
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Elsewhere on the web"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Privacy Guides: encryption software",
+              "url": "https://www.privacyguides.org/en/encryption/",
+              "desc": "disk and file encryption tools."
+            },
+            {
+              "label": "Cryptomator",
+              "url": "https://cryptomator.org/",
+              "desc": "encrypt files and folders before storing them anywhere."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

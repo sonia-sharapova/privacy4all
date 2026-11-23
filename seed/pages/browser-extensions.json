@@ -1,0 +1,116 @@
+{
+  "subsections": [
+    {
+      "id": "setup-steps",
+      "title": "Step-by-step Configuration",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Every browser's privacy settings live in a different place. Pick yours below.</p>"
+        },
+        {
+          "type": "html",
+          "html": "<div class=\"bpe-tabs\" id=\"config-tabs\">\n<button class=\"p4a-glass-btn p4a-btn-nav bpe-tab-active\" data-tab=\"firefox\" type=\"button\">Firefox / LibreWolf</button>\n<button class=\"p4a-glass-btn p4a-btn-action bpe-tab\" data-tab=\"brave\" type=\"button\">Brave</button>\n<button class=\"p4a-glass-btn p4a-btn-action bpe-tab\" data-tab=\"chrome\" type=\"button\">Chrome</button>\n<button class=\"p4a-glass-btn p4a-btn-action bpe-tab\" data-tab=\"other\" type=\"button\">Your Browser Here</button>\n</div>\n<div class=\"bpe-config-box\">\n<div id=\"tab-firefox\">\n<div>\n<div class=\"bpe-step-label\">Step 1 — Enhanced Tracking Protection</div>\n<div class=\"bpe-code-row\">\n<code>about:preferences#privacy</code>\n<button class=\"p4a-glass-btn bpe-copy-btn copy-btn\" data-copy=\"about:preferences#privacy\" type=\"button\">Copy</button>\n</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\"><b>Action:</b> select \"Strict\" (instead of Standard or Custom). <b>Why:</b> blocks most trackers and enables Firefox's fingerprinting protection automatically.</p>\n</div>\n<div>\n<div class=\"bpe-step-label\">Step 2 — Turn Off Telemetry</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\">On the same <em>about:preferences#privacy</em> page, scroll to \"Firefox Data Collection and Use\" and uncheck all four boxes: technical/interaction data, personalized extension recommendations, study installs, and backlogged crash reports.</p>\n</div>\n<div>\n<div class=\"bpe-step-label\">Step 3 — DNS over HTTPS</div>\n<div class=\"bpe-code-row\">\n<code>about:preferences#general</code>\n<button class=\"p4a-glass-btn bpe-copy-btn copy-btn\" data-copy=\"about:preferences#general\" type=\"button\">Copy</button>\n</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\"><b>Action:</b> scroll to \"Network Settings,\" click Settings, and enable DNS over HTTPS — pick NextDNS if you also want ad/tracker blocking at the DNS level, or Cloudflare for a simpler option.</p>\n</div>\n<details class=\"bpe-advanced\">\n<summary>+ Advanced: Certificate Authorities</summary>\n<p style=\"font-size: 11px; letter-spacing: 0.08em; color: #b23; margin: 12px 0 0;\">Advanced — only for users comfortable editing low-level browser settings.</p>\n<div style=\"margin-top: 16px;\">\n<div style=\"font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; color: #1b1b1b; margin-bottom: 6px;\">Certificate Authorities</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\">Scroll to \"Certificates\" on the privacy page, click View Certificates → Authorities. Consider removing certificate authorities you don't trust (this guide flags TrustCor and Chinese government-linked CAs specifically).</p>\n</div>\n<div style=\"margin-top: 16px;\">\n<div style=\"font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; color: #1b1b1b; margin-bottom: 6px;\">Block Firefox's Own Telemetry Server</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\">Block <code>telemetry.mozilla.org</code> at the DNS level through your router or a DNS filtering service, as an extra layer beyond the in-browser toggles.</p>\n</div>\n</details>\n</div>\n<div id=\"tab-brave\" style=\"display:none;\">\n<div>\n<div class=\"bpe-step-label\">Step 1 — Shields</div>\n<div class=\"bpe-code-row\">\n<code>brave://settings/shields</code>\n<button class=\"p4a-glass-btn bpe-copy-btn copy-btn\" data-copy=\"brave://settings/shields\" type=\"button\">Copy</button>\n</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\"><b>Action:</b> confirm ad and tracker blocking is active on all sites (Settings → Shields also works). <b>Why:</b> it's on by default, but worth a quick check.</p>\n</div>\n<div>\n<div class=\"bpe-step-label\">Step 2 — Block Notification Requests</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\">Go to Settings → Additional settings → Privacy and security → Site and Shields Settings → Notifications, and set it to block sites from asking for notification permission.</p>\n</div>\n<div>\n<div class=\"bpe-step-label\">Step 3 — Social Media Blocking</div>\n<div class=\"bpe-code-row\">\n<code>brave://settings/socialBlocking</code>\n<button class=\"p4a-glass-btn bpe-copy-btn copy-btn\" data-copy=\"brave://settings/socialBlocking\" type=\"button\">Copy</button>\n</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\"><b>Action:</b> disable Google and Facebook login/social widgets if you don't use them.</p>\n</div>\n<div>\n<div class=\"bpe-step-label\">Step 4 — Confirm Global Privacy Control</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\">Visit <a href=\"https://globalprivacycontrol.org/\" rel=\"noopener\" target=\"_blank\">globalprivacycontrol.org</a> to confirm it's working — Brave supports this by default. See <a href=\"page:browser-verify\">Part 4: Test &amp; Verify</a> for how to read the result.</p>\n</div>\n</div>\n<div id=\"tab-chrome\" style=\"display:none;\">\n<p style=\"font-size: 14px; letter-spacing: 0.05em; color: #888; margin: 0 0 22px;\">If you can't fully leave Chrome (work requirements, specific extensions, etc.), do at least the following.</p>\n<div>\n<div class=\"bpe-step-label\">Step 1 — Disable Enhanced Spellcheck</div>\n<div class=\"bpe-code-row\">\n<code>chrome://settings/?search=Enhanced+Spell+Check</code>\n<button class=\"p4a-glass-btn bpe-copy-btn copy-btn\" data-copy=\"chrome://settings/?search=Enhanced+Spell+Check\" type=\"button\">Copy</button>\n</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\"><b>Why:</b> with Enhanced Spellcheck on, Chrome can send the text you type in web forms — including passwords in some cases — to Google's servers for spell-checking.</p>\n</div>\n<div style=\"margin-top: 22px;\">\n<div class=\"bpe-step-label\">Step 2 — Clear Site Data Periodically</div>\n<div class=\"bpe-code-row\">\n<code>chrome://settings/siteData</code>\n<button class=\"p4a-glass-btn bpe-copy-btn copy-btn\" data-copy=\"chrome://settings/siteData\" type=\"button\">Copy</button>\n</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\"><b>Action:</b> click Remove All periodically to clear cookies and site data.</p>\n</div>\n<div style=\"margin-top: 22px;\">\n<div class=\"bpe-step-label\">Step 3 — Skip Cloud Spellcheck Extensions</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\">Don't install Microsoft Editor or similar cloud-spellcheck extensions in Chrome or Edge, for the same reason as Step 1.</p>\n</div>\n<details class=\"bpe-advanced\">\n<summary>+ Advanced: what Incognito and on-device AI mean for you</summary>\n<div style=\"margin-top: 16px;\">\n<div style=\"font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; color: #1b1b1b; margin-bottom: 6px;\">Incognito Isn't Private</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\">Incognito Mode only hides your activity from other people using the same device. It does not stop Google, your internet provider, or the websites you visit from logging what you do, and Google's own employees have acknowledged its privacy limits fall short of what users expect.</p>\n</div>\n<div style=\"margin-top: 16px;\">\n<div style=\"font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; color: #1b1b1b; margin-bottom: 6px;\">On-Device AI Downloads</div>\n<p style=\"font-size: 15.5px; color: #555; line-height: 1.65; margin: 0;\">As of May 2026, Chrome downloads a roughly 4GB file to support on-device AI features without a clear notification to the user; if disk space or bandwidth is a concern, check Chrome's AI/on-device model settings and disable this if you don't need it.</p>\n</div>\n</details>\n</div>\n<div id=\"tab-other\" style=\"display:none;\">\n<p style=\"font-size: 14px; letter-spacing: 0.05em; color: #888; margin: 0 0 16px;\">Not using Firefox, Brave, or Chrome? The same handful of settings apply almost everywhere — look for these in your browser's privacy or settings menu.</p>\n<ol style=\"margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.9; color: #333;\">\n<li>Enable the strictest built-in tracking protection option available.</li>\n<li>Turn off any \"usage data,\" \"telemetry,\" or \"diagnostics\" sharing toggle.</li>\n<li>Turn off autofill for addresses and payment cards if you don't want the browser storing that information.</li>\n<li>Turn off search suggestions that send your keystrokes to a server as you type.</li>\n<li>Enable HTTPS-only mode if the browser offers it.</li>\n<li>Set a private search engine as default (see <a href=\"page:browsers#recommended\">Part 1</a>).</li>\n</ol>\n</div>\n</div>\n<a href=\"#extensions\" style=\"font-size: 11.5px; letter-spacing: 0.1em;\">Continue to: Essential Extensions ↓</a>"
+        }
+      ]
+    },
+    {
+      "id": "extensions",
+      "title": "Install a Minimal Set of Privacy Extensions",
+      "blocks": [
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-28\" style=\"display:flex; flex-direction:column; gap:32px; padding:36px 40px;\">\n<div>\n<h3 style=\"font-size: 22px; display:flex; align-items:center; gap:10px;\"><img alt=\"\" src=\"assets/uBlock-Origin.svg\" style=\"width:24px; height:24px; object-fit:contain;\"/>uBlock Origin <span style=\"color: #888; font-weight: 400; font-size: 14px;\">— top pick across every source consulted</span></h3>\n<p style=\"font-size: 15.5px; color: #888; line-height: 1.65; margin: 0 0 12px;\">Blocks ads and trackers, and is widely regarded as the most effective and best-maintained blocker available.</p>\n<div style=\"display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 16px;\">\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/\" rel=\"noopener\" target=\"_blank\">Install for Firefox</a>\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://chromewebstore.google.com/search/ublock%20origin\" rel=\"noopener\" target=\"_blank\">Install for Chrome</a>\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://chromewebstore.google.com/search/ublock%20origin\" rel=\"noopener\" target=\"_blank\">Install for Brave</a>\n</div>\n<ol style=\"margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: #333;\">\n<li>Go to the extension store for your browser (Firefox Add-ons, Chrome Web Store, or Brave/Edge's respective stores).</li>\n<li>Search for \"uBlock Origin\" and confirm the developer listed is Raymond Hill, also known as gorhill. Do not install look-alikes such as \"uBlock\" (no \"Origin\") or \"uBlock Pro,\" and note that it has no connection to the website \"ublock.org.\"</li>\n<li>Click Install/Add to Browser.</li>\n<li>If you're on Chrome specifically: Google disabled the original uBlock Origin for most Chrome users in 2025 as part of the Manifest V3 changes. Install uBlock Origin Lite instead (also by Raymond Hill) if the full version isn't available to you. Firefox and Firefox-based browsers like LibreWolf still support the full, more capable version.</li>\n<li>If you use Mullvad Browser, you can skip this step: uBlock Origin comes built in.</li>\n</ol>\n</div>\n<div>\n<h3 style=\"font-size: 22px; display:flex; align-items:center; gap:10px;\"><img alt=\"\" src=\"assets/PrivacyBadgerLogo.svg\" style=\"width:24px; height:24px; object-fit:contain;\"/>Privacy Badger <span style=\"color: #888; font-weight: 400; font-size: 14px;\">(by the Electronic Frontier Foundation)</span></h3>\n<p style=\"font-size: 15.5px; color: #888; line-height: 1.65; margin: 0 0 12px;\">Learns which trackers are following you across sites and blocks them, with almost no configuration needed.</p>\n<ol style=\"margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: #333;\">\n<li>Search your browser's extension store for \"Privacy Badger\" and confirm the publisher is the EFF (Electronic Frontier Foundation).</li>\n<li>Install it and leave it running in the background; it needs no setup.</li>\n</ol>\n<p style=\"font-size: 15.5px; color: #888; line-height: 1.65; margin: 12px 0 0;\">Note it currently doesn't work on Safari (macOS or iOS), though the EFF was working on Safari support as of June 2025.</p>\n</div>\n<div>\n<h3 style=\"font-size: 22px; display:flex; align-items:center; gap:10px;\"><img alt=\"\" src=\"assets/Decentraleyes_logo.png\" style=\"width:24px; height:24px; object-fit:contain;\"/>Decentraleyes</h3>\n<p style=\"font-size: 15.5px; color: #888; line-height: 1.65; margin: 0 0 12px;\">Serves common website code libraries locally instead of letting your browser fetch them from Google or other third-party servers, which reduces one common way sites can track you across the web.</p>\n<ol style=\"margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: #333;\">\n<li>Search your browser's extension store for \"Decentraleyes\" and install it.</li>\n<li>No configuration is required after installation.</li>\n</ol>\n</div>\n<div>\n<h3 style=\"font-size: 22px; display:flex; align-items:center; gap:10px;\"><img alt=\"\" src=\"assets/facebookcontainer.webp\" style=\"width:24px; height:24px; object-fit:contain; border-radius:4px;\"/>Facebook Container <span style=\"color: #888; font-weight: 400; font-size: 14px;\">(Firefox and LibreWolf only)</span></h3>\n<p style=\"font-size: 15.5px; color: #888; line-height: 1.65; margin: 0 0 12px;\">Isolates Facebook in its own contained tab so it can't track your activity on other websites you visit.</p>\n<ol style=\"margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: #333;\">\n<li>Search Firefox Add-ons for \"Facebook Container\" (made by Mozilla) and install it.</li>\n<li>After installation, any Facebook tab automatically opens in an isolated container; no further setup needed.</li>\n</ol>\n</div>\n<div>\n<h3 style=\"font-size: 22px;\">Disable HTML5 Autoplay</h3>\n<p style=\"font-size: 15.5px; color: #888; line-height: 1.65; margin: 0 0 12px;\">Stops videos on websites from automatically starting with sound.</p>\n<ol style=\"margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: #333;\">\n<li>Search your extension store for \"Disable HTML5 Autoplay\" and install it.</li>\n<li>Optionally review its settings to allowlist specific sites where you do want autoplay.</li>\n</ol>\n</div>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "matrix",
+      "title": "Extension Risk & Utility Matrix",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "EXTENSION",
+            "PRIVACY BENEFIT",
+            "SECURITY RISK",
+            "REQUIRED?"
+          ],
+          "rows": [
+            [
+              "uBlock Origin",
+              "★★★★★ Blocks most trackers",
+              "★☆☆☆☆ Low risk (well-audited)",
+              "Essential"
+            ],
+            [
+              "Privacy Badger",
+              "★★★★☆ Blocks unknown trackers",
+              "★☆☆☆☆ Low risk (EFF)",
+              "Recommended"
+            ],
+            [
+              "Decentraleyes",
+              "★★★☆☆ Reduces CDN tracking",
+              "★☆☆☆☆ Low risk",
+              "Optional"
+            ],
+            [
+              "Facebook Container",
+              "★★★★☆ Isolates Facebook",
+              "★☆☆☆☆ Low risk",
+              "If you use Facebook"
+            ],
+            [
+              "NoScript",
+              "★★★★★ Blocks all scripts",
+              "★★☆☆☆ Breaks many sites",
+              "Advanced only"
+            ],
+            [
+              "TamperMonkey",
+              "☆☆☆☆☆ (User scripts)",
+              "★★★★★ HIGH RISK",
+              "Avoid unless expert"
+            ],
+            [
+              "Paywall bypass",
+              "☆☆☆☆☆ (Access only)",
+              "★★☆☆☆ May violate ToS",
+              "Optional"
+            ],
+            [
+              "HTTPS Everywhere",
+              "★★☆☆☆ (Mostly redundant)",
+              "★☆☆☆☆ Low risk",
+              "No longer needed"
+            ]
+          ],
+          "card": true
+        }
+      ]
+    },
+    {
+      "id": "safety-check",
+      "title": "How to Check an Extension's Safety",
+      "blocks": [
+        {
+          "type": "html",
+          "html": "<details class=\"bpe-checkpoint\" id=\"red-flags\">\n<summary>\n<div style=\"display: flex; align-items: center; gap: 12px;\">\n<span class=\"bpe-checkpoint-tag\">CHECKPOINT</span>\n<span style=\"font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em;\">Red Flags — When to Avoid an Extension</span>\n</div>\n</summary>\n<div class=\"bpe-checkpoint-body\">\n<p style=\"font-size: 15.5px; letter-spacing: 0.06em; line-height: 1.7; margin: 0 0 16px;\">Never install an extension that shows one of these signs. Click each to see why it matters.</p>\n<details class=\"bpe-flag\">\n<summary>Asks for \"Read and change all your data on websites you visit\" for no clear reason</summary>\n<p>Legitimate ad/tracker blockers need this permission to work. A note-taking app, theme, or unrelated utility asking for it has no good reason to — that's the warning sign.</p>\n</details>\n<details class=\"bpe-flag\">\n<summary>Has few users but many glowing reviews</summary>\n<p>Fake or paid reviews are a common way to disguise a rushed or malicious extension launch. A low install count with a wall of five-star reviews rarely adds up naturally.</p>\n</details>\n<details class=\"bpe-flag\">\n<summary>Was recently bought by an unknown company</summary>\n<p>A well-regarded extension can turn hostile overnight after an acquisition. Check the changelog and reviews around the sale date before trusting an update from a new owner.</p>\n</details>\n<details class=\"bpe-flag\">\n<summary>Hasn't been updated in over a year</summary>\n<p>Unmaintained extensions accumulate unpatched security holes as browsers change their APIs underneath them.</p>\n</details>\n<details class=\"bpe-flag\">\n<summary>Comes from a third-party website, not the official store</summary>\n<p>Store review processes catch obvious malware before it reaches you. A sideloaded file skips that check entirely.</p>\n</details>\n<details class=\"bpe-flag\" style=\"border-bottom: 1px solid rgba(0,0,0,0.15);\">\n<summary>Has a name that mimics a popular extension</summary>\n<p>E.g. \"uBlock\" vs \"uBlock Origin.\" Copycats piggyback on a trusted name's search ranking to catch users who don't check the developer.</p>\n</details>\n</div>\n</details>\n<div class=\"p4a-1g\" style=\"grid-template-columns: repeat(5, 1fr); gap: 20px; padding: 28px;\">\n<div class=\"p4a-23\">\n<div class=\"p4a-26\">01</div>\n<div style=\"font-size: 15.5px; letter-spacing: 0.05em; line-height: 1.6; color: #333;\">Read the reviews — look for complaints about data collection</div>\n</div>\n<div class=\"p4a-23\">\n<div class=\"p4a-26\">02</div>\n<div style=\"font-size: 15.5px; letter-spacing: 0.05em; line-height: 1.6; color: #333;\">Check the user count — thousands of users means more scrutiny</div>\n</div>\n<div class=\"p4a-23\">\n<div class=\"p4a-26\">03</div>\n<div style=\"font-size: 15.5px; letter-spacing: 0.05em; line-height: 1.6; color: #333;\">Verify the developer — is this a known entity?</div>\n</div>\n<div class=\"p4a-23\">\n<div class=\"p4a-26\">04</div>\n<div style=\"font-size: 15.5px; letter-spacing: 0.05em; line-height: 1.6; color: #333;\">Check the permissions — does it need more access than makes sense?</div>\n</div>\n<div class=\"p4a-23\">\n<div class=\"p4a-26\">05</div>\n<div style=\"font-size: 15.5px; letter-spacing: 0.05em; line-height: 1.6; color: #333;\">Search online — \"[Extension name] privacy concerns\"</div>\n</div>\n</div>"
+        }
+      ]
+    }
+  ],
+  "meta": "FILE NO. 015<br/>REV. 2026–08<br/>READ TIME 5 MIN",
+  "intro": [
+    {
+      "type": "quote",
+      "quote": "Install as few extensions as possible. A minimal, well-audited set beats a long list of unaudited convenience tools.",
+      "card": true,
+      "sideFirst": true,
+      "side": "text",
+      "sideLabel": "WHY IT MATTERS",
+      "sideText": "<p>Every extension is a piece of code with broad access to what you see and type. Where a setting can do the job instead of an extension, prefer the setting — keep the list deliberately short.</p>"
+    }
+  ]
+}

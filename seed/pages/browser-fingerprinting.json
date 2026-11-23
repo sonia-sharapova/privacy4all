@@ -1,0 +1,71 @@
+{
+  "subsections": [
+    {
+      "id": "protection",
+      "title": "Per-browser Protection Steps",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Beyond fingerprinting, a few companion tools close most of the gaps a browser alone can't: a password manager, DNS-level filtering, and container tabs. Covered at the end of this page.</p>"
+        },
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-36\">\n<div>\n<h3>Firefox or LibreWolf</h3>\n<p>These apply to both Firefox and LibreWolf, since LibreWolf is built on Firefox's codebase.</p>\n<ol>\n<li>Open <em>about:preferences#privacy</em> in the address bar.</li>\n<li>Under \"Enhanced Tracking Protection,\" select Strict (instead of Standard or Custom). This also enables fingerprinting protection.</li>\n<li>LibreWolf ships with these settings hardened by default, so steps above are usually already set for you.</li>\n</ol>\n</div>\n<div>\n<h3>Brave</h3>\n<ol>\n<li>No action needed by default — Brave randomizes a set of fingerprinting-relevant values for each site and session automatically.</li>\n<li>Confirm it's active: go to <em>brave://settings/shields</em> and check that fingerprinting blocking is set to \"Standard\" or \"Strict.\"</li>\n</ol>\n</div>\n<div>\n<h3>Mullvad Browser</h3>\n<ol>\n<li>No action needed. It's built specifically to give every user the same fingerprint, so no one stands out from the crowd.</li>\n</ol>\n</div>\n<div>\n<h3>Safari <span style=\"color:#888; font-weight:400; font-size:14px;\">(iOS 26 / macOS Tahoe or later)</span></h3>\n<ol>\n<li>Fingerprinting protection is on by default under \"All Browsing\" mode in Safari's privacy settings.</li>\n<li>Check Settings → Safari → Privacy &amp; Security to confirm it's enabled.</li>\n</ol>\n</div>\n<div>\n<h3>Tor Browser</h3>\n<ol>\n<li>Use it when you need the strongest available anti-fingerprinting protection, since it's purpose-built for this.</li>\n<li>Available on Windows, macOS, Linux, and Android.</li>\n</ol>\n</div>\n<div>\n<h3>Optional</h3>\n<ol>\n<li>Use more than one browser for different activities (see <a href=\"page:browsers#recommended\">Browsers</a>).</li>\n<li>Since each browser and its extensions have a different fingerprint, spreading your activity across a couple of browsers makes it harder to tie everything back to one profile.</li>\n</ol>\n</div>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "check",
+      "title": "How to Check Your Own Fingerprint",
+      "blocks": [
+        {
+          "type": "numbered",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "title": "coveryourtracks.eff.org",
+              "text": "Click the test button. It will tell you whether your browser's fingerprint is unique among the browsers it has seen, and whether your protections are working.",
+              "url": "https://coveryourtracks.eff.org/"
+            },
+            {
+              "title": "amiunique.org",
+              "text": "Get a second opinion; as of its last public count, it had recorded over 1.7 million fingerprints for comparison.",
+              "url": "https://amiunique.org/"
+            },
+            {
+              "title": "deviceinfo.me",
+              "text": "See, in plain terms, exactly which data points about your device are visible to any website you visit.",
+              "url": "https://deviceinfo.me/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "companion-tools",
+      "title": "Essential Companion Tools",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>A hardened browser handles tracking and fingerprinting. These three tools cover what it can't.</p>"
+        },
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-37\">\n<div class=\"p4a-37-title\">Password Managers</div>\n<div class=\"p4a-37-tag critical\">CRITICAL FOR PRIVACY</div>\n<div class=\"p4a-29\" style=\"margin-bottom:14px;\">\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://bitwarden.com/\" rel=\"noopener\" target=\"_blank\"><img alt=\"\" class=\"p4a-2a-icon\" src=\"assets/bitwarden.jpg\"/>Bitwarden</a>\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://keepassxc.org/\" rel=\"noopener\" target=\"_blank\"><img alt=\"\" class=\"p4a-2a-icon\" src=\"assets/keepassxc.svg\"/>KeePassXC</a>\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://proton.me/pass\" rel=\"noopener\" target=\"_blank\"><img alt=\"\" class=\"p4a-2a-icon\" src=\"assets/proton-pass.webp\"/>Proton Pass</a>\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://1password.com/\" rel=\"noopener\" target=\"_blank\"><img alt=\"\" class=\"p4a-2a-icon\" src=\"assets/1password.png\"/>1Password</a>\n</div>\n<p><b>Why:</b> without a password manager, you'll reuse passwords or use \"Login with Google/Facebook\" — both are privacy disasters.</p>\n<p style=\"margin-bottom:0;\"><b>Setup:</b> install the extension, disable your browser's built-in password manager, then start generating unique passwords per site.</p>\n</div>\n<div class=\"p4a-37\">\n<div class=\"p4a-37-title\">DNS-Level Filtering</div>\n<div class=\"p4a-37-tag advanced\">ADVANCED</div>\n<div class=\"p4a-29\" style=\"margin-bottom:14px;\">\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://nextdns.io/\" rel=\"noopener\" target=\"_blank\">NextDNS</a>\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://controld.com/\" rel=\"noopener\" target=\"_blank\">ControlD</a>\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://adguard-dns.io/\" rel=\"noopener\" target=\"_blank\">AdGuard DNS</a>\n</div>\n<p><b>Why:</b> blocks trackers and malware at the network level, before they even reach your browser — covers every app on the device, not just one browser.</p>\n<p class=\"p4a-37-warn\">Advanced: may require router-level configuration to apply to every device on your network.</p>\n</div>\n<div class=\"p4a-37\">\n<div class=\"p4a-37-title\">Container Tabs <span style=\"color:#888; font-weight:400; font-size:12px;\">(Firefox / LibreWolf only)</span></div>\n<div style=\"height:14px;\"></div>\n<div class=\"p4a-29\" style=\"margin-bottom:14px;\">\n<a class=\"p4a-glass-btn p4a-btn-redirect p4a-2a\" href=\"https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/\" rel=\"noopener\" target=\"_blank\">Multi-Account Containers</a>\n</div>\n<p style=\"margin-bottom:0;\"><b>Why:</b> isolate banking, work, and personal browsing into separate containers — cookies don't cross between them, so sites in one container can't see what you're doing in another.</p>\n</div>"
+        }
+      ]
+    }
+  ],
+  "meta": "FILE NO. 016<br/>REV. 2026–08<br/>READ TIME 4 MIN",
+  "intro": [
+    {
+      "type": "html",
+      "html": "<div class=\"p4a-33\">WHAT FINGERPRINTING ACTUALLY IS</div>"
+    },
+    {
+      "type": "text",
+      "html": "<p><b>Fingerprinting</b> is a tracking method that doesn't rely on cookies at all. Instead, a website quietly collects dozens of small details about your device — operating system, timezone, language, screen size, installed fonts, RAM, browser version, and more — and combines them into a profile that can identify you almost as reliably as a cookie can, even if you clear cookies or use private browsing.</p>\n<p>\"<span class=\"p4a-35-cap\">P</span>rivate browsing mode, VPNs, and Tor by themselves do not stop fingerprinting. You need a browser or setting specifically designed to resist it.\"</p>"
+    }
+  ]
+}

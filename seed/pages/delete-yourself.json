@@ -1,0 +1,247 @@
+{
+  "subtitle": "Data removal & privacy scrubbing guide",
+  "meta": "Aug 3, 2026",
+  "subsections": [
+    {
+      "id": "finding",
+      "title": "Finding Your Data",
+      "summary": "Search for yourself, check people-search sites and breach lookups.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Hmhm yes yes, all we hear is all this talk about 'personal data' and it being the hottest commodity on the market yada yada attention economy. But now? No. Now, privacy is the new cool guy on the block (or, I guess, we would't know where he is. thats what makes him so cool)</p><p>I rekon everyone has at one point or another googles themself, just to see :) People usually find themselves in one of two cohorts:</p><ol><li>wowow alright.. there's millions of 'me' out there</li><li>oh no, it's JUST me out there</li></ol><p>'Privacy' is not about how secretive you are, or how extroverted or trusting, or how much of yourself you put online. This is about those who want your data, but cannot recieve it from you directly (sketchy sketchy).</p><p>It's spam calls, and emails, and hyper-specific advertisements which you swear read your brain because how did they know I wanted that..</p><p>Anyways, that's not really the point. the point is that no matter how popular or underground you want to be, the power you hold is in your autonomy over what information you CHOOSE to share.</p><p>All that to say: Go look for yourself!</p>"
+        },
+        {
+          "type": "columns",
+          "cols": 3,
+          "style": "headed",
+          "card": true,
+          "items": [
+            {
+              "title": "Step 1: Google Yourself",
+              "html": "<p>Search for your name, email addresses, and phone numbers:</p><ul><li>\"First Last\" (in quotes)</li><li>\"First Last\" \"City\" (with location)</li><li>\"First Last\" phone number</li><li>email@domain.com</li></ul>"
+            },
+            {
+              "title": "Step 2: Use People Search",
+              "html": "<p>Some sites specialize in aggregating your information, so it doesn't hurt to check each for a listing:</p><ul><li><a href=\"https://www.whitepages.com/\">Whitepages.com</a></li><li><a href=\"https://www.spokeo.com/\">Spokeo.com</a></li><li><a href=\"https://www.beenverified.com/\">BeenVerified.com</a></li><li><a href=\"https://www.peoplefinder.com/\">PeopleFinder.com</a></li></ul>"
+            },
+            {
+              "title": "Step 3: Check Data Breaches",
+              "html": "<p>Visit <a href=\"https://haveibeenpwned.com/\">haveibeenpwned.com</a> and enter your email addresses. This shows which breaches your data has appeared in.</p><p><small>Log what you find so you can remove it later.</small></p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brokers",
+      "title": "Data Removal Services",
+      "summary": "Paid opt-out services, or the free DIY broker opt-out list.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Data brokers buy, aggregate, and resell your personal information. Sounds gross and creepy but the good news is that you can remove yourself manually for free, or pay a service to automate the process.</p>"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Paid service"
+        },
+        {
+          "type": "numbered",
+          "style": "list",
+          "before": "<p>How they work:</p>",
+          "items": [
+            {
+              "text": "You provide your name and known addresses"
+            },
+            {
+              "text": "They scan data broker sites for your information"
+            },
+            {
+              "text": "They submit opt-out requests on your behalf"
+            },
+            {
+              "text": "They send you reports on what was removed"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Service",
+            "What it does",
+            "Cost"
+          ],
+          "rows": [
+            [
+              "<a href=\"https://joindeleteme.com/\">DeleteMe</a>",
+              "Fully managed removal across a large list of broker sites, with periodic re-checks",
+              "Paid subscription"
+            ],
+            [
+              "<a href=\"https://easyoptouts.com/\">EasyOptOuts</a>",
+              "One-time or subscription broker removal, smaller footprint than DeleteMe",
+              "Paid, one-time option available"
+            ],
+            [
+              "<a href=\"https://www.optery.com/\">Optery</a>",
+              "Free tier shows where you're listed; paid tiers handle the actual removals",
+              "Free scan, paid removal"
+            ]
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "DIY removal: the BADBOOL list"
+        },
+        {
+          "type": "numbered",
+          "style": "list",
+          "before": "<p>The <a href=\"https://github.com/xLegoMan/BADBOOL\">Big Ass Data Broker Opt-Out List (BADBOOL)</a> is a large, free, community-maintained list of data brokers with direct opt-out links. Doing it yourself takes longer than a paid service, but costs nothing. Start with its highest-priority tier of sites, then work down the list over time.</p><p>Process:</p>",
+          "items": [
+            {
+              "text": "Visit each data broker site on the list"
+            },
+            {
+              "text": "Find their opt-out page (usually in the footer)"
+            },
+            {
+              "text": "Submit your removal request"
+            },
+            {
+              "text": "Document which sites you've submitted to"
+            },
+            {
+              "text": "Follow up in 30-60 days to verify removal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "title": "Specific Services",
+      "summary": "Google's results tool, AI services, social media, and old accounts.",
+      "blocks": [
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Google’s “results about you” tool"
+        },
+        {
+          "type": "text",
+          "html": "<p>Google's free tool that scans for your personal info in search results. You can access it at <a href=\"https://myactivity.google.com/results-about-you\">Results About You</a>, search \"results about you\" in Google, or visit your Google Account's \"Results about you\" page to submit removal requests.</p><p><b>What it does:</b></p><ul><li>finds your home address, phone number, email</li><li>finds ID numbers (passport, driver's license, SSN)</li><li>requests removal of these from Google search results</li></ul>"
+        },
+        {
+          "type": "callout",
+          "label": "The catch",
+          "html": "<p>You need a Google account and you have to tell them your address and phone numbers for this to work.</p>"
+        },
+        {
+          "type": "numbered",
+          "style": "list",
+          "before": "<p><b>To configure:</b></p>",
+          "items": [
+            {
+              "text": "Sign in to your Google account"
+            },
+            {
+              "text": "Go to the URL above"
+            },
+            {
+              "text": "Click \"Get started\""
+            },
+            {
+              "text": "Add your personal information to monitor"
+            },
+            {
+              "text": "Google will run regular scans and alert you"
+            }
+          ]
+        },
+        {
+          "type": "columns",
+          "cols": 3,
+          "style": "divided",
+          "items": [
+            {
+              "title": "AI Services",
+              "html": "<p>Most major AI providers (OpenAI, etc.) let you request deletion of your account data and chat history from account privacy settings. Be aware that opting out of a company's model-training program is often a separate toggle from account deletion &mdash; check both.</p>"
+            },
+            {
+              "title": "Social Media Accounts",
+              "html": "<p><a href=\"https://justdeleteme.xyz/\">justdelete.me</a> is a directory of direct account-deletion links and difficulty ratings for hundreds of social platforms and web services.</p>"
+            },
+            {
+              "title": "Old Accounts",
+              "html": "<p>Check your password manager or old email inbox for \"welcome\" emails to find accounts you forgot you had, then delete or deactivate the ones you no longer use &mdash; a dormant account is still a data source.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "templates",
+      "title": "Takedown Templates",
+      "summary": "Ready-to-send removal request templates you can copy and paste.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "buttons",
+          "before": "<p>Don't want to write your removal request from scratch? We put together ready-to-send templates for data broker opt-outs, GDPR/CCPA deletion requests, and Google's \"results about you\" tool &mdash; just copy, fill in the brackets, and send.</p>",
+          "items": [
+            {
+              "label": "View Takedown Request Templates →",
+              "url": "page:takedown-templates"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": [
+    {
+      "type": "text",
+      "html": "<p><i>Remember: Privacy is about agency, not (necessarily) secrecy.</i></p>"
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "subheading",
+      "style": "h3",
+      "text": "Resources"
+    },
+    {
+      "type": "resources",
+      "style": "list",
+      "items": [
+        {
+          "label": "BADBOOL list",
+          "url": "https://github.com/xLegoMan/BADBOOL",
+          "desc": "free, community-maintained data broker opt-out directory."
+        },
+        {
+          "label": "justdelete.me",
+          "url": "https://justdeleteme.xyz/",
+          "desc": "direct account-deletion links by service."
+        },
+        {
+          "label": "Have I Been Pwned",
+          "url": "https://haveibeenpwned.com/",
+          "desc": "check if your email appears in a known breach."
+        },
+        {
+          "label": "Privacy Guides",
+          "url": "https://www.privacyguides.org/",
+          "desc": "broader, community-maintained privacy recommendations."
+        }
+      ]
+    }
+  ]
+}

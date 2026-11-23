@@ -1,0 +1,76 @@
+{
+  "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Your phone knows more about you than any other device: where you go, who you talk to, your photos, your health and your money. Much of that is shared with apps, advertisers and your carrier by default. A few settings &mdash; app permissions, location history, the advertising ID and a strong passcode &mdash; make a big difference, whatever phone you have.</p>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "App permissions",
+              "html": "<p>What an app is allowed to access: location, camera, microphone, contacts. Grant only what it needs.</p>"
+            },
+            {
+              "title": "Advertising ID",
+              "html": "<p>An identifier apps use to track you for ads. Delete or reset it in settings.</p>"
+            },
+            {
+              "title": "Biometric unlock",
+              "html": "<p>Face or fingerprint unlock. Convenient, but in some places you can be forced to use it.</p>"
+            },
+            {
+              "title": "Full-disk encryption",
+              "html": "<p>Scrambles everything on the phone until it is unlocked with your passcode.</p>"
+            },
+            {
+              "title": "IMSI catcher",
+              "html": "<p>A fake cell tower that tricks nearby phones into connecting so they can be tracked.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "everything",
+      "title": "Everything on Mobile & Device",
+      "summary": "Guides, tools, checkers and resources.",
+      "blocks": [
+        {
+          "type": "topic-index",
+          "cols": 3
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Elsewhere on the web"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Privacy Guides: mobile phones",
+              "url": "https://www.privacyguides.org/en/mobile-phones/",
+              "desc": "more private phones and operating systems."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

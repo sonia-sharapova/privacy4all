@@ -1,0 +1,119 @@
+{
+  "subsections": [
+    {
+      "id": "who-watches",
+      "title": "Who's Watching You Online?",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Every time you get on the internet, you are not alone. Before you protect yourself, it helps to know who is actually watching:</p>"
+        },
+        {
+          "type": "columns",
+          "cols": 4,
+          "style": "plain",
+          "items": [
+            {
+              "title": "Wi-Fi Operator",
+              "html": "<p class=\"p4a-25\">Whoever runs the network you're connected to — a coffee shop, an office, a landlord.</p>"
+            },
+            {
+              "title": "Your ISP",
+              "html": "<p class=\"p4a-25\">Your Internet Service Provider (Optimum, Verizon, and the like) sees every unencrypted request you make.</p>"
+            },
+            {
+              "title": "Lawful Interception",
+              "html": "<p class=\"p4a-25\">Government or law enforcement requests, made through legal channels.</p>"
+            },
+            {
+              "title": "Unlawful Interception",
+              "html": "<p class=\"p4a-25\">Hackers and other bad actors who want your data for their own purposes.</p>"
+            }
+          ],
+          "card": true
+        },
+        {
+          "type": "text",
+          "html": "<p>The uncomfortable truth: you are always being watched. An unencrypted connection can leak your IP address, and your IP address can reveal your physical location — so network privacy is about physical safety too, not just data. A quick tell: look at the start of a web address. HTTP versus HTTPS, where the S stands for secure. You want the S.</p>"
+        }
+      ]
+    },
+    {
+      "id": "why",
+      "title": "Why This Matters",
+      "blocks": [
+        {
+          "type": "html",
+          "html": "<div class=\"p4a-1g\" style=\"grid-template-columns: 1fr 1fr; gap: 48px; padding: 32px;\">\n<p class=\"p4a-1c\" style=\"font-size: 15.5px; letter-spacing:0.05em; line-height:1.9; color:#333;\">A VPN connects you to another computer somewhere else in the world through an encrypted tunnel, and you borrow that computer's IP address instead of the one your ISP handed you. It doesn't make your activity disappear — it makes it much harder to link back to you. Does privacy even matter anymore? Yes, and the earlier you start, the better: on the internet, companies and corporations are waiting to consume you.</p>\n<div class=\"bph-flow\">\n<div>You → Website (normally) →</div>\n<div style=\"padding-left: 16px;\">Website sees your real IP address →</div>\n<div style=\"padding-left: 32px;\">You → VPN Server → Website (with a VPN) →</div>\n<div style=\"padding-left: 48px; color: #2f6fed; font-weight: 600;\">Website sees the VPN's IP, not yours.</div>\n</div>\n</div>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "VPN",
+              "html": "<p>A virtual private network: an encrypted tunnel from your device to a server, which then reaches the web for you.</p>"
+            },
+            {
+              "title": "VPS",
+              "html": "<p>A virtual private server: a rented slice of a server you fully control, for self-hosting.</p>"
+            },
+            {
+              "title": "No-logs policy",
+              "html": "<p>A provider’s promise not to record what you do. Look for independent audits.</p>"
+            },
+            {
+              "title": "Kill switch",
+              "html": "<p>Blocks all traffic if the VPN drops, so nothing leaks outside the tunnel.</p>"
+            },
+            {
+              "title": "DNS / IPv6 leak",
+              "html": "<p>When some requests skip the tunnel and reveal your real provider or address.</p>"
+            },
+            {
+              "title": "WireGuard / OpenVPN",
+              "html": "<p>The two most common VPN protocols.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "everything",
+      "title": "Everything on VPNs & VPS",
+      "summary": "Guides, tools, checkers and resources.",
+      "blocks": [
+        {
+          "type": "topic-index",
+          "cols": 3
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Elsewhere on the web"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Privacy Guides: VPN services",
+              "url": "https://www.privacyguides.org/en/vpn/",
+              "desc": "independent VPN recommendations."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "layout": "hero",
+  "lede": "<p>Who's actually watching your traffic, how a VPN protects you (and where it can't), how to pick a provider you can trust, and how to run your own VPN or website on a rented server.</p>"
+}

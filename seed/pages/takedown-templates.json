@@ -1,0 +1,83 @@
+{
+  "subtitle": "Ready-to-send data removal requests",
+  "meta": "Aug 4, 2026",
+  "tocTitle": "Jump to a template",
+  "intro": [
+    {
+      "type": "text",
+      "html": "<p>These are copy-paste starting points, not legal advice &mdash; fill in the brackets, then paste the text into a contact form or email. Swap out anything that doesn't apply to your situation.</p>"
+    }
+  ],
+  "subsections": [
+    {
+      "id": "broker",
+      "title": "Data Broker Removal",
+      "summary": "General opt-out email",
+      "blocks": [
+        {
+          "type": "template",
+          "text": "To the Privacy Team,\n\nI am requesting that you remove my personal information from your website and services. I do not consent to the collection, storage, or display of my data.\n\nName: [Your Full Name]\nAlso known as: [Any previous names/aliases]\nCurrent address: [Your current address]\nFormer addresses: [List any former addresses you know are listed]\nPhone number: [Your phone number]\nEmail addresses: [All email addresses you've used]\n\nPlease confirm in writing when my data has been removed.\n\nSincerely,\n[Your Full Name]\n[Date]",
+          "before": "<p>Copy and paste this into contact forms or emails.</p>"
+        },
+        {
+          "type": "callout",
+          "label": "Tip",
+          "html": "<p>Many data brokers have a dedicated opt-out form. Check their footer for \"Do Not Sell My Info\" or \"Privacy Request\" links first.</p>"
+        }
+      ]
+    },
+    {
+      "id": "gdpr-ccpa",
+      "title": "GDPR / CCPA Removal Request",
+      "summary": "EU & California companies",
+      "blocks": [
+        {
+          "type": "template",
+          "text": "Subject: Data Removal Request Under [GDPR / CCPA]\n\nTo the Privacy Team,\n\nI am exercising my rights under [GDPR Article 17 / CCPA Section 1798.105] to request the deletion of my personal information from your systems.\n\nI request that you:\n- Delete all personal information you hold about me\n- Delete any derived data or profiles about me\n- Direct any third parties who hold my data to delete it as well\n\nMy information:\n\nName: [Your Full Name]\nEmail: [Your email address]\nAdditional identifiers: [Account numbers, usernames, etc.]\n\nPlease acknowledge receipt of this request and confirm deletion within the required [30 days / 45 days] timeframe.\n\nSincerely,\n[Your Full Name]\n[Date]",
+          "before": "<p>Use this if the company is based in the EU (GDPR) or California (CCPA).</p>"
+        },
+        {
+          "type": "callout",
+          "label": "Note",
+          "html": "<p>This works best for companies based in the EU or California. Many US-based companies will ignore GDPR requests.</p>"
+        }
+      ]
+    },
+    {
+      "id": "google",
+      "title": "Google Results About You Removal",
+      "summary": "Search result removal",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Google will automatically handle the request through their tool, but you may need to manually submit for certain results.</p><p>Request URL: <a href=\"https://myactivity.google.com/results-about-you\">myactivity.google.com/results-about-you</a></p>"
+        },
+        {
+          "type": "numbered",
+          "style": "list",
+          "card": true,
+          "before": "<p>Steps:</p>",
+          "items": [
+            {
+              "text": "Click \"Get started\""
+            },
+            {
+              "text": "Add the personal information you want to monitor"
+            },
+            {
+              "text": "When Google finds a result, click \"Request removal\""
+            },
+            {
+              "text": "Google will review and remove if it \"meets policy requirements\""
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Google's policy",
+          "html": "<p>They will remove results that are \"doxxing\" or \"unwanted\" but may not remove public records or news articles.</p>"
+        }
+      ]
+    }
+  ]
+}

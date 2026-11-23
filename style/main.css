@@ -137,7 +137,7 @@ img {
   max-width: 620px;
   margin: 0;
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 1.02rem;
 }
 
 /* Section shell */
@@ -155,7 +155,7 @@ img {
 .section .section-sub {
   color: var(--text-muted);
   margin: 0 0 24px;
-  font-size: 0.9rem;
+  font-size: 0.97rem;
 }
 
 /* Card grids */
@@ -257,14 +257,14 @@ img {
 
 .card-body p {
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   margin: 0 0 10px;
   flex: 1;
   transition: font-size 0.18s ease;
 }
 
 .card:has(> a):hover .card-body p {
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .card-cta {

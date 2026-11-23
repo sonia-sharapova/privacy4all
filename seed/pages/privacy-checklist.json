@@ -1,0 +1,265 @@
+{
+  "download": true,
+  "tocTitle": "Jump to a category",
+  "intro": [
+    {
+      "type": "text",
+      "html": "<p>A simple, checkable list to get you meaningfully more secure and private, starting today. Work through the general tiers in order — each builds on the last, and none requires technical skill — then jump to the situational categories below if they apply to you. Check items off as you go; for the reasoning behind any item, the full guides (linked in the sidebar) go deeper.</p>"
+    }
+  ],
+  "subsections": [
+    {
+      "id": "tier-1",
+      "title": "Low-Energy Fixes",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Install uBlock Origin in your main browser. Confirm the developer is Raymond Hill (\"gorhill\") before installing."
+            },
+            {
+              "text": "Set your default search engine to Mojeek or DuckDuckGo instead of Google or Bing."
+            },
+            {
+              "text": "Sign up for a password manager (Bitwarden is a solid free starting point)."
+            },
+            {
+              "text": "Change your email and banking passwords to unique, manager-generated ones first, since those accounts matter most."
+            },
+            {
+              "text": "Turn on two-factor authentication with an authenticator app (not SMS) on your email account."
+            },
+            {
+              "text": "Turn off your phone’s advertising ID. Android: Settings, search \"advertising ID,\" delete it. iOS: Settings, Privacy & Security, Tracking, turn off \"Allow Apps to Request to Track.\""
+            },
+            {
+              "text": "Check your email address at haveibeenpwned.com to see if it’s already been exposed in a breach."
+            },
+            {
+              "text": "Stop using \"Log in with Google/Facebook\" on other websites going forward; use your password manager instead."
+            }
+          ],
+          "title": "Low-energy Fixes"
+        }
+      ]
+    },
+    {
+      "id": "tier-2",
+      "title": "A Little More Work",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Turn on 2FA with an authenticator app on your password manager, bank, and any other account you’d consider catastrophic to lose."
+            },
+            {
+              "text": "Install Signal and move at least one sensitive conversation to it."
+            },
+            {
+              "text": "Set up email aliasing (Firefox Relay or DuckDuckGo Email Protection) and use a new alias the next time a site asks for your email."
+            },
+            {
+              "text": "Opt out of the highest-priority data brokers using the Big Ass Data Broker Opt-Out List (BADBOOL); start with its top tier of roughly 14 sites."
+            },
+            {
+              "text": "Freeze your credit for free with Experian, Equifax, TransUnion, Innovis, and ChexSystems."
+            },
+            {
+              "text": "Turn off Google Location History, or set it to auto-delete every few months, at myaccount.google.com/activitycontrols/location."
+            },
+            {
+              "text": "Review your phone’s app permissions for location, camera, microphone, and contacts, and turn off anything you don’t actively need."
+            },
+            {
+              "text": "Set Firefox or LibreWolf’s Enhanced Tracking Protection to Strict (or confirm Brave’s Shields are on, which they are by default)."
+            },
+            {
+              "text": "Turn on DNS over HTTPS in your browser’s network settings."
+            },
+            {
+              "text": "Decline notification permission requests from websites by default."
+            }
+          ],
+          "title": "A Little More Work, but Still Easy"
+        }
+      ]
+    },
+    {
+      "id": "tier-3",
+      "title": "More Complex",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Get a hardware security key (like a YubiKey) for your email and password manager if you’re ready for the strongest available 2FA tier."
+            },
+            {
+              "text": "Scrub metadata from photos before sharing anything sensitive (use your phone’s built-in \"remove location\" share option, or a tool like ExifCleaner)."
+            },
+            {
+              "text": "Sign up for an encrypted cloud storage provider (Proton Drive, Sync.com) or wrap your existing cloud storage with Cryptomator."
+            },
+            {
+              "text": "Set up a real local backup (external drive or NAS), and actually test restoring a file from it once."
+            },
+            {
+              "text": "Get a secondary phone number (TextNow, Hushed, or MySudo) for lower-stakes sign-ups, so your real number isn’t everywhere."
+            },
+            {
+              "text": "Check your mobile carrier’s privacy dashboard and opt out of ad targeting and data sharing."
+            },
+            {
+              "text": "Run coveryourtracks.eff.org and globalprivacycontrol.org to confirm your browser protections are actually working."
+            },
+            {
+              "text": "Set up your IRS Identity Protection PIN at irs.gov and check your Social Security account at ssa.gov."
+            },
+            {
+              "text": "Consider a VPN from a provider with a verified no-logs track record (Mullvad or IVPN, for example) if hiding your activity from your ISP matters to you."
+            }
+          ],
+          "title": "More Complex, Might Not Be Needed for Everyone"
+        }
+      ]
+    },
+    {
+      "id": "tier-4",
+      "title": "Ongoing Habits",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Re-run coveryourtracks.eff.org and globalprivacycontrol.org after any browser or OS update."
+            },
+            {
+              "text": "Check haveibeenpwned.com every few months for new breach exposures."
+            },
+            {
+              "text": "Revisit your BADBOOL opt-outs yearly — data brokers tend to repopulate listings over time."
+            },
+            {
+              "text": "Review app and browser extension permissions quarterly, and remove anything you no longer use."
+            },
+            {
+              "text": "Rotate the password for any account involved in a new breach immediately."
+            },
+            {
+              "text": "Keep your password manager, OS, and browser updated to the latest version."
+            }
+          ],
+          "title": "Ongoing Habits and Practices"
+        }
+      ]
+    },
+    {
+      "id": "protest",
+      "title": "Protest Privacy",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Clean your phone of sensitive content."
+            },
+            {
+              "text": "Remove social media apps you don’t need."
+            },
+            {
+              "text": "Delete messages related to the protest."
+            },
+            {
+              "text": "Remove contact names for fellow protesters (use nicknames)."
+            },
+            {
+              "text": "Use a long passcode (6+ characters with letters and numbers)."
+            },
+            {
+              "text": "Turn OFF Face ID (iPhone) / fingerprint unlock (Android)."
+            },
+            {
+              "text": "Turn off location services."
+            },
+            {
+              "text": "Turn off Bluetooth."
+            },
+            {
+              "text": "Turn off WiFi when not needed."
+            },
+            {
+              "text": "Consider a secondary \"sanitized\" phone."
+            },
+            {
+              "text": "Wear a mask (health + facial recognition evasion)."
+            },
+            {
+              "text": "Don’t drive your own car (license plate scanners)."
+            },
+            {
+              "text": "Don’t go alone — go with a group."
+            },
+            {
+              "text": "If using a burner/secondary phone, use a separate phone number (eSIM works)."
+            },
+            {
+              "text": "Don’t connect the burner phone to WiFi at home, and never power it on at home."
+            },
+            {
+              "text": "Never have both phones powered on at the same location."
+            },
+            {
+              "text": "Don’t save WiFi networks on the burner phone; use a long passcode with no biometrics."
+            },
+            {
+              "text": "At the event, keep your phone in airplane mode if possible."
+            },
+            {
+              "text": "Use encrypted messaging (Signal, not SMS)."
+            },
+            {
+              "text": "Don’t post real-time location updates."
+            },
+            {
+              "text": "Be aware of surveillance cameras."
+            },
+            {
+              "text": "Recognize flock cameras (license plate readers)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "border",
+      "title": "Border Privacy",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Know your rights (you can refuse to unlock your phone)."
+            },
+            {
+              "text": "Travel with a \"sanitized\" phone for your trip."
+            },
+            {
+              "text": "Use separate communication accounts on your travel phone."
+            },
+            {
+              "text": "Consider wiping the phone before travel and restoring after."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
