@@ -2,6 +2,14 @@
 
 Served at https://soniapolis.com/privacy4all/ from `/var/www/iSonia/privacy4all/`.
 
+## Deploy
+
+Push to `main`, then on the server (a shallow checkout, so plain `git pull` refuses):
+
+    cd /var/www/iSonia/privacy4all && git fetch --depth 1 origin main && git reset --hard origin/main
+
+`data/` and `images/uploads/` are ignored by git, so this never touches live edits.
+
 ## How pages work
 
 Every page is a thin HTML shell (`<body data-page="id">`) that loads `js/p4a.js`,
