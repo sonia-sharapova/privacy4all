@@ -19,7 +19,7 @@
 
   var body = document.body;
   var ROOT = body.getAttribute('data-root') || '';
-  var VERSION = '20261125';
+  var VERSION = '20261126';
   var pageId = body.getAttribute('data-page') || '';
   if (pageId === '?') {
     pageId = (new URLSearchParams(location.search).get('id') || '').replace(/[^a-z0-9-]/g, '');
@@ -242,7 +242,8 @@
 
     return '' +
       '<div class="p4a-0"><div class="p4a-1">' +
-      '<aside class="p4a-2">' +
+      '<div class="p4a-nav-scrim" id="p4a-nav-scrim"></div>' +
+      '<aside class="p4a-2" id="p4a-sidebar">' +
         (isHome ? '<div class="p4a-3">p4a</div>' : '<a href="' + esc(href('home')) + '" class="p4a-3">p4a</a>') +
         (toc.length ? '<div class="p4a-4">ON THIS PAGE</div><nav class="p4a-5" id="p4a-toc">' +
           toc.map(function (t) { return '<a href="' + esc(t.href) + '" class="p4a-6">' + esc(t.label) + '</a>'; }).join('') + '</nav>' : '') +
@@ -260,6 +261,7 @@
       '</aside>' +
       '<div class="p4a-a"><div class="p4a-b"></div>' +
       '<header class="p4a-c"><div class="p4a-i">' +
+        '<button type="button" class="p4a-menu-btn" id="p4a-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="p4a-sidebar">&#9776; Menu</button>' +
         '<div class="p4a-d"><form class="p4a-e" id="p4a-search" role="search">' +
           '<input type="text" placeholder="Search topics..." id="search-input" class="p4a-f" autocomplete="off">' +
           '<select id="search-category" class="p4a-g">' + cats + '</select>' +
@@ -941,6 +943,18 @@
       s.src = ROOT + 'js/glass.js?v=' + VERSION;
       document.body.appendChild(s);
     }
+
+    // Phone layout: the sidebar is a slide-out menu.
+    var menuBtn = document.getElementById('p4a-menu-btn');
+    function setMenu(open) {
+      document.body.classList.toggle('p4a-nav-open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    setMenu(false);
+    menuBtn.addEventListener('click', function () { setMenu(!document.body.classList.contains('p4a-nav-open')); });
+    document.getElementById('p4a-nav-scrim').addEventListener('click', function () { setMenu(false); });
+    document.getElementById('p4a-sidebar').addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
 
     document.getElementById('p4a-search').addEventListener('submit', function (e) {
       e.preventDefault();
