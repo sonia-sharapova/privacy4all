@@ -212,6 +212,20 @@ html[data-night="on"] .pcl-download-menu { background: rgba(30,32,38,0.92); bord
 html[data-night="on"] .pcl-download-item { color: #e7e7ea; }
 html[data-night="on"] .p4a-rich code { background: rgba(255,255,255,0.08); }
 
+/* ---------- Home: Privacy & Security tiles + description ---------- */
+.p4a-10 { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); align-items: start; gap: 44px; }
+.p4a-11 { grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 30px 20px; }
+.p4a-11 .p4a-12 { min-width: 0; }
+.p4a-11 .p4a-13, .p4a-11 .p4a-16 { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+.p4a-15 { font-size: 10px; line-height: 1.35; }
+.p4a-1b { letter-spacing: 0.12em; line-height: 1.8; font-size: 14px; align-self: center; }
+@media (max-width: 1250px) {
+  .p4a-10 { grid-template-columns: 1fr; gap: 28px; }
+  .p4a-1b { order: -1; text-align: left; max-width: 760px; letter-spacing: 0.08em; }
+  .p4a-1b .p4a-1e { justify-content: flex-start; }
+  .p4a-1b .p4a-1f { display: none; }
+}
+
 /* ---------- Phone & tablet layout ---------- */
 .p4a-menu-btn, .p4a-nav-scrim { display: none; }
 @media (max-width: 900px) {

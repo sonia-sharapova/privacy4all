@@ -19,7 +19,7 @@
 
   var body = document.body;
   var ROOT = body.getAttribute('data-root') || '';
-  var VERSION = '20261126';
+  var VERSION = '20261127';
   var pageId = body.getAttribute('data-page') || '';
   if (pageId === '?') {
     pageId = (new URLSearchParams(location.search).get('id') || '').replace(/[^a-z0-9-]/g, '');
