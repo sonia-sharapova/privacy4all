@@ -1,0 +1,272 @@
+{
+  "subtitle": "Apple Account, iPhone & Mac",
+  "meta": "Tutorial",
+  "intro": [
+    {
+      "type": "text",
+      "html": "<p>Apple protects you well from <i>other</i> companies &mdash; but your photos, messages, location, health data and backups still all sit in one company’s account and on its servers. You don’t need to throw your iPhone away. This walkthrough locks your Apple Account down, turns off the data Apple itself collects, and shows private replacements for each Apple service, one at a time.</p>"
+    }
+  ],
+  "subsections": [
+    {
+      "id": "before",
+      "title": "Before You Start",
+      "summary": "Export your data and decide what to keep.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "style": "list",
+          "items": [
+            {
+              "title": "Get a copy of your data.",
+              "text": "Request it from Apple’s <a href=\"https://privacy.apple.com/\">Data &amp; Privacy</a> page, then download photos and files from iCloud so nothing is lost when you switch."
+            },
+            {
+              "title": "List what you use.",
+              "text": "iCloud Drive, Photos, Mail, Calendar, Keychain, Maps, Health &mdash; you can replace them one at a time, and keep your iPhone while you do."
+            },
+            {
+              "title": "Decide how far to go.",
+              "text": "Locking down your account and switching a few services gets you most of the way. Changing phones or computers is optional."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "secure-account",
+      "title": "Secure Your Apple Account",
+      "summary": "Stronger sign-in, encryption and theft protection.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "label": "STEP",
+          "items": [
+            {
+              "title": "Check two-factor authentication",
+              "text": "<p>It’s on for most accounts already &mdash; confirm it in Settings &rarr; your name &rarr; Sign-In &amp; Security, and make sure the trusted phone numbers are yours. <a href=\"https://support.apple.com/en-us/102660\">Apple’s guide</a>.</p>"
+            },
+            {
+              "title": "Turn on Advanced Data Protection",
+              "text": "<p>Settings &rarr; your name &rarr; iCloud &rarr; Advanced Data Protection. It end-to-end encrypts iCloud backups, Photos, Notes and Drive so Apple can’t read them. Set up a recovery contact or key first &mdash; Apple can’t recover the data for you. <a href=\"https://support.apple.com/en-us/102651\">How iCloud encryption works</a>.</p>"
+            },
+            {
+              "title": "Turn on Stolen Device Protection",
+              "text": "<p>Settings &rarr; Face ID &amp; Passcode &rarr; Stolen Device Protection. A thief who learns your passcode still can’t change your Apple Account password away from familiar places. <a href=\"https://support.apple.com/en-us/120340\">Apple’s guide</a>.</p>"
+            },
+            {
+              "title": "Use a long passcode",
+              "text": "<p>Settings &rarr; Face ID &amp; Passcode &rarr; Change Passcode &rarr; Passcode Options &rarr; Custom Alphanumeric Code. Six digits can be watched over your shoulder.</p>"
+            },
+            {
+              "title": "Add security keys (optional)",
+              "text": "<p>Two hardware keys replace verification codes and stop phishing. See <a href=\"page:passwords#security-keys\">security keys</a> and <a href=\"https://support.apple.com/en-us/102637\">Apple’s guide</a>.</p>"
+            },
+            {
+              "title": "Run Safety Check",
+              "text": "<p>Settings &rarr; Privacy &amp; Security &rarr; Safety Check shows who you share location, photos and passwords with, and which devices are signed in &mdash; and lets you stop it all at once. <a href=\"https://support.apple.com/guide/personal-safety/welcome/web\">Personal Safety guide</a>.</p>"
+            },
+            {
+              "title": "High-risk? Turn on Lockdown Mode",
+              "text": "<p>For journalists, activists and anyone who may be targeted by spyware. It disables features attackers use. <a href=\"https://support.apple.com/en-us/105120\">About Lockdown Mode</a>.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tracking",
+      "title": "Turn Off Apple’s Tracking",
+      "summary": "Ads, analytics, location and Siri.",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Stop apps from asking to track you",
+              "details": "<p>Settings &rarr; Privacy &amp; Security &rarr; Tracking &rarr; turn off “Allow Apps to Request to Track”.</p>"
+            },
+            {
+              "text": "Turn off Apple’s personalised ads",
+              "details": "<p>Settings &rarr; Privacy &amp; Security &rarr; Apple Advertising &rarr; turn off Personalised Ads.</p>"
+            },
+            {
+              "text": "Turn off Analytics & Improvements",
+              "details": "<p>Settings &rarr; Privacy &amp; Security &rarr; Analytics &amp; Improvements &rarr; turn everything off. On a Mac: System Settings &rarr; Privacy &amp; Security &rarr; Analytics.</p>"
+            },
+            {
+              "text": "Limit location history",
+              "details": "<p>Settings &rarr; Privacy &amp; Security &rarr; Location Services &rarr; System Services: turn off Significant Locations and the location-based suggestions you don’t use. Set apps to “While Using” or “Never”.</p>"
+            },
+            {
+              "text": "Review app permissions",
+              "details": "<p>Settings &rarr; Privacy &amp; Security: check Photos, Contacts, Microphone, Camera, Bluetooth and Local Network, and remove what apps don’t need.</p>"
+            },
+            {
+              "text": "Limit what Siri learns",
+              "details": "<p>Settings &rarr; Siri: turn off “Learn from this App” for sensitive apps, and delete Siri &amp; Dictation history.</p>"
+            },
+            {
+              "text": "Hide your email and IP with iCloud+ (if you pay for it)",
+              "details": "<p><a href=\"https://support.apple.com/en-us/105078\">Hide My Email</a> gives sites a random address; <a href=\"https://support.apple.com/en-us/102602\">Private Relay</a> hides your IP in Safari. Useful while you still use Apple, but they keep you tied to iCloud.</p>"
+            },
+            {
+              "text": "Strip location from photos before sharing",
+              "details": "<p>In the share sheet, tap Options and turn off Location.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "browser-search",
+      "title": "Switch Your Browser & Search Engine",
+      "summary": "The easiest two changes.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>On iPhone every browser uses Safari’s engine, so the gain comes from blocking and defaults. Set a private search engine in Settings &rarr; Apps &rarr; Safari &rarr; Search Engine (DuckDuckGo is built in), or install <a href=\"page:alternatives#browsers\">a private browser</a> such as Brave, DuckDuckGo or Firefox Focus and make it the default. On a Mac you can use any browser, like Firefox or LibreWolf.</p>"
+        },
+        {
+          "type": "redirects",
+          "style": "buttons",
+          "items": [
+            {
+              "label": "Private browsers →",
+              "url": "page:alternatives#browsers"
+            },
+            {
+              "label": "Private search engines →",
+              "url": "page:alternatives#search-engines"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "replace",
+      "title": "Replace Apple Services",
+      "summary": "A private alternative for every Apple product.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Open an Apple service to see its private replacements. Start with the one you use most &mdash; for most people that’s iCloud Photos or Drive.</p>"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "iCloud Drive",
+              "a": "<ul><li><a href=\"https://internxt.com/\">Internxt Drive</a> &mdash; Zero-knowledge storage with 1 GB free.</li><li><a href=\"https://nordlocker.com/\">NordLocker</a> &mdash; Encrypted paid cloud storage.</li><li><a href=\"https://privacynotes.app/\">PrivacyNotes</a> &mdash; Encrypted notes, files, calendar and passwords in one app.</li><li><a href=\"https://mega.io/\">MEGA</a> &mdash; Encrypted cloud storage with a 20 GB free plan.</li><li><a href=\"https://proton.me/drive\">Proton Drive</a> &mdash; End-to-end encrypted storage from Proton.</li><li><a href=\"https://tresorit.com/\">Tresorit</a> &mdash; Swiss end-to-end encrypted storage.</li></ul><p><a href=\"page:alternatives#cloud-storage\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Safari",
+              "a": "<ul><li><a href=\"https://librewolf.net/\">LibreWolf</a> &mdash; Hardened Firefox with tracking and fingerprinting protection built in.</li><li><a href=\"https://brave.com/\">Brave</a> &mdash; Blocks ads and trackers by default; easiest switch from Chrome.</li><li><a href=\"https://helium.computer/\">Helium</a> &mdash; Chromium-based, with uBlock Origin and tracker blocking on by default.</li><li><a href=\"https://www.mozilla.org/firefox/\">Firefox</a> &mdash; Mozilla’s independent browser; harden it with a few settings.</li><li><a href=\"https://www.mozilla.org/firefox/browsers/mobile/focus/\">Firefox Focus</a> &mdash; Mobile browser that blocks trackers and forgets everything when closed.</li><li><a href=\"https://duckduckgo.com/\">DuckDuckGo</a> &mdash; Simple browser that blocks trackers, with a one-tap Fire button.</li></ul><p><a href=\"page:alternatives#browsers\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Apple Maps",
+              "a": "<ul><li><a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> &mdash; Free, community-made map of the world.</li><li><a href=\"https://organicmaps.app/\">Organic Maps</a> &mdash; Offline maps and navigation for Android and iOS.</li><li><a href=\"https://osmand.net/\">OsmAnd</a> &mdash; Online and offline OpenStreetMap navigation.</li><li><a href=\"https://comaps.app/\">CoMaps</a> &mdash; Community fork of Organic Maps with tracking removed.</li></ul><p><a href=\"page:alternatives#maps\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "iCloud Photos",
+              "a": "<ul><li><a href=\"https://internxt.com/\">Internxt Photos</a> &mdash; Zero-knowledge encrypted photo storage.</li><li><a href=\"https://ente.io/\">ente</a> &mdash; Encrypted photo backup, with import from Google and Apple.</li><li><a href=\"https://immich.app/\">Immich</a> &mdash; Self-hosted photo backup that feels like Google Photos.</li><li><a href=\"https://crypt.ee/\">Cryptee</a> &mdash; Encrypted documents and photos.</li><li><a href=\"https://photoprism.app/\">PhotoPrism</a> &mdash; Self-hosted photo library with automatic tagging.</li><li><a href=\"https://piwigo.org/\">Piwigo</a> &mdash; Hosted or self-hosted photo gallery.</li></ul><p><a href=\"page:alternatives#photos\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "iCloud Calendar",
+              "a": "<ul><li><a href=\"https://privacynotes.app/\">PrivacyNotes</a> &mdash; Encrypted calendar alongside notes, tasks and files.</li><li><a href=\"https://proton.me/calendar\">Proton Calendar</a> &mdash; End-to-end encrypted calendar from Proton.</li><li><a href=\"https://tuta.com/\">Tuta</a> &mdash; Free zero-knowledge calendar on every platform.</li><li><a href=\"https://www.etesync.com/\">EteSync</a> &mdash; Encrypted calendar and contact sync; self-hostable.</li><li><a href=\"https://silentsuite.io/\">SilentSuite</a> &mdash; Encrypted sync for calendars, contacts and tasks.</li><li><a href=\"https://radicale.org/\">Radicale</a> &mdash; Simple self-hosted calendar and contacts server.</li></ul><p><a href=\"page:alternatives#calendars\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "iCloud Mail",
+              "a": "<ul><li><a href=\"https://www.startmail.com/\">StartMail</a> &mdash; Paid private email with unlimited aliases.</li><li><a href=\"https://proton.me/mail\">Proton Mail</a> &mdash; End-to-end encrypted email with a free plan.</li><li><a href=\"https://simplelogin.io/\">SimpleLogin</a> &mdash; Email aliases that forward to your real inbox.</li><li><a href=\"https://tuta.com/\">Tuta</a> &mdash; Zero-knowledge encrypted email on every platform.</li><li><a href=\"https://posteo.de/en\">Posteo</a> &mdash; German email with no sign-up data and green hosting.</li><li><a href=\"https://mailbox.org/\">mailbox.org</a> &mdash; German paid email with custom domains and encryption.</li></ul><p><a href=\"page:alternatives#email\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "iMessage & FaceTime",
+              "a": "<ul><li><a href=\"https://signal.org/\">Signal</a> &mdash; Feels like WhatsApp, encrypted by default, run by a non-profit.</li><li><a href=\"https://simplex.chat/\">SimpleX Chat</a> &mdash; No phone number and no user ID at all.</li><li><a href=\"https://molly.im/\">Molly</a> &mdash; Hardened Signal for Android.</li><li><a href=\"https://getsession.org/\">Session</a> &mdash; No phone number or email to sign up.</li><li><a href=\"https://threema.ch/\">Threema</a> &mdash; Swiss messenger, no phone number, paid once.</li><li><a href=\"https://briarproject.org/\">Briar</a> &mdash; No servers; works over Bluetooth, Wi-Fi or Tor.</li></ul><p><a href=\"page:alternatives#messaging\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "iOS",
+              "a": "<ul><li><a href=\"https://grapheneos.org/\">GrapheneOS</a> &mdash; Hardened Android for Google Pixel phones.</li><li><a href=\"https://calyxos.org/\">CalyxOS</a> &mdash; Private Android build for Pixel phones.</li><li><a href=\"https://e.foundation/e-os/\">/e/OS</a> &mdash; De-Googled Android using microG.</li><li><a href=\"https://www.lineageos.org/\">LineageOS</a> &mdash; Open-source Android for many devices.</li><li><a href=\"https://ubuntu-touch.io/\">Ubuntu Touch</a> &mdash; Open-source mobile OS, no account needed.</li><li><a href=\"https://www.apple.com/ios/\">iOS</a> &mdash; Locked down by default, but closed source.</li></ul><p><a href=\"page:alternatives#android\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "iPhone",
+              "a": "<ul><li><a href=\"https://www.fairphone.com/\">Fairphone</a> &mdash; Modular, repairable phone; can come with de-Googled /e/OS.</li><li><a href=\"https://store.google.com/category/phones\">Google Pixel</a> &mdash; The phone GrapheneOS and CalyxOS support — a base for a de-Googled setup.</li><li><a href=\"https://shop.nitrokey.com/shop?search=nitrophone\">NitroPhone</a> &mdash; A Pixel sold with GrapheneOS already installed.</li></ul><p><a href=\"page:alternatives#phones\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "macOS",
+              "a": "<ul><li><a href=\"https://getfedora.org/workstation/\">Fedora Workstation</a> &mdash; Polished, easy-to-install Linux.</li><li><a href=\"https://ubuntu.com/\">Ubuntu</a> &mdash; The most widely used beginner-friendly Linux.</li><li><a href=\"https://www.apple.com/macos/\">macOS</a> &mdash; A step up from Windows for privacy, but closed source.</li><li><a href=\"https://secureblue.dev/\">secureblue</a> &mdash; Security-hardened Linux built on Fedora Atomic.</li><li><a href=\"https://www.kicksecure.com/\">Kicksecure</a> &mdash; Hardened Debian-based Linux, the base of Whonix.</li><li><a href=\"https://fedoraproject.org/atomic-desktops/\">Fedora Atomic Desktops</a> &mdash; Fedora with a read-only base that updates all at once.</li></ul><p><a href=\"page:alternatives#desktop-os\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "Apple Health",
+              "a": "<ul><li><a href=\"https://privacynotes.app/\">PrivacyNotes</a> &mdash; Encrypted journal with mood and medication tracking.</li><li><a href=\"https://dripapp.org/\">drip</a> &mdash; Menstrual tracker that keeps data on your phone.</li><li><a href=\"https://eukiapp.com/\">Euki</a> &mdash; Reproductive health app that doesn’t store data in the cloud.</li><li><a href=\"https://play.google.com/store/apps/details?id=org.isoron.uhabits\">Loop Habit Tracker</a> &mdash; Open-source, ad-free habit tracker.</li><li><a href=\"https://hovancik.net/stretchly/\">Stretchly</a> &mdash; Reminds you to take breaks from the screen.</li><li><a href=\"https://www.commonhealth.org/\">CommonHealth</a> &mdash; Android app for managing your health records.</li></ul><p><a href=\"page:alternatives#health\">Compare on the Alternatives page &rarr;</a></p>"
+            },
+            {
+              "q": "iCloud Keychain",
+              "a": "<ul><li><a href=\"https://nordpass.com/\">NordPass</a> &mdash; Zero-knowledge manager with breach scanning; closed source.</li><li><a href=\"https://proton.me/pass\">Proton Pass</a> &mdash; Open-source, end-to-end encrypted, with built-in email aliases.</li><li><a href=\"https://privacynotes.app/\">PrivacyNotes</a> &mdash; Encrypted passwords alongside notes, tasks and files.</li><li><a href=\"https://keepassxc.org/\">KeePassXC</a> &mdash; Free, open-source and offline — your vault is a file you control.</li><li><a href=\"https://bitwarden.com/\">Bitwarden</a> &mdash; Open source, syncs everywhere, free for personal use.</li><li><a href=\"https://1password.com/\">1Password</a> &mdash; Polished paid manager with a Secret Key on top of your password.</li></ul><p><a href=\"page:alternatives#password-managers\">Compare on the Alternatives page &rarr;</a></p>"
+            }
+          ]
+        },
+        {
+          "type": "redirects",
+          "style": "buttons",
+          "items": [
+            {
+              "label": "See every alternative with details →",
+              "url": "page:alternatives"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "leaving",
+      "title": "Leaving the iPhone or Mac",
+      "summary": "Optional: a different phone or computer.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>iOS is closed source but locked down well, so keeping your iPhone with the settings above is a reasonable choice. If you want to go further, a Google Pixel running <a href=\"https://grapheneos.org/\">GrapheneOS</a> is the most private phone setup widely available, and Linux distributions such as Fedora or Ubuntu replace macOS on a computer.</p>"
+        },
+        {
+          "type": "callout",
+          "label": "Before you switch phones",
+          "html": "<p>Turn off iMessage (Settings &rarr; Apps &rarr; Messages) <i>before</i> moving your SIM, or texts from iPhone users may keep going to your old phone. Then sign out of iCloud and erase the device.</p>"
+        }
+      ]
+    }
+  ],
+  "outro": [
+    {
+      "type": "subheading",
+      "style": "h3",
+      "text": "Resources"
+    },
+    {
+      "type": "resources",
+      "style": "list",
+      "items": [
+        {
+          "label": "privacytools.io: Apple alternatives",
+          "url": "https://privacytools.io/alternatives/apple",
+          "desc": "a replacement for each Apple service."
+        },
+        {
+          "label": "Apple Data & Privacy",
+          "url": "https://privacy.apple.com/",
+          "desc": "request or delete the data Apple holds about you."
+        },
+        {
+          "label": "Apple Personal Safety User Guide",
+          "url": "https://support.apple.com/guide/personal-safety/welcome/web",
+          "desc": "control who can see your location and data."
+        },
+        {
+          "label": "iCloud data security overview",
+          "url": "https://support.apple.com/en-us/102651",
+          "desc": "what Advanced Data Protection encrypts."
+        }
+      ]
+    }
+  ]
+}

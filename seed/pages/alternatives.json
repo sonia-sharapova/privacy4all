@@ -5,12 +5,12 @@
   "intro": [
     {
       "type": "text",
-      "html": "<p>Private replacements for the apps and services most people use every day &mdash; including every Google service. You don’t have to switch everything at once: pick the one you use most, swap it, and come back for the next. Each list shows the top picks from <a href=\"https://privacytools.io/\">privacytools.io</a>, in their order.</p>"
+      "html": "<p>Private replacements for the apps and services most people use every day &mdash; including every Google and Apple service. You don’t have to switch everything at once: pick the one you use most, swap it, and come back for the next. Each list shows the top picks from <a href=\"https://privacytools.io/\">privacytools.io</a>, in their order.</p>"
     },
     {
       "type": "callout",
-      "label": "Leaving Google?",
-      "html": "<p>Download a copy of everything first with <a href=\"https://takeout.google.com/\">Google Takeout</a>, then follow <a href=\"page:de-google\">De-Google Yourself</a>.</p>"
+      "label": "Leaving Google or Apple?",
+      "html": "<p>Download a copy of everything first &mdash; <a href=\"https://takeout.google.com/\">Google Takeout</a> or <a href=\"https://privacy.apple.com/\">Apple’s Data &amp; Privacy</a> page &mdash; then follow <a href=\"page:de-google\">De-Google Yourself</a> or <a href=\"page:de-apple\">De-Apple Yourself</a>.</p>"
     }
   ],
   "subsections": [
@@ -933,6 +933,97 @@
               "url": "https://www.apple.com/ios/",
               "desc": "Locked down by default, but closed source.",
               "linkText": "Visit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phones",
+      "title": "Phones",
+      "summary": "Instead of an iPhone or a stock Android phone",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Fairphone",
+              "url": "https://www.fairphone.com/",
+              "desc": "Modular, repairable phone; can come with de-Googled /e/OS.",
+              "linkText": "Visit",
+              "meta": "Android"
+            },
+            {
+              "label": "Google Pixel",
+              "url": "https://store.google.com/category/phones",
+              "desc": "The phone GrapheneOS and CalyxOS support — a base for a de-Googled setup.",
+              "linkText": "Visit",
+              "meta": "Android"
+            },
+            {
+              "label": "NitroPhone",
+              "url": "https://shop.nitrokey.com/shop?search=nitrophone",
+              "desc": "A Pixel sold with GrapheneOS already installed.",
+              "linkText": "Visit",
+              "meta": "GrapheneOS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "desktop-os",
+      "title": "Desktop Operating Systems",
+      "summary": "Instead of Windows or macOS",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Fedora Workstation",
+              "url": "https://getfedora.org/workstation/",
+              "desc": "Polished, easy-to-install Linux.",
+              "linkText": "Visit",
+              "meta": "Linux"
+            },
+            {
+              "label": "Ubuntu",
+              "url": "https://ubuntu.com/",
+              "desc": "The most widely used beginner-friendly Linux.",
+              "linkText": "Visit",
+              "meta": "Linux"
+            },
+            {
+              "label": "macOS",
+              "url": "https://www.apple.com/macos/",
+              "desc": "A step up from Windows for privacy, but closed source.",
+              "linkText": "Visit",
+              "meta": "macOS"
+            },
+            {
+              "label": "secureblue",
+              "url": "https://secureblue.dev/",
+              "desc": "Security-hardened Linux built on Fedora Atomic.",
+              "linkText": "Visit",
+              "meta": "Linux · advanced"
+            },
+            {
+              "label": "Kicksecure",
+              "url": "https://www.kicksecure.com/",
+              "desc": "Hardened Debian-based Linux, the base of Whonix.",
+              "linkText": "Visit",
+              "meta": "Linux · advanced"
+            },
+            {
+              "label": "Fedora Atomic Desktops",
+              "url": "https://fedoraproject.org/atomic-desktops/",
+              "desc": "Fedora with a read-only base that updates all at once.",
+              "linkText": "Visit",
+              "meta": "Linux"
             }
           ]
         }

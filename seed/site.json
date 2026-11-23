@@ -39,7 +39,8 @@
       "layout": "quick",
       "description": "<p>Single-page walkthroughs you can finish in one sitting.</p>",
       "items": [
-        "de-google"
+        "de-google",
+        "de-apple"
       ]
     },
     {
@@ -611,14 +612,15 @@
       ],
       "related": [
         "alternatives",
-        "privacy-starter-kit"
+        "privacy-starter-kit",
+        "de-apple"
       ],
       "keywords": "google youtube android degoogle takeout"
     },
     "alternatives": {
       "title": "Alternatives",
       "path": "quick-action/alternatives.html",
-      "summary": "Private replacements for Google and everyday apps.",
+      "summary": "Private replacements for Google, Apple and everyday apps.",
       "image": "assets/duckduckgo.png",
       "imageFit": "contain",
       "kind": "resource",
@@ -631,9 +633,29 @@
       ],
       "related": [
         "de-google",
+        "de-apple",
         "privacy-starter-kit"
       ],
       "keywords": "alternatives google gmail maps drive youtube search degoogle vpn password"
+    },
+    "de-apple": {
+      "title": "De-Apple Yourself",
+      "path": "tutorials/de-apple.html",
+      "summary": "Lock down your Apple Account and iPhone — or leave.",
+      "image": "assets/safari.jpeg",
+      "imageFit": "contain",
+      "kind": "tutorial",
+      "topics": [
+        "data",
+        "mobile",
+        "cloud"
+      ],
+      "related": [
+        "alternatives",
+        "de-google",
+        "privacy-starter-kit"
+      ],
+      "keywords": "apple iphone icloud mac ios deapple"
     }
   }
 }
