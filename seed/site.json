@@ -40,7 +40,8 @@
       "description": "<p>Single-page walkthroughs you can finish in one sitting.</p>",
       "items": [
         "de-google",
-        "de-apple"
+        "de-apple",
+        "backups"
       ]
     },
     {
@@ -336,12 +337,21 @@
     "backups": {
       "title": "Backups & Data Management",
       "path": "advanced/cloud-storage-files/local-backup-and-encryption-basics.html",
-      "heading": "Local Backup and Encryption Basics",
-      "summary": "Learn how to keep a backup of your data",
+      "heading": "Back Up Your Data",
+      "summary": "What to back up, how, and how to schedule it.",
       "topics": [
-        "storage"
+        "storage",
+        "cloud"
       ],
-      "kind": "tutorial"
+      "kind": "tutorial",
+      "keywords": "backup back up time machine file history restic borg kopia schedule cron restore 3-2-1",
+      "image": "assets/cloud.jpg",
+      "imageFit": "cover",
+      "related": [
+        "cloud",
+        "storage",
+        "de-apple"
+      ]
     },
     "sharing-files": {
       "title": "Sharing Files with Others",

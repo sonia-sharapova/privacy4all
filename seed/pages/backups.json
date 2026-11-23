@@ -1,3 +1,346 @@
 {
-  "subsections": []
+  "subtitle": "Back up your data — and schedule it",
+  "meta": "Tutorial",
+  "intro": [
+    {
+      "type": "text",
+      "html": "<p>A backup is the one privacy and security step that protects you from <i>everything</i>: a stolen laptop, a dead drive, ransomware, a hacked account or a coffee spill. This walkthrough shows what to back up, how to do it on each device with tools you already have, how to keep backups encrypted, and how to make them run on a schedule so you never have to remember.</p>"
+    }
+  ],
+  "subsections": [
+    {
+      "id": "three-two-one",
+      "title": "The 3-2-1 Rule",
+      "summary": "Three copies, two kinds of storage, one far away.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 3,
+          "style": "divided",
+          "items": [
+            {
+              "title": "3 copies",
+              "html": "<p>Your original plus two backups. One backup can fail; two rarely fail at the same time.</p>"
+            },
+            {
+              "title": "2 kinds of storage",
+              "html": "<p>For example your laptop’s drive and an external drive &mdash; so one fault or one bad batch of disks can’t take out everything.</p>"
+            },
+            {
+              "title": "1 copy somewhere else",
+              "html": "<p>Offsite: an encrypted cloud backup, or a drive kept at a friend’s or at work. A fire or burglary takes everything in one place.</p>"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Sync is not a backup",
+          "html": "<p>iCloud Drive, Google Drive, Dropbox and OneDrive <i>sync</i>: delete or encrypt a file by accident (or by ransomware) and the change copies everywhere. A backup keeps older versions you can go back to.</p>"
+        }
+      ]
+    },
+    {
+      "id": "what",
+      "title": "What to Back Up",
+      "summary": "The things you can’t download again.",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Photos and videos",
+              "details": "<p>Usually the most irreplaceable thing people own. Include your phone’s camera roll.</p>"
+            },
+            {
+              "text": "Documents, school and work files"
+            },
+            {
+              "text": "Your password manager vault (exported, encrypted) and 2FA backup codes",
+              "details": "<p>Losing these can lock you out of everything. Keep an encrypted export, and print backup codes for your most important accounts.</p>"
+            },
+            {
+              "text": "Email you want to keep",
+              "details": "<p>Use your provider’s export, or a desktop mail app such as Thunderbird that keeps a local copy.</p>"
+            },
+            {
+              "text": "Messages",
+              "details": "<p>Signal and WhatsApp have their own backup or transfer options &mdash; check them before changing phones.</p>"
+            },
+            {
+              "text": "Exports from accounts you rely on",
+              "details": "<p>Google Takeout, Apple’s Data &amp; Privacy page and most social networks let you download your data.</p>"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "html": "<p><small>Apps and the operating system can be reinstalled, so they matter less &mdash; but a full system backup (like Time Machine) makes restoring a broken computer much faster.</small></p>"
+        }
+      ]
+    },
+    {
+      "id": "computer",
+      "title": "Back Up Your Computer",
+      "summary": "Built-in tools for Mac, Windows and Linux.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>You need an external drive at least as big as the data you’re backing up (twice as big is better, so it can keep older versions). Plug it in and follow the steps for your system.</p>"
+        },
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "openFirst": false,
+          "items": [
+            {
+              "title": "Mac: Time Machine",
+              "text": "<p>System Settings &rarr; General &rarr; Time Machine &rarr; <b>Add Backup Disk</b>, pick your drive and tick <b>Encrypt Backup</b>. Time Machine then backs up automatically every hour while the drive is connected, and keeps hourly, daily and weekly versions. Under Options you can change the frequency. <a href=\"https://support.apple.com/en-us/104984\">Apple’s guide</a>.</p>"
+            },
+            {
+              "title": "Windows: File History",
+              "text": "<p>Control Panel &rarr; System and Security &rarr; <b>File History</b> &rarr; select your drive &rarr; <b>Turn on</b>. Under Advanced settings choose how often to save copies (every hour by default) and how long to keep them. Encrypt the drive with BitLocker if your edition of Windows has it. <a href=\"https://support.microsoft.com/en-us/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc\">Microsoft’s guide</a>.</p><p>The newer “Windows Backup” app backs up to OneDrive, which isn’t end-to-end encrypted.</p>"
+            },
+            {
+              "title": "Linux: Déjà Dup (Backups)",
+              "text": "<p>Install <a href=\"https://apps.gnome.org/DejaDup/\">Déjà Dup</a> (called “Backups” on many systems), choose the folders and your drive, keep <b>Encrypt backup</b> on with a strong password, and turn on <b>Back Up Automatically</b>. For the system itself, <a href=\"https://github.com/linuxmint/timeshift\">Timeshift</a> takes snapshots you can roll back to after a bad update.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phone",
+      "title": "Back Up Your Phone",
+      "summary": "iPhone and Android.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "openFirst": false,
+          "items": [
+            {
+              "title": "iPhone: encrypted backup to your computer",
+              "text": "<p>Connect the iPhone to a Mac (Finder) or a Windows PC (the Apple Devices app). Select the phone, choose <b>Back up all the data on your iPhone to this computer</b> and tick <b>Encrypt local backup</b> &mdash; that also saves passwords, Health and Wi-Fi data. Store the password in your password manager. <a href=\"https://support.apple.com/en-us/108796\">Apple’s guide</a> &middot; <a href=\"https://support.apple.com/en-us/108353\">about encrypted backups</a>.</p>"
+            },
+            {
+              "title": "iPhone: iCloud Backup",
+              "text": "<p>Settings &rarr; your name &rarr; iCloud &rarr; iCloud Backup. It runs automatically each night while charging on Wi-Fi. Turn on Advanced Data Protection (see <a href=\"page:de-apple#secure-account\">De-Apple Yourself</a>) so Apple can’t read it.</p>"
+            },
+            {
+              "title": "Android: built-in backup",
+              "text": "<p>Settings &rarr; System &rarr; Backup. Most phones back up to your Google account; on GrapheneOS and CalyxOS, <b>Seedvault</b> backs up to a USB drive or your own cloud instead. Photos are better handled by an encrypted photo app &mdash; see <a href=\"page:alternatives#photos\">photo alternatives</a>.</p>"
+            },
+            {
+              "title": "Any phone: copy photos to your computer",
+              "text": "<p>Every few weeks, copy the camera roll to your computer, where your computer backup picks it up. Or use an encrypted photo service like ente, or a self-hosted one like Immich.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apps",
+      "title": "Encrypted Backup Apps",
+      "summary": "Cross-platform tools that encrypt before uploading.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>These encrypt everything on your device <i>before</i> it’s copied, so the drive or cloud you back up to only ever sees scrambled data. They also <b>deduplicate</b>, so keeping many versions takes little extra space.</p>"
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Kopia",
+              "url": "https://kopia.io/",
+              "desc": "Easy desktop app or command line, with scheduling built in. Backs up to drives or almost any cloud.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux · free"
+            },
+            {
+              "label": "Duplicati",
+              "url": "https://duplicati.com/",
+              "desc": "Web-based app with a scheduler, encrypting to drives and many cloud services.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux · free"
+            },
+            {
+              "label": "restic",
+              "url": "https://restic.net/",
+              "desc": "Fast, reliable command-line backups; great with a schedule (see below).",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux · free"
+            },
+            {
+              "label": "BorgBackup + Vorta",
+              "url": "https://vorta.borgbase.com/",
+              "desc": "Borg is a mature, efficient backup engine; Vorta gives it a friendly app and scheduler.",
+              "linkText": "Get it",
+              "meta": "macOS, Linux · free"
+            },
+            {
+              "label": "Déjà Dup",
+              "url": "https://apps.gnome.org/DejaDup/",
+              "desc": "Simple encrypted backups with automatic scheduling.",
+              "linkText": "Get it",
+              "meta": "Linux · free"
+            },
+            {
+              "label": "Cryptomator",
+              "url": "https://cryptomator.org/",
+              "desc": "Encrypts a folder before your cloud syncs it — for files you keep in any cloud.",
+              "linkText": "Get it",
+              "meta": "All devices · free"
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Where to keep the offsite copy"
+        },
+        {
+          "type": "text",
+          "html": "<p>Any of the <a href=\"page:alternatives#cloud-storage\">encrypted cloud storage</a> services, a cheap storage host used with Kopia, restic or Borg (they encrypt, so the host can’t see your files), or a second drive you keep at someone else’s home.</p>"
+        }
+      ]
+    },
+    {
+      "id": "schedule",
+      "title": "Schedule Automatic Backups",
+      "summary": "Set it once so you never have to remember.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>The backup that runs on its own is the one that actually happens. Time Machine, File History, Déjà Dup, Kopia, Duplicati and Vorta all have a schedule setting &mdash; turn it on and pick <b>daily</b> (or hourly). If you use restic on the command line, schedule it yourself:</p>"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "1. Set up restic once"
+        },
+        {
+          "type": "code",
+          "style": "terminal",
+          "code": "# create an encrypted repository on your backup drive\nrestic -r /Volumes/Backup/restic init\n\n# save the repository password where only you can read it\necho 'your-long-repository-password' > ~/.restic-pass\nchmod 600 ~/.restic-pass\n\n# run a first backup\nrestic -r /Volumes/Backup/restic --password-file ~/.restic-pass backup ~/Documents ~/Pictures",
+          "lang": "bash",
+          "copy": true,
+          "label": "Run in a terminal (macOS or Linux)"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "2a. Schedule it with cron (macOS & Linux)"
+        },
+        {
+          "type": "code",
+          "style": "terminal",
+          "code": "# open your schedule\ncrontab -e\n\n# add this line: back up every day at 02:00, then keep 7 daily, 4 weekly and 12 monthly versions\n0 2 * * * restic -r /Volumes/Backup/restic --password-file $HOME/.restic-pass backup $HOME/Documents $HOME/Pictures --quiet && restic -r /Volumes/Backup/restic --password-file $HOME/.restic-pass forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune --quiet",
+          "lang": "bash",
+          "copy": true,
+          "label": "crontab"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "2b. Or a systemd timer (Linux) — runs even if the computer was off at 02:00"
+        },
+        {
+          "type": "code",
+          "style": "terminal",
+          "code": "# ~/.config/systemd/user/backup.service\n[Unit]\nDescription=restic backup\n\n[Service]\nType=oneshot\nExecStart=/usr/bin/restic -r /mnt/backup/restic --password-file %h/.restic-pass backup %h/Documents %h/Pictures\n\n# ~/.config/systemd/user/backup.timer\n[Unit]\nDescription=Daily restic backup\n\n[Timer]\nOnCalendar=daily\nPersistent=true\n\n[Install]\nWantedBy=timers.target",
+          "lang": "ini",
+          "copy": true,
+          "label": "Two small files"
+        },
+        {
+          "type": "code",
+          "style": "terminal",
+          "code": "systemctl --user daemon-reload\nsystemctl --user enable --now backup.timer\nsystemctl --user list-timers   # check when it runs next",
+          "lang": "bash",
+          "copy": true,
+          "label": "Turn the timer on"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "2c. Windows: Task Scheduler"
+        },
+        {
+          "type": "text",
+          "html": "<p>Open <b>Task Scheduler</b> &rarr; <b>Create Basic Task</b> &rarr; name it “Backup” &rarr; <b>Daily</b> &rarr; pick a time &rarr; <b>Start a program</b>, and point it at your backup app’s command (for example <code>restic.exe</code> with the same arguments as above). Tick “Run task as soon as possible after a scheduled start is missed” in the task’s settings.</p>"
+        },
+        {
+          "type": "callout",
+          "label": "Tip",
+          "html": "<p>A schedule only helps if the drive is there. If you use an external drive, plug it in at the same time every week &mdash; or back up to a network drive or the cloud, which is always connected.</p>"
+        }
+      ]
+    },
+    {
+      "id": "restore",
+      "title": "Test Your Restore",
+      "summary": "A backup you’ve never restored is a guess.",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Restore one file into a new folder and open it",
+              "details": "<p>restic: <code>restic -r /Volumes/Backup/restic --password-file ~/.restic-pass restore latest --target ~/restore-test</code>. Time Machine: open the folder in Finder and choose “Browse Time Machine Backups”.</p>"
+            },
+            {
+              "text": "Check the last backup date every month",
+              "details": "<p>restic: <code>restic snapshots</code>. Time Machine and File History show the date of the last backup in their settings.</p>"
+            },
+            {
+              "text": "Keep the backup password somewhere you’ll have without the computer",
+              "details": "<p>In your password manager <i>and</i> on paper in a safe place. An encrypted backup without its password is gone for good.</p>"
+            },
+            {
+              "text": "Make sure the offsite copy works too",
+              "details": "<p>Try restoring something from the cloud copy, not just the drive on your desk.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": [
+    {
+      "type": "subheading",
+      "style": "h3",
+      "text": "Resources"
+    },
+    {
+      "type": "resources",
+      "style": "list",
+      "items": [
+        {
+          "label": "restic documentation",
+          "url": "https://restic.readthedocs.io/en/stable/",
+          "desc": "setting up, scheduling and restoring."
+        },
+        {
+          "label": "Back up your Mac with Time Machine",
+          "url": "https://support.apple.com/en-us/104984",
+          "desc": "Apple’s step-by-step guide."
+        },
+        {
+          "label": "Backup and restore with File History",
+          "url": "https://support.microsoft.com/en-us/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
+          "desc": "Microsoft’s guide for Windows."
+        },
+        {
+          "label": "Privacy Guides: encryption software",
+          "url": "https://www.privacyguides.org/en/encryption/",
+          "desc": "encrypt drives and files."
+        }
+      ]
+    }
+  ]
 }
