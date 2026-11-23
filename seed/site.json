@@ -25,10 +25,12 @@
       "title": "Quick Check",
       "layout": "quick",
       "items": [
+        "privacy-starter-kit",
         "privacy-checklist",
         "password-check",
         "delete-yourself",
-        "takedown-templates"
+        "takedown-templates",
+        "google-alternatives"
       ]
     },
     {
@@ -50,6 +52,15 @@
         "communication",
         "storage",
         "surveillance"
+      ]
+    },
+    {
+      "id": "tutorials",
+      "title": "Tutorials",
+      "layout": "quick",
+      "description": "<p>Single-page walkthroughs you can finish in one sitting.</p>",
+      "items": [
+        "de-google"
       ]
     },
     {
@@ -559,6 +570,59 @@
       "topics": [
         "auth"
       ]
+    },
+    "privacy-starter-kit": {
+      "title": "Privacy Starter Kit",
+      "path": "quick-action/privacy-starter-kit.html",
+      "summary": "Three switches that make every other step easier.",
+      "image": "assets/privacytest.png",
+      "imageFit": "contain",
+      "kind": "guide",
+      "topics": [
+        "passwords",
+        "browsers"
+      ],
+      "related": [
+        "privacy-checklist",
+        "google-alternatives",
+        "de-google"
+      ],
+      "keywords": "start beginner first steps"
+    },
+    "google-alternatives": {
+      "title": "Google Alternatives",
+      "path": "quick-action/google-alternatives.html",
+      "summary": "Private replacements for every Google service.",
+      "image": "assets/duckduckgo.png",
+      "imageFit": "contain",
+      "kind": "resource",
+      "topics": [
+        "data",
+        "browsers"
+      ],
+      "related": [
+        "de-google",
+        "privacy-starter-kit"
+      ],
+      "keywords": "google alternatives gmail maps drive youtube search degoogle"
+    },
+    "de-google": {
+      "title": "De-Google Yourself",
+      "path": "tutorials/de-google.html",
+      "summary": "Lock down your Google account, YouTube and Android — or leave.",
+      "image": "assets/chromium.png",
+      "imageFit": "contain",
+      "kind": "tutorial",
+      "topics": [
+        "data",
+        "mobile",
+        "browsers"
+      ],
+      "related": [
+        "google-alternatives",
+        "privacy-starter-kit"
+      ],
+      "keywords": "google youtube android degoogle takeout"
     }
   }
 }

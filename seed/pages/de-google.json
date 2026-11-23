@@ -1,0 +1,302 @@
+{
+  "subtitle": "Google account, YouTube & Android",
+  "meta": "Tutorial",
+  "intro": [
+    {
+      "type": "text",
+      "html": "<p>Google runs your search, email, maps, videos and probably your phone &mdash; and one account ties all of it together. You don’t have to delete it to take back control. This walkthrough locks the account down, turns off the tracking you can, and shows how to move away from Google when you’re ready.</p>"
+    }
+  ],
+  "subsections": [
+    {
+      "id": "before",
+      "title": "Before You Start",
+      "summary": "Back up, and decide what to keep.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "style": "list",
+          "items": [
+            {
+              "title": "Download your data.",
+              "text": "Export a copy with <a href=\"https://takeout.google.com/\">Google Takeout</a> so nothing is lost if you change or close services."
+            },
+            {
+              "title": "List what you use.",
+              "text": "Gmail, Drive, Photos, Maps, YouTube, Android &mdash; you can move away from them one at a time."
+            },
+            {
+              "title": "Consider separate accounts.",
+              "text": "Keep different parts of your life (work, personal, activism) in different accounts, and sign out when you’re done."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "secure-account",
+      "title": "Secure Your Google Account",
+      "summary": "Two-step verification, recovery and access.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "label": "STEP",
+          "items": [
+            {
+              "title": "Run the Security Checkup",
+              "text": "<p>Go to <a href=\"https://myaccount.google.com/security-checkup\">myaccount.google.com/security-checkup</a> and fix everything it flags.</p>"
+            },
+            {
+              "title": "Turn on 2-step verification",
+              "text": "<p>At <a href=\"https://myaccount.google.com/signinoptions/two-step-verification\">2-Step Verification</a>, use a security key, passkey or authenticator app rather than SMS. Save the backup codes in your <a href=\"page:passwords\">password manager</a>.</p>"
+            },
+            {
+              "title": "Check recovery options",
+              "text": "<p>Make sure the recovery email and phone are yours and current &mdash; or remove the phone if you don’t want it linked.</p>"
+            },
+            {
+              "title": "Remove apps you don’t use",
+              "text": "<p>Review <a href=\"https://myaccount.google.com/permissions\">third-party access</a> and delete old <a href=\"https://myaccount.google.com/apppasswords\">app passwords</a>. Check <a href=\"https://myaccount.google.com/device-activity\">device activity</a> for sign-ins you don’t recognise.</p>"
+            },
+            {
+              "title": "Check Gmail forwarding",
+              "text": "<p>In Gmail settings, open <b>Forwarding and POP/IMAP</b>. Disable forwarding you didn’t set up, and turn off POP/IMAP if you only use the website or app. An attacker’s forwarding rule can copy every email you get.</p>"
+            },
+            {
+              "title": "High-risk? Use Advanced Protection",
+              "text": "<p>Journalists, activists and others at risk can enrol in <a href=\"https://landing.google.com/advancedprotection/\">Advanced Protection</a>, which requires a security key or passkey to sign in.</p>"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Tip",
+          "html": "<p>Never click links in “security alert” emails. Go to myaccount.google.com yourself instead.</p>"
+        }
+      ]
+    },
+    {
+      "id": "tracking",
+      "title": "Turn Off Tracking",
+      "summary": "Activity, location and ads.",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Pause or auto-delete Web & App Activity",
+              "details": "<p>At <a href=\"https://myactivity.google.com/activitycontrols\">Activity controls</a>, turn it off, or set auto-delete to 3 months. Delete what’s already saved.</p>"
+            },
+            {
+              "text": "Turn off Location History / Timeline",
+              "details": "<p>In the same Activity controls, turn off Timeline and delete existing history. In Google Maps, clear your saved “Home” and “Work” labels if you don’t need them.</p>"
+            },
+            {
+              "text": "Turn off YouTube history",
+              "details": "<p>Pause watch and search history in Activity controls, and delete what’s there.</p>"
+            },
+            {
+              "text": "Turn off personalised ads",
+              "details": "<p>At <a href=\"https://myadcenter.google.com/\">My Ad Center</a>, switch off personalised ads.</p>"
+            },
+            {
+              "text": "Run the Privacy Checkup",
+              "details": "<p>Walk through <a href=\"https://myaccount.google.com/privacycheckup\">myaccount.google.com/privacycheckup</a> and limit what’s visible on your profile, including your birthday.</p>"
+            },
+            {
+              "text": "Tidy up Google Photos",
+              "details": "<p>Remove your own face label, stop partner sharing you don’t use, and turn off contact suggestions. Strip location from photos before posting them anywhere.</p>"
+            },
+            {
+              "text": "Share Drive files with people, not links",
+              "details": "<p>Share with specific accounts, add expiry dates, and turn off “anyone with the link” for anything private.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "youtube",
+      "title": "YouTube",
+      "summary": "History, visibility and comments.",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Use a separate Google account for YouTube",
+              "details": "<p>Especially if you run a channel. Sign out of it when you’re not using it.</p>"
+            },
+            {
+              "text": "Pause or delete watch and search history",
+              "details": "<p>See Google’s guide to <a href=\"https://support.google.com/youtube/answer/95725\">managing YouTube history</a>.</p>"
+            },
+            {
+              "text": "Choose who sees each video and playlist",
+              "details": "<p>Set each one to public, unlisted or private. Don’t film anything that shows where you live.</p>"
+            },
+            {
+              "text": "Moderate comments and use blocked words",
+              "details": "<p>Hide users who harass you, and add moderators through channel permissions instead of sharing your password.</p>"
+            },
+            {
+              "text": "Watch without an account",
+              "details": "<p>Or use an alternative: <a href=\"page:google-alternatives#youtube\">see YouTube alternatives</a>.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "android",
+      "title": "Android",
+      "summary": "Harden the phone, then reduce Google on it.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "label": "STEP",
+          "items": [
+            {
+              "title": "Keep it updated",
+              "text": "<p>Install system and app updates as soon as they arrive, and check the “Android security update” date. A phone that no longer gets security updates should be replaced.</p>"
+            },
+            {
+              "title": "Use a strong screen lock",
+              "text": "<p>A passphrase of 10+ characters is strongest. Biometrics are convenient, but in some situations you can be forced to unlock with them. Set the screen to lock after 1–5 minutes and hide sensitive content on the lock screen.</p>"
+            },
+            {
+              "title": "Cut app permissions",
+              "text": "<p>In Settings &rarr; Privacy &rarr; Permission manager, turn off location, microphone, camera, contacts and anything else an app doesn’t need. Delete apps you don’t use and disable pre-installed ones you can’t remove.</p>"
+            },
+            {
+              "title": "Turn off location and voice assistant",
+              "text": "<p>Switch off location when you don’t need it. Disable Google Assistant / “Hey Google” if you don’t use it.</p>"
+            },
+            {
+              "title": "Make your keyboard private",
+              "text": "<p>In Gboard &rarr; Privacy, turn off sharing usage statistics and personalisation &mdash; or switch to an open-source keyboard like HeliBoard.</p>"
+            },
+            {
+              "title": "Turn off connections you aren’t using",
+              "text": "<p>Wi-Fi, Bluetooth, NFC, Quick Share and hotspot. Forget old Wi-Fi networks.</p>"
+            },
+            {
+              "title": "Install apps without Google",
+              "text": "<p><a href=\"https://f-droid.org/\">F-Droid</a> is a store of free, open-source apps. <a href=\"https://gitlab.com/AuroraOSS/AuroraStore\">Aurora Store</a> (from F-Droid) installs Play Store apps without signing in to Google. Only install from these or Google Play &mdash; never random download sites.</p>"
+            },
+            {
+              "title": "Go further: a de-Googled OS",
+              "text": "<p>Advanced: <a href=\"https://grapheneos.org/\">GrapheneOS</a> or <a href=\"https://calyxos.org/\">CalyxOS</a> replace Android on supported phones. Installing an OS can break a phone if it goes wrong, so read their guides first. More options: <a href=\"page:google-alternatives#android\">Android alternatives</a>.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "title": "Switch Your Search Engine",
+      "summary": "The easiest Google service to replace.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "before": "<p>Pick one below, then set it as the default in your browser’s settings (search for “search engine” in settings).</p>",
+          "items": [
+            {
+              "label": "SearXNG",
+              "url": "https://searxng.org/",
+              "desc": "Open-source metasearch engine you can self-host.",
+              "linkText": "Try it"
+            },
+            {
+              "label": "Brave Search",
+              "url": "https://search.brave.com/",
+              "desc": "Independent search engine with its own index.",
+              "linkText": "Try it"
+            },
+            {
+              "label": "Mojeek",
+              "url": "https://www.mojeek.com/",
+              "desc": "UK search engine with its own crawler and index.",
+              "linkText": "Try it"
+            },
+            {
+              "label": "DuckDuckGo",
+              "url": "https://duckduckgo.com/",
+              "desc": "Blocks trackers and doesn’t build a profile of you.",
+              "linkText": "Try it"
+            },
+            {
+              "label": "Startpage",
+              "url": "https://www.startpage.com/",
+              "desc": "Google results with your identifying details stripped out.",
+              "linkText": "Try it"
+            },
+            {
+              "label": "Qwant",
+              "url": "https://www.qwant.com/",
+              "desc": "EU-hosted search mixing its own index with Bing.",
+              "linkText": "Try it"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "replace",
+      "title": "Replace the Rest",
+      "summary": "Private alternatives for every Google service.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "buttons",
+          "before": "<p>Ready to move more? There’s a private alternative for every Google service, from Gmail to Maps.</p>",
+          "items": [
+            {
+              "label": "See all Google alternatives →",
+              "url": "page:google-alternatives"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outro": [
+    {
+      "type": "subheading",
+      "style": "h3",
+      "text": "Resources"
+    },
+    {
+      "type": "resources",
+      "style": "list",
+      "items": [
+        {
+          "label": "Security in a Box: Google",
+          "url": "https://securityinabox.org/en/tools/google/",
+          "desc": "protect your Google account and services."
+        },
+        {
+          "label": "Security in a Box: YouTube",
+          "url": "https://securityinabox.org/en/tools/youtube/",
+          "desc": "privacy and safety on YouTube."
+        },
+        {
+          "label": "Security in a Box: Android",
+          "url": "https://securityinabox.org/en/phones-and-computers/android/",
+          "desc": "harden your Android phone."
+        },
+        {
+          "label": "privacytools.io: Google alternatives",
+          "url": "https://privacytools.io/alternatives/google",
+          "desc": "replacements for each Google service."
+        }
+      ]
+    }
+  ]
+}

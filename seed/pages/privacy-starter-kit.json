@@ -1,0 +1,69 @@
+{
+  "subtitle": "Where to begin",
+  "meta": "Nov 23, 2026",
+  "subsections": [
+    {
+      "id": "first-three",
+      "title": "Start Here",
+      "summary": "Browser, search engine, password manager.",
+      "blocks": [
+        {
+          "type": "numbered",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "title": "Switch your browser",
+              "url": "page:browsers#recommended",
+              "text": "Move to a browser that blocks trackers by default, like Brave, Firefox or LibreWolf."
+            },
+            {
+              "title": "Switch your search engine",
+              "url": "page:de-google#search",
+              "text": "Search with an engine that doesn’t profile you, like DuckDuckGo, Brave Search or Mojeek."
+            },
+            {
+              "title": "Turn on a password manager",
+              "url": "page:passwords",
+              "text": "Let a password manager create and remember a unique password for every account."
+            }
+          ],
+          "after": "<p>Those three cover the widest surface for the least effort and make every other step easier.</p>"
+        }
+      ]
+    },
+    {
+      "id": "next-steps",
+      "title": "Next Steps",
+      "summary": "When the first three are done.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "rows",
+          "items": [
+            {
+              "url": "page:privacy-checklist",
+              "desc": "A tick-off list of small fixes, from easiest to hardest.",
+              "linkText": "Open"
+            },
+            {
+              "url": "page:google-alternatives",
+              "desc": "Swap Google services for private ones, one at a time.",
+              "linkText": "Open"
+            },
+            {
+              "url": "page:auth",
+              "desc": "Add two-factor authentication to the accounts that matter most.",
+              "linkText": "Open"
+            },
+            {
+              "url": "page:delete-yourself",
+              "desc": "Find and remove the personal data already out there.",
+              "linkText": "Open"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
