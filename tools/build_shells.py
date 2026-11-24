@@ -61,4 +61,5 @@ for pid, p in site['pages'].items():
 redirect('guides/browser-privacy/browser-privacy.html', 'browser-privacy/index.html')
 redirect('browser-privacy/browsers.html', 'browser-privacy/index.html#recommended')
 redirect('quick-action/google-alternatives.html', 'quick-action/alternatives.html')
+redirect('guides/storage/storage.html', 'guides/personal-data-tracking/overview.html')
 print(f'wrote {n} shells (v{VERSION})', file=sys.stderr)

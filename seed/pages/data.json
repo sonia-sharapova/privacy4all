@@ -1,13 +1,33 @@
 {
+  "subtitle": "Personal data, files & devices",
+  "meta": "Lesson",
+  "tocTitle": "In this lesson",
+  "toc": "table",
+  "tocSource": "sections",
+  "intro": [
+    {
+      "type": "quote",
+      "card": true,
+      "quote": "Deleted is not the same as gone, and private is not the same as encrypted.",
+      "side": "text",
+      "sideLabel": "THIS LESSON",
+      "sideText": "<p>Where your data lives, how to lock it up, how to keep copies safe, and how to make it disappear when you’re done with it.</p>"
+    }
+  ],
   "subsections": [
     {
       "id": "overview",
       "title": "Overview",
-      "summary": "What it is and why it matters.",
+      "summary": "Two kinds of data: what others hold, and what you keep.",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Personal data is any information that can be tied back to you: your name, address, phone number, location history, what you buy and what you search for. It is collected by the apps and sites you use, then bought and sold by <b>data brokers</b> who build profiles to sell to advertisers, landlords, employers &mdash; or anyone who pays. You can't stop all of it, but you can shrink how much is collected and remove a lot of what's already out there.</p>"
+          "html": "<p>Your data lives in two places. <b>Out there</b>: profiles that apps, websites and <b>data brokers</b> build about you and sell to advertisers, landlords, employers or anyone who pays. <b>With you</b>: the photos, documents and messages on your phone, laptop, USB sticks and cloud accounts.</p><p>This lesson covers both. You’ll shrink what’s collected and remove what’s already out there, then protect what you keep: encrypt it so a lost or seized device reveals nothing, back it up so you can’t lose it, strip the hidden details that identify you before you share it, and destroy it properly when you’re done.</p>"
+        },
+        {
+          "type": "callout",
+          "label": "Before you start",
+          "html": "<p>Encryption is illegal, or draws suspicion, in a few countries. Check the <a href=\"https://www.gp-digital.org/world-map-of-encryption/\">world map of encryption laws</a> if you’re unsure &mdash; and remember the easiest data to protect is data you don’t keep.</p>"
         }
       ]
     },
@@ -26,24 +46,512 @@
               "html": "<p>A company that collects and sells profiles of people, usually without ever dealing with them directly.</p>"
             },
             {
-              "title": "People-search site",
-              "html": "<p>A broker that sells lookups of a person’s address, phone and relatives to the public.</p>"
-            },
-            {
-              "title": "Opt-out",
-              "html": "<p>A request asking a company to stop selling your data or to delete it.</p>"
-            },
-            {
               "title": "Metadata",
-              "html": "<p>Data about data — like when and where a photo was taken — which can reveal more than the content.</p>"
+              "html": "<p>Data about a file &mdash; when and where a photo was taken, which phone took it, who wrote a document. Often more revealing than the content.</p>"
+            },
+            {
+              "title": "Full-disk encryption",
+              "html": "<p>Scrambles everything on a device until you unlock it. FileVault, BitLocker and phone encryption do this. Protects a device that is <i>switched off</i>.</p>"
+            },
+            {
+              "title": "Encrypted volume / vault",
+              "html": "<p>A locked folder or file (VeraCrypt, Cryptomator) that holds other files and only opens with a password.</p>"
+            },
+            {
+              "title": "Secure deletion",
+              "html": "<p>Overwriting a file so it can’t be recovered. Emptying the trash only hides it.</p>"
+            },
+            {
+              "title": "HDD vs. SSD",
+              "html": "<p>Spinning hard drives can be wiped by overwriting. SSDs, USB sticks and SD cards spread data around (wear levelling), so overwriting isn’t reliable &mdash; encrypt them instead.</p>"
             },
             {
               "title": "GDPR / CCPA",
               "html": "<p>EU and California privacy laws that give you the right to see and delete data held about you.</p>"
             },
             {
-              "title": "Advertising ID",
-              "html": "<p>A number your phone gives apps so advertisers can track you across them. You can delete it.</p>"
+              "title": "3-2-1 backup",
+              "html": "<p>Three copies of your data, on two kinds of storage, with one kept somewhere else.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "out-there",
+      "title": "Data About You Out There",
+      "summary": "Find it, remove it, and stop new leaks.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Search engines, people-search sites and breach databases make it easy for strangers to find your address, phone number and relatives. Start by seeing what’s visible, then remove it &mdash; for free, or with a paid service &mdash; and cut down what you hand out in future.</p>"
+        },
+        {
+          "type": "redirects",
+          "style": "rows",
+          "items": [
+            {
+              "url": "page:delete-yourself",
+              "desc": "Find your data, opt out of data brokers and remove yourself from search results.",
+              "linkText": "Open"
+            },
+            {
+              "url": "page:takedown-templates",
+              "desc": "Ready-to-send removal requests for brokers, GDPR/CCPA and Google.",
+              "linkText": "Open"
+            },
+            {
+              "url": "page:privacy-checklist",
+              "desc": "Small steps that stop new data being collected, tier by tier.",
+              "linkText": "Open"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Ask for a copy",
+          "html": "<p>Big companies must give you your data on request: <a href=\"https://takeout.google.com/\">Google Takeout</a>, <a href=\"https://privacy.apple.com/\">Apple Data &amp; Privacy</a>, and the “download your data” option in most social networks. It shows what they hold &mdash; and is your backup before you delete an account.</p>"
+        }
+      ]
+    },
+    {
+      "id": "encrypt-devices",
+      "title": "Encrypt Your Devices",
+      "summary": "Lock everything on a lost or stolen device.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Full-disk encryption means a thief or anyone who seizes your device gets scrambled data, not your files. Most devices can do it with a setting.</p>"
+        },
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "openFirst": false,
+          "items": [
+            {
+              "title": "iPhone & iPad",
+              "text": "<p>Encrypted automatically as soon as you set a passcode. Use a long alphanumeric passcode rather than six digits.</p>"
+            },
+            {
+              "title": "Android",
+              "text": "<p>Android 10 and newer encrypt by default. Check under Settings &rarr; Security &rarr; Encryption &amp; credentials (names vary by phone), and use a strong screen lock.</p>"
+            },
+            {
+              "title": "Mac",
+              "text": "<p>System Settings &rarr; Privacy &amp; Security &rarr; <b>FileVault</b> &rarr; Turn On. Keep the recovery key in your password manager, not in iCloud if you want Apple out of the loop.</p>"
+            },
+            {
+              "title": "Windows",
+              "text": "<p><b>BitLocker</b> on Windows 10/11 Pro, Enterprise or Education (Settings &rarr; Privacy &amp; security &rarr; Device encryption or BitLocker). Add a start-up PIN for extra protection. Home editions can use <a href=\"https://veracrypt.io/\">VeraCrypt</a> system encryption instead.</p>"
+            },
+            {
+              "title": "Linux",
+              "text": "<p>Full-disk encryption is chosen during installation (“Encrypt the new installation” / LUKS). On an existing system that means backing up and reinstalling.</p>"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Shut down, don’t sleep",
+          "html": "<p>Encryption only protects a device that is <b>fully powered off</b>. Before crossing a border, going to a protest or leaving a laptop unattended, shut it down.</p>"
+        }
+      ]
+    },
+    {
+      "id": "encrypt-files",
+      "title": "Encrypt Drives & Files",
+      "summary": "USB drives, external disks and sensitive folders.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>External drives get lost and seized more often than laptops. Encrypt the whole drive &mdash; macOS Disk Utility (format as “encrypted”), BitLocker To Go on Windows, or VeraCrypt on any computer &mdash; or keep sensitive files in an encrypted vault.</p>"
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "VeraCrypt",
+              "url": "https://veracrypt.io/",
+              "desc": "Encrypts whole drives, partitions or file containers. Can hide a second volume behind a decoy password.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux · free"
+            },
+            {
+              "label": "Cryptomator",
+              "url": "https://cryptomator.org/",
+              "desc": "Encrypts a folder file by file — ideal for anything you keep in a cloud.",
+              "linkText": "Get it",
+              "meta": "All devices · free"
+            },
+            {
+              "label": "Tails",
+              "url": "https://tails.net/",
+              "desc": "A system that runs from a USB stick, leaves no trace and can keep an encrypted persistent folder.",
+              "linkText": "Get it",
+              "meta": "USB stick · free"
+            },
+            {
+              "label": "Tella",
+              "url": "https://tella-app.org/",
+              "desc": "Hides and encrypts photos, video and audio — built for documenting abuses.",
+              "linkText": "Get it",
+              "meta": "Android, iOS · free"
+            }
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Keeping vaults safe",
+          "items": [
+            {
+              "text": "Lock (unmount) vaults when you step away, before sleep, and before handing over a device"
+            },
+            {
+              "text": "Eject drives in the system before unplugging them",
+              "details": "<p>Pulling a drive out while it’s open can corrupt files.</p>"
+            },
+            {
+              "text": "Never open an encrypted vault on a computer you don’t trust",
+              "details": "<p>Malware can record your password as you type it.</p>"
+            },
+            {
+              "text": "Use a long, unique password and store it in your password manager",
+              "details": "<p>See <a href=\"page:passwords\">Passwords</a>. There is no “forgot password” for encryption.</p>"
+            },
+            {
+              "text": "Buy and repair devices through people you trust",
+              "details": "<p>Have second-hand devices wiped and checked before use.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "backups",
+      "title": "Back Up & Recover",
+      "summary": "Copies you can count on — and what to do after a loss.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Encryption without backups is a gamble: a forgotten password or dead drive means losing everything. Keep three copies, on two kinds of storage, one of them somewhere else &mdash; encrypted, and on a schedule.</p>"
+        },
+        {
+          "type": "redirects",
+          "style": "rows",
+          "items": [
+            {
+              "url": "page:backups",
+              "desc": "The full walkthrough: Time Machine, File History, phone backups, encrypted backup apps and scheduling.",
+              "linkText": "Open"
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Encrypted cloud storage"
+        },
+        {
+          "type": "text",
+          "html": "<p>Encrypt before uploading with Cryptomator, or choose a zero-knowledge service such as Filen, Proton Drive, Tresorit, MEGA or Internxt &mdash; see <a href=\"page:alternatives#cloud-storage\">cloud storage alternatives</a>. Self-hosters can run <a href=\"https://nextcloud.com/\">Nextcloud</a>.</p>"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Lost something?"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Stop using the drive immediately</b> &mdash; new files can overwrite what you deleted. Then try <a href=\"https://www.cgsecurity.org/wiki/PhotoRec\">PhotoRec</a> (all systems) or Recuva (Windows), or the Digital First Aid Kit’s <a href=\"https://digitalfirstaid.org/support/\">support page</a>.</p>"
+        }
+      ]
+    },
+    {
+      "id": "identifying",
+      "title": "Remove Identifying Details",
+      "summary": "Metadata, faces and locations in what you share.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>A photo can carry the exact GPS location, date and phone model it was taken with; a document can carry your name and edit history. Strip it before sharing &mdash; and turn off location for the camera so it’s never added.</p>"
+        },
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Turn off location for your camera app",
+              "details": "<p>Do it <i>before</i> taking photos &mdash; removing location afterwards is harder. Check app location permissions while you’re there.</p>"
+            },
+            {
+              "text": "Remove metadata before you share",
+              "details": "<p>Use one of the tools below. On iPhone you can also tap Options in the share sheet and turn off Location. Check what’s left with Get Info (Mac) or Properties (Windows).</p>"
+            },
+            {
+              "text": "Black out, don’t blur",
+              "details": "<p>Pixelation and light blur can be reversed. Cover faces, names and screens with a solid, fully opaque box &mdash; on iPhone use a filled shape in Markup, not the highlighter.</p>"
+            },
+            {
+              "text": "Edit on your device, not in a social app",
+              "details": "<p>Uploading the original to a platform gives it the unedited picture, metadata and all.</p>"
+            },
+            {
+              "text": "Watch your auto-backup",
+              "details": "<p>The un-redacted original may already be in iCloud or Google Photos &mdash; delete it there too.</p>"
+            }
+          ]
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "ExifCleaner",
+              "url": "https://exifcleaner.com/",
+              "desc": "Drag and drop to strip metadata from images, videos and PDFs.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux"
+            },
+            {
+              "label": "Scrambled Exif",
+              "url": "https://gitlab.com/juanitobananas/scrambled-exif",
+              "desc": "Removes metadata when you share a photo.",
+              "linkText": "Get it",
+              "meta": "Android"
+            },
+            {
+              "label": "MetaX",
+              "url": "https://github.com/Ckitakishi/MetaX",
+              "desc": "View, edit and delete photo metadata.",
+              "linkText": "Get it",
+              "meta": "iOS, macOS"
+            },
+            {
+              "label": "mat2",
+              "url": "https://0xacab.org/jvoisin/mat2",
+              "desc": "Removes metadata from many file types, including office documents.",
+              "linkText": "Get it",
+              "meta": "Linux, macOS"
+            },
+            {
+              "label": "GIMP",
+              "url": "https://www.gimp.org/",
+              "desc": "Free image editor for redacting photos.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux"
+            },
+            {
+              "label": "PutMask",
+              "url": "https://putmask.com/",
+              "desc": "Blurs faces in videos automatically.",
+              "linkText": "Get it",
+              "meta": "Android"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "delete",
+      "title": "Delete Files for Good",
+      "summary": "Why the trash isn’t enough, and what works.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Emptying the trash only marks the space as free; the file stays readable until something overwrites it. How you really delete depends on the drive.</p>"
+        },
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "divided",
+          "items": [
+            {
+              "title": "SSDs, phones, USB sticks, SD cards",
+              "html": "<p>Overwriting isn’t reliable on flash storage. <b>Encrypt the device</b> (so leftovers are unreadable), then delete or factory-reset it.</p>"
+            },
+            {
+              "title": "Spinning hard drives (HDD)",
+              "html": "<p>Overwrite with a wiping tool. To wipe a whole drive, boot <a href=\"https://github.com/PartialVolume/shredos.x86_64\">ShredOS</a> from a USB stick, or connect the drive to another computer and use Eraser.</p>"
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Clean up traces regularly"
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "BleachBit",
+              "url": "https://www.bleachbit.org/",
+              "desc": "Clears caches, temporary files and browser leftovers, and can wipe free space.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux · free"
+            },
+            {
+              "label": "Eraser",
+              "url": "https://eraser.heidi.ie/",
+              "desc": "Overwrites files, folders and free space on Windows.",
+              "linkText": "Get it",
+              "meta": "Windows · free"
+            },
+            {
+              "label": "Extirpater",
+              "url": "https://f-droid.org/packages/us.spotco.extirpater/",
+              "desc": "Wipes free space on Android. Don’t run it often — it wears out flash memory.",
+              "linkText": "Get it",
+              "meta": "Android · F-Droid"
+            },
+            {
+              "label": "ShredOS",
+              "url": "https://github.com/PartialVolume/shredos.x86_64",
+              "desc": "Bootable USB tool that wipes whole hard drives (not SSDs).",
+              "linkText": "Get it",
+              "meta": "Bootable USB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dispose",
+      "title": "Before You Sell or Give Away a Device",
+      "summary": "Make sure the next owner gets nothing.",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Back up what you need",
+              "details": "<p>See <a href=\"page:backups\">Backups</a>.</p>"
+            },
+            {
+              "text": "Sign out of every account and remove the device",
+              "details": "<p>Apple Account (turn off Find My), Google account, Microsoft account. Otherwise activation lock or account links follow the device.</p>"
+            },
+            {
+              "text": "Take out the SIM, SD card and any USB sticks"
+            },
+            {
+              "text": "Make sure encryption is on, then factory reset",
+              "details": "<p>On an encrypted phone or Mac, a reset throws away the key, so leftover data is unreadable.</p>"
+            },
+            {
+              "text": "Old hard drives you won’t reuse: destroy them physically",
+              "details": "<p>Drill several holes through the platters. Don’t burn, microwave or use acid.</p>"
+            },
+            {
+              "text": "Reinstalling for yourself? Turn encryption on during setup"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sharing",
+      "title": "Share Files Safely",
+      "summary": "Send files without handing them to a big platform.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>For anything sensitive, use a tool that encrypts or expires the file. Whatever you use, encrypting the file first (for example in a password-protected VeraCrypt container) means the host only ever stores scrambled data.</p>"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Private sharing"
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "OnionShare",
+              "url": "https://onionshare.org/",
+              "desc": "Share files straight from your computer over Tor. Nothing is stored on anyone’s server.",
+              "linkText": "Open",
+              "meta": "Windows, macOS, Linux"
+            },
+            {
+              "label": "share.riseup.net",
+              "url": "https://share.riseup.net/",
+              "desc": "Encrypted uploads from Riseup that expire after 12 hours.",
+              "linkText": "Open",
+              "meta": "Web · 50 MB"
+            },
+            {
+              "label": "Disroot Upload",
+              "url": "https://upload.disroot.org/",
+              "desc": "Encrypted file upload with a link that expires.",
+              "linkText": "Open",
+              "meta": "Web · 2 GB"
+            },
+            {
+              "label": "Tresorit Send",
+              "url": "https://send.tresorit.com/",
+              "desc": "End-to-end encrypted transfers with a password option.",
+              "linkText": "Open",
+              "meta": "Web · 5 GB"
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Quick anonymous upload sites"
+        },
+        {
+          "type": "callout",
+          "label": "Careful",
+          "html": "<p>These are run by unknown operators. Assume anything you upload could be seen, scanned or deleted, encrypt files first, and don’t use them for anything you can’t afford to lose or leak.</p>"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Anonym File",
+              "url": "https://anonymfile.com/",
+              "desc": "anonymous file upload and sharing."
+            },
+            {
+              "label": "GoFile",
+              "url": "https://gofile.io/",
+              "desc": "free, fast sharing with no account."
+            },
+            {
+              "label": "Buzzheavier",
+              "url": "https://buzzheavier.com/",
+              "desc": "privacy-focused file sharing."
+            },
+            {
+              "label": "Easyupload.io",
+              "url": "https://easyupload.io/",
+              "desc": "temporary uploads with expiry options."
+            },
+            {
+              "label": "DropMeFiles",
+              "url": "https://dropmefiles.com/",
+              "desc": "temporary sharing with password protection."
+            },
+            {
+              "label": "Uguu",
+              "url": "https://uguu.se/",
+              "desc": "temporary uploads that delete themselves."
+            },
+            {
+              "label": "NiHao Cloud",
+              "url": "https://nihaocloud.com/",
+              "desc": "cloud storage and sharing, aimed at sharing with China."
             }
           ]
         }
@@ -51,7 +559,7 @@
     },
     {
       "id": "everything",
-      "title": "Everything on Data",
+      "title": "Everything on Data & Storage",
       "summary": "Guides, tools, checkers and resources.",
       "blocks": [
         {
@@ -68,14 +576,34 @@
           "style": "list",
           "items": [
             {
+              "label": "Security in a Box: protect your sensitive information",
+              "url": "https://securityinabox.org/en/files/secure-file-storage/",
+              "desc": "encrypting devices, drives and files."
+            },
+            {
+              "label": "Security in a Box: back up and recover",
+              "url": "https://securityinabox.org/en/files/backup/",
+              "desc": "backup plans and recovering lost files."
+            },
+            {
+              "label": "Security in a Box: destroy sensitive information",
+              "url": "https://securityinabox.org/en/files/destroy-sensitive-information/",
+              "desc": "wiping files and whole devices."
+            },
+            {
+              "label": "Security in a Box: destroy identifying information",
+              "url": "https://securityinabox.org/en/files/destroy-identifying-information/",
+              "desc": "metadata, faces and location."
+            },
+            {
+              "label": "Security in a Box: file tools",
+              "url": "https://securityinabox.org/en/files/tools/",
+              "desc": "every tool mentioned above."
+            },
+            {
               "label": "BADBOOL",
               "url": "https://github.com/xLegoMan/BADBOOL",
               "desc": "free data broker opt-out list."
-            },
-            {
-              "label": "JustDeleteMe",
-              "url": "https://backgroundchecks.org/justdeleteme/",
-              "desc": "direct links to delete your accounts."
             },
             {
               "label": "Have I Been Pwned",
