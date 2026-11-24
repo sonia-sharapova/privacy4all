@@ -19,7 +19,7 @@
 
   var body = document.body;
   var ROOT = body.getAttribute('data-root') || '';
-  var VERSION = '20261128';
+  var VERSION = '20261129';
   var pageId = body.getAttribute('data-page') || '';
   if (pageId === '?') {
     pageId = (new URLSearchParams(location.search).get('id') || '').replace(/[^a-z0-9-]/g, '');
@@ -169,21 +169,58 @@
 
   /* ---------- chrome: sidebar + header + footer ---------- */
 
+  function sectionById(id) { return P.site.sections.filter(function (s) { return s.id === id; })[0]; }
+  P.sectionById = sectionById;
+
   function tocEntries() {
     if (pageId === 'home') {
-      return P.site.sections.map(function (s) { return { href: '#' + s.id, label: s.title }; });
+      // On the home page, "On this page" points to each section's own page.
+      return P.site.sections.map(function (s) {
+        return { href: s.page && P.site.pages[s.page] ? href(s.page) : '#' + s.id, label: s.title };
+      });
     }
     return (P.page.subsections || []).filter(function (s) { return s.title && !s.hideFromToc; })
       .map(function (s) { return { href: '#' + s.id, label: s.title }; });
   }
 
-  function sidebarLink(item) {
-    if (item.page) {
-      return '<a href="' + esc(href(item.page)) + '" class="p4a-8">' + esc(title(item.page)) + '</a>';
+  function ancestors(id) {
+    var out = [], p = parentOf(id), guard = 0;
+    while (p && guard++ < 6) { out.push(p); p = parentOf(p); }
+    return out;
+  }
+  // Sub-navigation shown under a sidebar item: a topic shows its lesson and
+  // first guides; a page with parts shows its parts.
+  function subItems(id) {
+    var pg = P.site.pages[id];
+    if (!pg) return [];
+    if (pg.lesson && P.site.pages[pg.lesson]) {
+      var guides = topicItems(id, {}).filter(function (x) { return GUIDE_KINDS.indexOf(kindOf(x)) !== -1; });
+      return [pg.lesson].concat(guides);
     }
+    return pg.parts || [];
+  }
+  var SIDEBAR_MAX = 5;
+  function seeAll(hrefTo, label) {
+    return '<a href="' + esc(hrefTo) + '" class="p4a-8 p4a-sb-all">' + esc(label || 'See all') + ' &rarr;</a>';
+  }
+  function sidebarPage(id) {
+    var pg = P.site.pages[id];
+    if (!pg) return '';
+    var here = id === pageId || ancestors(pageId).indexOf(id) !== -1;
+    var link = '<a href="' + esc(href(id)) + '" class="p4a-8' + (id === pageId ? ' is-current' : '') + '">' + esc(pg.title) + '</a>';
+    var kids = subItems(id);
+    if (!kids.length) return link;
+    var shown = kids.length > SIDEBAR_MAX ? kids.slice(0, SIDEBAR_MAX - 1) : kids;
+    return '<div class="p4a-sb-sub">' + link + '<details' + (here ? ' open' : '') + '><summary aria-label="Show ' + esc(pg.title) + ' pages"></summary>' +
+      '<div class="p4a-sb-kids">' + shown.map(function (k) {
+        return '<a href="' + esc(href(k)) + '" class="p4a-sb-kid' + (k === pageId ? ' is-current' : '') + '">' + esc(title(k)) + '</a>';
+      }).join('') + (kids.length > shown.length ? '<a href="' + esc(href(id)) + '" class="p4a-sb-kid p4a-sb-all">See all &rarr;</a>' : '') + '</div></details></div>';
+  }
+  function sidebarLink(item) {
+    if (item.page) return sidebarPage(item.page);
     if (item.section) {
-      var sec = P.site.sections.filter(function (s) { return s.id === item.section; })[0];
-      return sec ? '<a href="' + esc(url('#' + sec.id)) + '" class="p4a-8">' + esc(item.label || sec.title) + '</a>' : '';
+      var sec = sectionById(item.section);
+      return sec ? '<a href="' + esc(sec.page ? href(sec.page) : url('#' + sec.id)) + '" class="p4a-8">' + esc(item.label || sec.title) + '</a>' : '';
     }
     return '<a ' + linkAttrs(item.url) + ' class="p4a-8">' + esc(item.label || item.url) + '</a>';
   }
@@ -194,29 +231,31 @@
     (P.site.sidebar && P.site.sidebar.groups || []).forEach(function (g, gi) {
       var showOn = g.showOn || 'all';
       if (showOn !== 'all' && showOn !== where) return;
-      var items = g.items || [];
+      var items = g.items || [], all = null;
       if (g.fromSection) {
-        var sec = P.site.sections.filter(function (s) { return s.id === g.fromSection; })[0];
+        var sec = sectionById(g.fromSection);
         items = sec ? (sec.items || []).map(function (id) { return { page: id }; }) : [];
+        if (sec && sec.page) all = href(sec.page);
       }
       if (!items.length) return;
+      var max = g.limit || SIDEBAR_MAX;
+      var shown = items.length > max ? items.slice(0, max - 1) : items;
+      // Keep the current topic visible even when it falls past the limit.
+      items.forEach(function (it) {
+        if (it.page && shown.indexOf(it) === -1 && (it.page === pageId || ancestors(pageId).indexOf(it.page) !== -1)) shown = shown.concat([it]);
+      });
       out += '<div class="p4a-4" data-sidebar-group="' + gi + '">' + esc(g.label) + '</div><div class="p4a-7">' +
-        items.map(sidebarLink).join('') + '</div>';
+        shown.map(sidebarLink).join('') + (items.length > shown.length && all ? seeAll(all, 'See all ' + items.length) : '') + '</div>';
     });
     if (pageId !== 'home') {
-      var own = (P.site.pages[pageId] || {}).parts || [];
-      if (own.length) {
-        out += '<div class="p4a-4">PARTS</div><div class="p4a-7">' +
-          own.map(function (id) { return sidebarLink({ page: id }); }).join('') + '</div>';
-      }
-      var rel = (P.site.pages[pageId] || {}).related;
+      // Lesson pages list their parts; part pages list the rest of their guide.
+      var me = P.site.pages[pageId] || {};
+      var own = me.lesson ? [] : me.parts || [];
       var parent = parentOf(pageId);
-      if (!rel || !rel.length) {
-        rel = parent ? [parent].concat((P.site.pages[parent].parts || []).filter(function (x) { return x !== pageId; })) : [];
-      }
-      if (rel.length) {
-        out += '<div class="p4a-4">RELATED</div><div class="p4a-7">' +
-          rel.map(function (id) { return sidebarLink({ page: id }); }).join('') + '</div>';
+      var list = own.length ? own : parent && !P.site.pages[parent].lesson ? P.site.pages[parent].parts || [] : [];
+      if (list.length) {
+        out += '<div class="p4a-4">' + (own.length ? 'IN THIS GUIDE' : 'IN THIS GUIDE') + '</div><div class="p4a-7">' +
+          list.map(function (id) { return '<a href="' + esc(href(id)) + '" class="p4a-8' + (id === pageId ? ' is-current' : '') + '">' + esc(title(id)) + '</a>'; }).join('') + '</div>';
       }
     }
     return out;
@@ -288,17 +327,25 @@
     return pg.image ? img(pg.image, pg.imageFit === 'contain' ? 'p4a-y' : 'p4a-v') : '<span class="p4a-v p4a-tile-blank"></span>';
   }
 
+  // Home previews show a few items per section; the section's own page shows all.
+  var HOME_LIMIT = { quick: 6, topics: 8, projects: 4 };
+  function limited(sec, full) {
+    var items = sec.items || [];
+    if (full) return items;
+    var n = sec.limit || HOME_LIMIT[sec.layout] || items.length;
+    return items.slice(0, n);
+  }
   var HOME = {
-    quick: function (sec) {
+    quick: function (sec, full) {
       return (sec.description ? '<div class="p4a-21 p4a-rich p4a-sec-desc">' + rich(sec.description) + '</div>' : '') +
-        '<div class="p4a-t">' + (sec.items || []).map(function (id, i) {
+        '<div class="p4a-t">' + limited(sec, full).map(function (id, i) {
           var pg = P.site.pages[id]; if (!pg) return '';
           return '<a href="' + esc(href(id)) + '" class="p4a-u" data-item="' + i + '">' + tileImage(pg) +
             '<div><div class="p4a-w">' + esc(pg.title) + '</div><div class="p4a-x">' + esc(pg.summary || '') + '</div></div></a>';
         }).join('') + '<span class="p4a-add-slot" data-add="entry"></span></div>';
     },
-    topics: function (sec) {
-      return '<div class="p4a-10"><div class="p4a-11">' + (sec.items || []).map(function (id, i) {
+    topics: function (sec, full) {
+      return '<div class="p4a-10"><div class="p4a-11">' + limited(sec, full).map(function (id, i) {
           var pg = P.site.pages[id]; if (!pg) return '';
           var pic = pg.image ? '<div class="p4a-13">' + img(pg.image, 'p4a-14', pg.title) + '</div>'
             : '<div class="p4a-16"><div class="p4a-17">' + esc(pg.title) + '</div><div class="p4a-18"><span class="p4a-19"></span><span class="p4a-1a">' + esc(pg.summary || 'In progress') + '</span></div></div>';
@@ -307,9 +354,9 @@
         }).join('') + '<span class="p4a-add-slot" data-add="entry"></span></div>' +
         '<div class="p4a-1b p4a-rich p4a-sec-desc">' + rich(sec.description) + '</div></div>';
     },
-    projects: function (sec) {
+    projects: function (sec, full) {
       return '<div class="p4a-1g"><div class="p4a-1h p4a-rich p4a-sec-desc">' + rich(sec.description) + '</div>' +
-        '<div class="p4a-1j">' + (sec.items || []).map(function (id, i) {
+        '<div class="p4a-1j">' + limited(sec, full).map(function (id, i) {
           var pg = P.site.pages[id]; if (!pg) return '';
           return '<a href="' + esc(href(id)) + '" class="p4a-1k" data-item="' + i + '"><div class="p4a-1l">' + esc(pg.title) +
             '</div><div class="p4a-1m">' + esc(pg.summary || '') + '</div></a>';
@@ -326,10 +373,21 @@
   function renderHome() {
     return P.site.sections.map(function (sec, i) {
       var fn = HOME[sec.layout] || HOME.quick;
+      var total = (sec.items || []).length, shown = limited(sec).length;
+      var more = sec.page && P.site.pages[sec.page] && (total > shown || sec.layout === 'resources')
+        ? '<a href="' + esc(href(sec.page)) + '" class="p4a-see-all">See all' + (total > shown ? ' ' + total : '') + ' &rarr;</a>' : '';
       return '<section id="' + esc(sec.id) + '" class="' + (i === 0 ? 'p4a-r' : 'p4a-z') + ' p4a-home-sec" data-section="' + i + '">' +
-        '<h2 class="p4a-s">' + esc(sec.title.toUpperCase()) + '</h2>' + fn(sec) + '</section>';
+        '<div class="p4a-sec-head"><h2 class="p4a-s">' + esc(sec.title.toUpperCase()) + '</h2>' + more + '</div>' + fn(sec) + '</section>';
     }).join('');
   }
+
+  // A section's own page: every item, in the same layout as the home page.
+  P.blocks['section-list'] = function (b) {
+    var sec = sectionById(b.section);
+    if (!sec) return '';
+    var fn = HOME[sec.layout] || HOME.quick;
+    return '<div class="p4a-section-list p4a-layout-' + esc(sec.layout) + '">' + fn(sec, true) + '</div>';
+  };
 
   /* ---------- blocks ---------- */
 
@@ -547,7 +605,7 @@
      collected at load time and laid out A–Z like a dictionary. */
   B.glossary = function () { return '<div class="p4a-glossary" data-glossary><p class="p4a-2b">Loading the glossary&hellip;</p></div>'; };
 
-  function topicOf(id) { var p = parentOf(id); return p || id; }
+  function topicOf(id) { var a = ancestors(id); return a.length ? a[a.length - 1] : id; }
   function collectTerms(pg, id, out) {
     ['intro', 'outro'].forEach(function (k) { (pg[k] || []).forEach(function (b) { addTerms(b, id, out); }); });
     (pg.subsections || []).forEach(function (s) { (s.blocks || []).forEach(function (b) { addTerms(b, id, out); }); });
@@ -596,14 +654,18 @@
   /* Everything on a topic: every page tagged with this topic (pages[x].topics),
      optionally its own parts, plus hand-picked pages — grouped by kind. */
   var KINDS = [
-    ['guide', 'Guides'], ['tutorial', 'Tutorials'], ['checker', 'Checkers & tests'], ['generator', 'Generators'],
+    ['lesson', 'Lesson'], ['guide', 'Guides'], ['tutorial', 'Tutorials'], ['checker', 'Checkers & tests'], ['generator', 'Generators'],
     ['tool', 'Tools'], ['checklist', 'Checklists'], ['template', 'Templates'], ['project', 'Projects'],
     ['resource', 'Resources'], ['topic', 'Related topics']
   ];
+  var KIND_LABEL = {};
+  KINDS.forEach(function (k) { KIND_LABEL[k[0]] = k[1].replace(/s$/, '').replace('Checkers & test', 'Checker'); });
+  var GUIDE_KINDS = ['guide', 'tutorial', 'checklist', 'template', 'checker', 'generator', 'tool'];
   P.KINDS = KINDS;
   function kindOf(id) {
     var p = P.site.pages[id] || {};
     if (p.kind) return p.kind;
+    if (p.lessonOf) return 'lesson';
     var sec = sectionOf(id);
     if (sec && !parentOf(id) && sec.layout === 'topics') return 'topic';
     if (sec && sec.layout === 'projects' && !parentOf(id)) return 'project';
@@ -623,7 +685,26 @@
   B['topic-index'] = function (b) {
     var topic = b.topic || pageId;
     var ids = topicItems(topic, b);
-    if (!ids.length) return '<p class="p4a-2b">Nothing else is tagged with this topic yet.</p>';
+    var skip = [];
+    (b.exclude || []).forEach(function (x) { skip.push(x); ((P.site.pages[x] || {}).parts || []).forEach(function (y) { skip.push(y); }); });
+    ids = ids.filter(function (id) { return skip.indexOf(id) === -1 && (!b.kinds || b.kinds.indexOf(kindOf(id)) !== -1); });
+    if (!ids.length) return b.kinds ? '' : '<p class="p4a-2b">Nothing else is tagged with this topic yet.</p>';
+    if (b.style === 'table') {
+      // One row per page: name, what it is, and a short description.
+      return '<div class="p4a-index-table">' + ids.map(function (id) {
+        var p = P.site.pages[id];
+        return '<a href="' + esc(href(id)) + '" class="p4a-index-row"><span class="p4a-index-name">' + esc(p.title) + '</span>' +
+          '<span class="p4a-index-kind">' + esc((KIND_LABEL[kindOf(id)] || '').toUpperCase()) + '</span>' +
+          '<span class="p4a-index-desc">' + esc(p.summary || '') + '</span><span class="p4a-index-go">&rsaquo;</span></a>';
+      }).join('') + '</div>';
+    }
+    if (b.style === 'tiles') {
+      return '<div class="p4a-grid cols-' + cols(b.cols, 4) + '">' + ids.map(function (id) {
+        var p = P.site.pages[id];
+        return '<a href="' + esc(href(id)) + '" class="p4a-topic-card p4a-topic-tile">' + (p.image ? img(p.image, '', '') : '') +
+          '<div class="p4a-24">' + esc(p.title) + '</div>' + (p.summary ? '<div class="p4a-25">' + esc(p.summary) + '</div>' : '') + '</a>';
+      }).join('') + '</div>';
+    }
     var groups = {};
     ids.forEach(function (id) { var k = kindOf(id); (groups[k] = groups[k] || []).push(id); });
     var labels = {};
@@ -643,6 +724,7 @@
   function renderBlock(b, where, si, bi) {
     var fn = B[b.type];
     var inner = fn ? fn(b) : '';
+    if (!inner && !b.before && !b.after && !P.editing) return '';
     var bodyHtml = (b.before ? '<div class="p4a-21 p4a-rich p4a-before">' + rich(b.before) + '</div>' : '') + inner +
       (b.after ? '<div class="p4a-21 p4a-rich p4a-after">' + rich(b.after) + '</div>' : '');
     return '<div class="p4a-block p4a-b-' + esc(b.type) + '" data-where="' + where + '" data-sub="' + si + '" data-block="' + bi + '">' +
@@ -763,7 +845,7 @@
     if (mode === 'auto') mode = items.length <= 4 ? 'guidemap' : 'table';
     // Topic hubs get a "Directory"; the deeper part pages get "In this lesson".
     var sec = sectionOf(pageId);
-    var defTitle = parentOf(pageId) ? 'In this lesson'
+    var defTitle = kindOf(pageId) === 'lesson' ? 'Directory' : parentOf(pageId) ? 'In this lesson'
       : (sec && sec.layout === 'topics') ? 'Directory'
       : mode === 'guidemap' ? 'Guide Map' : 'Jump to a section';
     var tocTitle = page.tocTitle || defTitle;
@@ -786,8 +868,10 @@
     var page = P.page;
     var parent = parentOf(pageId);
     // Back navigation lives in the breadcrumb above; part pages show which topic they belong to.
-    var back = parent ? '<div class="p4a-1w p4a-back"><a href="' + esc(href(parent)) + '">' + esc(title(parent).toUpperCase()) +
-      ' &middot; PART ' + ((P.site.pages[parent].parts || []).indexOf(pageId) + 1) + '</a></div>' : '';
+    var back = '';
+    if (parent && kindOf(pageId) === 'lesson') back = '<div class="p4a-1w p4a-back"><a href="' + esc(href(parent)) + '">' + esc(title(parent).toUpperCase()) + ' &middot; LESSON</a></div>';
+    else if (parent) back = '<div class="p4a-1w p4a-back"><a href="' + esc(href(parent)) + '">' + esc(title(parent).toUpperCase()) +
+      ' &middot; PART ' + ((P.site.pages[parent].parts || []).indexOf(pageId) + 1) + '</a></div>';
     var heading = esc(pg.heading || pg.title);
     var dl = page.download ? '<div class="pcl-download"><button type="button" class="p4a-glass-btn p4a-btn-action pcl-download-trigger">&#8595; Download &#9662;</button>' +
       '<div class="pcl-download-menu"><button type="button" class="pcl-download-item" data-dl="print">Print / Save as PDF</button>' +
@@ -828,11 +912,16 @@
     var empty = !subs.length && !(page.intro || []).length && !(pg.parts || []).length;
     var out = masthead();
     out += '<div class="p4a-intro" data-where="intro">' + renderBlocks(page.intro, 'intro', -1) + '</div>';
-    out += tocBlock();
+    // The contents normally sit above the sections; page.tocAfter places them after one (e.g. the overview).
+    var toc = tocBlock(), placed = false;
+    if (!page.tocAfter || !subs.some(function (s) { return s.id === page.tocAfter; })) { out += toc; placed = true; }
     out += subs.map(function (s, si) {
-      return '<section id="' + esc(s.id) + '" class="p4a-1z p4a-sub" data-sub="' + si + '">' +
+      var inner = renderBlocks(s.blocks, 'sub', si);
+      if (!inner && (s.blocks || []).length && !P.editing) return '';
+      var sec = '<section id="' + esc(s.id) + '" class="p4a-1z p4a-sub" data-sub="' + si + '">' +
         (s.title && !s.hideTitle ? '<h2 class="p4a-20 p4a-sub-title' + (s.blocks && s.blocks.length ? ' p4a-20-tight' : '') + '">' + esc(s.title.toUpperCase()) + '</h2>' : '') +
-        renderBlocks(s.blocks, 'sub', si) + '</section>';
+        inner + '</section>';
+      return sec + (!placed && s.id === page.tocAfter ? toc : '');
     }).join('');
     if (empty) out += '<div class="p4a-inprogress"><span>In progress&hellip;</span><p>This page is still being written. Check back soon.</p></div>';
     out += '<div class="p4a-outro" data-where="outro">' + renderBlocks(page.outro, 'outro', -2) + '</div>';

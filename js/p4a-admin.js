@@ -497,10 +497,15 @@
       ], make: function () { return { items: [{ q: '', a: '' }] }; } },
     { type: 'topic-index', label: 'Everything on this topic', desc: 'Automatically lists every page tagged with this topic (guides, checkers, generators, projects…), grouped by kind.', icon: '⊞',
       fields: [
+        { key: 'style', label: 'Style', type: 'select', options: [['groups', 'Cards grouped by kind'], ['table', 'Table rows'], ['tiles', 'Tiles']] },
+        { key: 'kinds', label: 'Only these kinds (comma-separated, e.g. guide, tutorial, checklist) — optional', type: 'csv', placeholder: 'guide, tutorial, checklist, template' },
+        { key: 'exclude', label: 'Leave out these pages (and their parts)', type: 'pages' },
         { key: 'includeParts', label: 'Also list this page’s own parts', type: 'checkbox' },
         { key: 'pages', label: 'Extra pages to include (pages tagged with this topic in their Page settings appear automatically)', type: 'pages' },
         { key: 'cols', label: 'Columns', type: 'select', options: COLS, numeric: true }
       ], make: function () { return { cols: 3 }; } },
+    { type: 'section-list', label: 'Home section (all items)', desc: 'Every item in one of the home page sections, in the same layout.', icon: '▤',
+      fields: [{ key: 'section', label: 'Section', type: 'select', options: P.site.sections.map(function (s) { return [s.id, s.title]; }) }], make: function () { return { section: P.site.sections[0].id }; }, noCommon: true },
     { type: 'glossary', label: 'Glossary A–Z', desc: 'Every term from every Terminology section on the site, as an A–Z dictionary. Updates itself.', icon: 'Az',
       fields: [], make: function () { return {}; }, noCommon: true },
     { type: 'resources', label: 'Resources list', desc: 'A list of links with short descriptions.', icon: '☰',
@@ -633,6 +638,7 @@
       { key: 'heading', label: 'Longer heading on the page itself (optional — otherwise the name is used)', type: 'text' },
       { key: 'keywords', label: 'Extra search keywords (optional)', type: 'text' },
       { key: 'topics', label: 'Topics — this page is listed on these Privacy & Security topic pages', type: 'pages' },
+      { key: 'lesson', label: 'Lesson for this topic (the “Full guide to …” page)', type: 'page' },
       { key: 'kind', label: 'Kind (the group it is listed under on topic pages)', type: 'select',
         options: [['', 'Automatic (from its section)']].concat(P.KINDS) },
       { key: 'parts', label: 'Parts — sub-pages that walk through this topic (shown as a guide map)', type: 'pages', allowNew: true },
@@ -650,6 +656,7 @@
     { key: 'toc', label: 'Table of contents', type: 'select', options: [['auto', 'Automatic — guide map for 4 or fewer, table for more'], ['guidemap', 'Always a guide map'], ['table', 'Always a table'], ['none', 'None']] },
     { key: 'tocSource', label: 'On pages with parts, the table of contents lists…', type: 'select', options: [['parts', 'The parts (sub-pages)'], ['sections', 'This page’s own subsections']] },
     { key: 'tocTitle', label: 'Table of contents heading (optional)', type: 'text' },
+    { key: 'tocAfter', label: 'Place the contents after this subsection’s id (e.g. overview) — optional', type: 'text' },
     { key: 'download', label: 'Show a “Download” menu (prints/downloads the checklists on this page)', type: 'checkbox' }
   ];
 

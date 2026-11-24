@@ -1,0 +1,67 @@
+{
+  "subtitle": "The full guide",
+  "intro": [
+    {
+      "type": "quote",
+      "quote": "Saying that you don't care about privacy because you have nothing to hide is no different from saying you don't care about freedom of speech because you have nothing to say.",
+      "card": false,
+      "sideFirst": false,
+      "author": "Edward Snowden",
+      "side": "image",
+      "image": "assets/www.jpg",
+      "alt": "Browsers"
+    }
+  ],
+  "tocAfter": "overview",
+  "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Your browser is the window you use to see almost everything online &mdash; and the window works both ways. Websites, advertisers and trackers can read a lot about you through it: what you visit, what you click, and enough details about your device to recognise you again later. Choosing a private browser and setting it up well removes most of that tracking without changing how you use the web.</p>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "Tracker",
+              "html": "<p>A script or pixel from a third party (often an ad company) that follows you from site to site.</p>"
+            },
+            {
+              "title": "Cookie",
+              "html": "<p>A small file a site stores in your browser. Useful for logins, but third-party cookies are used for tracking.</p>"
+            },
+            {
+              "title": "Fingerprinting",
+              "html": "<p>Identifying your browser from its unique mix of settings, fonts, screen size and hardware, without cookies.</p>"
+            },
+            {
+              "title": "Extension",
+              "html": "<p>An add-on that changes what your browser does, like an ad blocker. Each one can also see your browsing.</p>"
+            },
+            {
+              "title": "Global Privacy Control (GPC)",
+              "html": "<p>A signal your browser sends telling sites not to sell or share your data.</p>"
+            },
+            {
+              "title": "Chromium / Gecko",
+              "html": "<p>The two main browser engines. Chrome, Brave and Edge use Chromium; Firefox and LibreWolf use Gecko.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

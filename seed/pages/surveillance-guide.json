@@ -1,0 +1,52 @@
+{
+  "subtitle": "The full guide",
+  "intro": [],
+  "tocAfter": "overview",
+  "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Surveillance is watching people at scale &mdash; by governments, police, employers or companies. It includes cameras and facial recognition, licence-plate readers, phone location tracking, and the mass collection of internet traffic. Knowing what is being collected, and where, helps you decide when to take extra care &mdash; for example at a protest or crossing a border.</p>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "Mass surveillance",
+              "html": "<p>Collecting data on everyone rather than on a specific suspect.</p>"
+            },
+            {
+              "title": "Facial recognition",
+              "html": "<p>Software that identifies people from camera images or photos.</p>"
+            },
+            {
+              "title": "ALPR",
+              "html": "<p>Automated licence-plate readers that log where cars go.</p>"
+            },
+            {
+              "title": "Geofence warrant",
+              "html": "<p>A request for every device that was in a certain place at a certain time.</p>"
+            },
+            {
+              "title": "Threat model",
+              "html": "<p>Working out who you are protecting yourself from, and what they can do, so you can choose the right protections.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

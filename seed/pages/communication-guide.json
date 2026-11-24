@@ -1,0 +1,52 @@
+{
+  "subtitle": "The full guide",
+  "intro": [],
+  "tocAfter": "overview",
+  "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Most messages, emails and calls pass through a company's servers on the way. With ordinary SMS and email, that company &mdash; and anyone it hands data to &mdash; can read them. <b>End-to-end encrypted</b> apps like Signal mean only you and the person you're talking to can read the content, and email aliases stop your real address from spreading.</p>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "End-to-end encryption (E2EE)",
+              "html": "<p>Only the people in the conversation can read it — not the app, not the carrier.</p>"
+            },
+            {
+              "title": "Metadata",
+              "html": "<p>Who you talked to, when and for how long. Even encrypted apps may see this.</p>"
+            },
+            {
+              "title": "Email alias",
+              "html": "<p>A forwarding address that hides your real one. Use a new one per site.</p>"
+            },
+            {
+              "title": "VoIP",
+              "html": "<p>Voice over IP — calls made over the internet instead of the phone network.</p>"
+            },
+            {
+              "title": "Disappearing messages",
+              "html": "<p>Messages that delete themselves after a set time.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

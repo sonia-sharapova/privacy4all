@@ -1,3 +1,390 @@
 {
-  "subsections": []
+  "subtitle": "Private email, aliases and running your own.",
+  "subsections": [
+    {
+      "id": "email",
+      "title": "Email Providers",
+      "summary": "Private alternatives to Gmail and Outlook.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "StartMail",
+              "url": "https://www.startmail.com/",
+              "desc": "Paid private email with unlimited aliases, usable in any mail app.",
+              "linkText": "Visit",
+              "meta": "Paid"
+            },
+            {
+              "label": "Proton Mail",
+              "url": "https://proton.me/mail",
+              "desc": "End-to-end and zero-access encrypted email, with a free plan.",
+              "linkText": "Visit",
+              "meta": "Free & paid"
+            },
+            {
+              "label": "SimpleLogin",
+              "url": "https://simplelogin.io/",
+              "desc": "Aliases that forward to your real inbox, so you never hand out your address.",
+              "linkText": "Visit",
+              "meta": "Aliases · free & paid"
+            },
+            {
+              "label": "Tuta",
+              "url": "https://tuta.com/",
+              "desc": "Zero-knowledge encrypted email and calendar, open source.",
+              "linkText": "Visit",
+              "meta": "Free & paid"
+            },
+            {
+              "label": "Posteo",
+              "url": "https://posteo.de/en",
+              "desc": "German email that asks for no personal data and accepts anonymous payment.",
+              "linkText": "Visit",
+              "meta": "Paid · from €1/month"
+            },
+            {
+              "label": "addy.io",
+              "url": "https://addy.io/",
+              "desc": "Open-source aliases (formerly AnonAddy); you can self-host it.",
+              "linkText": "Visit",
+              "meta": "Aliases · free & paid"
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "More providers"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Mailfence",
+              "url": "https://mailfence.com/",
+              "desc": "Belgian encrypted email with a free plan."
+            },
+            {
+              "label": "Disroot",
+              "url": "https://disroot.org/",
+              "desc": "free, volunteer-run email and online services."
+            },
+            {
+              "label": "Riseup",
+              "url": "https://riseup.net/",
+              "desc": "invite-only email for activists."
+            },
+            {
+              "label": "Fastmail",
+              "url": "https://www.fastmail.com/",
+              "desc": "fast, premium email hosting (not end-to-end encrypted)."
+            },
+            {
+              "label": "Migadu",
+              "url": "https://www.migadu.com/",
+              "desc": "minimal, pay-for-what-you-use hosting for your own domain."
+            },
+            {
+              "label": "MXroute",
+              "url": "https://mxroute.com/",
+              "desc": "budget email hosting focused on deliverability."
+            },
+            {
+              "label": "Zoho Mail",
+              "url": "https://www.zoho.com/mail/",
+              "desc": "ad-free business email hosting."
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Encrypt any email account"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Thunderbird",
+              "url": "https://www.thunderbird.net/",
+              "desc": "desktop and Android mail app with built-in OpenPGP encryption."
+            },
+            {
+              "label": "OpenKeychain",
+              "url": "https://openkeychain.org/",
+              "desc": "manages OpenPGP keys on Android."
+            },
+            {
+              "label": "Mailvelope",
+              "url": "https://mailvelope.com/",
+              "desc": "browser extension that adds OpenPGP to webmail."
+            },
+            {
+              "label": "FlowCrypt",
+              "url": "https://flowcrypt.com/",
+              "desc": "OpenPGP encryption for Gmail."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aliases",
+      "title": "Aliases & Disposable Email",
+      "summary": "Keep your real address out of sign-up forms.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Use an <b>alias</b> for accounts you’ll keep &mdash; it forwards to your inbox and can be switched off if it starts getting spam. Use a <b>disposable inbox</b> only for one-off sign-ups you never need again.</p>"
+        },
+        {
+          "type": "callout",
+          "label": "Careful",
+          "html": "<p>Many disposable inboxes are <b>public</b>: anyone who types the same address can read the mail. Never use one for an account you care about &mdash; whoever uses that address next could reset your password.</p>"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Aliases (for accounts you keep)"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "addy.io",
+              "url": "https://addy.io/",
+              "desc": "open-source aliases (formerly AnonAddy)."
+            },
+            {
+              "label": "SimpleLogin",
+              "url": "https://simplelogin.io/",
+              "desc": "aliases with replies sent from the alias."
+            },
+            {
+              "label": "Burner Mail",
+              "url": "https://burnermail.io/",
+              "desc": "generates an alias per site."
+            },
+            {
+              "label": "Spamex",
+              "url": "https://www.spamex.com/",
+              "desc": "long-running disposable alias service."
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Disposable inboxes (one-off use)"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Guerrilla Mail",
+              "url": "https://www.guerrillamail.com/",
+              "desc": "well-known temporary inbox."
+            },
+            {
+              "label": "anonbox",
+              "url": "https://anonbox.net/",
+              "desc": "temporary inbox run by the Chaos Computer Club."
+            },
+            {
+              "label": "Maildrop",
+              "url": "https://maildrop.cc/",
+              "desc": "lightweight anonymous inbox."
+            },
+            {
+              "label": "10 Minute Mail",
+              "url": "https://10minutemail.com/",
+              "desc": "address that expires after 10 minutes."
+            },
+            {
+              "label": "Temp Mail",
+              "url": "https://temp-mail.org/",
+              "desc": "popular temporary email, with apps."
+            },
+            {
+              "label": "Mail.tm",
+              "url": "https://mail.tm/",
+              "desc": "disposable inbox with an API."
+            },
+            {
+              "label": "EmailOnDeck",
+              "url": "https://www.emailondeck.com/",
+              "desc": "fast disposable address."
+            },
+            {
+              "label": "TempMails",
+              "url": "https://tempmails.net/",
+              "desc": "quick temporary address generator."
+            },
+            {
+              "label": "FakeMail",
+              "url": "https://www.fakemail.net/",
+              "desc": "instantly generated temporary address."
+            },
+            {
+              "label": "Instant-Email",
+              "url": "https://instant-email.org/",
+              "desc": "free disposable address generator."
+            },
+            {
+              "label": "Nada",
+              "url": "https://getnada.com/",
+              "desc": "simple temporary inbox (now Inboxes.com)."
+            },
+            {
+              "label": "MohMal",
+              "url": "https://www.mohmal.com/",
+              "desc": "temporary inbox."
+            },
+            {
+              "label": "Inbox.LV",
+              "url": "https://www.inbox.lv/",
+              "desc": "Latvian free email with temporary options."
+            },
+            {
+              "label": "YOPmail",
+              "url": "https://yopmail.com/",
+              "desc": "free temporary inbox — public."
+            },
+            {
+              "label": "Mailinator",
+              "url": "https://www.mailinator.com/",
+              "desc": "public inboxes anyone can read."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "self-hosted-email",
+      "title": "Run Your Own Email",
+      "summary": "Self-hosted mail servers — and why it’s hard.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Running your own mail server gives you full control, but it is one of the hardest things to self-host. Big providers reject mail without correct SPF, DKIM and DMARC records, new servers often land on blocklists, and many home internet providers block the ports email needs. <a href=\"https://computer.rip/2021-12-26-diy-mail.html\">DIY Mail</a> is an honest look at what it takes. If you just want your own domain, a host like Migadu or MXroute is far easier.</p>"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "All-in-one servers"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Mail-in-a-Box",
+              "url": "https://mailinabox.email/",
+              "desc": "turns a fresh server into a complete mail server."
+            },
+            {
+              "label": "mailcow",
+              "url": "https://mailcow.email/",
+              "desc": "modern mail server in Docker with a web admin panel."
+            },
+            {
+              "label": "Modoboa",
+              "url": "https://modoboa.org/",
+              "desc": "mail hosting with built-in administration."
+            },
+            {
+              "label": "iRedMail",
+              "url": "https://www.iredmail.org/",
+              "desc": "open-source mail server package for Linux."
+            },
+            {
+              "label": "Maddy",
+              "url": "https://maddy.email/",
+              "desc": "lightweight all-in-one mail server."
+            },
+            {
+              "label": "Zimbra",
+              "url": "https://www.zimbra.com/",
+              "desc": "email, calendar and file collaboration suite."
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Building blocks"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Postfix",
+              "url": "https://www.postfix.org/",
+              "desc": "the most widely used open-source mail transfer agent."
+            },
+            {
+              "label": "Dovecot",
+              "url": "https://www.dovecot.org/",
+              "desc": "secure IMAP and POP3 server."
+            },
+            {
+              "label": "Haraka",
+              "url": "https://haraka.github.io/",
+              "desc": "high-performance SMTP server."
+            },
+            {
+              "label": "Postal",
+              "url": "https://docs.postalserver.io/",
+              "desc": "mail server for sending in bulk."
+            },
+            {
+              "label": "Roundcube",
+              "url": "https://roundcube.net/",
+              "desc": "self-hosted webmail."
+            },
+            {
+              "label": "SnappyMail",
+              "url": "https://snappymail.eu/",
+              "desc": "maintained successor to RainLoop webmail (RainLoop itself is no longer updated)."
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Test your setup"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "MX Lookup (MXToolbox)",
+              "url": "https://mxtoolbox.com/",
+              "desc": "check mail DNS records and blocklists."
+            },
+            {
+              "label": "Hardenize",
+              "url": "https://www.hardenize.com/",
+              "desc": "checks the security of your mail and web configuration."
+            },
+            {
+              "label": "CheckTLS",
+              "url": "https://www.checktls.com/",
+              "desc": "tests a mail server’s TLS encryption."
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

@@ -41,7 +41,7 @@
             },
             {
               "q": "Should I trust a \"no-log\" claim?",
-              "a": "<p>Only as far as the audit behind it. Anyone can claim \"no logs\" — look for independent audits and, ideally, a real police raid that came up empty. See <a href=\"page:vpn-fundamentals#choosing\">Choosing a Provider</a>.</p>"
+              "a": "<p>Only as far as the audit behind it. Anyone can claim \"no logs\" — look for independent audits and, ideally, a real police raid that came up empty. See <a href=\"page:vpn-providers#choosing\">Choosing a Provider</a>.</p>"
             },
             {
               "q": "Is a self-hosted VPN more private than a commercial one?",

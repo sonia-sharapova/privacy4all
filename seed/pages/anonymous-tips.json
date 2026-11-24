@@ -1,0 +1,66 @@
+{
+  "subtitle": "Share information without revealing who you are.",
+  "subsections": [
+    {
+      "id": "anonymous",
+      "title": "Anonymous Tips & Whistleblowing",
+      "summary": "Share information without revealing who you are.",
+      "blocks": [
+        {
+          "type": "callout",
+          "label": "Before you start",
+          "html": "<p>Use Tor Browser on a device and network that aren’t linked to you, and never from a work computer or work Wi-Fi.</p>"
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "EFF Surveillance Self-Defense",
+              "url": "https://ssd.eff.org/",
+              "desc": "Guides for communicating more safely, step by step.",
+              "linkText": "Visit",
+              "meta": "Guides"
+            },
+            {
+              "label": "SecureDrop",
+              "url": "https://securedrop.org/",
+              "desc": "How many news organisations accept anonymous tips; you reach it through Tor Browser.",
+              "linkText": "Visit",
+              "meta": "For sources"
+            },
+            {
+              "label": "GlobaLeaks",
+              "url": "https://www.globaleaks.org/",
+              "desc": "Self-hosted, anonymous whistleblowing platform.",
+              "linkText": "Visit",
+              "meta": "For organisations"
+            },
+            {
+              "label": "Briar",
+              "url": "https://briarproject.org/",
+              "desc": "Messaging with no central server, over Bluetooth, Wi-Fi or Tor.",
+              "linkText": "Visit",
+              "meta": "Android"
+            },
+            {
+              "label": "OnionShare",
+              "url": "https://onionshare.org/",
+              "desc": "Share files, host a site or chat anonymously over Tor.",
+              "linkText": "Visit",
+              "meta": "Desktop, mobile"
+            },
+            {
+              "label": "Haven",
+              "url": "https://guardianproject.github.io/haven/",
+              "desc": "Turns a spare Android phone into a motion and sound monitor.",
+              "linkText": "Visit",
+              "meta": "Android · older project"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

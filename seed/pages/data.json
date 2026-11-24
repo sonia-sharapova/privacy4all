@@ -1,96 +1,82 @@
 {
-  "subtitle": "Personal data, files & devices",
-  "intro": [
-    {
-      "type": "quote",
-      "card": true,
-      "quote": "Deleted is not the same as gone, and private is not the same as encrypted.",
-      "side": "text",
-      "sideLabel": "THIS LESSON",
-      "sideText": "<p>Where your data lives, how to lock it up, how to keep copies safe, and how to make it disappear when you’re done with it.</p>"
-    }
-  ],
+  "subtitle": "Personal data, encryption, backups and deleting for good",
+  "toc": "none",
   "subsections": [
     {
-      "id": "overview",
-      "title": "Overview",
-      "summary": "Two kinds of data: what others hold, and what you keep.",
+      "id": "lesson",
+      "title": "Lesson",
+      "summary": "The full guide, part by part.",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Your data lives in two places. <b>Out there</b>: profiles that apps, websites and <b>data brokers</b> build about you and sell to advertisers, landlords, employers or anyone who pays. <b>With you</b>: the photos, documents and messages on your phone, laptop, USB sticks and cloud accounts.</p><p>This lesson covers both. You’ll shrink what’s collected and remove what’s already out there, then protect what you keep: encrypt it so a lost or seized device reveals nothing, back it up so you can’t lose it, strip the hidden details that identify you before you share it, and destroy it properly when you’re done.</p>"
-        },
-        {
-          "type": "callout",
-          "label": "Before you start",
-          "html": "<p>Encryption is illegal, or draws suspicion, in a few countries. Check the <a href=\"https://www.gp-digital.org/world-map-of-encryption/\">world map of encryption laws</a> if you’re unsure &mdash; and remember the easiest data to protect is data you don’t keep.</p>"
-        },
         {
           "type": "redirects",
-          "style": "buttons",
+          "style": "rows",
           "items": [
             {
-              "label": "Start with Part 1: Data About You →",
-              "url": "page:data-about-you"
+              "url": "page:data-guide",
+              "label": "Full guide to Data & Storage",
+              "desc": "Overview, directory and terminology — start here.",
+              "linkText": "Start"
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "terminology",
-      "title": "Terminology",
-      "summary": "The words you will run into.",
-      "blocks": [
+        },
         {
-          "type": "columns",
-          "cols": 2,
-          "style": "terms",
-          "items": [
-            {
-              "title": "Data broker",
-              "html": "<p>A company that collects and sells profiles of people, usually without ever dealing with them directly.</p>"
-            },
-            {
-              "title": "Metadata",
-              "html": "<p>Data about a file &mdash; when and where a photo was taken, which phone took it, who wrote a document. Often more revealing than the content.</p>"
-            },
-            {
-              "title": "Full-disk encryption",
-              "html": "<p>Scrambles everything on a device until you unlock it. FileVault, BitLocker and phone encryption do this. Protects a device that is <i>switched off</i>.</p>"
-            },
-            {
-              "title": "Encrypted volume / vault",
-              "html": "<p>A locked folder or file (VeraCrypt, Cryptomator) that holds other files and only opens with a password.</p>"
-            },
-            {
-              "title": "Secure deletion",
-              "html": "<p>Overwriting a file so it can’t be recovered. Emptying the trash only hides it.</p>"
-            },
-            {
-              "title": "HDD vs. SSD",
-              "html": "<p>Spinning hard drives can be wiped by overwriting. SSDs, USB sticks and SD cards spread data around (wear levelling), so overwriting isn’t reliable &mdash; encrypt them instead.</p>"
-            },
-            {
-              "title": "GDPR / CCPA",
-              "html": "<p>EU and California privacy laws that give you the right to see and delete data held about you.</p>"
-            },
-            {
-              "title": "3-2-1 backup",
-              "html": "<p>Three copies of your data, on two kinds of storage, with one kept somewhere else.</p>"
-            }
-          ]
+          "type": "topic-index",
+          "topic": "data-guide",
+          "includeParts": true,
+          "style": "table"
         }
       ]
     },
     {
-      "id": "everything",
-      "title": "Everything on Data & Storage",
-      "summary": "Guides, tools, checkers and resources.",
+      "id": "guides",
+      "title": "Guides",
+      "summary": "Tutorials, checklists and templates.",
       "blocks": [
         {
           "type": "topic-index",
-          "cols": 3
+          "style": "table",
+          "kinds": [
+            "guide",
+            "tutorial",
+            "checklist",
+            "template",
+            "checker",
+            "generator",
+            "tool"
+          ],
+          "exclude": [
+            "data-guide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "related",
+      "title": "Related Topics",
+      "summary": "Where to go next.",
+      "blocks": [
+        {
+          "type": "topic-index",
+          "style": "tiles",
+          "kinds": [
+            "topic"
+          ],
+          "cols": 4
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Resources",
+      "summary": "Lists, projects and links.",
+      "blocks": [
+        {
+          "type": "topic-index",
+          "style": "table",
+          "kinds": [
+            "resource",
+            "project"
+          ]
         },
         {
           "type": "subheading",
@@ -102,29 +88,9 @@
           "style": "list",
           "items": [
             {
-              "label": "Security in a Box: protect your sensitive information",
-              "url": "https://securityinabox.org/en/files/secure-file-storage/",
-              "desc": "encrypting devices, drives and files."
-            },
-            {
-              "label": "Security in a Box: back up and recover",
-              "url": "https://securityinabox.org/en/files/backup/",
-              "desc": "backup plans and recovering lost files."
-            },
-            {
-              "label": "Security in a Box: destroy sensitive information",
-              "url": "https://securityinabox.org/en/files/destroy-sensitive-information/",
-              "desc": "wiping files and whole devices."
-            },
-            {
-              "label": "Security in a Box: destroy identifying information",
-              "url": "https://securityinabox.org/en/files/destroy-identifying-information/",
-              "desc": "metadata, faces and location."
-            },
-            {
-              "label": "Security in a Box: file tools",
-              "url": "https://securityinabox.org/en/files/tools/",
-              "desc": "every tool mentioned above."
+              "label": "Security in a Box",
+              "url": "https://securityinabox.org/en/files/",
+              "desc": "practical, step-by-step digital security guides."
             },
             {
               "label": "BADBOOL",
@@ -135,6 +101,16 @@
               "label": "Have I Been Pwned",
               "url": "https://haveibeenpwned.com/",
               "desc": "check if your email appears in a known breach."
+            },
+            {
+              "label": "Privacy Guides: cloud storage",
+              "url": "https://www.privacyguides.org/en/cloud/",
+              "desc": "encrypted cloud providers."
+            },
+            {
+              "label": "Cryptomator",
+              "url": "https://cryptomator.org/",
+              "desc": "encrypt files before they reach any cloud."
             }
           ]
         }

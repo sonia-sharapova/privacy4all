@@ -16,7 +16,7 @@
       "blocks": [
         {
           "type": "html",
-          "html": "<div class=\"p4a-3a\">FROM: <a href=\"page:browsers#recommended\">CHOOSE YOUR BROWSER</a></div>"
+          "html": "<div class=\"p4a-3a\">FROM: <a href=\"page:choosing-a-browser#recommended\">CHOOSE YOUR BROWSER</a></div>"
         },
         {
           "type": "table",

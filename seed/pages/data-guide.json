@@ -1,0 +1,89 @@
+{
+  "subtitle": "The full guide",
+  "intro": [
+    {
+      "type": "quote",
+      "card": false,
+      "quote": "Deleted is not the same as gone, and private is not the same as encrypted.",
+      "side": "text",
+      "sideLabel": "THIS LESSON",
+      "sideText": "<p>Where your data lives, how to lock it up, how to keep copies safe, and how to make it disappear when you’re done with it.</p>"
+    }
+  ],
+  "tocAfter": "overview",
+  "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Your data lives in two places. <b>Out there</b>: profiles that apps, websites and <b>data brokers</b> build about you and sell to advertisers, landlords, employers or anyone who pays. <b>With you</b>: the photos, documents and messages on your phone, laptop, USB sticks and cloud accounts.</p><p>This lesson covers both. You’ll shrink what’s collected and remove what’s already out there, then protect what you keep: encrypt it so a lost or seized device reveals nothing, back it up so you can’t lose it, strip the hidden details that identify you before you share it, and destroy it properly when you’re done.</p><p><b>In the cloud:</b> “The cloud” just means someone else's computer. When your photos, documents and backups sync to a cloud service, that company holds a copy &mdash; and unless the files are <b>end-to-end encrypted</b>, the company (and anyone who breaks in or sends it a legal request) can read them. Choosing an encrypted provider, or encrypting files yourself before they leave your device, keeps the convenience without handing over the contents.</p>"
+        }
+      ]
+    },
+    {
+      "id": "terminology",
+      "title": "Terminology",
+      "summary": "The words you will run into.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "terms",
+          "items": [
+            {
+              "title": "Data broker",
+              "html": "<p>A company that collects and sells profiles of people, usually without ever dealing with them directly.</p>"
+            },
+            {
+              "title": "Metadata",
+              "html": "<p>Data about a file &mdash; when and where a photo was taken, which phone took it, who wrote a document. Often more revealing than the content.</p>"
+            },
+            {
+              "title": "Full-disk encryption",
+              "html": "<p>Scrambles everything on a device until you unlock it. FileVault, BitLocker and phone encryption do this. Protects a device that is <i>switched off</i>.</p>"
+            },
+            {
+              "title": "Encrypted volume / vault",
+              "html": "<p>A locked folder or file (VeraCrypt, Cryptomator) that holds other files and only opens with a password.</p>"
+            },
+            {
+              "title": "Secure deletion",
+              "html": "<p>Overwriting a file so it can’t be recovered. Emptying the trash only hides it.</p>"
+            },
+            {
+              "title": "HDD vs. SSD",
+              "html": "<p>Spinning hard drives can be wiped by overwriting. SSDs, USB sticks and SD cards spread data around (wear levelling), so overwriting isn’t reliable &mdash; encrypt them instead.</p>"
+            },
+            {
+              "title": "GDPR / CCPA",
+              "html": "<p>EU and California privacy laws that give you the right to see and delete data held about you.</p>"
+            },
+            {
+              "title": "3-2-1 backup",
+              "html": "<p>Three copies of your data, on two kinds of storage, with one kept somewhere else.</p>"
+            },
+            {
+              "title": "End-to-end encryption (E2EE)",
+              "html": "<p>Files are encrypted on your device, so the provider only ever stores scrambled data it can’t read.</p>"
+            },
+            {
+              "title": "Zero-knowledge",
+              "html": "<p>A provider that cannot see your files or password, because only you hold the key.</p>"
+            },
+            {
+              "title": "Sync vs. backup",
+              "html": "<p>Sync mirrors changes (including deletions) everywhere; a backup keeps older copies you can restore.</p>"
+            },
+            {
+              "title": "Client-side encryption",
+              "html": "<p>Encrypting files yourself (e.g. with Cryptomator) before uploading them to any service.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

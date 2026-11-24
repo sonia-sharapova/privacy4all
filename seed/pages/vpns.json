@@ -1,5 +1,19 @@
 {
+  "subtitle": "The full guide",
+  "intro": [],
+  "tocAfter": "overview",
   "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What it is and why it matters.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Every time you go online, your traffic passes through networks run by other people &mdash; the Wi-Fi you're on, your internet provider, and everyone in between. Each can see where your traffic is going, and anything that isn't encrypted. Network privacy is about limiting what those middlemen can see: HTTPS everywhere, private DNS, and tools like VPNs and Tor when you need more.</p>"
+        }
+      ]
+    },
     {
       "id": "who-watches",
       "title": "Who's Watching You Online?",
@@ -59,6 +73,30 @@
           "style": "terms",
           "items": [
             {
+              "title": "IP address",
+              "html": "<p>The number that identifies your connection online. It can reveal your rough location.</p>"
+            },
+            {
+              "title": "ISP",
+              "html": "<p>Your internet service provider. It can see every site you connect to unless you hide it.</p>"
+            },
+            {
+              "title": "DNS",
+              "html": "<p>The internet’s phone book, turning names into IP addresses. Encrypted DNS (DoH) keeps lookups private.</p>"
+            },
+            {
+              "title": "HTTPS",
+              "html": "<p>Encrypted web traffic — the padlock. Others can see which site you visit, but not what you do there.</p>"
+            },
+            {
+              "title": "Tor",
+              "html": "<p>A network that bounces your traffic through three volunteer relays so sites can’t see who you are.</p>"
+            },
+            {
+              "title": "Router",
+              "html": "<p>The box that connects your home to the internet. Change its default password and keep it updated.</p>"
+            },
+            {
               "title": "VPN",
               "html": "<p>A virtual private network: an encrypted tunnel from your device to a server, which then reaches the web for you.</p>"
             },
@@ -85,35 +123,8 @@
           ]
         }
       ]
-    },
-    {
-      "id": "everything",
-      "title": "Everything on VPNs & VPS",
-      "summary": "Guides, tools, checkers and resources.",
-      "blocks": [
-        {
-          "type": "topic-index",
-          "cols": 3
-        },
-        {
-          "type": "subheading",
-          "style": "label",
-          "text": "Elsewhere on the web"
-        },
-        {
-          "type": "resources",
-          "style": "list",
-          "items": [
-            {
-              "label": "Privacy Guides: VPN services",
-              "url": "https://www.privacyguides.org/en/vpn/",
-              "desc": "independent VPN recommendations."
-            }
-          ]
-        }
-      ]
     }
   ],
-  "layout": "hero",
-  "lede": "<p>Who's actually watching your traffic, how a VPN protects you (and where it can't), how to pick a provider you can trust, and how to run your own VPN or website on a rented server.</p>"
+  "lede": "<p>Who's actually watching your traffic, how a VPN protects you (and where it can't), how to pick a provider you can trust, and how to run your own VPN or website on a rented server.</p>",
+  "layout": "hero"
 }

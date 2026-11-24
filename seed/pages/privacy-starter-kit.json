@@ -14,7 +14,7 @@
           "items": [
             {
               "title": "A private browser",
-              "url": "page:browsers#recommended",
+              "url": "page:choosing-a-browser#recommended",
               "text": "Your browser sees everything you do online. A private one blocks trackers, ads and fingerprinting by default, so websites and advertisers learn far less about you &mdash; without changing how you browse."
             },
             {
@@ -29,7 +29,7 @@
             },
             {
               "title": "An encrypted messenger",
-              "url": "page:communication#messaging",
+              "url": "page:messaging#messaging",
               "text": "With end-to-end encryption only you and the person you’re talking to can read your messages and hear your calls &mdash; not the app maker, your carrier or anyone who breaks in."
             },
             {
@@ -39,7 +39,7 @@
             },
             {
               "title": "Encrypted storage",
-              "url": "page:cloud",
+              "url": "page:data",
               "text": "Keep photos, documents and backups where only you hold the key: an end-to-end encrypted cloud, or files encrypted on your own device before they’re uploaded."
             }
           ],

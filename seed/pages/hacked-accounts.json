@@ -1,0 +1,55 @@
+{
+  "subtitle": "Signs of compromise and what to do first.",
+  "subsections": [
+    {
+      "id": "hacked",
+      "title": "If an Account Is Hacked",
+      "summary": "Signs of compromise and what to do first.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Signs:</b> settings or posts you didn’t change, contacts getting messages you didn’t send, your correct password being rejected, password-reset emails you didn’t ask for, or logins from places you’ve never been.</p>"
+        },
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "label": "STEP",
+          "items": [
+            {
+              "title": "Stop using it for anything sensitive",
+              "text": "<p>Until you know what happened, assume someone else can read the account.</p>"
+            },
+            {
+              "title": "Change the password",
+              "text": "<p>Use a new, unique password from your <a href=\"page:passwords\">password manager</a>, and change it anywhere else you used the same one.</p>"
+            },
+            {
+              "title": "Sign out every other session",
+              "text": "<p>Find the account’s list of active sessions or devices and log out of everything you don’t recognise.</p>"
+            },
+            {
+              "title": "Check forwarding and recovery settings",
+              "text": "<p>Look for email forwarding rules, recovery emails or phone numbers you didn’t add &mdash; attackers use them to keep access.</p>"
+            },
+            {
+              "title": "Turn on two-factor authentication",
+              "text": "<p>Use an authenticator app or security key. See <a href=\"page:auth\">Auth / 2FA</a>.</p>"
+            },
+            {
+              "title": "Unlink connected apps",
+              "text": "<p>Remove “Sign in with Google/Facebook/Apple” connections you don’t use, starting with financial and sensitive accounts.</p>"
+            },
+            {
+              "title": "Check your devices",
+              "text": "<p>Any phone or computer that was signed in could be the source. Update it and check for apps you don’t recognise.</p>"
+            },
+            {
+              "title": "Can’t get back in?",
+              "text": "<p>Use the service’s recovery process, then the <a href=\"https://digitalfirstaid.org/topics/account-access-issues\">Digital First Aid Kit</a>. At-risk people can get free help from <a href=\"https://www.accessnow.org/help/\">Access Now’s Digital Security Helpline</a>.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

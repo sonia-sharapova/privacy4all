@@ -1,0 +1,188 @@
+{
+  "subtitle": "Encrypted messengers, calls and group chat.",
+  "subsections": [
+    {
+      "id": "choosing",
+      "title": "Choosing a Tool",
+      "summary": "What to look for in any messenger or email service.",
+      "blocks": [
+        {
+          "type": "columns",
+          "cols": 3,
+          "style": "divided",
+          "items": [
+            {
+              "title": "Encrypted by default",
+              "html": "<p>End-to-end encryption should be on for every chat and call, not an option you have to find.</p>"
+            },
+            {
+              "title": "No phone number needed",
+              "html": "<p>A phone number ties an account to your real identity. Some apps work without one, or let you hide it behind a username.</p>"
+            },
+            {
+              "title": "Open source & audited",
+              "html": "<p>Public code and independent security audits mean you don’t have to take the company’s word for it.</p>"
+            },
+            {
+              "title": "Disappearing messages",
+              "html": "<p>Messages that delete themselves protect you if a phone is lost, seized or hacked later.</p>"
+            },
+            {
+              "title": "Little metadata",
+              "html": "<p>Even when content is encrypted, <i>who</i> you talk to and <i>when</i> can be revealing. Prefer services that keep as little as possible.</p>"
+            },
+            {
+              "title": "Who runs the server",
+              "html": "<p>For self-hosted and federated tools (Matrix, Jitsi, Mastodon), the person running your server can see more. Pick one you trust.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "messaging",
+      "title": "Messaging Apps",
+      "summary": "Encrypted alternatives to WhatsApp and SMS.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "Signal",
+              "url": "https://signal.org/",
+              "desc": "The easiest switch: feels like WhatsApp, encrypted by default, run by a non-profit. Needs a phone number but lets you hide it behind a username.",
+              "linkText": "Visit",
+              "meta": "Android, iOS, desktop · free"
+            },
+            {
+              "label": "SimpleX Chat",
+              "url": "https://simplex.chat/",
+              "desc": "No phone number and no user ID at all — you connect through one-time invite links or QR codes.",
+              "linkText": "Visit",
+              "meta": "Android, iOS, desktop · free"
+            },
+            {
+              "label": "Molly",
+              "url": "https://molly.im/",
+              "desc": "A hardened version of Signal for Android, with an encrypted local database and Tor support.",
+              "linkText": "Visit",
+              "meta": "Android · free"
+            },
+            {
+              "label": "Session",
+              "url": "https://getsession.org/",
+              "desc": "No phone number or email to sign up; messages travel over a decentralised network.",
+              "linkText": "Visit",
+              "meta": "Android, iOS, desktop · free"
+            },
+            {
+              "label": "Threema",
+              "url": "https://threema.ch/",
+              "desc": "Swiss messenger that needs no phone number. Paid once, no subscription.",
+              "linkText": "Visit",
+              "meta": "Android, iOS, web · paid"
+            },
+            {
+              "label": "Briar",
+              "url": "https://briarproject.org/",
+              "desc": "No servers: syncs phone-to-phone over Bluetooth, Wi-Fi or Tor, so it works even when the internet is down.",
+              "linkText": "Visit",
+              "meta": "Android · free"
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "More options"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Delta Chat",
+              "url": "https://delta.chat/",
+              "desc": "chat app that runs over ordinary email accounts."
+            },
+            {
+              "label": "Element",
+              "url": "https://element.io/",
+              "desc": "app for Matrix, a federated, encrypted chat network for communities."
+            },
+            {
+              "label": "Jami",
+              "url": "https://jami.net/",
+              "desc": "peer-to-peer messaging and calls with no central server."
+            },
+            {
+              "label": "Tox",
+              "url": "https://tox.chat/",
+              "desc": "peer-to-peer encrypted messaging and calling protocol."
+            },
+            {
+              "label": "XMPP",
+              "url": "https://xmpp.org/",
+              "desc": "open, decentralised chat standard; many apps support encryption."
+            },
+            {
+              "label": "Ricochet Refresh",
+              "url": "https://www.ricochetrefresh.net/",
+              "desc": "anonymous desktop messenger that runs over Tor."
+            },
+            {
+              "label": "OTR",
+              "url": "https://otr.cypherpunks.ca/",
+              "desc": "“Off-the-Record”, an older encryption protocol for desktop chat."
+            },
+            {
+              "label": "Telegram",
+              "url": "https://telegram.org/",
+              "desc": "popular, but chats are not end-to-end encrypted unless you start a one-to-one “Secret Chat”."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "WhatsApp & Telegram",
+          "html": "<p>WhatsApp encrypts message content but shares metadata with Meta. Telegram’s normal and group chats aren’t end-to-end encrypted, so Telegram itself can read them. Both are fine for public channels; use Signal or SimpleX for anything private.</p>"
+        }
+      ]
+    },
+    {
+      "id": "calls",
+      "title": "Calls, Meetings & Group Chat",
+      "summary": "Video calls and team chat you control.",
+      "blocks": [
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Signal",
+              "url": "https://signal.org/",
+              "desc": "encrypted voice and video calls, including groups."
+            },
+            {
+              "label": "Jitsi Meet",
+              "url": "https://meet.jit.si/",
+              "desc": "free, open-source video meetings in the browser — use a server whose operator you trust."
+            },
+            {
+              "label": "Mattermost",
+              "url": "https://mattermost.com/",
+              "desc": "self-hostable team chat, a Slack alternative."
+            },
+            {
+              "label": "Rocket.Chat",
+              "url": "https://www.rocket.chat/",
+              "desc": "self-hostable team chat with hosted plans."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,58 +1,82 @@
 {
+  "subtitle": "Phones, computers and operating systems",
+  "toc": "none",
   "subsections": [
     {
-      "id": "overview",
-      "title": "Overview",
-      "summary": "What it is and why it matters.",
+      "id": "lesson",
+      "title": "Lesson",
+      "summary": "The full guide, part by part.",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p>Your phone knows more about you than any other device: where you go, who you talk to, your photos, your health and your money. Much of that is shared with apps, advertisers and your carrier by default. A few settings &mdash; app permissions, location history, the advertising ID and a strong passcode &mdash; make a big difference, whatever phone you have.</p>"
+          "type": "redirects",
+          "style": "rows",
+          "items": [
+            {
+              "url": "page:devices-guide",
+              "label": "Full guide to Devices & OS",
+              "desc": "Overview, directory and terminology — start here.",
+              "linkText": "Start"
+            }
+          ]
+        },
+        {
+          "type": "topic-index",
+          "topic": "devices-guide",
+          "includeParts": true,
+          "style": "table"
         }
       ]
     },
     {
-      "id": "terminology",
-      "title": "Terminology",
-      "summary": "The words you will run into.",
+      "id": "guides",
+      "title": "Guides",
+      "summary": "Tutorials, checklists and templates.",
       "blocks": [
         {
-          "type": "columns",
-          "cols": 2,
-          "style": "terms",
-          "items": [
-            {
-              "title": "App permissions",
-              "html": "<p>What an app is allowed to access: location, camera, microphone, contacts. Grant only what it needs.</p>"
-            },
-            {
-              "title": "Advertising ID",
-              "html": "<p>An identifier apps use to track you for ads. Delete or reset it in settings.</p>"
-            },
-            {
-              "title": "Biometric unlock",
-              "html": "<p>Face or fingerprint unlock. Convenient, but in some places you can be forced to use it.</p>"
-            },
-            {
-              "title": "Full-disk encryption",
-              "html": "<p>Scrambles everything on the phone until it is unlocked with your passcode.</p>"
-            },
-            {
-              "title": "IMSI catcher",
-              "html": "<p>A fake cell tower that tricks nearby phones into connecting so they can be tracked.</p>"
-            }
+          "type": "topic-index",
+          "style": "table",
+          "kinds": [
+            "guide",
+            "tutorial",
+            "checklist",
+            "template",
+            "checker",
+            "generator",
+            "tool"
+          ],
+          "exclude": [
+            "devices-guide"
           ]
         }
       ]
     },
     {
-      "id": "everything",
-      "title": "Everything on Mobile & Device",
-      "summary": "Guides, tools, checkers and resources.",
+      "id": "related",
+      "title": "Related Topics",
+      "summary": "Where to go next.",
       "blocks": [
         {
           "type": "topic-index",
-          "cols": 3
+          "style": "tiles",
+          "kinds": [
+            "topic"
+          ],
+          "cols": 4
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Resources",
+      "summary": "Lists, projects and links.",
+      "blocks": [
+        {
+          "type": "topic-index",
+          "style": "table",
+          "kinds": [
+            "resource",
+            "project"
+          ]
         },
         {
           "type": "subheading",
@@ -67,6 +91,11 @@
               "label": "Privacy Guides: mobile phones",
               "url": "https://www.privacyguides.org/en/mobile-phones/",
               "desc": "more private phones and operating systems."
+            },
+            {
+              "label": "Privacy Guides: desktop OS",
+              "url": "https://www.privacyguides.org/en/desktop/",
+              "desc": "more private desktop operating systems."
             }
           ]
         }

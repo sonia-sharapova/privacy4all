@@ -1,0 +1,124 @@
+{
+  "subtitle": "Second numbers to keep your real one private.",
+  "subsections": [
+    {
+      "id": "phone-numbers",
+      "title": "Second Phone Numbers & SMS",
+      "summary": "Keep your real number private.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Your phone number is often the key to your identity: it links accounts together and can be used to reset them. A second number keeps your real one off sign-up forms and marketplaces.</p>"
+        },
+        {
+          "type": "callout",
+          "label": "Careful",
+          "html": "<p>Free “receive SMS online” sites are <b>public</b> &mdash; anyone can read the codes &mdash; and their numbers are shared and recycled. Never use them for an account you want to keep, and never for banking or two-factor codes.</p>"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Numbers you keep"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "crypton.sh",
+              "url": "https://crypton.sh/",
+              "desc": "private SMS number hosted in the cloud."
+            },
+            {
+              "label": "Hushed",
+              "url": "https://hushed.com/",
+              "desc": "app for second numbers for calls and texts."
+            },
+            {
+              "label": "Burner",
+              "url": "https://www.burnerapp.com/",
+              "desc": "temporary or long-term second numbers."
+            },
+            {
+              "label": "TextNow",
+              "url": "https://www.textnow.com/",
+              "desc": "free phone number for calls and texts (US/Canada)."
+            },
+            {
+              "label": "VirtualSIM",
+              "url": "https://virtualsim.net/",
+              "desc": "virtual numbers for SMS verification."
+            },
+            {
+              "label": "Twilio",
+              "url": "https://www.twilio.com/",
+              "desc": "developer API for virtual numbers and SMS."
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "One-off verification numbers"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Textverified",
+              "url": "https://www.textverified.com/",
+              "desc": "paid temporary numbers for SMS verification."
+            },
+            {
+              "label": "Proovl",
+              "url": "https://proovl.com/",
+              "desc": "paid virtual numbers for SMS and calls."
+            },
+            {
+              "label": "Groovl",
+              "url": "https://www.groovl.com/",
+              "desc": "virtual numbers for online messaging."
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Free public SMS inboxes (anyone can read them)"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "7SIM",
+              "url": "https://7sim.net/",
+              "desc": "free temporary numbers."
+            },
+            {
+              "label": "SMS-Receive.net",
+              "url": "https://sms-receive.net/",
+              "desc": "free disposable numbers."
+            },
+            {
+              "label": "Receive SMS Online",
+              "url": "https://www.receivesmsonline.net/",
+              "desc": "free, no registration."
+            },
+            {
+              "label": "Receive-SMS.com",
+              "url": "https://receive-sms.com/",
+              "desc": "free numbers from many countries."
+            },
+            {
+              "label": "Free Online Phone",
+              "url": "https://www.freeonlinephone.org/",
+              "desc": "free disposable numbers."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

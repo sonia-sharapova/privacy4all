@@ -1,0 +1,141 @@
+{
+  "subtitle": "Settings, habits and extensions for any browser.",
+  "subsections": [
+    {
+      "id": "safer-browsing",
+      "title": "Safer Browsing Habits",
+      "summary": "Settings and habits for any browser.",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Keep your browser updated",
+              "details": "<p>Most updates fix security holes. Firefox and Chrome update themselves, but check now and then; Tor Browser updates separately.</p>"
+            },
+            {
+              "text": "Consider two browsers",
+              "details": "<p>One hardened browser for sensitive things (banking, health, activism), another for everyday browsing.</p>"
+            },
+            {
+              "text": "Set a private default search engine",
+              "details": "<p>DuckDuckGo, Brave Search, Mojeek or Startpage. See <a href=\"page:alternatives#search-engines\">search engines</a>.</p>"
+            },
+            {
+              "text": "Type addresses instead of searching for them",
+              "details": "<p>Searching a bank’s name can surface lookalike scam sites. Turn off search suggestions in the address bar.</p>"
+            },
+            {
+              "text": "Turn on HTTPS-Only mode",
+              "details": "<p>Firefox: Settings &rarr; Privacy &amp; Security &rarr; HTTPS-Only Mode. Chrome: “Always use secure connections”.</p>"
+            },
+            {
+              "text": "Turn tracking protection up",
+              "details": "<p>Firefox: Enhanced Tracking Protection on Strict (drop to Standard if sites break). Chrome: block third-party cookies and use Enhanced Safe Browsing.</p>"
+            },
+            {
+              "text": "Review camera, microphone and location permissions",
+              "details": "<p>Only allow them for sites you trust, and remove old permissions.</p>"
+            },
+            {
+              "text": "Don’t save passwords in the browser",
+              "details": "<p>Use a <a href=\"page:password-tools#managers\">password manager</a> instead, and delete the logins your browser saved.</p>"
+            },
+            {
+              "text": "Keep extensions few and trusted",
+              "details": "<p>Install only from the official add-on stores and remove anything you don’t use or recognise &mdash; every extension can see your browsing.</p>"
+            },
+            {
+              "text": "Clear history and cookies automatically",
+              "details": "<p>Set the browser to clear cookies and site data when it closes, and don’t reopen the last session on startup.</p>"
+            },
+            {
+              "text": "Turn off built-in AI features",
+              "details": "<p>They can send the page you’re reading to the browser maker. Firefox: Settings &rarr; AI Controls. Chrome: turn off Gemini features.</p>"
+            },
+            {
+              "text": "Heed security warnings",
+              "details": "<p>If the browser warns a site is dangerous, don’t continue. Pause before opening links sent by message or email.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "extensions",
+      "title": "Privacy Extensions",
+      "summary": "Add-ons worth installing, by browser.",
+      "blocks": [
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "uBlock Origin",
+              "url": "https://addons.mozilla.org/firefox/addon/ublock-origin/",
+              "desc": "The essential ad and tracker blocker. Full version works in Firefox.",
+              "linkText": "Get it",
+              "meta": "Firefox"
+            },
+            {
+              "label": "uBlock Origin Lite",
+              "url": "https://github.com/uBlockOrigin/uBOL-home",
+              "desc": "The version for Chrome, Edge, Brave and Safari.",
+              "linkText": "Get it",
+              "meta": "Chrome, Edge, Safari"
+            },
+            {
+              "label": "ClearURLs",
+              "url": "https://addons.mozilla.org/firefox/addon/clearurls/",
+              "desc": "Strips tracking codes out of the links you click.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome"
+            },
+            {
+              "label": "Decentraleyes",
+              "url": "https://addons.mozilla.org/firefox/addon/decentraleyes/",
+              "desc": "Serves common web libraries locally so third parties don’t see the request.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome"
+            },
+            {
+              "label": "Cookie AutoDelete",
+              "url": "https://addons.mozilla.org/firefox/addon/cookie-autodelete/",
+              "desc": "Deletes a site’s cookies when you close its tab.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome"
+            },
+            {
+              "label": "SponsorBlock",
+              "url": "https://sponsor.ajay.app/",
+              "desc": "Skips sponsor segments in YouTube videos.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome, Safari"
+            },
+            {
+              "label": "Privacy Badger",
+              "url": "https://privacybadger.org/",
+              "desc": "EFF’s tracker blocker that learns as you browse.",
+              "linkText": "Get it",
+              "meta": "Firefox, Chrome, Edge"
+            },
+            {
+              "label": "NoScript",
+              "url": "https://noscript.net/",
+              "desc": "Blocks scripts on sites you don’t trust. Advanced — breaks many sites.",
+              "linkText": "Get it",
+              "meta": "Firefox"
+            }
+          ],
+          "before": "<p>Start with an ad blocker &mdash; uBlock Origin on Firefox, uBlock Origin Lite on Chrome-based browsers and Safari. Add others only if you need them. See <a href=\"page:browser-extensions\">Browser Extensions</a> for setup.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><small>Safari: uBlock Origin Lite and SponsorBlock are available from the App Store; AdGuard (a sponsored pick on privacytools.io) is another option.</small></p>"
+        }
+      ]
+    }
+  ]
+}

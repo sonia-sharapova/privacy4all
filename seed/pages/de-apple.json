@@ -61,7 +61,7 @@
             },
             {
               "title": "Add security keys (optional)",
-              "text": "<p>Two hardware keys replace verification codes and stop phishing. See <a href=\"page:passwords#security-keys\">security keys</a> and <a href=\"https://support.apple.com/en-us/102637\">Apple’s guide</a>.</p>"
+              "text": "<p>Two hardware keys replace verification codes and stop phishing. See <a href=\"page:password-tools#security-keys\">security keys</a> and <a href=\"https://support.apple.com/en-us/102637\">Apple’s guide</a>.</p>"
             },
             {
               "title": "Run Safety Check",
