@@ -1,0 +1,106 @@
+{
+  "subtitle": "Delete files for good and clear old devices.",
+  "subsections": [
+    {
+      "id": "delete",
+      "title": "Delete Files for Good",
+      "summary": "Why the trash isn’t enough, and what works.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Emptying the trash only marks the space as free; the file stays readable until something overwrites it. How you really delete depends on the drive.</p>"
+        },
+        {
+          "type": "columns",
+          "cols": 2,
+          "style": "divided",
+          "items": [
+            {
+              "title": "SSDs, phones, USB sticks, SD cards",
+              "html": "<p>Overwriting isn’t reliable on flash storage. <b>Encrypt the device</b> (so leftovers are unreadable), then delete or factory-reset it.</p>"
+            },
+            {
+              "title": "Spinning hard drives (HDD)",
+              "html": "<p>Overwrite with a wiping tool. To wipe a whole drive, boot <a href=\"https://github.com/PartialVolume/shredos.x86_64\">ShredOS</a> from a USB stick, or connect the drive to another computer and use Eraser.</p>"
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Clean up traces regularly"
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "BleachBit",
+              "url": "https://www.bleachbit.org/",
+              "desc": "Clears caches, temporary files and browser leftovers, and can wipe free space.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux · free"
+            },
+            {
+              "label": "Eraser",
+              "url": "https://eraser.heidi.ie/",
+              "desc": "Overwrites files, folders and free space on Windows.",
+              "linkText": "Get it",
+              "meta": "Windows · free"
+            },
+            {
+              "label": "Extirpater",
+              "url": "https://f-droid.org/packages/us.spotco.extirpater/",
+              "desc": "Wipes free space on Android. Don’t run it often — it wears out flash memory.",
+              "linkText": "Get it",
+              "meta": "Android · F-Droid"
+            },
+            {
+              "label": "ShredOS",
+              "url": "https://github.com/PartialVolume/shredos.x86_64",
+              "desc": "Bootable USB tool that wipes whole hard drives (not SSDs).",
+              "linkText": "Get it",
+              "meta": "Bootable USB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dispose",
+      "title": "Before You Sell or Give Away a Device",
+      "summary": "Make sure the next owner gets nothing.",
+      "blocks": [
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Back up what you need",
+              "details": "<p>See <a href=\"page:backups\">Backups</a>.</p>"
+            },
+            {
+              "text": "Sign out of every account and remove the device",
+              "details": "<p>Apple Account (turn off Find My), Google account, Microsoft account. Otherwise activation lock or account links follow the device.</p>"
+            },
+            {
+              "text": "Take out the SIM, SD card and any USB sticks"
+            },
+            {
+              "text": "Make sure encryption is on, then factory reset",
+              "details": "<p>On an encrypted phone or Mac, a reset throws away the key, so leftover data is unreadable.</p>"
+            },
+            {
+              "text": "Old hard drives you won’t reuse: destroy them physically",
+              "details": "<p>Drill several holes through the platters. Don’t burn, microwave or use acid.</p>"
+            },
+            {
+              "text": "Reinstalling for yourself? Turn encryption on during setup"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

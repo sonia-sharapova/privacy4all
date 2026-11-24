@@ -10,7 +10,7 @@ them for 30 days).
 """
 import html, json, os, sys
 
-VERSION = '20261127'
+VERSION = '20261128'
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONTS = ('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700'
          '&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap')

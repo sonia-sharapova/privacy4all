@@ -19,7 +19,7 @@
 
   var body = document.body;
   var ROOT = body.getAttribute('data-root') || '';
-  var VERSION = '20261127';
+  var VERSION = '20261128';
   var pageId = body.getAttribute('data-page') || '';
   if (pageId === '?') {
     pageId = (new URLSearchParams(location.search).get('id') || '').replace(/[^a-z0-9-]/g, '');
@@ -230,7 +230,9 @@
     if (!isHome) {
       var chain = [], p = parentOf(pageId), guard = 0;
       while (p && guard++ < 5) { chain.unshift(p); p = parentOf(p); }
-      crumbs = '<a href="' + esc(href('home')) + '" style="color:inherit;">Home</a>' +
+      var up = parentOf(pageId) || 'home';
+      crumbs = '<a href="' + esc(href(up)) + '" class="p4a-crumb-back" aria-label="Back to ' + esc(title(up)) + '">&larr;</a>' +
+        '<a href="' + esc(href('home')) + '" style="color:inherit;">Home</a>' +
         chain.map(function (id) { return ' / <a href="' + esc(href(id)) + '" style="color:inherit;">' + esc(title(id)) + '</a>'; }).join('') +
         ' / ' + esc(title(pageId));
     }
@@ -414,11 +416,17 @@
 
   B.columns = function (b) {
     var style = b.style || 'divided';
+    if (style === 'terms') {
+      // Terminology: the term is the label, its definition opens on click.
+      var gl = P.site.pages.glossary && pageId !== 'glossary'
+        ? '<a href="' + esc(href('glossary')) + '" class="p4a-terms-more">Full glossary A&ndash;Z &rarr;</a>' : '';
+      return '<div class="p4a-terms cols-' + Math.min(cols(b.cols, 2), 3) + '">' + (b.items || []).map(function (it) {
+        return '<details class="p4a-defn" id="term-' + esc(slug(it.title || '')) + '"><summary><span class="p4a-defn-name">' + esc(it.title || '') + '</span></summary>' +
+          '<div class="p4a-defn-def p4a-rich">' + rich(it.html) + '</div></details>';
+      }).join('') + '</div>' + gl;
+    }
     return '<div class="p4a-grid cols-' + cols(b.cols, 3) + ' p4a-cols-' + style + '">' + (b.items || []).map(function (it) {
       var t = it.title ? (it.url ? '<a ' + linkAttrs(it.url) + ' class="p4a-plain">' + esc(it.title) + '</a>' : esc(it.title)) : '';
-      if (style === 'terms') {
-        return '<div class="p4a-3c p4a-col">' + (t ? '<div class="p4a-3c-title">' + t + '</div>' : '') + '<div class="p4a-25 p4a-rich">' + rich(it.html) + '</div></div>';
-      }
       if (style === 'headed') {
         return '<div class="p4a-col">' + (t ? '<h3 class="p4a-col-h">' + t + '</h3><hr class="p4a-hr">' : '') + '<div class="p4a-rich p4a-col-body">' + rich(it.html) + '</div></div>';
       }
@@ -504,7 +512,7 @@
   B.quote = function (b) {
     var q = String(b.quote || '');
     var first = q.charAt(0), rest = q.slice(1);
-    var quote = '<div class="p4a-quote-main"><p class="p4a-quote">&ldquo;<span class="p4a-dropcap">' + esc(first) + '</span>' + esc(rest) + '&rdquo;</p>' +
+    var quote = '<div class="p4a-quote-main"><p class="p4a-quote"><span class="p4a-dropcap">' + esc(first) + '</span>' + esc(rest) + '</p>' +
       (b.author ? '<p class="p4a-quote-author">&ndash; ' + esc(b.author) + '</p>' : '') + '</div>';
     var side = '';
     if (b.side === 'image' && b.image) side = '<div class="p4a-quote-side">' + img(b.image, 'p4a-quote-img', b.alt || '') + '</div>';
@@ -534,6 +542,56 @@
   };
 
   B.html = function (b) { return '<div class="p4a-html">' + rich(b.html) + '</div>'; };
+
+  /* Glossary: every term from every page's Terminology (columns, style "terms"),
+     collected at load time and laid out A–Z like a dictionary. */
+  B.glossary = function () { return '<div class="p4a-glossary" data-glossary><p class="p4a-2b">Loading the glossary&hellip;</p></div>'; };
+
+  function topicOf(id) { var p = parentOf(id); return p || id; }
+  function collectTerms(pg, id, out) {
+    ['intro', 'outro'].forEach(function (k) { (pg[k] || []).forEach(function (b) { addTerms(b, id, out); }); });
+    (pg.subsections || []).forEach(function (s) { (s.blocks || []).forEach(function (b) { addTerms(b, id, out); }); });
+  }
+  function addTerms(b, id, out) {
+    if (b.type !== 'columns' || b.style !== 'terms') return;
+    (b.items || []).forEach(function (it) {
+      if (!it.title) return;
+      var key = it.title.toLowerCase().replace(/\s+/g, ' ').trim();
+      if (!out[key]) out[key] = { term: it.title, def: it.html || '', from: [] };
+      var t = topicOf(id);
+      if (out[key].from.indexOf(t) === -1) out[key].from.push(t);
+    });
+  }
+  function buildGlossary(el) {
+    var ids = Object.keys(P.site.pages).filter(function (id) { return id !== 'glossary'; });
+    Promise.all(ids.map(function (id) {
+      return P.loadPage(id).then(function (pg) { return { id: id, pg: pg || {} }; }, function () { return { id: id, pg: {} }; });
+    })).then(function (list) {
+      var terms = {};
+      list.forEach(function (x) { collectTerms(x.pg, x.id, terms); });
+      var groups = {};
+      Object.keys(terms).sort(function (a, b) { return a.localeCompare(b); }).forEach(function (k) {
+        var c = k.charAt(0).toUpperCase();
+        if (!/[A-Z]/.test(c)) c = '#';
+        (groups[c] = groups[c] || []).push(terms[k]);
+      });
+      var letters = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+      var bar = '<nav class="p4a-gl-bar" aria-label="Jump to letter">' + letters.map(function (c) {
+        return groups[c] ? '<a href="#gl-' + (c === '#' ? 'num' : c) + '">' + c + '</a>' : '<span>' + c + '</span>';
+      }).join('') + '</nav>';
+      var count = Object.keys(terms).length;
+      var body = letters.filter(function (c) { return groups[c]; }).map(function (c) {
+        return '<section class="p4a-gl-letter" id="gl-' + (c === '#' ? 'num' : c) + '"><h3 class="p4a-gl-h">' + (c === '#' ? '0–9' : c) + '</h3>' +
+          groups[c].map(function (t) {
+            var tags = t.from.map(function (id) { return '<a href="' + esc(href(id)) + '#terminology" class="p4a-gl-tag">' + esc(title(id)) + '</a>'; }).join(' ');
+            return '<details class="p4a-gl-item"><summary><span class="p4a-gl-term">' + esc(t.term) + '</span><span class="p4a-gl-tags">' +
+              t.from.map(function (id) { return esc(title(id).toUpperCase()); }).join(', ') + '</span></summary>' +
+              '<div class="p4a-gl-def p4a-rich">' + rich(t.def) + '<p class="p4a-gl-src">From: ' + tags + '</p></div></details>';
+          }).join('') + '</section>';
+      }).join('');
+      el.innerHTML = '<p class="p4a-gl-count">' + count + ' terms from across the site. Click a term to read its definition.</p>' + bar + '<div class="p4a-gl-cols">' + body + '</div>';
+    });
+  }
 
   /* Everything on a topic: every page tagged with this topic (pages[x].topics),
      optionally its own parts, plus hand-picked pages — grouped by kind. */
@@ -697,43 +755,50 @@
       });
     } else {
       items = (page.subsections || []).filter(function (s) { return s.title && !s.hideFromToc; }).map(function (s, i) {
-        return { href: '#' + s.id, label: 'PART ' + (i + 1), title: s.title, desc: s.summary || '' };
+        return { href: '#' + s.id, label: (i < 9 ? '0' : '') + (i + 1), title: s.title, desc: s.summary || '' };
       });
     }
     if (items.length < 2 && !((pg.parts || []).length && page.tocSource !== 'sections')) return '';
     if (!items.length) return '';
     if (mode === 'auto') mode = items.length <= 4 ? 'guidemap' : 'table';
+    // Topic hubs get a "Directory"; the deeper part pages get "In this lesson".
+    var sec = sectionOf(pageId);
+    var defTitle = parentOf(pageId) ? 'In this lesson'
+      : (sec && sec.layout === 'topics') ? 'Directory'
+      : mode === 'guidemap' ? 'Guide Map' : 'Jump to a section';
+    var tocTitle = page.tocTitle || defTitle;
     if (mode === 'guidemap') {
-      return '<section id="guide-map" class="p4a-1z p4a-tocsec"><h2 class="p4a-20">' + esc((page.tocTitle || 'Guide Map').toUpperCase()) + '</h2>' +
+      return '<section id="guide-map" class="p4a-1z p4a-tocsec"><h2 class="p4a-20">' + esc(tocTitle.toUpperCase()) + '</h2>' +
         '<div class="p4a-guide-map">' + items.map(function (t) {
           return '<a href="' + esc(t.href) + '" class="p4a-guide-map-tile"><div class="p4a-26" style="margin:0 0 8px;">' + t.label + '</div>' +
             '<div class="p4a-w" style="margin-bottom:6px;">' + esc(t.title) + '</div><div class="p4a-25">' + esc(t.desc) + '</div></a>';
         }).join('') + '</div></section>';
     }
-    return '<section id="guide-map" class="p4a-1z p4a-tocsec"><h2 class="p4a-20 p4a-20-tight p4a-toc-h">' + esc((page.tocTitle || 'Jump to a section').toUpperCase()) + '</h2>' +
-      '<div class="p4a-1g p4a-card"><nav class="tdt-toc">' + items.map(function (t, i) {
-        return '<a href="' + esc(t.href) + '"><span class="tdt-toc-num">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
-          '<span class="tdt-toc-label">' + esc(t.title) + '</span>' + (t.desc ? '<span class="tdt-toc-desc">' + esc(t.desc) + '</span>' : '') + '</a>';
-      }).join('') + '</nav></div></section>';
+    return '<section id="guide-map" class="p4a-1z p4a-tocsec"><h2 class="p4a-20 p4a-20-tight p4a-toc-h">' + esc(tocTitle.toUpperCase()) + '</h2>' +
+      '<nav class="tdt-toc' + (items.length > 6 ? ' tdt-toc-2col' : '') + '">' + items.map(function (t, i) {
+        return '<a href="' + esc(t.href) + '"' + (t.desc ? ' title="' + esc(t.desc) + '"' : '') + '><span class="tdt-toc-num">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
+          '<span class="tdt-toc-label">' + esc(t.title) + '</span></a>';
+      }).join('') + '</nav></section>';
   }
 
   function masthead() {
     var pg = P.site.pages[pageId] || { title: pageId };
     var page = P.page;
     var parent = parentOf(pageId);
-    var back = parent ? '<a href="' + esc(href(parent)) + '">&larr; ' + esc(title(parent)) + '</a>'
-      : '<a href="' + esc(href('home')) + '">&larr; back home</a>';
+    // Back navigation lives in the breadcrumb above; part pages show which topic they belong to.
+    var back = parent ? '<div class="p4a-1w p4a-back"><a href="' + esc(href(parent)) + '">' + esc(title(parent).toUpperCase()) +
+      ' &middot; PART ' + ((P.site.pages[parent].parts || []).indexOf(pageId) + 1) + '</a></div>' : '';
     var heading = esc(pg.heading || pg.title);
     var dl = page.download ? '<div class="pcl-download"><button type="button" class="p4a-glass-btn p4a-btn-action pcl-download-trigger">&#8595; Download &#9662;</button>' +
       '<div class="pcl-download-menu"><button type="button" class="pcl-download-item" data-dl="print">Print / Save as PDF</button>' +
       '<button type="button" class="pcl-download-item" data-dl="txt">Download .txt</button>' +
       '<button type="button" class="pcl-download-item" data-dl="doc">Download .doc</button></div></div>' : '';
     if (page.layout === 'hero') {
-      return '<section class="bph-hero p4a-masthead"><div class="p4a-1w p4a-back">' + back + '</div>' +
+      return '<section class="bph-hero p4a-masthead">' + back +
         '<h1 class="p4a-1x p4a-hero-title">' + heading + '</h1>' +
         (page.lede ? '<div class="p4a-21 p4a-rich p4a-hero-lede">' + rich(page.lede) + '</div>' : '') + dl + '</section>';
     }
-    return '<section class="p4a-1v p4a-masthead"><div><div class="p4a-1w p4a-back">' + back + '</div>' +
+    return '<section class="p4a-1v p4a-masthead"><div>' + back +
       '<h1 class="p4a-1x">' + heading + '</h1>' +
       (page.subtitle ? '<p class="p4a-subtitle">' + esc(page.subtitle) + '</p>' : '') + '</div>' +
       '<div class="p4a-1y">' + (page.meta ? rich(page.meta) : '') + dl + '</div></section>';
@@ -876,6 +941,8 @@
       var first = bar.querySelector('.bpe-tab-active') || btns[0];
       if (first) show(first.getAttribute('data-tab'));
     });
+
+    root.querySelectorAll('[data-glossary]').forEach(buildGlossary);
 
     root.querySelectorAll('[data-widget]').forEach(function (el) {
       var w = P.widgets[el.getAttribute('data-widget')];

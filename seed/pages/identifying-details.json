@@ -1,0 +1,91 @@
+{
+  "subtitle": "Strip metadata, faces and locations before you share.",
+  "subsections": [
+    {
+      "id": "identifying",
+      "title": "Remove Identifying Details",
+      "summary": "Metadata, faces and locations in what you share.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>A photo can carry the exact GPS location, date and phone model it was taken with; a document can carry your name and edit history. Strip it before sharing &mdash; and turn off location for the camera so it’s never added.</p>"
+        },
+        {
+          "type": "checklist",
+          "card": true,
+          "items": [
+            {
+              "text": "Turn off location for your camera app",
+              "details": "<p>Do it <i>before</i> taking photos &mdash; removing location afterwards is harder. Check app location permissions while you’re there.</p>"
+            },
+            {
+              "text": "Remove metadata before you share",
+              "details": "<p>Use one of the tools below. On iPhone you can also tap Options in the share sheet and turn off Location. Check what’s left with Get Info (Mac) or Properties (Windows).</p>"
+            },
+            {
+              "text": "Black out, don’t blur",
+              "details": "<p>Pixelation and light blur can be reversed. Cover faces, names and screens with a solid, fully opaque box &mdash; on iPhone use a filled shape in Markup, not the highlighter.</p>"
+            },
+            {
+              "text": "Edit on your device, not in a social app",
+              "details": "<p>Uploading the original to a platform gives it the unedited picture, metadata and all.</p>"
+            },
+            {
+              "text": "Watch your auto-backup",
+              "details": "<p>The un-redacted original may already be in iCloud or Google Photos &mdash; delete it there too.</p>"
+            }
+          ]
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "ExifCleaner",
+              "url": "https://exifcleaner.com/",
+              "desc": "Drag and drop to strip metadata from images, videos and PDFs.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux"
+            },
+            {
+              "label": "Scrambled Exif",
+              "url": "https://gitlab.com/juanitobananas/scrambled-exif",
+              "desc": "Removes metadata when you share a photo.",
+              "linkText": "Get it",
+              "meta": "Android"
+            },
+            {
+              "label": "MetaX",
+              "url": "https://github.com/Ckitakishi/MetaX",
+              "desc": "View, edit and delete photo metadata.",
+              "linkText": "Get it",
+              "meta": "iOS, macOS"
+            },
+            {
+              "label": "mat2",
+              "url": "https://0xacab.org/jvoisin/mat2",
+              "desc": "Removes metadata from many file types, including office documents.",
+              "linkText": "Get it",
+              "meta": "Linux, macOS"
+            },
+            {
+              "label": "GIMP",
+              "url": "https://www.gimp.org/",
+              "desc": "Free image editor for redacting photos.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux"
+            },
+            {
+              "label": "PutMask",
+              "url": "https://putmask.com/",
+              "desc": "Blurs faces in videos automatically.",
+              "linkText": "Get it",
+              "meta": "Android"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

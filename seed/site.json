@@ -30,7 +30,8 @@
         "password-check",
         "delete-yourself",
         "takedown-templates",
-        "alternatives"
+        "alternatives",
+        "glossary"
       ]
     },
     {
@@ -318,7 +319,8 @@
       "topics": [
         "browsers"
       ],
-      "kind": "guide"
+      "kind": "guide",
+      "summary": "How sites follow you without cookies."
     },
     "data": {
       "title": "Data & Storage",
@@ -326,6 +328,12 @@
       "heading": "Your Data & Files",
       "image": "assets/notif.jpg",
       "parts": [
+        "data-about-you",
+        "data-encryption",
+        "data-backups",
+        "identifying-details",
+        "data-deletion",
+        "file-sharing",
         "browser-fingerprinting-and-tracking"
       ],
       "summary": "Personal data, encryption, backups and deleting for good",
@@ -657,6 +665,51 @@
         "privacy-starter-kit"
       ],
       "keywords": "apple iphone icloud mac ios deapple"
+    },
+    "data-about-you": {
+      "title": "Data About You",
+      "path": "guides/personal-data-tracking/data-about-you.html",
+      "summary": "Find what’s out there about you and remove it.",
+      "kind": "tutorial"
+    },
+    "data-encryption": {
+      "title": "Encryption",
+      "path": "guides/personal-data-tracking/encryption.html",
+      "summary": "Encrypt phones, computers, drives and folders.",
+      "kind": "tutorial"
+    },
+    "data-backups": {
+      "title": "Backups & Recovery",
+      "path": "guides/personal-data-tracking/backups-and-recovery.html",
+      "summary": "Keep copies you can count on, and recover lost files.",
+      "kind": "tutorial"
+    },
+    "identifying-details": {
+      "title": "Identifying Details",
+      "path": "guides/personal-data-tracking/identifying-details.html",
+      "summary": "Strip metadata, faces and locations before you share.",
+      "kind": "tutorial"
+    },
+    "data-deletion": {
+      "title": "Data Deletion",
+      "path": "guides/personal-data-tracking/data-deletion.html",
+      "summary": "Delete files for good and clear old devices.",
+      "kind": "tutorial"
+    },
+    "file-sharing": {
+      "title": "File Sharing",
+      "path": "guides/personal-data-tracking/file-sharing.html",
+      "summary": "Send files without handing them to a big platform.",
+      "kind": "tutorial"
+    },
+    "glossary": {
+      "title": "Glossary",
+      "path": "quick-action/glossary.html",
+      "summary": "Every privacy term, A–Z.",
+      "image": "assets/noscript.jpg",
+      "imageFit": "cover",
+      "kind": "resource",
+      "keywords": "glossary terms definitions dictionary a-z"
     }
   }
 }

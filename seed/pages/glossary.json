@@ -1,0 +1,12 @@
+{
+  "subtitle": "Every privacy term on the site, A–Z",
+  "intro": [
+    {
+      "type": "text",
+      "html": "<p>Every term defined in a topic’s <b>Terminology</b> section, gathered in one place. Click a term to read its definition; the green label shows which topic it comes from.</p>"
+    },
+    {
+      "type": "glossary"
+    }
+  ]
+}

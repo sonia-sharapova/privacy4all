@@ -1,0 +1,107 @@
+{
+  "subtitle": "Send files without handing them to a big platform.",
+  "subsections": [
+    {
+      "id": "sharing",
+      "title": "Share Files Safely",
+      "summary": "Send files without handing them to a big platform.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>For anything sensitive, use a tool that encrypts or expires the file. Whatever you use, encrypting the file first (for example in a password-protected VeraCrypt container) means the host only ever stores scrambled data.</p>"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Private sharing"
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "OnionShare",
+              "url": "https://onionshare.org/",
+              "desc": "Share files straight from your computer over Tor. Nothing is stored on anyone’s server.",
+              "linkText": "Open",
+              "meta": "Windows, macOS, Linux"
+            },
+            {
+              "label": "share.riseup.net",
+              "url": "https://share.riseup.net/",
+              "desc": "Encrypted uploads from Riseup that expire after 12 hours.",
+              "linkText": "Open",
+              "meta": "Web · 50 MB"
+            },
+            {
+              "label": "Disroot Upload",
+              "url": "https://upload.disroot.org/",
+              "desc": "Encrypted file upload with a link that expires.",
+              "linkText": "Open",
+              "meta": "Web · 2 GB"
+            },
+            {
+              "label": "Tresorit Send",
+              "url": "https://send.tresorit.com/",
+              "desc": "End-to-end encrypted transfers with a password option.",
+              "linkText": "Open",
+              "meta": "Web · 5 GB"
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Quick anonymous upload sites"
+        },
+        {
+          "type": "callout",
+          "label": "Careful",
+          "html": "<p>These are run by unknown operators. Assume anything you upload could be seen, scanned or deleted, encrypt files first, and don’t use them for anything you can’t afford to lose or leak.</p>"
+        },
+        {
+          "type": "resources",
+          "style": "list",
+          "items": [
+            {
+              "label": "Anonym File",
+              "url": "https://anonymfile.com/",
+              "desc": "anonymous file upload and sharing."
+            },
+            {
+              "label": "GoFile",
+              "url": "https://gofile.io/",
+              "desc": "free, fast sharing with no account."
+            },
+            {
+              "label": "Buzzheavier",
+              "url": "https://buzzheavier.com/",
+              "desc": "privacy-focused file sharing."
+            },
+            {
+              "label": "Easyupload.io",
+              "url": "https://easyupload.io/",
+              "desc": "temporary uploads with expiry options."
+            },
+            {
+              "label": "DropMeFiles",
+              "url": "https://dropmefiles.com/",
+              "desc": "temporary sharing with password protection."
+            },
+            {
+              "label": "Uguu",
+              "url": "https://uguu.se/",
+              "desc": "temporary uploads that delete themselves."
+            },
+            {
+              "label": "NiHao Cloud",
+              "url": "https://nihaocloud.com/",
+              "desc": "cloud storage and sharing, aimed at sharing with China."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

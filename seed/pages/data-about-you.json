@@ -1,0 +1,42 @@
+{
+  "subtitle": "Find what’s out there about you and remove it.",
+  "subsections": [
+    {
+      "id": "out-there",
+      "title": "Data About You Out There",
+      "summary": "Find it, remove it, and stop new leaks.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Search engines, people-search sites and breach databases make it easy for strangers to find your address, phone number and relatives. Start by seeing what’s visible, then remove it &mdash; for free, or with a paid service &mdash; and cut down what you hand out in future.</p>"
+        },
+        {
+          "type": "redirects",
+          "style": "rows",
+          "items": [
+            {
+              "url": "page:delete-yourself",
+              "desc": "Find your data, opt out of data brokers and remove yourself from search results.",
+              "linkText": "Open"
+            },
+            {
+              "url": "page:takedown-templates",
+              "desc": "Ready-to-send removal requests for brokers, GDPR/CCPA and Google.",
+              "linkText": "Open"
+            },
+            {
+              "url": "page:privacy-checklist",
+              "desc": "Small steps that stop new data being collected, tier by tier.",
+              "linkText": "Open"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Ask for a copy",
+          "html": "<p>Big companies must give you your data on request: <a href=\"https://takeout.google.com/\">Google Takeout</a>, <a href=\"https://privacy.apple.com/\">Apple Data &amp; Privacy</a>, and the “download your data” option in most social networks. It shows what they hold &mdash; and is your backup before you delete an account.</p>"
+        }
+      ]
+    }
+  ]
+}

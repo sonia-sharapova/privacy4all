@@ -1,0 +1,45 @@
+{
+  "subtitle": "Keep copies you can count on, and recover lost files.",
+  "subsections": [
+    {
+      "id": "backups",
+      "title": "Back Up & Recover",
+      "summary": "Copies you can count on — and what to do after a loss.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Encryption without backups is a gamble: a forgotten password or dead drive means losing everything. Keep three copies, on two kinds of storage, one of them somewhere else &mdash; encrypted, and on a schedule.</p>"
+        },
+        {
+          "type": "redirects",
+          "style": "rows",
+          "items": [
+            {
+              "url": "page:backups",
+              "desc": "The full walkthrough: Time Machine, File History, phone backups, encrypted backup apps and scheduling.",
+              "linkText": "Open"
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Encrypted cloud storage"
+        },
+        {
+          "type": "text",
+          "html": "<p>Encrypt before uploading with Cryptomator, or choose a zero-knowledge service such as Filen, Proton Drive, Tresorit, MEGA or Internxt &mdash; see <a href=\"page:alternatives#cloud-storage\">cloud storage alternatives</a>. Self-hosters can run <a href=\"https://nextcloud.com/\">Nextcloud</a>.</p>"
+        },
+        {
+          "type": "subheading",
+          "style": "label",
+          "text": "Lost something?"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Stop using the drive immediately</b> &mdash; new files can overwrite what you deleted. Then try <a href=\"https://www.cgsecurity.org/wiki/PhotoRec\">PhotoRec</a> (all systems) or Recuva (Windows), or the Digital First Aid Kit’s <a href=\"https://digitalfirstaid.org/support/\">support page</a>.</p>"
+        }
+      ]
+    }
+  ]
+}

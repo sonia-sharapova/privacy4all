@@ -501,6 +501,8 @@
         { key: 'pages', label: 'Extra pages to include (pages tagged with this topic in their Page settings appear automatically)', type: 'pages' },
         { key: 'cols', label: 'Columns', type: 'select', options: COLS, numeric: true }
       ], make: function () { return { cols: 3 }; } },
+    { type: 'glossary', label: 'Glossary A–Z', desc: 'Every term from every Terminology section on the site, as an A–Z dictionary. Updates itself.', icon: 'Az',
+      fields: [], make: function () { return {}; }, noCommon: true },
     { type: 'resources', label: 'Resources list', desc: 'A list of links with short descriptions.', icon: '☰',
       fields: [
         { key: 'style', label: 'Style', type: 'select', options: [['list', 'Bulleted list'], ['numbered', 'Numbered references [1] [2]']] },

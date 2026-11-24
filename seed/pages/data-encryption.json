@@ -1,0 +1,119 @@
+{
+  "subtitle": "Encrypt phones, computers, drives and folders.",
+  "subsections": [
+    {
+      "id": "encrypt-devices",
+      "title": "Encrypt Your Devices",
+      "summary": "Lock everything on a lost or stolen device.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Full-disk encryption means a thief or anyone who seizes your device gets scrambled data, not your files. Most devices can do it with a setting.</p>"
+        },
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "openFirst": false,
+          "items": [
+            {
+              "title": "iPhone & iPad",
+              "text": "<p>Encrypted automatically as soon as you set a passcode. Use a long alphanumeric passcode rather than six digits.</p>"
+            },
+            {
+              "title": "Android",
+              "text": "<p>Android 10 and newer encrypt by default. Check under Settings &rarr; Security &rarr; Encryption &amp; credentials (names vary by phone), and use a strong screen lock.</p>"
+            },
+            {
+              "title": "Mac",
+              "text": "<p>System Settings &rarr; Privacy &amp; Security &rarr; <b>FileVault</b> &rarr; Turn On. Keep the recovery key in your password manager, not in iCloud if you want Apple out of the loop.</p>"
+            },
+            {
+              "title": "Windows",
+              "text": "<p><b>BitLocker</b> on Windows 10/11 Pro, Enterprise or Education (Settings &rarr; Privacy &amp; security &rarr; Device encryption or BitLocker). Add a start-up PIN for extra protection. Home editions can use <a href=\"https://veracrypt.io/\">VeraCrypt</a> system encryption instead.</p>"
+            },
+            {
+              "title": "Linux",
+              "text": "<p>Full-disk encryption is chosen during installation (“Encrypt the new installation” / LUKS). On an existing system that means backing up and reinstalling.</p>"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Shut down, don’t sleep",
+          "html": "<p>Encryption only protects a device that is <b>fully powered off</b>. Before crossing a border, going to a protest or leaving a laptop unattended, shut it down.</p>"
+        }
+      ]
+    },
+    {
+      "id": "encrypt-files",
+      "title": "Encrypt Drives & Files",
+      "summary": "USB drives, external disks and sensitive folders.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>External drives get lost and seized more often than laptops. Encrypt the whole drive &mdash; macOS Disk Utility (format as “encrypted”), BitLocker To Go on Windows, or VeraCrypt on any computer &mdash; or keep sensitive files in an encrypted vault.</p>"
+        },
+        {
+          "type": "redirects",
+          "style": "cards",
+          "cols": 3,
+          "items": [
+            {
+              "label": "VeraCrypt",
+              "url": "https://veracrypt.io/",
+              "desc": "Encrypts whole drives, partitions or file containers. Can hide a second volume behind a decoy password.",
+              "linkText": "Get it",
+              "meta": "Windows, macOS, Linux · free"
+            },
+            {
+              "label": "Cryptomator",
+              "url": "https://cryptomator.org/",
+              "desc": "Encrypts a folder file by file — ideal for anything you keep in a cloud.",
+              "linkText": "Get it",
+              "meta": "All devices · free"
+            },
+            {
+              "label": "Tails",
+              "url": "https://tails.net/",
+              "desc": "A system that runs from a USB stick, leaves no trace and can keep an encrypted persistent folder.",
+              "linkText": "Get it",
+              "meta": "USB stick · free"
+            },
+            {
+              "label": "Tella",
+              "url": "https://tella-app.org/",
+              "desc": "Hides and encrypts photos, video and audio — built for documenting abuses.",
+              "linkText": "Get it",
+              "meta": "Android, iOS · free"
+            }
+          ]
+        },
+        {
+          "type": "checklist",
+          "title": "Keeping vaults safe",
+          "items": [
+            {
+              "text": "Lock (unmount) vaults when you step away, before sleep, and before handing over a device"
+            },
+            {
+              "text": "Eject drives in the system before unplugging them",
+              "details": "<p>Pulling a drive out while it’s open can corrupt files.</p>"
+            },
+            {
+              "text": "Never open an encrypted vault on a computer you don’t trust",
+              "details": "<p>Malware can record your password as you type it.</p>"
+            },
+            {
+              "text": "Use a long, unique password and store it in your password manager",
+              "details": "<p>See <a href=\"page:passwords\">Passwords</a>. There is no “forgot password” for encryption.</p>"
+            },
+            {
+              "text": "Buy and repair devices through people you trust",
+              "details": "<p>Have second-hand devices wiped and checked before use.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
