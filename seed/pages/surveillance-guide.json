@@ -1,7 +1,4 @@
 {
-  "subtitle": "The full guide",
-  "intro": [],
-  "tocAfter": "overview",
   "subsections": [
     {
       "id": "overview",
@@ -48,5 +45,9 @@
         }
       ]
     }
-  ]
+  ],
+  "layout": "hero",
+  "toc": "guidemap",
+  "tocTitle": "Guide Map",
+  "lede": "<p>Who is watching, how, and when to take extra care.</p>"
 }

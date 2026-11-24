@@ -1,17 +1,16 @@
 {
-  "subtitle": "The full guide",
-  "intro": [
-    {
-      "type": "quote",
-      "card": false,
-      "quote": "Deleted is not the same as gone, and private is not the same as encrypted.",
-      "side": "text",
-      "sideLabel": "THIS LESSON",
-      "sideText": "<p>Where your data lives, how to lock it up, how to keep copies safe, and how to make it disappear when you’re done with it.</p>"
-    }
-  ],
-  "tocAfter": "overview",
   "subsections": [
+    {
+      "id": "this-lesson",
+      "title": "This Lesson",
+      "summary": "What you’ll learn.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Where your data lives, how to lock it up, how to keep copies safe, and how to make it disappear when you’re done with it.</p>"
+        }
+      ]
+    },
     {
       "id": "overview",
       "title": "Overview",
@@ -19,7 +18,7 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Your data lives in two places. <b>Out there</b>: profiles that apps, websites and <b>data brokers</b> build about you and sell to advertisers, landlords, employers or anyone who pays. <b>With you</b>: the photos, documents and messages on your phone, laptop, USB sticks and cloud accounts.</p><p>This lesson covers both. You’ll shrink what’s collected and remove what’s already out there, then protect what you keep: encrypt it so a lost or seized device reveals nothing, back it up so you can’t lose it, strip the hidden details that identify you before you share it, and destroy it properly when you’re done.</p><p><b>In the cloud:</b> “The cloud” just means someone else's computer. When your photos, documents and backups sync to a cloud service, that company holds a copy &mdash; and unless the files are <b>end-to-end encrypted</b>, the company (and anyone who breaks in or sends it a legal request) can read them. Choosing an encrypted provider, or encrypting files yourself before they leave your device, keeps the convenience without handing over the contents.</p>"
+          "html": "<p>Your data lives in two places. <b>Out there</b>: profiles that apps, websites and <b>data brokers</b> build about you and sell to advertisers, landlords, employers or anyone who pays. <b>With you</b>: the photos, documents and messages on your phone, laptop, USB sticks and cloud accounts.</p><p>This lesson covers both. You’ll shrink what’s collected and remove what’s already out there, then protect what you keep: encrypt it so a lost or seized device reveals nothing, back it up so you can’t lose it, strip the hidden details that identify you before you share it, and destroy it properly when you’re done.</p>"
         }
       ]
     },
@@ -84,6 +83,34 @@
           ]
         }
       ]
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "summary": "Common questions.",
+      "blocks": [
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "What about the cloud?",
+              "a": "<p>“The cloud” just means someone else's computer. When your photos, documents and backups sync to a cloud service, that company holds a copy &mdash; and unless the files are <b>end-to-end encrypted</b>, the company (and anyone who breaks in or sends it a legal request) can read them. Choosing an encrypted provider, or encrypting files yourself before they leave your device, keeps the convenience without handing over the contents.</p><p>See <a href=\"page:data-encryption\">Encryption</a> and <a href=\"page:alternatives#cloud-storage\">encrypted cloud storage</a>.</p>"
+            },
+            {
+              "q": "Is syncing the same as backing up?",
+              "a": "<p>No. Sync copies every change everywhere &mdash; including deletions and ransomware damage. A backup keeps older versions you can go back to. See <a href=\"page:data-backups\">Backups &amp; Recovery</a>.</p>"
+            },
+            {
+              "q": "Do I need to encrypt everything?",
+              "a": "<p>Turn on full-disk encryption on every phone and computer &mdash; it’s free and built in. Beyond that, encrypt drives and folders that hold anything sensitive.</p>"
+            }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "layout": "hero",
+  "toc": "guidemap",
+  "tocTitle": "Guide Map",
+  "lede": "<p>Six short parts &mdash; from finding what’s out there about you to deleting it for good.</p>"
 }

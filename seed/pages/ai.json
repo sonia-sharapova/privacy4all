@@ -1,29 +1,26 @@
 {
-  "subtitle": "",
+  "subtitle": "All things AI assistants, chatbots and what happens to your data.",
   "toc": "none",
   "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What this topic covers.",
+      "blocks": [
+        {
+          "type": "topic-map",
+          "html": "<p>AI chatbots and assistants are only as private as the company running them. What you type is usually stored, may be read by staff for review, and is often used to train future models unless you opt out. Treat a chatbot like a stranger with a very good memory: don't paste in passwords, private documents or other people's information, and check the data and training settings of any AI service you use.</p>"
+        }
+      ]
+    },
     {
       "id": "lesson",
       "title": "Lesson",
       "summary": "The full guide, part by part.",
       "blocks": [
         {
-          "type": "redirects",
-          "style": "rows",
-          "items": [
-            {
-              "url": "page:ai-guide",
-              "label": "Full guide to AI",
-              "desc": "Overview, directory and terminology — start here.",
-              "linkText": "Start"
-            }
-          ]
-        },
-        {
-          "type": "topic-index",
-          "topic": "ai-guide",
-          "includeParts": true,
-          "style": "table"
+          "type": "lesson-steps",
+          "lesson": "ai-guide"
         }
       ]
     },
@@ -34,7 +31,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "guide",
             "tutorial",
@@ -57,11 +54,10 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "tiles",
+          "style": "cards",
           "kinds": [
             "topic"
-          ],
-          "cols": 4
+          ]
         }
       ]
     },
@@ -72,7 +68,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "resource",
             "project"

@@ -10,7 +10,7 @@ them for 30 days).
 """
 import html, json, os, sys
 
-VERSION = '20261129'
+VERSION = '20261130'
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONTS = ('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=Averia+Libre:wght@700'
          '&amp;family=Poppins:wght@500;600;700&amp;family=Alef:wght@400&amp;family=Istok+Web:wght@400;700&amp;display=swap')
@@ -59,7 +59,7 @@ for pid, p in site['pages'].items():
         write(p['path'], pid, p['title'] + ' — privacy4all'); n += 1
 # Old URLs that now live elsewhere.
 redirect('guides/browser-privacy/browser-privacy.html', 'browser-privacy/index.html')
-redirect('browser-privacy/browsers.html', 'browser-privacy/index.html#recommended')
+redirect('browser-privacy/browsers.html', 'browser-privacy/choosing.html')
 redirect('quick-action/google-alternatives.html', 'quick-action/alternatives.html')
 redirect('guides/storage/storage.html', 'guides/personal-data-tracking/overview.html')
 redirect('advanced/cloud-storage-files/sharing-files-with-others.html', 'guides/personal-data-tracking/file-sharing.html')

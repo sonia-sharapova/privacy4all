@@ -1,29 +1,26 @@
 {
-  "subtitle": "Messaging, email, calls and social media",
+  "subtitle": "All things messaging, email, calls and social media.",
   "toc": "none",
   "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What this topic covers.",
+      "blocks": [
+        {
+          "type": "topic-map",
+          "html": "<p>Most messages, emails and calls pass through a company's servers on the way. With ordinary SMS and email, that company &mdash; and anyone it hands data to &mdash; can read them. <b>End-to-end encrypted</b> apps like Signal mean only you and the person you're talking to can read the content, and email aliases stop your real address from spreading.</p>"
+        }
+      ]
+    },
     {
       "id": "lesson",
       "title": "Lesson",
       "summary": "The full guide, part by part.",
       "blocks": [
         {
-          "type": "redirects",
-          "style": "rows",
-          "items": [
-            {
-              "url": "page:communication-guide",
-              "label": "Full guide to Communication",
-              "desc": "Overview, directory and terminology — start here.",
-              "linkText": "Start"
-            }
-          ]
-        },
-        {
-          "type": "topic-index",
-          "topic": "communication-guide",
-          "includeParts": true,
-          "style": "table"
+          "type": "lesson-steps",
+          "lesson": "communication-guide"
         }
       ]
     },
@@ -34,7 +31,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "guide",
             "tutorial",
@@ -57,11 +54,10 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "tiles",
+          "style": "cards",
           "kinds": [
             "topic"
-          ],
-          "cols": 4
+          ]
         }
       ]
     },
@@ -72,7 +68,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "resource",
             "project"

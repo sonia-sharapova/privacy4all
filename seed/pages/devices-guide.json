@@ -1,7 +1,4 @@
 {
-  "subtitle": "The full guide",
-  "intro": [],
-  "tocAfter": "overview",
   "subsections": [
     {
       "id": "overview",
@@ -68,5 +65,9 @@
         }
       ]
     }
-  ]
+  ],
+  "layout": "hero",
+  "toc": "guidemap",
+  "tocTitle": "Guide Map",
+  "lede": "<p>Four parts &mdash; choose a phone, harden it, see what it stores, and pick an operating system.</p>"
 }

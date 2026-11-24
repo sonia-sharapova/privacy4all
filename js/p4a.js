@@ -19,7 +19,7 @@
 
   var body = document.body;
   var ROOT = body.getAttribute('data-root') || '';
-  var VERSION = '20261129';
+  var VERSION = '20261130';
   var pageId = body.getAttribute('data-page') || '';
   if (pageId === '?') {
     pageId = (new URLSearchParams(location.search).get('id') || '').replace(/[^a-z0-9-]/g, '');
@@ -203,6 +203,19 @@
   function seeAll(hrefTo, label) {
     return '<a href="' + esc(hrefTo) + '" class="p4a-8 p4a-sb-all">' + esc(label || 'See all') + ' &rarr;</a>';
   }
+  // A sidebar child; a lesson nests its parts one level deeper.
+  function sidebarKid(k) {
+    var cur = k === pageId ? ' is-current' : '';
+    var kp = P.site.pages[k] || {};
+    var label = kindOf(k) === 'lesson' ? 'Guide' : title(k);
+    var a = '<a href="' + esc(href(k)) + '" class="p4a-sb-kid' + cur + '">' + esc(label) + '</a>';
+    if (kindOf(k) !== 'lesson' || !(kp.parts || []).length) return a;
+    var open = k === pageId || ancestors(pageId).indexOf(k) !== -1;
+    return '<div class="p4a-sb-sub p4a-sb-sub2">' + a + '<details' + (open ? ' open' : '') + '><summary aria-label="Show guide parts"></summary><div class="p4a-sb-kids">' +
+      kp.parts.map(function (x, i) {
+        return '<a href="' + esc(href(x)) + '" class="p4a-sb-kid' + (x === pageId ? ' is-current' : '') + '">' + (i + 1) + '. ' + esc(title(x)) + '</a>';
+      }).join('') + '</div></details></div>';
+  }
   function sidebarPage(id) {
     var pg = P.site.pages[id];
     if (!pg) return '';
@@ -212,9 +225,7 @@
     if (!kids.length) return link;
     var shown = kids.length > SIDEBAR_MAX ? kids.slice(0, SIDEBAR_MAX - 1) : kids;
     return '<div class="p4a-sb-sub">' + link + '<details' + (here ? ' open' : '') + '><summary aria-label="Show ' + esc(pg.title) + ' pages"></summary>' +
-      '<div class="p4a-sb-kids">' + shown.map(function (k) {
-        return '<a href="' + esc(href(k)) + '" class="p4a-sb-kid' + (k === pageId ? ' is-current' : '') + '">' + esc(title(k)) + '</a>';
-      }).join('') + (kids.length > shown.length ? '<a href="' + esc(href(id)) + '" class="p4a-sb-kid p4a-sb-all">See all &rarr;</a>' : '') + '</div></details></div>';
+      '<div class="p4a-sb-kids">' + shown.map(sidebarKid).join('') + (kids.length > shown.length ? '<a href="' + esc(href(id)) + '" class="p4a-sb-kid p4a-sb-all">See all &rarr;</a>' : '') + '</div></details></div>';
   }
   function sidebarLink(item) {
     if (item.page) return sidebarPage(item.page);
@@ -266,15 +277,6 @@
     var toc = tocEntries();
     var isHome = pageId === 'home';
     var crumbs = '';
-    if (!isHome) {
-      var chain = [], p = parentOf(pageId), guard = 0;
-      while (p && guard++ < 5) { chain.unshift(p); p = parentOf(p); }
-      var up = parentOf(pageId) || 'home';
-      crumbs = '<a href="' + esc(href(up)) + '" class="p4a-crumb-back" aria-label="Back to ' + esc(title(up)) + '">&larr;</a>' +
-        '<a href="' + esc(href('home')) + '" style="color:inherit;">Home</a>' +
-        chain.map(function (id) { return ' / <a href="' + esc(href(id)) + '" style="color:inherit;">' + esc(title(id)) + '</a>'; }).join('') +
-        ' / ' + esc(title(pageId));
-    }
     var nav = (site.nav || []).map(function (n) {
       return '<a ' + linkAttrs(n.url) + ' class="p4a-o">' + esc(n.label) + '</a>';
     }).join('');
@@ -310,7 +312,7 @@
         '</form></div>' +
         '<div class="p4a-j"><div>' +
           (isHome ? '<div class="p4a-k">privacy4all</div><p class="p4a-l" data-edit-site="tagline">' + rich(site.tagline) + '</p>'
-                  : '<a href="' + esc(href('home')) + '" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a><p class="p4a-l">' + crumbs + '</p>') +
+                  : '<a href="' + esc(href('home')) + '" class="p4a-k" style="text-decoration:none; color:inherit;">privacy4all</a>') +
           '<div id="search-message" class="p4a-m"></div>' +
         '</div><nav class="p4a-n">' + nav + '</nav></div>' +
       '</div></header>' +
@@ -451,7 +453,7 @@
     var items = b.items || [];
     if (b.style === 'cards') {
       return '<div class="p4a-grid cols-' + cols(b.cols, 3) + '">' + items.map(function (it) {
-        return '<div class="p4a-23 p4a-redirect-card">' + img(it.icon, 'p4a-26-icon', '') +
+        return '<div class="p4a-23 p4a-redirect-card">' + (it.icon ? img(it.icon, 'p4a-26-icon', '') : placeholder(itemLabel(it), 'p4a-ph-sm')) +
           '<div class="p4a-24"><a ' + linkAttrs(it.url) + ' class="p4a-plain">' + esc(itemLabel(it)) + '</a></div>' +
           (it.meta ? '<div class="p4a-meta">' + esc(it.meta) + '</div>' : '') +
           (it.desc ? '<div class="p4a-25 p4a-rich">' + rich(it.desc) + '</div>' : '') +
@@ -460,7 +462,7 @@
     }
     if (b.style === 'rows') {
       return '<div class="p4a-redirect-rows">' + items.map(function (it) {
-        return '<div class="p4a-redirect-row">' + img(it.icon, 'p4a-26-icon', '') +
+        return '<div class="p4a-redirect-row">' + (it.icon ? img(it.icon, 'p4a-26-icon', '') : placeholder(itemLabel(it), 'p4a-ph-sm')) +
           '<div class="p4a-redirect-row-text"><div class="p4a-24">' + esc(itemLabel(it)) + '</div>' +
           (it.meta ? '<div class="p4a-meta">' + esc(it.meta) + '</div>' : '') +
           (it.desc ? '<div class="p4a-25 p4a-rich">' + rich(it.desc) + '</div>' : '') + '</div>' +
@@ -601,6 +603,44 @@
 
   B.html = function (b) { return '<div class="p4a-html">' + rich(b.html) + '</div>'; };
 
+  // A lettered tile for things without an image or icon.
+  function placeholder(name, cls) {
+    var c = String(name || '?').replace(/^[^A-Za-z0-9]+/, '').charAt(0).toUpperCase() || '?';
+    return '<span class="p4a-ph' + (cls ? ' ' + cls : '') + '" aria-hidden="true">' + esc(c) + '</span>';
+  }
+  P.placeholder = placeholder;
+
+  /* Topic page map: description on the left, the topic's pages on the right. */
+  B['topic-map'] = function (b) {
+    var topic = b.topic || pageId, pg = P.site.pages[topic] || {};
+    var ids = [];
+    if (pg.lesson) ids.push(pg.lesson);
+    topicItems(topic, {}).forEach(function (id) {
+      var k = kindOf(id);
+      if (k !== 'topic' && ids.indexOf(id) === -1 && ((P.site.pages[pg.lesson] || {}).parts || []).indexOf(id) === -1) ids.push(id);
+    });
+    return '<div class="p4a-1g p4a-topic-map"><div class="p4a-1h p4a-rich p4a-topic-map-desc">' + rich(b.html) + '</div>' +
+      '<div class="p4a-1j">' + ids.slice(0, b.limit || 8).map(function (id) {
+        var p = P.site.pages[id];
+        return '<a href="' + esc(href(id)) + '" class="p4a-1k"><div class="p4a-1l">' + esc(p.title) + ' <span class="p4a-go">&rarr;</span></div><div class="p4a-1m">' + esc(p.summary || '') + '</div></a>';
+      }).join('') + (ids.length > (b.limit || 8) ? '<a href="#guides" class="p4a-1k p4a-map-more"><div class="p4a-1m">+ ' + (ids.length - (b.limit || 8)) + ' more below &darr;</div></a>' : '') + '</div></div>';
+  };
+
+  /* Lesson container on a topic page: the guide's parts as rows, with a Start button. */
+  B['lesson-steps'] = function (b) {
+    var L = b.lesson || (P.site.pages[pageId] || {}).lesson, lp = P.site.pages[L];
+    if (!lp) return '';
+    var parts = lp.parts || [];
+    return '<div class="p4a-lesson-box"><div class="p4a-lesson-head"><div><div class="p4a-lesson-name">' + esc(lp.heading || lp.title) + '</div>' +
+      '<div class="p4a-lesson-sub">' + esc(b.text || (parts.length ? parts.length + ' short parts — start at the beginning or jump in.' : 'Overview and terminology.')) + '</div></div>' +
+      '<a href="' + esc(href(L)) + '" class="p4a-glass-btn p4a-btn-nav p4a-lesson-start">Start &rarr;</a></div>' +
+      (parts.length ? '<div class="p4a-lesson-steps">' + parts.map(function (id, i) {
+        var p = P.site.pages[id] || { title: id };
+        return '<a href="' + esc(href(id)) + '" class="p4a-lesson-step"><span class="p4a-26">PART ' + (i + 1) + '</span>' +
+          '<span class="p4a-lesson-step-title">' + esc(p.title) + '</span><span class="p4a-lesson-step-desc">' + esc(p.summary || '') + '</span><span class="p4a-go">&rarr;</span></a>';
+      }).join('') + '</div>' : '') + '</div>';
+  };
+
   /* Glossary: every term from every page's Terminology (columns, style "terms"),
      collected at load time and laid out A–Z like a dictionary. */
   B.glossary = function () { return '<div class="p4a-glossary" data-glossary><p class="p4a-2b">Loading the glossary&hellip;</p></div>'; };
@@ -694,8 +734,14 @@
       return '<div class="p4a-index-table">' + ids.map(function (id) {
         var p = P.site.pages[id];
         return '<a href="' + esc(href(id)) + '" class="p4a-index-row"><span class="p4a-index-name">' + esc(p.title) + '</span>' +
-          '<span class="p4a-index-kind">' + esc((KIND_LABEL[kindOf(id)] || '').toUpperCase()) + '</span>' +
-          '<span class="p4a-index-desc">' + esc(p.summary || '') + '</span><span class="p4a-index-go">&rsaquo;</span></a>';
+          '<span class="p4a-index-desc">' + esc(p.summary || '') + '</span><span class="p4a-index-go">Open &rarr;</span></a>';
+      }).join('') + '</div>';
+    }
+    if (b.style === 'cards') {
+      return '<div class="p4a-t p4a-cards">' + ids.map(function (id) {
+        var p = P.site.pages[id];
+        return '<a href="' + esc(href(id)) + '" class="p4a-u">' + (p.image ? img(p.image, p.imageFit === 'contain' ? 'p4a-y' : 'p4a-v', '') : placeholder(p.title)) +
+          '<div><div class="p4a-w">' + esc(p.title) + '</div><div class="p4a-x">' + esc(p.summary || '') + '</div></div></a>';
       }).join('') + '</div>';
     }
     if (b.style === 'tiles') {
@@ -842,10 +888,10 @@
     }
     if (items.length < 2 && !((pg.parts || []).length && page.tocSource !== 'sections')) return '';
     if (!items.length) return '';
-    if (mode === 'auto') mode = items.length <= 4 ? 'guidemap' : 'table';
+    if (mode === 'auto') mode = kindOf(pageId) === 'lesson' ? 'guidemap' : parentOf(pageId) ? 'table' : items.length <= 4 ? 'guidemap' : 'table';
     // Topic hubs get a "Directory"; the deeper part pages get "In this lesson".
     var sec = sectionOf(pageId);
-    var defTitle = kindOf(pageId) === 'lesson' ? 'Directory' : parentOf(pageId) ? 'In this lesson'
+    var defTitle = kindOf(pageId) === 'lesson' ? 'Guide Map' : parentOf(pageId) ? 'In this lesson'
       : (sec && sec.layout === 'topics') ? 'Directory'
       : mode === 'guidemap' ? 'Guide Map' : 'Jump to a section';
     var tocTitle = page.tocTitle || defTitle;
@@ -863,24 +909,35 @@
       }).join('') + '</nav></section>';
   }
 
+  // Breadcrumb: Home / Topic / Page. Lesson pages are skipped so part pages stay short.
+  function breadcrumb() {
+    var chain = ancestors(pageId).reverse().filter(function (id) { return kindOf(id) !== 'lesson' || id === pageId; });
+    var up = parentOf(pageId) || 'home';
+    if (kindOf(up) === 'lesson' && parentOf(up)) up = parentOf(up);
+    return '<nav class="p4a-crumbs" aria-label="Breadcrumb"><a href="' + esc(href(up)) + '" class="p4a-crumb-back" aria-label="Back to ' + esc(title(up)) + '">&larr;</a>' +
+      '<a href="' + esc(href('home')) + '">Home</a>' +
+      chain.map(function (id) { return '<span>/</span><a href="' + esc(href(id)) + '">' + esc(title(id)) + '</a>'; }).join('') +
+      '<span>/</span><span class="p4a-crumb-here">' + esc(kindOf(pageId) === 'lesson' ? 'Guide' : title(pageId)) + '</span></nav>';
+  }
+
   function masthead() {
     var pg = P.site.pages[pageId] || { title: pageId };
     var page = P.page;
     var parent = parentOf(pageId);
-    // Back navigation lives in the breadcrumb above; part pages show which topic they belong to.
-    var back = '';
-    if (parent && kindOf(pageId) === 'lesson') back = '<div class="p4a-1w p4a-back"><a href="' + esc(href(parent)) + '">' + esc(title(parent).toUpperCase()) + ' &middot; LESSON</a></div>';
-    else if (parent) back = '<div class="p4a-1w p4a-back"><a href="' + esc(href(parent)) + '">' + esc(title(parent).toUpperCase()) +
-      ' &middot; PART ' + ((P.site.pages[parent].parts || []).indexOf(pageId) + 1) + '</a></div>';
+    var back = breadcrumb();
+    if (parent && kindOf(parent) === 'lesson') back += '<div class="p4a-1w p4a-back">PART ' + ((P.site.pages[parent].parts || []).indexOf(pageId) + 1) +
+      ' OF ' + (P.site.pages[parent].parts || []).length + '</div>';
     var heading = esc(pg.heading || pg.title);
     var dl = page.download ? '<div class="pcl-download"><button type="button" class="p4a-glass-btn p4a-btn-action pcl-download-trigger">&#8595; Download &#9662;</button>' +
       '<div class="pcl-download-menu"><button type="button" class="pcl-download-item" data-dl="print">Print / Save as PDF</button>' +
       '<button type="button" class="pcl-download-item" data-dl="txt">Download .txt</button>' +
       '<button type="button" class="pcl-download-item" data-dl="doc">Download .doc</button></div></div>' : '';
     if (page.layout === 'hero') {
+      var first = (pg.parts || [])[0];
       return '<section class="bph-hero p4a-masthead">' + back +
         '<h1 class="p4a-1x p4a-hero-title">' + heading + '</h1>' +
-        (page.lede ? '<div class="p4a-21 p4a-rich p4a-hero-lede">' + rich(page.lede) + '</div>' : '') + dl + '</section>';
+        (page.lede ? '<div class="p4a-21 p4a-rich p4a-hero-lede">' + rich(page.lede) + '</div>' : '') +
+        (first ? '<div class="bph-cta-row"><a href="' + esc(href(first)) + '" class="p4a-glass-btn p4a-btn-nav">Start the Guide</a></div>' : '') + dl + '</section>';
     }
     return '<section class="p4a-1v p4a-masthead"><div>' + back +
       '<h1 class="p4a-1x">' + heading + '</h1>' +

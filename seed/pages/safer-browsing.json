@@ -77,14 +77,16 @@
               "url": "https://addons.mozilla.org/firefox/addon/ublock-origin/",
               "desc": "The essential ad and tracker blocker. Full version works in Firefox.",
               "linkText": "Get it",
-              "meta": "Firefox"
+              "meta": "Firefox",
+              "icon": "assets/uBlock-Origin.svg"
             },
             {
               "label": "uBlock Origin Lite",
               "url": "https://github.com/uBlockOrigin/uBOL-home",
               "desc": "The version for Chrome, Edge, Brave and Safari.",
               "linkText": "Get it",
-              "meta": "Chrome, Edge, Safari"
+              "meta": "Chrome, Edge, Safari",
+              "icon": "assets/uBlock-Origin.svg"
             },
             {
               "label": "ClearURLs",
@@ -98,7 +100,8 @@
               "url": "https://addons.mozilla.org/firefox/addon/decentraleyes/",
               "desc": "Serves common web libraries locally so third parties don’t see the request.",
               "linkText": "Get it",
-              "meta": "Firefox, Chrome"
+              "meta": "Firefox, Chrome",
+              "icon": "assets/Decentraleyes_logo.png"
             },
             {
               "label": "Cookie AutoDelete",
@@ -119,14 +122,16 @@
               "url": "https://privacybadger.org/",
               "desc": "EFF’s tracker blocker that learns as you browse.",
               "linkText": "Get it",
-              "meta": "Firefox, Chrome, Edge"
+              "meta": "Firefox, Chrome, Edge",
+              "icon": "assets/PrivacyBadgerLogo.svg"
             },
             {
               "label": "NoScript",
               "url": "https://noscript.net/",
               "desc": "Blocks scripts on sites you don’t trust. Advanced — breaks many sites.",
               "linkText": "Get it",
-              "meta": "Firefox"
+              "meta": "Firefox",
+              "icon": "assets/noscript.jpg"
             }
           ],
           "before": "<p>Start with an ad blocker &mdash; uBlock Origin on Firefox, uBlock Origin Lite on Chrome-based browsers and Safari. Add others only if you need them. See <a href=\"page:browser-extensions\">Browser Extensions</a> for setup.</p>"

@@ -1,19 +1,5 @@
 {
-  "subtitle": "The full guide",
-  "intro": [],
-  "tocAfter": "overview",
   "subsections": [
-    {
-      "id": "overview",
-      "title": "Overview",
-      "summary": "What it is and why it matters.",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Every time you go online, your traffic passes through networks run by other people &mdash; the Wi-Fi you're on, your internet provider, and everyone in between. Each can see where your traffic is going, and anything that isn't encrypted. Network privacy is about limiting what those middlemen can see: HTTPS everywhere, private DNS, and tools like VPNs and Tor when you need more.</p>"
-        }
-      ]
-    },
     {
       "id": "who-watches",
       "title": "Who's Watching You Online?",
@@ -126,5 +112,7 @@
     }
   ],
   "lede": "<p>Who's actually watching your traffic, how a VPN protects you (and where it can't), how to pick a provider you can trust, and how to run your own VPN or website on a rented server.</p>",
-  "layout": "hero"
+  "layout": "hero",
+  "toc": "guidemap",
+  "tocTitle": "Guide Map"
 }

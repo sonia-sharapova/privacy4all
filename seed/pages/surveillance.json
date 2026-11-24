@@ -1,29 +1,26 @@
 {
-  "subtitle": "",
+  "subtitle": "All things surveillance, tracking and staying safe in public.",
   "toc": "none",
   "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What this topic covers.",
+      "blocks": [
+        {
+          "type": "topic-map",
+          "html": "<p>Surveillance is watching people at scale &mdash; by governments, police, employers or companies. It includes cameras and facial recognition, licence-plate readers, phone location tracking, and the mass collection of internet traffic. Knowing what is being collected, and where, helps you decide when to take extra care &mdash; for example at a protest or crossing a border.</p>"
+        }
+      ]
+    },
     {
       "id": "lesson",
       "title": "Lesson",
       "summary": "The full guide, part by part.",
       "blocks": [
         {
-          "type": "redirects",
-          "style": "rows",
-          "items": [
-            {
-              "url": "page:surveillance-guide",
-              "label": "Full guide to Surveillance",
-              "desc": "Overview, directory and terminology — start here.",
-              "linkText": "Start"
-            }
-          ]
-        },
-        {
-          "type": "topic-index",
-          "topic": "surveillance-guide",
-          "includeParts": true,
-          "style": "table"
+          "type": "lesson-steps",
+          "lesson": "surveillance-guide"
         }
       ]
     },
@@ -34,7 +31,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "guide",
             "tutorial",
@@ -57,11 +54,10 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "tiles",
+          "style": "cards",
           "kinds": [
             "topic"
-          ],
-          "cols": 4
+          ]
         }
       ]
     },
@@ -72,7 +68,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "resource",
             "project"

@@ -40,7 +40,8 @@
               "label": "DuckDuckGo",
               "url": "https://duckduckgo.com/",
               "desc": "Blocks trackers and doesn’t build a profile of you.",
-              "linkText": "Visit"
+              "linkText": "Visit",
+              "icon": "assets/icon-duckduckgo.png"
             },
             {
               "label": "Startpage",
@@ -80,14 +81,16 @@
               "url": "https://librewolf.net/",
               "desc": "Hardened Firefox with tracking and fingerprinting protection built in.",
               "linkText": "Visit",
-              "meta": "Desktop"
+              "meta": "Desktop",
+              "icon": "assets/icon-librewolf.svg"
             },
             {
               "label": "Brave",
               "url": "https://brave.com/",
               "desc": "Blocks ads and trackers by default; easiest switch from Chrome.",
               "linkText": "Visit",
-              "meta": "Desktop, Android, iOS"
+              "meta": "Desktop, Android, iOS",
+              "icon": "assets/icon-brave.jpg"
             },
             {
               "label": "Helium",
@@ -101,21 +104,24 @@
               "url": "https://www.mozilla.org/firefox/",
               "desc": "Mozilla’s independent browser; harden it with a few settings.",
               "linkText": "Visit",
-              "meta": "Desktop, Android, iOS"
+              "meta": "Desktop, Android, iOS",
+              "icon": "assets/icon-firefox.webp"
             },
             {
               "label": "Firefox Focus",
               "url": "https://www.mozilla.org/firefox/browsers/mobile/focus/",
               "desc": "Mobile browser that blocks trackers and forgets everything when closed.",
               "linkText": "Visit",
-              "meta": "Android, iOS"
+              "meta": "Android, iOS",
+              "icon": "assets/icon-firefox.webp"
             },
             {
               "label": "DuckDuckGo",
               "url": "https://duckduckgo.com/",
               "desc": "Simple browser that blocks trackers, with a one-tap Fire button.",
               "linkText": "Visit",
-              "meta": "Desktop, Android, iOS"
+              "meta": "Desktop, Android, iOS",
+              "icon": "assets/icon-duckduckgo.png"
             }
           ]
         }
@@ -406,7 +412,8 @@
               "url": "https://mullvad.net/",
               "desc": "No account, no email; pay with cash or crypto. Open source.",
               "linkText": "Visit",
-              "meta": "Paid"
+              "meta": "Paid",
+              "icon": "assets/icon-mullvad.png"
             },
             {
               "label": "Obscura VPN",
@@ -441,7 +448,8 @@
               "url": "https://proton.me/pass",
               "desc": "Open-source, end-to-end encrypted, with built-in email aliases.",
               "linkText": "Visit",
-              "meta": "Sponsored on privacytools.io"
+              "meta": "Sponsored on privacytools.io",
+              "icon": "assets/proton-pass.webp"
             },
             {
               "label": "PrivacyNotes",
@@ -455,21 +463,24 @@
               "url": "https://keepassxc.org/",
               "desc": "Free, open-source and offline — your vault is a file you control.",
               "linkText": "Visit",
-              "meta": "Desktop · free"
+              "meta": "Desktop · free",
+              "icon": "assets/keepassxc.svg"
             },
             {
               "label": "Bitwarden",
               "url": "https://bitwarden.com/",
               "desc": "Open source, syncs everywhere, free for personal use.",
               "linkText": "Visit",
-              "meta": "All devices · free"
+              "meta": "All devices · free",
+              "icon": "assets/bitwarden.jpg"
             },
             {
               "label": "1Password",
               "url": "https://1password.com/",
               "desc": "Polished paid manager with a Secret Key on top of your password.",
               "linkText": "Visit",
-              "meta": "All devices · paid"
+              "meta": "All devices · paid",
+              "icon": "assets/1password.png"
             }
           ]
         }

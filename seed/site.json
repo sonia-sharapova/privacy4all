@@ -285,41 +285,45 @@
       "kind": "template"
     },
     "browser-extensions": {
-      "title": "Browser Extensions",
+      "title": "Set Up Your Browser",
       "path": "browser-privacy/extensions.html",
-      "summary": "Expand your browser with a minimal set of privacy extensions.",
+      "summary": "A minimal, well-audited extension set.",
       "kind": "guide"
     },
     "browser-fingerprinting": {
       "title": "Advanced Configurations",
       "path": "browser-privacy/fingerprinting.html",
-      "summary": "Protect your identity: fingerprinting and per-browser hardening.",
+      "summary": "Kill fingerprinting, plus password managers, DNS filtering, and container tabs.",
       "topics": [
         "data"
       ],
       "kind": "tutorial"
     },
     "browser-verify": {
-      "title": "Verify Everything Works",
+      "title": "Test & Verify",
       "path": "browser-privacy/verify.html",
-      "summary": "Diagnostics that test your browser's privacy.",
-      "topics": [
-        "browsers"
-      ],
+      "summary": "Confirm every layer, fix what breaks.",
+      "topics": [],
       "kind": "checker"
     },
     "browser-troubleshooting": {
       "title": "Troubleshooting",
       "path": "browser-privacy/troubleshooting.html",
       "summary": "Fixes for broken sites and misbehaving tools.",
-      "kind": "guide"
+      "kind": "guide",
+      "topics": [
+        "browsers"
+      ]
     },
     "browser-resources": {
       "title": "Browser Resources",
       "path": "browser-privacy/resources.html",
       "heading": "Resources",
       "summary": "FAQ, glossary and curated links.",
-      "kind": "guide"
+      "kind": "resource",
+      "topics": [
+        "browsers"
+      ]
     },
     "browsers": {
       "title": "Browsers",
@@ -339,7 +343,9 @@
     "browser-fingerprinting-and-tracking": {
       "title": "Browser Fingerprinting and Tracking",
       "path": "guides/personal-data-tracking/browser-fingerprinting-and-tracking.html",
-      "topics": [],
+      "topics": [
+        "browsers"
+      ],
       "kind": "guide",
       "summary": "How sites follow you without cookies."
     },
@@ -509,7 +515,8 @@
         "vpn-resources"
       ],
       "kind": "lesson",
-      "lessonOf": "networks"
+      "lessonOf": "networks",
+      "heading": "A Practical Guide to VPNs & VPS"
     },
     "email-alternatives": {
       "title": "Email Alternatives and Aliasing",
@@ -719,16 +726,19 @@
       "keywords": "glossary terms definitions dictionary a-z"
     },
     "choosing-a-browser": {
-      "title": "Choosing a Browser",
+      "title": "Choose Your Browser",
       "path": "browser-privacy/choosing.html",
-      "summary": "Recommended browsers, compared — desktop and phone.",
+      "summary": "Compare picks and build a lineup.",
       "kind": "guide"
     },
     "safer-browsing": {
       "title": "Safer Browsing Habits",
       "path": "browser-privacy/safer-browsing.html",
       "summary": "Settings, habits and extensions for any browser.",
-      "kind": "guide"
+      "kind": "guide",
+      "topics": [
+        "browsers"
+      ]
     },
     "browsers-guide": {
       "title": "Full Guide to Browsers",
@@ -738,14 +748,11 @@
       "summary": "Overview, directory and terminology — start here.",
       "parts": [
         "choosing-a-browser",
-        "safer-browsing",
         "browser-extensions",
         "browser-fingerprinting",
-        "browser-fingerprinting-and-tracking",
-        "browser-verify",
-        "browser-troubleshooting",
-        "browser-resources"
-      ]
+        "browser-verify"
+      ],
+      "heading": "A Practical Guide to Browser Privacy"
     },
     "data-guide": {
       "title": "Full Guide to Data & Storage",
@@ -760,7 +767,8 @@
         "identifying-details",
         "data-deletion",
         "file-sharing"
-      ]
+      ],
+      "heading": "A Practical Guide to Your Data & Files"
     },
     "devices-guide": {
       "title": "Full Guide to Devices & OS",
@@ -773,7 +781,8 @@
         "hardening-your-phone",
         "phone-data",
         "operating-systems"
-      ]
+      ],
+      "heading": "A Practical Guide to Devices & OS"
     },
     "password-tools": {
       "title": "Managers, 2FA & Security Keys",
@@ -791,7 +800,8 @@
         "password-tools",
         "auth",
         "passkeys"
-      ]
+      ],
+      "heading": "A Practical Guide to Accounts & Passwords"
     },
     "messaging": {
       "title": "Messaging & Calls",
@@ -837,21 +847,24 @@
         "social-media",
         "anonymous-tips",
         "hacked-accounts"
-      ]
+      ],
+      "heading": "A Practical Guide to Private Communication"
     },
     "ai-guide": {
       "title": "Full Guide to AI",
       "path": "guides/ai-security/guide.html",
       "kind": "lesson",
       "lessonOf": "ai",
-      "summary": "Overview, directory and terminology — start here."
+      "summary": "Overview, directory and terminology — start here.",
+      "heading": "A Practical Guide to AI & Privacy"
     },
     "surveillance-guide": {
       "title": "Full Guide to Surveillance",
       "path": "guides/surveillance/guide.html",
       "kind": "lesson",
       "lessonOf": "surveillance",
-      "summary": "Overview, directory and terminology — start here."
+      "summary": "Overview, directory and terminology — start here.",
+      "heading": "A Practical Guide to Surveillance"
     },
     "quick-check": {
       "title": "Quick Check",

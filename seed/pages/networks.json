@@ -1,29 +1,26 @@
 {
-  "subtitle": "Who sees your traffic, and VPNs, VPS and Tor",
+  "subtitle": "All things networks, VPNs, VPS and Tor.",
   "toc": "none",
   "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What this topic covers.",
+      "blocks": [
+        {
+          "type": "topic-map",
+          "html": "<p>Every time you go online, your traffic passes through networks run by other people &mdash; the Wi-Fi you're on, your internet provider, and everyone in between. Each can see where your traffic is going, and anything that isn't encrypted. Network privacy is about limiting what those middlemen can see: HTTPS everywhere, private DNS, and tools like VPNs and Tor when you need more.</p>"
+        }
+      ]
+    },
     {
       "id": "lesson",
       "title": "Lesson",
       "summary": "The full guide, part by part.",
       "blocks": [
         {
-          "type": "redirects",
-          "style": "rows",
-          "items": [
-            {
-              "url": "page:vpns",
-              "label": "Full guide to Networks & VPNs",
-              "desc": "Overview, directory and terminology — start here.",
-              "linkText": "Start"
-            }
-          ]
-        },
-        {
-          "type": "topic-index",
-          "topic": "vpns",
-          "includeParts": true,
-          "style": "table"
+          "type": "lesson-steps",
+          "lesson": "vpns"
         }
       ]
     },
@@ -34,7 +31,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "guide",
             "tutorial",
@@ -57,11 +54,10 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "tiles",
+          "style": "cards",
           "kinds": [
             "topic"
-          ],
-          "cols": 4
+          ]
         }
       ]
     },
@@ -72,7 +68,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "resource",
             "project"

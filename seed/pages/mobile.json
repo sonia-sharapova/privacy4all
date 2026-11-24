@@ -1,29 +1,26 @@
 {
-  "subtitle": "Phones, computers and operating systems",
+  "subtitle": "All things phones, computers and operating systems.",
   "toc": "none",
   "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What this topic covers.",
+      "blocks": [
+        {
+          "type": "topic-map",
+          "html": "<p>Your phone knows more about you than any other device: where you go, who you talk to, your photos, your health and your money. Much of that is shared with apps, advertisers and your carrier by default. A few settings &mdash; app permissions, location history, the advertising ID and a strong passcode &mdash; make a big difference, whatever phone you have.</p>"
+        }
+      ]
+    },
     {
       "id": "lesson",
       "title": "Lesson",
       "summary": "The full guide, part by part.",
       "blocks": [
         {
-          "type": "redirects",
-          "style": "rows",
-          "items": [
-            {
-              "url": "page:devices-guide",
-              "label": "Full guide to Devices & OS",
-              "desc": "Overview, directory and terminology — start here.",
-              "linkText": "Start"
-            }
-          ]
-        },
-        {
-          "type": "topic-index",
-          "topic": "devices-guide",
-          "includeParts": true,
-          "style": "table"
+          "type": "lesson-steps",
+          "lesson": "devices-guide"
         }
       ]
     },
@@ -34,7 +31,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "guide",
             "tutorial",
@@ -57,11 +54,10 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "tiles",
+          "style": "cards",
           "kinds": [
             "topic"
-          ],
-          "cols": 4
+          ]
         }
       ]
     },
@@ -72,7 +68,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "resource",
             "project"

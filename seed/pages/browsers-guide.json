@@ -1,19 +1,40 @@
 {
-  "subtitle": "The full guide",
-  "intro": [
-    {
-      "type": "quote",
-      "quote": "Saying that you don't care about privacy because you have nothing to hide is no different from saying you don't care about freedom of speech because you have nothing to say.",
-      "card": false,
-      "sideFirst": false,
-      "author": "Edward Snowden",
-      "side": "image",
-      "image": "assets/www.jpg",
-      "alt": "Browsers"
-    }
-  ],
-  "tocAfter": "overview",
   "subsections": [
+    {
+      "id": "quick-start",
+      "title": "Quick Start",
+      "summary": "Get protected in about 5 minutes.",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Get protected in about 5 minutes. Click a step to see the details.</p>"
+        },
+        {
+          "type": "numbered",
+          "style": "accordion",
+          "label": "STEP",
+          "card": true,
+          "items": [
+            {
+              "title": "Install a private browser",
+              "text": "<p>Pick <a href=\"page:choosing-a-browser#recommended\">Brave, Mullvad Browser, or LibreWolf</a> and set it as your default. See <a href=\"page:choosing-a-browser\">Part 1: Choose Your Browser</a> for the full picture, including a two- or three-browser lineup.</p>"
+            },
+            {
+              "title": "Install one extension",
+              "text": "<p>Install <b>uBlock Origin</b> &mdash; verify the developer is Raymond Hill (gorhill). It’s the single most effective privacy tool you can add. Full walkthrough in <a href=\"page:browser-extensions\">Part 2: Set Up Your Browser</a>.</p>"
+            },
+            {
+              "title": "Turn on strict tracking protection",
+              "text": "<p>Firefox/LibreWolf: Enhanced Tracking Protection &rarr; Strict. Brave: Shields set to Aggressive. This also cuts down fingerprinting &mdash; see <a href=\"page:browser-fingerprinting\">Part 3: Advanced Configurations</a> for browser-specific detail.</p>"
+            },
+            {
+              "title": "Verify it’s working",
+              "text": "<p>Visit <a href=\"https://coveryourtracks.eff.org/\">coveryourtracks.eff.org</a> and confirm strong tracking protection. Full test suite in <a href=\"page:browser-verify\">Part 4: Test &amp; Verify</a>.</p>"
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "overview",
       "title": "Overview",
@@ -63,5 +84,9 @@
         }
       ]
     }
-  ]
+  ],
+  "layout": "hero",
+  "toc": "guidemap",
+  "tocTitle": "Guide Map",
+  "lede": "<p>The step-by-step guide that actually works &mdash; four short parts, no jargon, five minutes to get meaningfully protected.</p>"
 }

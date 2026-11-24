@@ -229,7 +229,8 @@
               "label": "DuckDuckGo",
               "url": "https://duckduckgo.com/",
               "desc": "Blocks trackers and doesn’t build a profile of you.",
-              "linkText": "Try it"
+              "linkText": "Try it",
+              "icon": "assets/icon-duckduckgo.png"
             },
             {
               "label": "Startpage",

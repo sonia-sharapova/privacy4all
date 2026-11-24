@@ -452,3 +452,78 @@ html[data-night="on"] .p4a-sb-kids { border-color: rgba(255,255,255,0.15); }
   .p4a-index-go { grid-row: 1; grid-column: 2; }
   .p4a-quote-wrap.has-side { grid-template-columns: 1fr; }
 }
+
+/* ---------- Title box: breadcrumb above the title, more breathing room ---------- */
+.p4a-masthead, .p4a-1v.p4a-masthead { padding: 26px 32px 24px; }
+.p4a-crumbs { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; font-size: 12px; letter-spacing: 0.08em; color: #777; margin-bottom: 14px; }
+.p4a-crumbs a { color: #555; text-decoration: none; }
+.p4a-crumbs a:hover { color: #2f6fed; }
+.p4a-crumbs .p4a-crumb-back { color: #2f6fed; margin-right: 6px; }
+.p4a-crumb-here { color: #1b1b1b; }
+.p4a-masthead .p4a-back { margin: -6px 0 6px; font-size: 10.5px; letter-spacing: 0.14em; color: #2f6fed; }
+.p4a-masthead .p4a-subtitle { margin-top: 12px; }
+.bph-hero.p4a-masthead .p4a-hero-lede { margin-top: 14px; }
+.bph-hero.p4a-masthead .bph-cta-row { margin-top: 18px; }
+.bph-hero { border-bottom: none; }
+html[data-night="on"] .p4a-crumbs a { color: #c8c8d0; }
+html[data-night="on"] .p4a-crumb-here { color: #f2f2f4; }
+
+/* ---------- Step accordions: lighter rules, calmer titles ---------- */
+.bph-steps { border-top: 1px solid rgba(0,0,0,0.1); }
+.bph-step { border-bottom: 1px solid rgba(0,0,0,0.1); }
+.bph-step-summary { padding: 13px 6px; border-radius: 6px; }
+.bph-step-summary:hover { background: rgba(255,255,255,0.55); }
+.bph-step-title { font-family: 'Alef', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.05em; }
+html[data-night="on"] .bph-step, html[data-night="on"] .bph-steps { border-color: rgba(255,255,255,0.14); }
+
+/* ---------- FAQ: table rows that open ---------- */
+.p4a-faq { border-top: 1px solid rgba(0,0,0,0.1); }
+.p4a-faq details.p4a-details { border-bottom: 1px solid rgba(0,0,0,0.1); border-top: none; padding: 0; }
+.p4a-faq details.p4a-details > summary { list-style: none; display: flex; align-items: baseline; gap: 10px; padding: 12px 6px; cursor: pointer; border-radius: 6px; font-family: 'Alef', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.04em; }
+.p4a-faq details.p4a-details > summary::-webkit-details-marker { display: none; }
+.p4a-faq details.p4a-details > summary::before { content: '\203A'; color: #2f6fed; width: 10px; transition: transform 0.15s ease; }
+.p4a-faq details.p4a-details[open] > summary::before { transform: rotate(90deg); }
+.p4a-faq details.p4a-details > summary:hover { background: rgba(255,255,255,0.55); }
+.p4a-faq-a { padding: 0 6px 14px 26px; font-size: 14.5px; line-height: 1.7; color: #555; }
+
+/* ---------- Topic page: overview page map ---------- */
+.p4a-topic-map { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; padding: 26px 30px; }
+.p4a-topic-map-desc { letter-spacing: 0.06em; font-size: 14.5px; line-height: 1.85; color: #333; }
+.p4a-topic-map .p4a-1j { background: transparent; border: none; box-shadow: none; padding: 0; }
+.p4a-topic-map .p4a-1k { padding: 12px 4px; border-bottom: 1px solid rgba(0,0,0,0.08); transition: background 0.15s ease; border-radius: 6px; }
+.p4a-topic-map .p4a-1k:hover { background: rgba(255,255,255,0.6); text-decoration: none; }
+.p4a-go { color: #2f6fed; font-weight: 400; }
+
+/* ---------- Topic page: lesson container ---------- */
+.p4a-lesson-box { border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; background: rgba(255,255,255,0.45); padding: 18px 20px; }
+.p4a-lesson-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
+.p4a-lesson-name { font-family: 'Alef', sans-serif; font-size: 18px; letter-spacing: 0.05em; color: #1b1b1b; }
+.p4a-lesson-sub { font-size: 13px; letter-spacing: 0.04em; color: #777; margin-top: 4px; }
+.p4a-lesson-start { padding: 9px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; white-space: nowrap; }
+.p4a-lesson-steps { border-top: 1px solid rgba(0,0,0,0.08); }
+.p4a-lesson-step { display: grid; grid-template-columns: 64px minmax(160px, 1fr) minmax(0, 1.6fr) 16px; align-items: baseline; gap: 12px; padding: 11px 6px; border-bottom: 1px solid rgba(0,0,0,0.07); border-radius: 6px; color: inherit; text-decoration: none; transition: background 0.15s ease; }
+.p4a-lesson-step:hover { background: rgba(255,255,255,0.6); text-decoration: none; }
+.p4a-lesson-step .p4a-26 { margin: 0; }
+.p4a-lesson-step-title { font-family: 'Alef', sans-serif; font-size: 15px; letter-spacing: 0.04em; color: #1b1b1b; }
+.p4a-lesson-step-desc { font-size: 13.5px; color: #666; letter-spacing: 0.03em; }
+
+/* ---------- Cards (Quick-Check look) and icon placeholders ---------- */
+.p4a-cards .p4a-u { text-decoration: none; }
+.p4a-cards .p4a-u:hover { text-decoration: none; letter-spacing: inherit; background: rgba(255,255,255,0.78); border-color: rgba(255,255,255,0.95); }
+.p4a-ph { width: 44px; height: 44px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: linear-gradient(160deg, rgba(47,111,237,0.16), rgba(47,111,237,0.06)); border: 1px solid rgba(47,111,237,0.18); color: #2f50a8; font-family: 'Averia Libre', serif; font-size: 20px; font-weight: 700; }
+.p4a-ph.p4a-ph-sm { width: 28px; height: 28px; border-radius: 7px; font-size: 14px; margin-bottom: 8px; }
+.p4a-redirect-row .p4a-ph-sm { margin: 0; }
+.p4a-index-go { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; white-space: nowrap; }
+.p4a-index-row { grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr) auto; }
+html[data-night="on"] .p4a-ph { color: #9fb8ef; }
+html[data-night="on"] .p4a-lesson-box { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); }
+html[data-night="on"] .p4a-lesson-name, html[data-night="on"] .p4a-lesson-step-title { color: #f2f2f4; }
+
+@media (max-width: 900px) {
+  .p4a-topic-map { grid-template-columns: 1fr; gap: 18px; padding: 18px; }
+  .p4a-lesson-step { grid-template-columns: 56px 1fr 16px; }
+  .p4a-lesson-step-desc { grid-column: 2; }
+  .p4a-lesson-head { flex-wrap: wrap; }
+  .p4a-index-row { grid-template-columns: 1fr auto; }
+  .p4a-index-desc { grid-column: 1 / -1; }
+}

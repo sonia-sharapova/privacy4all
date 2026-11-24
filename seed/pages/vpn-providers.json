@@ -130,7 +130,8 @@
               "url": "https://mullvad.net/",
               "desc": "No account, no email; pay with cash or crypto. Open source.",
               "linkText": "Visit",
-              "meta": "Paid"
+              "meta": "Paid",
+              "icon": "assets/icon-mullvad.png"
             },
             {
               "label": "Obscura VPN",

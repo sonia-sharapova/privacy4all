@@ -267,14 +267,16 @@
               "url": "https://librewolf.net/",
               "desc": "Hardened Firefox with tracking and fingerprinting protection built in.",
               "linkText": "Visit",
-              "meta": "Desktop"
+              "meta": "Desktop",
+              "icon": "assets/icon-librewolf.svg"
             },
             {
               "label": "Brave",
               "url": "https://brave.com/",
               "desc": "Blocks ads and trackers by default; easiest switch from Chrome.",
               "linkText": "Visit",
-              "meta": "Desktop, Android, iOS"
+              "meta": "Desktop, Android, iOS",
+              "icon": "assets/icon-brave.jpg"
             },
             {
               "label": "Helium",
@@ -288,21 +290,24 @@
               "url": "https://www.mozilla.org/firefox/",
               "desc": "Mozilla’s independent browser; harden it with a few settings.",
               "linkText": "Visit",
-              "meta": "Desktop, Android, iOS"
+              "meta": "Desktop, Android, iOS",
+              "icon": "assets/icon-firefox.webp"
             },
             {
               "label": "Firefox Focus",
               "url": "https://www.mozilla.org/firefox/browsers/mobile/focus/",
               "desc": "Mobile browser that blocks trackers and forgets everything when closed.",
               "linkText": "Visit",
-              "meta": "Android, iOS"
+              "meta": "Android, iOS",
+              "icon": "assets/icon-firefox.webp"
             },
             {
               "label": "DuckDuckGo",
               "url": "https://duckduckgo.com/",
               "desc": "Simple browser that blocks trackers, with a one-tap Fire button.",
               "linkText": "Visit",
-              "meta": "Desktop, Android, iOS"
+              "meta": "Desktop, Android, iOS",
+              "icon": "assets/icon-duckduckgo.png"
             }
           ]
         }
@@ -322,25 +327,29 @@
               "label": "Brave",
               "url": "https://brave.com/",
               "desc": "Blocks ads and trackers by default.",
-              "linkText": "Visit"
+              "linkText": "Visit",
+              "icon": "assets/icon-brave.jpg"
             },
             {
               "label": "Firefox",
               "url": "https://www.mozilla.org/firefox/",
               "desc": "Supports full extensions like uBlock Origin on Android.",
-              "linkText": "Visit"
+              "linkText": "Visit",
+              "icon": "assets/icon-firefox.webp"
             },
             {
               "label": "Firefox Focus",
               "url": "https://www.mozilla.org/firefox/browsers/mobile/focus/",
               "desc": "Private-by-default, forgets everything on close.",
-              "linkText": "Visit"
+              "linkText": "Visit",
+              "icon": "assets/icon-firefox.webp"
             },
             {
               "label": "DuckDuckGo",
               "url": "https://duckduckgo.com/",
               "desc": "Tracker blocking and a one-tap Fire button.",
-              "linkText": "Visit"
+              "linkText": "Visit",
+              "icon": "assets/icon-duckduckgo.png"
             },
             {
               "label": "IronFox",

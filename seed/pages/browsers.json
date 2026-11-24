@@ -1,29 +1,26 @@
 {
-  "subtitle": "Quick start guide to a private browser",
+  "subtitle": "All things browsers, extensions, fingerprinting and tracking.",
   "toc": "none",
   "subsections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "summary": "What this topic covers.",
+      "blocks": [
+        {
+          "type": "topic-map",
+          "html": "<p>Your browser is the window you use to see almost everything online &mdash; and the window works both ways. Websites, advertisers and trackers can read a lot about you through it: what you visit, what you click, and enough details about your device to recognise you again later. Choosing a private browser and setting it up well removes most of that tracking without changing how you use the web.</p>"
+        }
+      ]
+    },
     {
       "id": "lesson",
       "title": "Lesson",
       "summary": "The full guide, part by part.",
       "blocks": [
         {
-          "type": "redirects",
-          "style": "rows",
-          "items": [
-            {
-              "url": "page:browsers-guide",
-              "label": "Full guide to Browsers",
-              "desc": "Overview, directory and terminology — start here.",
-              "linkText": "Start"
-            }
-          ]
-        },
-        {
-          "type": "topic-index",
-          "topic": "browsers-guide",
-          "includeParts": true,
-          "style": "table"
+          "type": "lesson-steps",
+          "lesson": "browsers-guide"
         }
       ]
     },
@@ -34,7 +31,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "guide",
             "tutorial",
@@ -57,11 +54,10 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "tiles",
+          "style": "cards",
           "kinds": [
             "topic"
-          ],
-          "cols": 4
+          ]
         }
       ]
     },
@@ -72,7 +68,7 @@
       "blocks": [
         {
           "type": "topic-index",
-          "style": "table",
+          "style": "cards",
           "kinds": [
             "resource",
             "project"
